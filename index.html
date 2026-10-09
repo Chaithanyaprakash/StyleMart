@@ -6,9 +6,14 @@
   <title>StyleMart | Design Your Own Custom Clothing & Online Fashion</title>
   <meta name="description" content="Shop latest fashion trends and design your own custom T-Shirts, Hoodies, and Kurtas live at StyleMart. Simple, clean, fast e-commerce experience.">
   
+  <!-- Google Fonts Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
+
   <!-- Custom Stylesheet -->
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261008-7">
+  <link rel="stylesheet" href="styles.css?v=20261009-fonts">
 </head>
 <body>
 
@@ -26,12 +31,9 @@
 
         <!-- Logo -->
         <a href="index.html" class="brand-logo" onclick="resetCatalogFilter()">
-          <div class="logo-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-          </div>
+          <div class="logo-icon">🛍️</div>
           <div class="logo-text">
-            <h1><span class="logo-primary">Style<span class="logo-highlight">Mart</span></span></h1>
-            <span class="logo-tagline">TRENDS FOR EVERYONE</span>
+            <span class="logo-primary">Style<span class="logo-highlight">Mart</span></span>
           </div>
         </a>
 
@@ -65,14 +67,13 @@
             <button class="close-mobile-nav" id="closeMobileNavBtn" aria-label="Close menu">&times;</button>
           </div>
           <ul class="nav-list">
-            <li class="nav-item"><a href="index.html" class="nav-link" data-home="true">Home</a></li>
-            <li class="nav-item"><a href="category.html?category=all" class="nav-link" data-category="all">All</a></li>
-            <li class="nav-item"><a href="category.html?category=women" class="nav-link" data-category="women">Women</a></li>
-            <li class="nav-item"><a href="category.html?category=men" class="nav-link" data-category="men">Men</a></li>
-            <li class="nav-item"><a href="category.html?category=kids" class="nav-link" data-category="kids">Kids</a></li>
-            <li class="nav-item"><a href="category.html?category=footwear" class="nav-link" data-category="footwear">Footwear</a></li>
-            <li class="nav-item"><a href="category.html?category=ethnic" class="nav-link" data-category="ethnic">Ethnic Wear</a></li>
-            <li class="nav-item"><a href="category.html?category=budget" class="nav-link" data-category="budget">Budget <span class="nav-badge budget">Under ₹499</span></a></li>
+            <li class="nav-item"><a href="index.html" class="nav-link" data-home="true"><b>Home</b></a></li>
+            <li class="nav-item"><a href="category.html?category=women" class="nav-link" data-category="women"><b>Women</b></a></li>
+            <li class="nav-item"><a href="category.html?category=men" class="nav-link" data-category="men"><b>Men</b></a></li>
+            <li class="nav-item"><a href="category.html?category=kids" class="nav-link" data-category="kids"><b>Kids</b></a></li>
+            <li class="nav-item"><a href="category.html?category=footwear" class="nav-link" data-category="footwear"><b>Footwear</b></a></li>
+            <li class="nav-item"><a href="category.html?category=ethnic" class="nav-link" data-category="ethnic"><b>Ethnic Wear</b></a></li>
+            <li class="nav-item"><a href="category.html?category=budget" class="nav-link" data-category="budget"><b>Budget</b> <span class="nav-badge budget">Under ₹499</span></a></li>
           </ul>
         </nav>
 
@@ -103,72 +104,34 @@
 
   </header>
 
-  <!-- Main Hero Carousel Section -->
+  <!-- Main Hero Carousel Section with Flanking Product Banners -->
   <section class="hero-slider-section">
-    <div class="slider-container">
-      <div class="slider-track" id="heroSliderTrack">
-        
-        <!-- Slide 1 -->
-        <div class="slide active">
-          <img src="assets/images/banner1.jpg" alt="StyleMart Big Fashion Festival">
-          <div class="slide-overlay">
-            <div class="slide-content">
-              <span class="slide-tag">⚡ MEGA DISCOUNTS LIVE</span>
-              <h2>BIG FASHION FESTIVAL</h2>
-              <p>Upgrade your style with <strong>50% to 80% OFF</strong> on Top Brands like HRX, Roadster, FabIndia & More!</p>
-              <div class="slide-btns">
-                <button class="btn btn-primary btn-glow" onclick="filterByCategory('all')">Shop The Festival &rarr;</button>
-              </div>
-            </div>
+    <div class="hero-layout-wrapper">
+
+      <!-- Center Main Hero Carousel Slider -->
+      <div class="slider-container">
+        <div class="slider-track" id="heroSliderTrack">
+          <!-- Slide 1 -->
+          <div class="slide active">
+            <img src="assets/images/Banner-1.png" alt="StyleMart Banner 1">
+          </div>
+          <!-- Slide 2 -->
+          <div class="slide">
+            <img src="assets/images/Banner-2.png" alt="StyleMart Banner 2">
+          </div>
+          <!-- Slide 3 -->
+          <div class="slide">
+            <img src="assets/images/Banner-3.png" alt="StyleMart Banner 3">
           </div>
         </div>
-
-        <!-- Slide 2 -->
-        <div class="slide">
-          <img src="assets/images/banner2.jpg" alt="Elegant Indian Ethnic Couture">
-          <div class="slide-overlay">
-            <div class="slide-content">
-              <span class="slide-tag ethnic-tag">👑 FESTIVE SPECIAL</span>
-              <h2>ROYAL ETHNIC COUTURE</h2>
-              <p>Handcrafted Banarasi Sarees, Designer Kurtas & Regal Lehengas up to 50% OFF.</p>
-              <div class="slide-btns">
-                <button class="btn btn-primary" onclick="filterByCategory('ethnic')">Explore Ethnic Collection &rarr;</button>
-              </div>
-            </div>
-          </div>
+        <!-- Slider Indicators -->
+        <div class="slider-dots" id="sliderDots">
+          <span class="dot active" onclick="goToSlide(0)"></span>
+          <span class="dot" onclick="goToSlide(1)"></span>
+          <span class="dot" onclick="goToSlide(2)"></span>
         </div>
-
-        <!-- Slide 3 (Custom Styled Banner) -->
-        <div class="slide banner-gradient-streetwear">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJp3uh_DkAVNeoUh48JSnYIPUwuD0ZFeuuf-riKap_Zw&amp;s=10" alt="Streetwear fashion collection">
-          <div class="slide-custom-content">
-            <div class="custom-slide-left">
-              <span class="badge-accent">🔥 TRENDING NOW</span>
-              <h2>STREETWEAR & OVERSIZED DROPS</h2>
-              <p>Urban baggy fits, varsity jackets, graphic tees & classic sneakers starting from just ₹399.</p>
-              <button class="btn btn-primary btn-glow" onclick="filterByCategory('men')">Shop Streetwear &rarr;</button>
-            </div>
-            <div class="custom-slide-right">
-              <div class="discount-circle">
-                <span class="circle-num">FLAT 60%</span>
-                <span class="circle-sub">OFF</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
 
-      <!-- Slider Nav Controls -->
-      <button class="slider-btn prev-btn" id="prevSlideBtn" aria-label="Previous Slide">&larr;</button>
-      <button class="slider-btn next-btn" id="nextSlideBtn" aria-label="Next Slide">&rarr;</button>
-
-      <!-- Slider Indicators -->
-      <div class="slider-dots" id="sliderDots">
-        <span class="dot active" onclick="goToSlide(0)"></span>
-        <span class="dot" onclick="goToSlide(1)"></span>
-        <span class="dot" onclick="goToSlide(2)"></span>
-      </div>
     </div>
   </section>
   <!-- Flash Sale / Deal of the Day Section -->
@@ -178,19 +141,37 @@
         <div class="flash-title">
           <div class="flash-badge">⚡ FLASH DEALS</div>
           <h2>Deal of the Day</h2>
-          <span class="sub-text">Hurry up! Stock selling out fast</span>
-        </div>
-        <div class="flash-timer-wrapper">
-          <span class="timer-label">Ends In:</span>
-          <div class="countdown-boxes" id="flashCountdown">
-            <span class="box" id="flashHours">03</span>:
-            <span class="box" id="flashMins">45</span>:
-            <span class="box" id="flashSecs">22</span>
-          </div>
         </div>
       </div>
 
-      <div class="flash-products-grid" id="flashProductsGrid">
+      <div class="flash-carousel-container" id="flashCarouselContainer">
+        <div class="flash-products-grid" id="flashProductsGrid">
+          <!-- Rendered dynamically by JS -->
+        </div>
+      </div>
+      <div class="flash-dots-container" id="flashDotsContainer">
+        <!-- Dots rendered dynamically by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Fashion Section with Filters -->
+  <section class="fashion-section" id="fashionSection">
+    <div class="section-container">
+      <div class="fashion-header">
+        <div class="fashion-title">
+          <h2 class="section-heading">Fashion</h2>
+          <p class="section-subtext">Discover curated styles across top categories</p>
+        </div>
+        <div class="fashion-filter-tabs">
+          <button class="fashion-tab-btn active" data-category="all" onclick="redirectToCategoryPage('all')">All</button>
+          <button class="fashion-tab-btn" data-category="men" onclick="redirectToCategoryPage('men')">Men</button>
+          <button class="fashion-tab-btn" data-category="women" onclick="redirectToCategoryPage('women')">Women</button>
+          <button class="fashion-tab-btn" data-category="kids" onclick="redirectToCategoryPage('kids')">Kids</button>
+          <button class="fashion-tab-btn" data-category="best-deals" onclick="redirectToCategoryPage('budget')">Best Deals</button>
+        </div>
+      </div>
+      <div class="fashion-products-grid" id="fashionProductsGrid">
         <!-- Rendered dynamically by JS -->
       </div>
     </div>
@@ -478,10 +459,7 @@
           <label for="userAddress">Street Address / House No</label>
           <input type="text" id="userAddress" class="studio-text-input" placeholder="e.g. #42, 5th Cross, Indiranagar" autocomplete="street-address" minlength="5" maxlength="160" required>
         </div>
-        <div class="delivery-location-controls">
-          <button type="button" class="btn btn-outline" onclick="captureDeliveryLocation()">Use my location at the delivery address</button>
-          <p class="delivery-location-status" id="deliveryLocationStatus" aria-live="polite">Required to check the 100 km delivery area. Your location is saved in this browser and is not sent to a maps service.</p>
-        </div>
+
         <div class="form-row-2col" style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
           <div class="form-group">
             <label for="userCity">City / Town</label>
@@ -594,6 +572,12 @@
     <div class="drawer-body" id="wishlistDrawerBody">
       <!-- Items dynamically populated by JS -->
     </div>
+
+    <div class="drawer-footer" id="wishlistDrawerFooter" style="padding:16px; border-top:1px solid var(--border-color); background:#ffffff;">
+      <button class="btn btn-primary btn-block btn-glow btn-lg" onclick="addAllWishlistToCart()">
+        Proceed to Cart &rarr;
+      </button>
+    </div>
   </aside>
 
   <!-- Checkout & Order Confirmation Modal -->
@@ -644,23 +628,12 @@
           <h4>SHOP CATEGORIES</h4>
           <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="category.html?category=all">All</a></li>
             <li><a href="category.html?category=women">Women</a></li>
             <li><a href="category.html?category=men">Men</a></li>
             <li><a href="category.html?category=kids">Kids</a></li>
             <li><a href="category.html?category=footwear">Footwear</a></li>
             <li><a href="category.html?category=ethnic">Ethnic Wear</a></li>
             <li><a href="category.html?category=budget">Budget Store (Under ₹499)</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>CUSTOMER POLICIES</h4>
-          <ul>
-            <li><a href="#" onclick="openAuthModal()">Login / Delivery Address</a></li>
-            <li><a href="#" onclick="openSizeChartModal()">Size Guide Chart</a></li>
-            <li><a href="#">14-Day Free Return Policy</a></li>
-            <li><a href="#">Track Order Status</a></li>
           </ul>
         </div>
 

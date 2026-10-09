@@ -4,8 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Explore the latest styles and deals at StyleMart.">
-  <title>Shop Fashion | StyleMart</title>
-  <link rel="stylesheet" href="styles.css?v=20261008-3">
+  <!-- Google Fonts Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css?v=20261009-fonts">
 </head>
 <body>
   <header class="main-header">
@@ -36,7 +40,6 @@
           </div>
           <ul class="nav-list">
             <li><a href="index.html" class="nav-link" data-home="true">Home</a></li>
-            <li><a href="category.html?category=all" class="nav-link" data-category="all">All</a></li>
             <li><a href="category.html?category=women" class="nav-link" data-category="women">Women</a></li>
             <li><a href="category.html?category=men" class="nav-link" data-category="men">Men</a></li>
             <li><a href="category.html?category=kids" class="nav-link" data-category="kids">Kids</a></li>
@@ -62,12 +65,17 @@
     </div>
   </header>
 
-  <main>
-    <section class="category-hero">
+    <section class="category-filter-header">
       <div class="section-container">
-        <span class="slide-tag">STYLEMART COLLECTION</span>
-        <h1 id="categoryPageTitle">Shop the latest styles</h1>
-        <p>Find your next favorite look from our curated collection.</p>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div>
+            <h1 id="categoryPageTitle" style="font-size:1.6rem; font-weight:800; color:var(--secondary); margin:0 0 4px 0;">Shop Collection</h1>
+            <p style="font-size:0.88rem; color:var(--text-muted); margin:0;">Filter by sub-categories, top brands, styles and fits</p>
+          </div>
+          <div class="category-subfilter-bar" id="categorySubfilterBar">
+            <!-- Rendered dynamically by app.js -->
+          </div>
+        </div>
       </div>
     </section>
     <section class="catalog-section" id="catalogSection">
@@ -118,10 +126,7 @@
         <div class="form-group" id="profileNameField"><label for="userName">Full Name</label><input type="text" id="userName" class="studio-text-input" autocomplete="name" minlength="2" maxlength="80" required></div>
         <div class="form-group" id="profilePhoneField"><label for="mobileOrEmail">Mobile Number</label><div class="input-prefix-wrap"><span class="prefix">+91</span><input type="tel" id="mobileOrEmail" inputmode="numeric" autocomplete="tel-national" placeholder="10-digit number" pattern="[6-9][0-9]{9}" minlength="10" maxlength="10" required></div></div>
         <div class="form-group"><label for="userAddress">Street Address / House No</label><input type="text" id="userAddress" class="studio-text-input" autocomplete="street-address" minlength="5" maxlength="160" required></div>
-        <div class="delivery-location-controls">
-          <button type="button" class="btn btn-outline" onclick="captureDeliveryLocation()">Use my location at the delivery address</button>
-          <p class="delivery-location-status" id="deliveryLocationStatus" aria-live="polite">Required to check the 100 km delivery area. Your location is saved in this browser and is not sent to a maps service.</p>
-        </div>
+
         <div class="form-row-2col" style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
           <div class="form-group"><label for="userCity">City / Town</label><input type="text" id="userCity" class="studio-text-input" autocomplete="address-level2" minlength="2" maxlength="50" required></div>
           <div class="form-group"><label for="userPincodeInput">Pincode</label><input type="text" id="userPincodeInput" class="studio-text-input" inputmode="numeric" autocomplete="postal-code" pattern="[0-9]{6}" minlength="6" maxlength="6" required></div>
@@ -165,6 +170,11 @@
   <aside class="side-drawer" id="wishlistDrawer">
     <div class="drawer-header"><h3>❤️ Saved Items (<span id="wishlistDrawerCount">0</span>)</h3><button class="close-drawer-btn" onclick="toggleWishlistDrawer()">&times;</button></div>
     <div class="drawer-body" id="wishlistDrawerBody"></div>
+    <div class="drawer-footer" id="wishlistDrawerFooter" style="padding:16px; border-top:1px solid var(--border-color); background:#ffffff;">
+      <button class="btn btn-primary btn-block btn-glow btn-lg" onclick="addAllWishlistToCart()">
+        Proceed to Cart &rarr;
+      </button>
+    </div>
   </aside>
   <div class="modal-overlay" id="checkoutModal">
     <div class="modal-container checkout-modal">
@@ -181,15 +191,49 @@
   </div>
   <div class="toast-container" id="toastContainer"></div>
 
+  <!-- Footer -->
   <footer class="main-footer">
     <div class="section-container">
-      <div class="footer-top category-footer">
-        <div class="footer-col"><h4>SHOP CATEGORIES</h4><ul>
-          <li><a href="index.html">Home</a></li><li><a href="category.html?category=all">All</a></li><li><a href="category.html?category=women">Women</a></li><li><a href="category.html?category=men">Men</a></li><li><a href="category.html?category=kids">Kids</a></li><li><a href="category.html?category=footwear">Footwear</a></li><li><a href="category.html?category=ethnic">Ethnic Wear</a></li><li><a href="category.html?category=budget">Budget Store</a></li>
-        </ul></div>
-        <div class="footer-col"><h4>STYLEMART</h4><p>Discover everyday styles and seasonal favorites for everyone.</p></div>
+      <div class="footer-top">
+        
+        <div class="footer-col brand-col">
+          <div class="brand-logo footer-logo">
+            <div class="logo-icon">🛍️</div>
+            <div class="logo-text">
+              <span class="logo-primary">Style<span class="logo-highlight">Mart</span></span>
+            </div>
+          </div>
+          <p>StyleMart is India's premier online fashion destination. Shop top fashion trends, ethnic wear, streetwear & footwear at unbeatable prices.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>SHOP CATEGORIES</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="category.html?category=women">Women</a></li>
+            <li><a href="category.html?category=men">Men</a></li>
+            <li><a href="category.html?category=kids">Kids</a></li>
+            <li><a href="category.html?category=footwear">Footwear</a></li>
+            <li><a href="category.html?category=ethnic">Ethnic Wear</a></li>
+            <li><a href="category.html?category=budget">Budget Store (Under ₹499)</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>SHOP WITH CONFIDENCE</h4>
+          <p>Discover everyday styles, seasonal trends, and great deals across the StyleMart collection.</p>
+          <div class="payment-badges">
+            <span class="pay-tag">💳 UPI / GPay</span>
+            <span class="pay-tag">💳 Cards</span>
+            <span class="pay-tag">💵 Cash on Delivery</span>
+          </div>
+        </div>
+
       </div>
-      <div class="footer-bottom"><p>&copy; 2026 StyleMart Custom Fashion India.</p></div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 StyleMart Custom Fashion India.</p>
+      </div>
     </div>
   </footer>
   <script src="app.js"></script>
