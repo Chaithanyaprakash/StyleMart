@@ -45,7 +45,7 @@ const PRODUCTS_DATA = [
       { label: 'Back View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/shirt/d/j/2/l-0924-shwfyd-05-01-the-indian-garage-co-original-imahaar3ugbfqzyp.jpeg?q=90' },
       { label: 'Side View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/shirt/q/f/v/l-0924-shwfyd-05-01-the-indian-garage-co-original-imahaar3nhzv6vdz.jpeg?q=90' }
     ],
-    sizes: ['M', 'L', 'XL'],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     colors: ['Vintage Black', 'Off White'],
     tags: ['Best Seller', 'Under ₹499'],
     isFlashSale: false,
@@ -141,7 +141,7 @@ const PRODUCTS_DATA = [
       { label: 'Back View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/jean/o/g/o/30-ctjwpc003-l-cosmic-trio-original-imah3xkzsqh6gz9v.jpeg?q=90' },
       { label: 'Side View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/jean/a/6/i/30-ctjwpc003-l-cosmic-trio-original-imahf7z4pvnq8nza.jpeg?q=90' }
     ],
-    sizes: ['S', 'M', 'L', 'XL'],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     colors: ['Medium Wash Blue'],
     tags: ['Trending'],
     isFlashSale: false,
@@ -242,7 +242,7 @@ const PRODUCTS_DATA = [
       { label: 'Side View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/kids-apparel-combo/a/2/l/3-4-years-nttz04-nuttiezzz-original-imahqtgarhxanj8c.jpeg?q=90' },
       { label: 'Back View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/kids-apparel-combo/p/q/0/2-3-years-nttz04-nuttiezzz-original-imahqtgazdwfa8c6.jpeg?q=90' }
     ],
-    sizes: ['UK 6', 'UK 7', 'UK 8', 'UK 9', 'UK 10'],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     colors: ['checked'],
     tags: ['Best Seller'],
     isFlashSale: false,
@@ -268,7 +268,7 @@ const PRODUCTS_DATA = [
       { label: 'Back View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/kids-dress/z/k/q/18-24-months-frock-mom-dad-stgarment-original-imah9y4gfsgnznyq.jpeg?q=90' },
       { label: 'Zoom View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/kids-dress/b/n/g/18-24-months-frock-mom-dad-stgarment-original-imah9y4gfbgk3yzk.jpeg?q=90' }
     ],
-    sizes: ['UK 6', 'UK 7', 'UK 8', 'UK 9', 'UK 10'],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     colors: ['White-Pink'],
     tags: ['Cheaper'],
     isFlashSale: false,
@@ -294,7 +294,7 @@ const PRODUCTS_DATA = [
       { label: 'Back View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/top/3/6/s/m-1-singel-buti-01-chhapainama-fashion-original-imahz5bzgnz7jcme.jpeg?q=90' },
       { label: 'Side View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/top/z/n/6/m-1-singel-buti-01-chhapainama-fashion-original-imahz5bzjwczv852.jpeg?q=90' }
     ],
-    sizes: ['UK 6', 'UK 7', 'UK 8', 'UK 9', 'UK 10'],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     colors: ['Rust'],
     tags: ['Best Seller'],
     isFlashSale: false,
@@ -320,7 +320,7 @@ const PRODUCTS_DATA = [
       { label: 'Back View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/kurta/5/r/o/s-hopmk451-house-of-pataudi-original-imahggvrezk36yyb.jpeg?q=90' },
       { label: 'Side View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/kurta/p/e/o/xxl-hopmk451-house-of-pataudi-original-imahggvr3qwafmcm.jpeg?q=90' }
     ],
-    sizes: ['UK 6', 'UK 7', 'UK 8', 'UK 9', 'UK 10'],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     colors: ['Black'],
     tags: ['Festive Wear'],
     isFlashSale: false,
@@ -419,7 +419,7 @@ const PRODUCTS_DATA = [
       { label: 'Back View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/jacket/j/g/f/m-1-no-29790638-roadster-original-imahgcq6evztyrvp.jpeg?q=90' },
       { label: 'Side View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/jacket/w/e/w/xxl-1-no-29790638-roadster-original-imahjgsgan8zep4x.jpeg?q=90' }
     ],
-    sizes: ['S', 'M', 'L', 'XL'],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     colors: ['Black Wash'],
     tags: ['Trending'],
     isFlashSale: true,
@@ -445,7 +445,7 @@ const PRODUCTS_DATA = [
       { label: 'Back View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/sweatshirt/u/k/f/xxl-hrxss07olive-hrx-by-hrithik-roshan-original-imahh3v3gtgymstw.jpeg?q=90' },
       { label: 'Side View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/sweatshirt/o/w/5/m-hrxss07olive-hrx-by-hrithik-roshan-original-imahh3v39rsrxrmh.jpeg?q=90' }
     ],
-    sizes: ['M', 'L', 'XL', 'XXL'],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     colors: ['Dark Green'],
     tags: ['Best Seller'],
     isFlashSale: true,
@@ -453,9 +453,58 @@ const PRODUCTS_DATA = [
     fabric: '320 GSM Fleece Blend'
   },
   {
+    id: 'sm-208',
+    showInDealsOfDay: false,
+    showInAllFashion: true,
+    title: 'Men Rain Suit',
+    brand: 'Wildcraft',
+    category: 'men',
+    price: 849,
+    originalPrice: 1799,
+    discount: 53,
+    rating: 3.9,
+    reviewsCount: 322,
+    image: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/raincoat/d/b/z/-original-imagqtpy6symx4ke.jpeg?q=90',
+    thumbs: [
+      { label: 'Front View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/raincoat/d/b/z/-original-imagqtpy6symx4ke.jpeg?q=90' },
+      { label: 'Back View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/raincoat/z/g/q/-original-imagqtpyjd6kktvh.jpeg?q=90' },
+      { label: 'Side View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/raincoat/k/x/2/-original-imagqtpydgdg4m75.jpeg?q=90' }
+    ],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    colors: ['Brown'],
+    tags: ['Lowest Price'],
+    isFlashSale: true,
+    description: 'Water-resistant raincoat with adjustable hood and reinforced seams.',
+    fabric: '100% Polyester'
+  },
+  {
+    id: 'sm-209',
+    showInDealsOfDay: false,
+    showInAllFashion: true,
+    title: 'Women Rain Suit',
+    brand: 'RockSport',
+    category: 'women',
+    price: 713,
+    originalPrice: 1199,
+    discount: 41,
+    rating: 4,
+    reviewsCount: 73,
+    image: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/raincoat/p/k/k/free-rain-poncho-trekking-hiking-grey-rocksport-resized-original-imahctm9f2nzdqzj.jpeg?q=90',
+    thumbs: [
+      { label: 'Front View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/raincoat/p/k/k/free-rain-poncho-trekking-hiking-grey-rocksport-resized-original-imahctm9f2nzdqzj.jpeg?q=90' },
+      { label: 'Side View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/raincoat/l/5/o/free-rain-poncho-trekking-hiking-grey-rocksport-original-imahctm9ft5dydnh.jpeg?q=90' }
+    ],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    colors: ['Grey'],
+    tags: ['Rain Wear'],
+    isFlashSale: true,
+    description: 'Water-resistant raincoat with adjustable hood and reinforced seams.',
+    fabric: '100% Polyester'
+  },
+  {
     id: 'sm-211',
     showInDealsOfDay: true,
-    showInAllFashion: false,
+    showInAllFashion: true,
     title: 'Women Floral Printed A-Line Tiered Maxi Dress',
     brand: 'Urbanic',
     category: 'women',
@@ -470,7 +519,7 @@ const PRODUCTS_DATA = [
       { label: 'Back View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/gown/y/x/o/14-3xl-half-sleeve-stitched-gown-black-nikkutexttles-18-original-imahnfpejpzfurhg.jpeg?q=90' },
       { label: 'Side View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/gown/y/x/o/14-3xl-half-sleeve-stitched-gown-black-nikkutexttles-18-original-imahnfpejpzfurhg.jpeg?q=90' }
     ],
-    sizes: ['XS', 'S', 'M', 'L'],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     colors: ['Black Floral'],
     tags: ['Best Seller'],
     isFlashSale: true,
@@ -655,7 +704,7 @@ function getInitialCategory() {
 }
 
 function updateActiveNavigation() {
-  document.querySelectorAll('.nav-link').forEach(link => {
+  document.querySelectorAll('.nav-link, .amazon-sub-link').forEach(link => {
     const isHomeLink = link.dataset.home === 'true';
     const isCategoryLink = link.dataset.category !== undefined;
     link.classList.toggle('active',
@@ -673,8 +722,7 @@ const CATEGORY_HEADINGS = {
   kids: 'Kids & Toddlers Collection',
   footwear: 'Footwear & Sneakers'
 };
-const IS_CATEGORY_PAGE = window.location.pathname.toLowerCase().endsWith('/category.html')
-  || window.location.pathname.toLowerCase() === 'category.html';
+const IS_CATEGORY_PAGE = window.location.pathname.toLowerCase().includes('category.html');
 
 let pageScrollLocked = false;
 let pageScrollPosition = 0;
@@ -718,33 +766,45 @@ function initProfileInputValidation() {
   const mobileInput = document.getElementById('mobileOrEmail');
   const cityInput = document.getElementById('userCity');
   const pincodeInput = document.getElementById('userPincodeInput');
-
-  nameInput?.addEventListener('input', () => {
-    nameInput.value = nameInput.value.replace(/[^\p{L}\s]/gu, '');
-    nameInput.setCustomValidity('');
-  });
-
-  cityInput?.addEventListener('input', () => {
-    cityInput.value = cityInput.value.replace(/[^\p{L}\s]/gu, '');
-    cityInput.setCustomValidity('');
-  });
-
-  mobileInput?.addEventListener('input', () => {
-    const digits = mobileInput.value.replace(/\D/g, '');
-    const firstAllowedDigit = digits.search(/[6-9]/);
-    mobileInput.value = firstAllowedDigit === -1 ? '' : digits.slice(firstAllowedDigit, firstAllowedDigit + 10);
-    mobileInput.setCustomValidity('');
-  });
-
-  pincodeInput?.addEventListener('input', () => {
-    pincodeInput.value = pincodeInput.value.replace(/\D/g, '').slice(0, 6);
-    pincodeInput.setCustomValidity('');
-  });
-
   const addressInput = document.getElementById('userAddress');
-  addressInput?.addEventListener('input', () => {
-    addressInput.setCustomValidity('');
-  });
+
+  if (nameInput) {
+    nameInput.addEventListener('input', () => {
+      nameInput.value = nameInput.value.replace(/[^a-zA-Z\s]/g, '');
+      nameInput.setCustomValidity('');
+    });
+  }
+
+  if (cityInput) {
+    cityInput.disabled = false;
+    cityInput.addEventListener('input', () => {
+      cityInput.value = cityInput.value.replace(/[^a-zA-Z\s]/g, '');
+      cityInput.setCustomValidity('');
+    });
+  }
+
+  if (mobileInput) {
+    mobileInput.addEventListener('input', () => {
+      const digits = mobileInput.value.replace(/\D/g, '');
+      mobileInput.value = digits.slice(0, 10);
+      mobileInput.setCustomValidity('');
+    });
+  }
+
+  if (pincodeInput) {
+    pincodeInput.disabled = false;
+    pincodeInput.addEventListener('input', () => {
+      pincodeInput.value = pincodeInput.value.replace(/\D/g, '').slice(0, 6);
+      pincodeInput.setCustomValidity('');
+    });
+  }
+
+  if (addressInput) {
+    addressInput.disabled = false;
+    addressInput.addEventListener('input', () => {
+      addressInput.setCustomValidity('');
+    });
+  }
 }
 
 const COUPONS = {
@@ -876,13 +936,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (clearSearchButton && state.searchQuery) clearSearchButton.style.display = 'block';
   updateActiveNavigation();
   initProfileInputValidation();
-  restoreDeliveryLocationStatus();
-  updateBadgesUI();
+
   updateUserProfileUI();
   renderFlashSaleProducts();
+  renderFashionProducts('all');
   renderProductsCatalog();
   initSearchAutocomplete();
   initPageScrollLock();
+  initProductDetailPage();
 });
 
 function syncLocalStorage() {
@@ -960,7 +1021,7 @@ function initCountdownTimers() {
     const s = secondsRemaining % 60;
 
     const formattedTime = `${String(h).padStart(2, '0')}h : ${String(m).padStart(2, '0')}m : ${String(s).padStart(2, '0')}s`;
-    
+
     const headerTimer = document.getElementById('headerCountdown');
     if (headerTimer) headerTimer.textContent = formattedTime;
 
@@ -976,13 +1037,447 @@ function initCountdownTimers() {
 }
 
 // --------------------------------------------------------------------------
-// 6. FLASH SALE & CATALOG RENDER
+// 6. FLASH SALE, FASHION & CATALOG RENDER
 // --------------------------------------------------------------------------
+let currentFlashIndex = 0;
+let currentFlashOffset = 0;
+let flashAutoScrollInterval = null;
+let isFlashTouchpadInitialized = false;
+
 function renderFlashSaleProducts() {
   const container = document.getElementById('flashProductsGrid');
+  const dotsContainer = document.getElementById('flashDotsContainer');
   if (!container) return;
   const flashItems = PRODUCTS_DATA.filter(p => p.showInDealsOfDay);
   container.innerHTML = flashItems.map(p => createProductCardHTML(p, true)).join('');
+
+  if (dotsContainer) {
+    dotsContainer.innerHTML = flashItems.map((_, idx) => `
+      <span class="flash-dot ${idx === 0 ? 'active' : ''}" onclick="goToFlashSlide(${idx})" title="Go to product ${idx + 1}"></span>
+    `).join('');
+  }
+
+  currentFlashOffset = 0;
+  currentFlashIndex = 0;
+  initFlashAutoScroll(flashItems.length);
+  initFlashTouchpadScroll();
+}
+
+function goToFlashSlide(index) {
+  const container = document.getElementById('flashProductsGrid');
+  const wrapper = document.getElementById('flashCarouselContainer');
+  const dots = document.querySelectorAll('.flash-dot');
+  if (!container || !wrapper) return;
+
+  const cards = container.children;
+  if (!cards || !cards.length) return;
+
+  const maxScroll = Math.max(0, container.scrollWidth - wrapper.clientWidth);
+  if (maxScroll <= 0) {
+    container.style.transform = 'translateX(0px)';
+    currentFlashOffset = 0;
+    if (flashAutoScrollInterval) {
+      clearInterval(flashAutoScrollInterval);
+      flashAutoScrollInterval = null;
+    }
+    return;
+  }
+
+  const cardWidth = cards[0].offsetWidth + 20;
+  let targetOffset = index * cardWidth;
+
+  if (targetOffset >= maxScroll) {
+    targetOffset = maxScroll; // Right corner will be the last product only!
+    if (flashAutoScrollInterval) {
+      clearInterval(flashAutoScrollInterval);
+      flashAutoScrollInterval = null;
+    }
+  }
+
+  currentFlashIndex = Math.min(index, cards.length - 1);
+  currentFlashOffset = targetOffset;
+  container.style.transform = `translateX(-${targetOffset}px)`;
+
+  dots.forEach((dot, idx) => {
+    dot.classList.toggle('active', idx === currentFlashIndex || (targetOffset === maxScroll && idx === cards.length - 1));
+  });
+}
+
+function initFlashTouchpadScroll() {
+  const wrapper = document.getElementById('flashCarouselContainer');
+  const container = document.getElementById('flashProductsGrid');
+  if (!wrapper || !container || isFlashTouchpadInitialized) return;
+
+  isFlashTouchpadInitialized = true;
+
+  // Touchpad / Trackpad 2-finger horizontal scroll & wheel event listener
+  wrapper.addEventListener('wheel', (e) => {
+    const maxScroll = Math.max(0, container.scrollWidth - wrapper.clientWidth);
+    if (maxScroll <= 0) return;
+
+    let delta = 0;
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+      delta = e.deltaX;
+    } else if (e.shiftKey) {
+      delta = e.deltaY;
+    }
+
+    if (delta !== 0) {
+      e.preventDefault();
+      if (flashAutoScrollInterval) {
+        clearInterval(flashAutoScrollInterval);
+        flashAutoScrollInterval = null;
+      }
+
+      currentFlashOffset += delta;
+      if (currentFlashOffset < 0) currentFlashOffset = 0;
+      if (currentFlashOffset > maxScroll) currentFlashOffset = maxScroll;
+
+      container.style.transform = `translateX(-${currentFlashOffset}px)`;
+
+      const cards = container.children;
+      if (cards && cards.length) {
+        const cardWidth = cards[0].offsetWidth + 20;
+        let activeIdx = Math.round(currentFlashOffset / cardWidth);
+        activeIdx = Math.min(Math.max(0, activeIdx), cards.length - 1);
+        currentFlashIndex = activeIdx;
+
+        const dots = document.querySelectorAll('.flash-dot');
+        dots.forEach((dot, idx) => {
+          dot.classList.toggle('active', idx === activeIdx || (currentFlashOffset === maxScroll && idx === cards.length - 1));
+        });
+      }
+    }
+  }, { passive: false });
+
+  // Touchscreen swipe support
+  let touchStartX = 0;
+  let startOffset = 0;
+
+  wrapper.addEventListener('touchstart', (e) => {
+    if (e.touches.length > 0) {
+      touchStartX = e.touches[0].clientX;
+      startOffset = currentFlashOffset;
+      if (flashAutoScrollInterval) {
+        clearInterval(flashAutoScrollInterval);
+        flashAutoScrollInterval = null;
+      }
+    }
+  }, { passive: true });
+
+  wrapper.addEventListener('touchmove', (e) => {
+    if (e.touches.length > 0) {
+      const diffX = touchStartX - e.touches[0].clientX;
+      const maxScroll = Math.max(0, container.scrollWidth - wrapper.clientWidth);
+      if (maxScroll <= 0) return;
+
+      let newOffset = startOffset + diffX;
+      if (newOffset < 0) newOffset = 0;
+      if (newOffset > maxScroll) newOffset = maxScroll;
+
+      currentFlashOffset = newOffset;
+      container.style.transform = `translateX(-${currentFlashOffset}px)`;
+
+      const cards = container.children;
+      if (cards && cards.length) {
+        const cardWidth = cards[0].offsetWidth + 20;
+        let activeIdx = Math.round(currentFlashOffset / cardWidth);
+        activeIdx = Math.min(Math.max(0, activeIdx), cards.length - 1);
+        currentFlashIndex = activeIdx;
+
+        const dots = document.querySelectorAll('.flash-dot');
+        dots.forEach((dot, idx) => {
+          dot.classList.toggle('active', idx === activeIdx || (currentFlashOffset === maxScroll && idx === cards.length - 1));
+        });
+      }
+    }
+  }, { passive: true });
+}
+
+function initFlashAutoScroll(totalItems) {
+  if (flashAutoScrollInterval) clearInterval(flashAutoScrollInterval);
+  if (!totalItems) return;
+
+  const container = document.getElementById('flashProductsGrid');
+  const wrapper = document.getElementById('flashCarouselContainer');
+  if (!container || !wrapper) return;
+
+  const maxScroll = Math.max(0, container.scrollWidth - wrapper.clientWidth);
+  if (maxScroll <= 0) {
+    return; // No offscreen products to scroll!
+  }
+
+  currentFlashIndex = 0;
+
+  flashAutoScrollInterval = setInterval(() => {
+    const cards = container.children;
+    if (!cards || !cards.length) return;
+    const cardWidth = cards[0].offsetWidth + 20;
+    const nextOffset = (currentFlashIndex + 1) * cardWidth;
+
+    if (nextOffset >= maxScroll) {
+      goToFlashSlide(currentFlashIndex + 1);
+      // Stop scrolling when reaching end where right corner is last product!
+      clearInterval(flashAutoScrollInterval);
+      flashAutoScrollInterval = null;
+    } else {
+      currentFlashIndex++;
+      goToFlashSlide(currentFlashIndex);
+    }
+  }, 3500);
+
+  if (wrapper) {
+    wrapper.onmouseenter = () => {
+      if (flashAutoScrollInterval) {
+        clearInterval(flashAutoScrollInterval);
+        flashAutoScrollInterval = null;
+      }
+    };
+  }
+}
+
+function renderFashionProducts(category = 'all') {
+  const container = document.getElementById('fashionProductsGrid');
+  if (!container) return;
+
+  let fashionItems = PRODUCTS_DATA.filter(p => {
+    if (category === 'men') return p.category === 'men';
+    if (category === 'women') return p.category === 'women';
+    if (category === 'kids') return p.category === 'kids';
+    if (category === 'best-deals') return p.discount >= 60;
+    return true;
+  });
+
+  if (fashionItems.length === 0) {
+    fashionItems = PRODUCTS_DATA.slice(0, 8);
+  }
+
+  container.innerHTML = fashionItems.slice(0, 8).map(p => createProductCardHTML(p, false)).join('');
+
+  document.querySelectorAll('.fashion-tab-btn').forEach(btn => {
+    const cat = btn.getAttribute('data-category');
+    btn.classList.toggle('active', cat === category);
+  });
+}
+
+function redirectToCategoryPage(category) {
+  if (category === 'all') {
+    renderFashionProducts('all');
+    return;
+  }
+  const targetCategory = category === 'best-deals' ? 'budget' : category;
+  window.location.href = `category.html?category=${encodeURIComponent(targetCategory)}`;
+}
+
+function openProductWindow(productId, event) {
+  if (event) event.stopPropagation();
+  const url = `product.html?id=${encodeURIComponent(productId)}`;
+  window.location.href = url;
+}
+
+function initProductDetailPage() {
+  const layout = document.getElementById('productDetailLayout');
+  if (!layout) return;
+
+  const params = new URLSearchParams(window.location.search);
+  const productId = params.get('id') || params.get('product') || 'sm-101';
+  const product = PRODUCTS_DATA.find(p => p.id === productId) || PRODUCTS_DATA[0];
+
+  if (!product) return;
+
+  document.title = `${product.title} - ${product.brand} | StyleMart`;
+
+  const bCategory = document.getElementById('breadcrumbCategory');
+  const bTitle = document.getElementById('breadcrumbTitle');
+  if (bCategory) {
+    bCategory.textContent = product.category.toUpperCase();
+    bCategory.href = `category.html?category=${encodeURIComponent(product.category)}`;
+  }
+  if (bTitle) bTitle.textContent = product.title;
+
+  const thumbs = (product.thumbs && product.thumbs.length > 0) ? product.thumbs : [
+    { label: 'Front View', url: product.image },
+    { label: 'Side View', url: product.image },
+    { label: 'Back View', url: product.image }
+  ];
+
+  const isSaree = product.title.toLowerCase().includes('saree') || (product.sizes.length === 1 && product.sizes[0] === 'Free Size');
+  selectedModalSize = isSaree ? 'Free Size' : null;
+
+  layout.innerHTML = `
+    <div class="row g-4" style="background:#ffffff; padding:28px; border-radius:var(--radius-lg); box-shadow:var(--shadow-sm); border:1px solid var(--border-color);">
+      <div class="col-lg-6">
+        <div class="main-product-img-wrapper" style="position:relative; width:100%; height:460px; border-radius:var(--radius-md); overflow:hidden; background:#ffffff; border:1px solid var(--border-color); margin-bottom:16px; display:flex; align-items:center; justify-content:center; padding:12px;">
+          <img id="mainProductViewImg" src="${thumbs[0].url}" alt="${product.title}" style="max-width:100%; max-height:100%; object-fit:contain;">
+          <span class="card-badge discount" style="position:absolute; top:12px; left:12px; font-size:0.85rem; padding:4px 12px;">${product.discount}% OFF</span>
+        </div>
+        <div class="thumbs-flex" style="display:flex; gap:12px; overflow-x:auto; padding-bottom:4px;">
+          ${thumbs.map((t, idx) => `
+            <div class="thumb-card ${idx === 0 ? 'active' : ''}" onclick="switchMainProductThumb('${t.url}', this)" style="width:80px; height:90px; border-radius:var(--radius-sm); overflow:hidden; border:2px solid ${idx === 0 ? 'var(--primary)' : 'var(--border-color)'}; cursor:pointer; flex-shrink:0; background:#f8fafc; padding:4px; display:flex; align-items:center; justify-content:center;">
+              <img src="${t.url}" alt="${t.label}" style="max-width:100%; max-height:100%; object-fit:contain;">
+            </div>
+          `).join('')}
+        </div>
+      </div>
+
+      <div class="col-lg-6" style="display:flex; flex-direction:column; justify-content:center;">
+        <span class="product-brand" style="font-size:0.85rem; font-weight:800; color:var(--primary); text-transform:uppercase; letter-spacing:1px; margin-bottom:4px;">${product.brand}</span>
+        <h1 style="font-size:1.6rem; font-weight:800; color:var(--secondary); margin:0 0 10px 0; line-height:1.3;">${product.title}</h1>
+        
+        <div class="rating-badge-row" style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+          <span style="background:#fff9c4; color:#854d0e; font-weight:800; padding:4px 12px; border-radius:var(--radius-full); font-size:0.85rem; display:inline-flex; align-items:center; gap:4px;">
+            ⭐ ${product.rating} / 5.0
+          </span>
+          <span style="font-size:0.85rem; color:var(--text-muted); font-weight:600;">
+            ${product.reviewsCount} verified ratings
+          </span>
+        </div>
+
+        <div class="price-box-large" style="display:flex; align-items:center; gap:12px; margin-bottom:20px; padding:12px 16px; background:#fff5f7; border-radius:var(--radius-md); border:1px solid rgba(255,63,108,0.2); flex-wrap:wrap;">
+          <span style="font-size:1.75rem; font-weight:800; color:var(--secondary);">₹${product.price.toLocaleString('en-IN')}</span>
+          <span style="font-size:1.05rem; color:var(--text-muted); text-decoration:line-through;">₹${product.originalPrice.toLocaleString('en-IN')}</span>
+          <span style="font-size:0.85rem; font-weight:800; color:var(--primary); background:#ffffff; padding:4px 10px; border-radius:var(--radius-full); border:1px solid rgba(255,63,108,0.3);">Save ₹${(product.originalPrice - product.price).toLocaleString('en-IN')} (${product.discount}% OFF)</span>
+        </div>
+
+        <p style="font-size:0.9rem; color:var(--text-main); line-height:1.6; margin-bottom:16px;">
+          ${product.description || 'Elevate your daily style with this premium fashion piece. Designed with superior fabric and a modern fitment.'}
+        </p>
+
+        ${product.fabric ? `<div style="font-size:0.88rem; color:var(--secondary); margin-bottom:16px;"><strong>Fabric:</strong> ${product.fabric}</div>` : ''}
+
+        <div class="size-selector-block" style="margin-bottom:20px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <label style="font-weight:800; font-size:0.85rem; color:var(--secondary); text-transform:uppercase; letter-spacing:0.5px;">SELECT SIZE</label>
+            ${!isSaree ? `<span style="font-size:0.82rem; font-weight:700; color:var(--primary); cursor:pointer; text-decoration:underline;" onclick="openSizeChartModal()">📏 Size Guide</span>` : ''}
+          </div>
+          <div class="size-chips-grid" style="display:flex; gap:10px; flex-wrap:wrap;">
+            ${product.sizes.map((sz) => `
+              <button class="size-chip-btn ${selectedModalSize === sz ? 'active' : ''}" onclick="selectProductPageSize('${sz}', this)">${sz}</button>
+            `).join('')}
+          </div>
+        </div>
+
+        <div class="action-buttons-row" style="display:flex; gap:12px; margin-bottom:20px; flex-wrap:wrap; align-items:center;">
+          <button class="btn btn-primary btn-glow btn-lg" style="flex:1; min-width:160px; height:48px; display:inline-flex; align-items:center; justify-content:center; gap:8px;" onclick="quickAddToCart('${product.id}', selectedModalSize)">
+            🛒 Add to Cart
+          </button>
+          <button class="btn btn-secondary btn-lg" style="flex:1; min-width:140px; height:48px; display:inline-flex; align-items:center; justify-content:center; gap:8px; background:var(--secondary); color:#ffffff; border:none;" onclick="quickAddToCart('${product.id}', selectedModalSize); openCartDrawer();">
+            ⚡ Buy Now
+          </button>
+          <button class="icon-action-btn ${state.wishlist.includes(product.id) ? 'active' : ''}" onclick="toggleWishlist('${product.id}')" style="width:48px; height:48px; border-radius:var(--radius-md); border:1px solid var(--border-color); display:inline-flex; align-items:center; justify-content:center; font-size:1.2rem;" title="Wishlist">
+            ♥
+          </button>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; background:#f8fafc; padding:12px 14px; border-radius:var(--radius-md); border:1px solid var(--border-color); font-size:0.82rem; font-weight:700; color:var(--secondary);">
+          <div style="display:flex; align-items:center; gap:6px;">🚚 Free Shipping Available</div>
+          <div style="display:flex; align-items:center; gap:6px;">🔄 7 Days Easy Returns</div>
+          <div style="display:flex; align-items:center; gap:6px;">💵 Cash on Delivery</div>
+          <div style="display:flex; align-items:center; gap:6px;">🔒 100% Genuine Product</div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  const relatedContainer = document.getElementById('relatedProductsGrid');
+  if (relatedContainer) {
+    const relatedList = PRODUCTS_DATA.filter(p => p.id !== product.id && (p.category === product.category || p.brand === product.brand)).slice(0, 4);
+    const listToDisplay = relatedList.length > 0 ? relatedList : PRODUCTS_DATA.filter(p => p.id !== product.id).slice(0, 4);
+    relatedContainer.innerHTML = listToDisplay.map(p => createProductCardHTML(p, false)).join('');
+  }
+}
+
+function switchMainProductThumb(imgUrl, elem) {
+  const mainImg = document.getElementById('mainProductViewImg');
+  if (mainImg) mainImg.src = imgUrl;
+  document.querySelectorAll('.thumb-card').forEach(t => t.style.borderColor = 'var(--border-color)');
+  if (elem) elem.style.borderColor = 'var(--primary)';
+}
+
+function selectProductPageSize(size, btnElem) {
+  selectedModalSize = size;
+  document.querySelectorAll('.size-chip-btn').forEach(b => b.classList.remove('active'));
+  if (btnElem) btnElem.classList.add('active');
+}
+
+const CATEGORY_SUBFILTERS = {
+  women: [
+    { id: 'all', label: 'All Products', icon: '✨' },
+    { id: 'shirts', label: 'Shirts & Tops', icon: '👔' },
+    { id: 'pants', label: 'Pants & Jeans', icon: '👖' },
+    { id: 'casual', label: 'Casual', icon: '☕' },
+    { id: 'formal', label: 'Formal & Workwear', icon: '💼' }
+  ],
+  men: [
+    { id: 'all', label: 'All Products', icon: '✨' },
+    { id: 'shirts', label: 'Shirts', icon: '👔' },
+    { id: 'pants', label: 'Pants & Jeans', icon: '👖' },
+    { id: 'hoodies', label: 'Hoodies & Jackets', icon: '🧥' },
+    { id: 'casual', label: 'Casual', icon: '☕' },
+    { id: 'formal', label: 'Formal', icon: '💼' }
+  ],
+  kids: [
+    { id: 'all', label: 'All Products', icon: '✨' },
+    { id: 'dresses', label: 'Dresses & Frocks', icon: '👗' },
+    { id: 'sets', label: 'Shirt & Pant Sets', icon: '👔' },
+    { id: 'casual', label: 'Casual', icon: '🧸' },
+    { id: 'formal', label: 'Party Wear', icon: '🎉' }
+  ],
+  footwear: [
+    { id: 'all', label: 'All Products', icon: '✨' },
+    { id: 'sneakers', label: 'Sneakers', icon: '👟' },
+    { id: 'sports', label: 'Sports Shoes', icon: '🏃' },
+    { id: 'formal', label: 'Formal Shoes', icon: '👞' },
+    { id: 'slippers', label: 'Slippers & Slides', icon: '🩴' }
+  ],
+  ethnic: [
+    { id: 'all', label: 'All Products', icon: '✨' },
+    { id: 'sarees', label: 'Sarees', icon: '🥻' },
+    { id: 'kurtas', label: 'Kurtas', icon: '👘' },
+    { id: 'festive', label: 'Festive & Sharara Sets', icon: '✨' }
+  ],
+  budget: [
+    { id: 'all', label: 'All Under ₹499', icon: '✨' },
+    { id: 'shirts', label: 'Shirts & Tops', icon: '👔' },
+    { id: 'casual', label: 'Casual', icon: '☕' },
+    { id: 'bestsellers', label: 'Best Sellers', icon: '🔥' }
+  ],
+  all: [
+    { id: 'all', label: 'All Collections', icon: '✨' },
+    { id: 'shirts', label: 'Shirts & Tops', icon: '👔' },
+    { id: 'pants', label: 'Pants & Jeans', icon: '👖' },
+    { id: 'casual', label: 'Casual Wear', icon: '☕' },
+    { id: 'formal', label: 'Formal Wear', icon: '💼' }
+  ]
+};
+
+let activeSubfilter = 'all';
+
+function renderCategorySubfilterBar() {
+  const container = document.getElementById('categorySubfilterBar');
+  if (!container) return;
+
+  const currentCat = state.selectedCategory || 'all';
+  const filtersList = CATEGORY_SUBFILTERS[currentCat] || CATEGORY_SUBFILTERS.all;
+
+  if (!filtersList.some(f => f.id === activeSubfilter)) {
+    activeSubfilter = 'all';
+  }
+
+  container.innerHTML = filtersList.map(item => `
+    <button type="button" class="subfilter-pill ${item.id === activeSubfilter ? 'active' : ''}" onclick="setSubfilter('${item.id}', this)">
+      <span class="subfilter-icon">${item.icon}</span>
+      <span>${item.label}</span>
+    </button>
+  `).join('');
+}
+
+function setSubfilter(subId, btnElem) {
+  activeSubfilter = subId;
+  document.querySelectorAll('.subfilter-pill').forEach(b => b.classList.remove('active'));
+  if (btnElem) btnElem.classList.add('active');
+
+  renderProductsCatalog();
 }
 
 function getFilteredProducts() {
@@ -997,6 +1492,42 @@ function getFilteredProducts() {
     if (state.selectedBrands.length > 0 && !state.selectedBrands.includes(p.brand)) return false;
     if (state.selectedSizes.length > 0 && !p.sizes.some(sz => state.selectedSizes.includes(sz))) return false;
     if (p.rating < state.minRating) return false;
+
+    if (activeSubfilter && activeSubfilter !== 'all') {
+      const text = (p.title + ' ' + (p.description || '') + ' ' + (p.fabric || '') + ' ' + (p.tags || []).join(' ')).toLowerCase();
+
+      if (activeSubfilter === 'brands') {
+        if (!p.brand) return false;
+      } else if (activeSubfilter === 'shirts') {
+        if (!text.includes('shirt') && !text.includes('top') && !text.includes('tee') && !text.includes('blouse')) return false;
+      } else if (activeSubfilter === 'pants') {
+        if (!text.includes('jean') && !text.includes('pant') && !text.includes('bottom') && !text.includes('trouser') && !text.includes('sharara')) return false;
+      } else if (activeSubfilter === 'casual') {
+        if (!text.includes('casual') && !text.includes('street') && !text.includes('relax') && !text.includes('regular') && !text.includes('trending')) return false;
+      } else if (activeSubfilter === 'formal') {
+        if (!text.includes('formal') && !text.includes('workwear') && !text.includes('executive') && !text.includes('party') && !text.includes('festive') && !text.includes('gown')) return false;
+      } else if (activeSubfilter === 'hoodies') {
+        if (!text.includes('hoodie') && !text.includes('jacket') && !text.includes('sweatshirt')) return false;
+      } else if (activeSubfilter === 'dresses') {
+        if (!text.includes('dress') && !text.includes('frock')) return false;
+      } else if (activeSubfilter === 'sets') {
+        if (!text.includes('set') && !text.includes('combo')) return false;
+      } else if (activeSubfilter === 'sneakers') {
+        if (!text.includes('sneaker') && !text.includes('lifestyle')) return false;
+      } else if (activeSubfilter === 'sports') {
+        if (!text.includes('sport') && !text.includes('running') && !text.includes('cushion')) return false;
+      } else if (activeSubfilter === 'slippers') {
+        if (!text.includes('slipper') && !text.includes('slide') && !text.includes('flip')) return false;
+      } else if (activeSubfilter === 'sarees') {
+        if (!text.includes('saree') && !text.includes('sari')) return false;
+      } else if (activeSubfilter === 'kurtas') {
+        if (!text.includes('kurta')) return false;
+      } else if (activeSubfilter === 'festive') {
+        if (!text.includes('festive') && !text.includes('traditional') && !text.includes('ethnic') && !text.includes('party')) return false;
+      } else if (activeSubfilter === 'bestsellers') {
+        if (!p.tags || !p.tags.includes('Best Seller')) return false;
+      }
+    }
 
     if (state.searchQuery.trim() !== '') {
       const q = state.searchQuery.toLowerCase();
@@ -1030,13 +1561,15 @@ function renderProductsCatalog() {
   const countLabel = document.getElementById('catalogProductCount');
   if (!container) return;
 
+  renderCategorySubfilterBar();
+
   const filteredList = getFilteredProducts();
   const categoryProducts = state.selectedCategory === 'budget'
     ? PRODUCTS_DATA.filter(p => p.price <= 499)
     : state.selectedCategory === 'all'
       ? PRODUCTS_DATA
       : PRODUCTS_DATA.filter(p => p.category === state.selectedCategory);
-  
+
   if (countLabel) {
     if (state.searchQuery.trim() !== '') {
       countLabel.textContent = `Found ${filteredList.length} items for "${state.searchQuery}"`;
@@ -1077,10 +1610,10 @@ function createProductCardHTML(product, isFlash = false) {
   ];
   const imageList = thumbs.map(thumb => thumb.url).filter(Boolean);
   const initialImg = imageList[0] || product.image;
-  
+
   return `
     <div class="product-card" data-id="${product.id}">
-      <div class="product-card-img-wrap" onclick="openProductModal('${product.id}')">
+      <div class="product-card-img-wrap" onclick="openProductWindow('${product.id}', event)">
         <img id="card-img-${product.id}" src="${initialImg}" alt="${product.title}" loading="lazy">
         
         <div class="card-badge-container">
@@ -1094,51 +1627,44 @@ function createProductCardHTML(product, isFlash = false) {
         </button>
 
         ${imageList.length > 1 ? `
-          <div class="product-image-controls" onclick="event.stopPropagation();">
-            <button type="button" class="product-image-arrow previous" onclick="event.stopPropagation(); changeCardImage('${product.id}', -1)" aria-label="Previous product image">&lsaquo;</button>
-            <button type="button" class="product-image-arrow next" onclick="event.stopPropagation(); changeCardImage('${product.id}', 1)" aria-label="Next product image">&rsaquo;</button>
+          <div class="card-image-dots" onclick="event.stopPropagation();">
+            ${imageList.map((_, idx) => `
+              <span class="card-img-dot ${idx === 0 ? 'active' : ''}" id="dot-${product.id}-${idx}" onclick="event.stopPropagation(); setCardImage('${product.id}', ${idx})" title="Image ${idx + 1}"></span>
+            `).join('')}
           </div>
         ` : ''}
-
-        <div class="quick-view-overlay">
-          <button class="btn btn-outline" onclick="event.stopPropagation(); openProductModal('${product.id}')">
-            Quick View
-          </button>
-          <button class="btn btn-primary" onclick="event.stopPropagation(); quickAddToCart('${product.id}')">
-            + Add
-          </button>
-        </div>
       </div>
 
-      <div class="product-card-info">
+      <div class="product-card-info" onclick="openProductWindow('${product.id}', event)" style="cursor:pointer;">
         <span class="product-brand">${product.brand}</span>
-        <h3 class="product-title" onclick="openProductModal('${product.id}')">${product.title}</h3>
+        <h3 class="product-title">${product.title}</h3>
         
-        <div class="rating-badge">
-          ⭐ ${product.rating} (${product.reviewsCount})
-        </div>
-
-        <div class="price-row">
-          <span class="current-price">₹${product.price.toLocaleString('en-IN')}</span>
-          <span class="original-price">₹${product.originalPrice.toLocaleString('en-IN')}</span>
-          <span class="discount-percentage">${product.discount}% OFF</span>
+        <div class="price-row" style="display:flex; align-items:baseline; gap:8px; margin-top:6px;">
+          <span class="original-price" style="text-decoration: line-through; color: var(--text-muted); font-size: 0.88rem; font-weight: 500;">₹${product.originalPrice.toLocaleString('en-IN')}</span>
+          <span class="current-price" style="font-size: 1.15rem; font-weight: 800; color: var(--text-main);">₹${product.price.toLocaleString('en-IN')}</span>
         </div>
       </div>
     </div>
   `;
 }
 
-function changeCardImage(productId, direction) {
+function setCardImage(productId, index) {
   const product = PRODUCTS_DATA.find(item => item.id === productId);
   const image = document.getElementById(`card-img-${productId}`);
   if (!product || !image) return;
   const imageList = (product.thumbs || []).map(thumb => thumb.url).filter(Boolean);
-  if (imageList.length < 2) return;
+  if (!imageList[index]) return;
 
-  const currentIndex = Number(image.dataset.imageIndex || 0);
-  const nextIndex = (currentIndex + direction + imageList.length) % imageList.length;
-  image.dataset.imageIndex = String(nextIndex);
-  image.src = imageList[nextIndex];
+  image.src = imageList[index];
+
+  // Update active dot in this card
+  const card = image.closest('.product-card');
+  if (card) {
+    const dots = card.querySelectorAll('.card-img-dot');
+    dots.forEach((dot, idx) => {
+      dot.classList.toggle('active', idx === index);
+    });
+  }
 }
 
 // --------------------------------------------------------------------------
@@ -1151,6 +1677,7 @@ function filterByCategory(category) {
   }
 
   state.selectedCategory = category;
+  activeSubfilter = 'all';
   document.querySelectorAll('input[name="categoryFilter"]').forEach(r => r.checked = (r.value === category));
   updateActiveNavigation();
 
@@ -1162,6 +1689,7 @@ function filterByCategory(category) {
 
 function setCategoryFilter(category) {
   state.selectedCategory = category;
+  activeSubfilter = 'all';
   renderProductsCatalog();
 }
 
@@ -1315,8 +1843,8 @@ function initSearchAutocomplete() {
     if (catalogInput) catalogInput.value = val;
 
     if (val.length > 0) {
-      const matches = PRODUCTS_DATA.filter(p => 
-        p.title.toLowerCase().includes(val.toLowerCase()) || 
+      const matches = PRODUCTS_DATA.filter(p =>
+        p.title.toLowerCase().includes(val.toLowerCase()) ||
         p.brand.toLowerCase().includes(val.toLowerCase()) ||
         p.category.toLowerCase().includes(val.toLowerCase())
       ).slice(0, 4);
@@ -1429,37 +1957,100 @@ function toggleWishlistDrawer() {
 function renderWishlistDrawer() {
   const body = document.getElementById('wishlistDrawerBody');
   const countLabel = document.getElementById('wishlistDrawerCount');
+  const footer = document.getElementById('wishlistDrawerFooter');
   if (!body) return;
 
   const wishlistedProducts = PRODUCTS_DATA.filter(p => state.wishlist.includes(p.id));
-  countLabel.textContent = wishlistedProducts.length;
+  if (countLabel) countLabel.textContent = wishlistedProducts.length;
 
   if (wishlistedProducts.length === 0) {
     body.innerHTML = `
       <div style="text-align:center; padding:40px 20px;">
-        <div style="font-size:3rem;">♥</div>
-        <h4 style="margin-top:10px; color:var(--secondary);">Your Wishlist is Empty</h4>
-        <button class="btn btn-primary" style="margin-top:14px;" onclick="toggleWishlistDrawer()">Explore Catalog</button>
+        <div style="font-size:3rem; margin-bottom:8px;">♥</div>
+        <h4 style="margin-top:10px; color:var(--secondary); font-weight:700;">Your Wishlist is Empty</h4>
+        <p style="font-size:0.85rem; color:var(--text-muted); margin-top:4px;">Save your favorite styles here to shop later!</p>
+        <button class="btn btn-primary" style="margin-top:16px;" onclick="toggleWishlistDrawer()">Explore Catalog</button>
       </div>
     `;
+    if (footer) footer.style.display = 'none';
     return;
   }
 
+  if (footer) footer.style.display = 'block';
+
   body.innerHTML = wishlistedProducts.map(p => `
-    <div class="cart-item-card">
-      <img src="${p.image}" class="cart-item-img" alt="${p.title}">
-      <div class="cart-item-info">
-        <h4 class="cart-item-title">${p.title}</h4>
-        <div class="price-row" style="margin-bottom:8px;">
-          <span class="current-price" style="font-size:0.95rem;">₹${p.price.toLocaleString('en-IN')}</span>
+    <div class="cart-item-card" style="display:flex; gap:12px; align-items:center; padding:12px; background:var(--bg-main); border:1px solid var(--border-color); border-radius:var(--radius-md); margin-bottom:12px; position:relative;">
+      <img src="${p.image}" class="cart-item-img" alt="${p.title}" style="width:70px; height:85px; object-fit:contain; border-radius:var(--radius-sm); background:#ffffff; border:1px solid var(--border-color);">
+      <div class="cart-item-info" style="flex:1;">
+        <span class="product-brand" style="font-size:0.75rem; font-weight:800; color:var(--primary); text-transform:uppercase;">${p.brand}</span>
+        <h4 class="cart-item-title" style="font-size:0.9rem; font-weight:700; color:var(--secondary); margin:2px 0 6px 0;">${p.title}</h4>
+        <div class="price-row" style="margin-bottom:8px; display:flex; align-items:baseline; gap:8px;">
+          <span class="current-price" style="font-size:0.95rem; font-weight:800; color:var(--secondary);">₹${p.price.toLocaleString('en-IN')}</span>
+          <span class="original-price" style="text-decoration:line-through; color:var(--text-muted); font-size:0.8rem;">₹${p.originalPrice.toLocaleString('en-IN')}</span>
         </div>
-        <button class="btn btn-primary btn-block" style="padding:6px 10px; font-size:0.78rem;" onclick="quickAddToCart('${p.id}'); toggleWishlist('${p.id}');">
+        <button class="btn btn-primary btn-block" style="padding:6px 12px; font-size:0.8rem;" onclick="moveItemFromWishlistToCart('${p.id}')">
           Move to Cart
         </button>
       </div>
-      <button class="remove-cart-item" onclick="toggleWishlist('${p.id}')">&times;</button>
+      <button class="remove-cart-item" onclick="toggleWishlist('${p.id}')" title="Remove from Wishlist" style="position:absolute; top:8px; right:8px; background:none; border:none; font-size:1.2rem; color:var(--text-muted); cursor:pointer;">&times;</button>
     </div>
   `).join('');
+}
+
+function moveItemFromWishlistToCart(productId) {
+  const index = state.wishlist.indexOf(productId);
+  if (index > -1) {
+    state.wishlist.splice(index, 1);
+  }
+  syncLocalStorage();
+  renderProductsCatalog();
+  renderWishlistDrawer();
+
+  document.querySelectorAll(`.wishlist-toggle-btn[data-product-id="${productId}"], .icon-action-btn[onclick*="${productId}"]`).forEach(button => {
+    button.classList.remove('active');
+  });
+
+  quickAddToCart(productId);
+}
+
+function addAllWishlistToCart() {
+  if (state.wishlist.length === 0) {
+    showToast('Your wishlist is empty!', 'warning');
+    return;
+  }
+
+  const wishlistedIds = [...state.wishlist];
+  wishlistedIds.forEach(id => {
+    const product = PRODUCTS_DATA.find(p => p.id === id);
+    if (product) {
+      const defaultSize = product.sizes[0] || 'Free Size';
+      const existingItem = state.cart.find(item => item.id === id && item.selectedSize === defaultSize);
+      if (existingItem) {
+        existingItem.qty += 1;
+      } else {
+        state.cart.push({ id, selectedSize: defaultSize, qty: 1 });
+      }
+    }
+  });
+
+  state.wishlist = [];
+  syncLocalStorage();
+  renderWishlistDrawer();
+  renderProductsCatalog();
+
+  document.querySelectorAll('.wishlist-toggle-btn, .icon-action-btn').forEach(button => {
+    if (button.id !== 'wishlistBtn' && button.id !== 'cartBtn' && button.id !== 'userProfileBtn') {
+      button.classList.remove('active');
+    }
+  });
+
+  const drawer = document.getElementById('wishlistDrawer');
+  const overlay = document.getElementById('wishlistDrawerOverlay');
+  if (drawer) drawer.classList.remove('active');
+  if (overlay) overlay.classList.remove('active');
+
+  openCartDrawer();
+  showToast('Moved all wishlisted items to Cart! 🛒', 'success');
 }
 
 function changeCartItemSize(index, newSize) {
@@ -1470,11 +2061,94 @@ function changeCartItemSize(index, newSize) {
   showToast(`Updated item size to ${newSize}`, 'info');
 }
 
+let pendingSizeProductId = null;
+let selectedPromptSize = null;
+
+function openSelectSizeModal(productId) {
+  const product = PRODUCTS_DATA.find(p => p.id === productId);
+  if (!product) return;
+
+  pendingSizeProductId = productId;
+  selectedPromptSize = product.sizes[0] || 'M';
+
+  let modal = document.getElementById('selectSizeModal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'selectSizeModal';
+    modal.className = 'modal-overlay';
+    document.body.appendChild(modal);
+  }
+
+  modal.innerHTML = `
+    <div class="modal-container size-select-modal" style="max-width: 440px; padding: 24px; border-radius: var(--radius-lg); background: #ffffff; text-align: left; position: relative;">
+      <button class="modal-close-btn" onclick="closeSelectSizeModal()">&times;</button>
+      
+      <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--border-color);">
+        <img src="${product.image}" alt="${product.title}" style="width: 70px; height: 85px; object-fit: contain; border-radius: var(--radius-sm); background: #f8fafc; border: 1px solid var(--border-color);">
+        <div>
+          <span style="font-size: 0.75rem; font-weight: 800; color: var(--primary); text-transform: uppercase;">${product.brand}</span>
+          <h4 style="font-size: 0.98rem; font-weight: 700; color: var(--secondary); margin: 2px 0 6px 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.3;">${product.title}</h4>
+          <span style="font-size: 1.1rem; font-weight: 800; color: var(--secondary);">₹${product.price.toLocaleString('en-IN')}</span>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <label style="font-weight: 800; font-size: 0.88rem; color: var(--secondary); display: block; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px;">
+          Select Size to Add to Cart:
+        </label>
+        <div class="prompt-size-grid" style="display: flex; gap: 10px; flex-wrap: wrap;">
+          ${product.sizes.map((sz, idx) => `
+            <button type="button" class="size-chip-btn ${idx === 0 ? 'active' : ''}" onclick="selectPromptSizeChoice('${sz}', this)">${sz}</button>
+          `).join('')}
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-primary btn-block btn-lg btn-glow" onclick="confirmSizeAndAddToCart()">
+        Confirm Size & Add to Cart &rarr;
+      </button>
+    </div>
+  `;
+
+  modal.classList.add('active');
+}
+
+function selectPromptSizeChoice(size, btnElem) {
+  selectedPromptSize = size;
+  const parent = btnElem.closest('.modal-container');
+  if (parent) {
+    parent.querySelectorAll('.size-chip-btn').forEach(b => b.classList.remove('active'));
+  }
+  btnElem.classList.add('active');
+}
+
+function confirmSizeAndAddToCart() {
+  if (pendingSizeProductId && selectedPromptSize) {
+    const pid = pendingSizeProductId;
+    const sz = selectedPromptSize;
+    closeSelectSizeModal();
+    quickAddToCart(pid, sz);
+  }
+}
+
+function closeSelectSizeModal() {
+  const modal = document.getElementById('selectSizeModal');
+  if (modal) modal.classList.remove('active');
+}
+
 function quickAddToCart(productId, sizeOverride = null) {
   const product = PRODUCTS_DATA.find(p => p.id === productId);
   if (!product) return;
 
-  const targetSize = sizeOverride || product.sizes[0] || 'M';
+  if (!sizeOverride) {
+    if (product.sizes.length === 1 && product.sizes[0] === 'Free Size') {
+      sizeOverride = 'Free Size';
+    } else {
+      openSelectSizeModal(productId);
+      return;
+    }
+  }
+
+  const targetSize = sizeOverride;
   const existingItem = state.cart.find(item => item.id === productId && item.selectedSize === targetSize);
 
   if (existingItem) {
@@ -1661,7 +2335,7 @@ function calculateCartBill() {
   }
 
   const finalPayable = Math.max(0, finalPrice - couponDiscount);
-  
+
   // Delivery fee logic:
   // Initially (no address provided or empty cart), delivery fee is 0 (FREE).
   // Based on user address: if user address is saved in state.userProfile:
@@ -1747,7 +2421,7 @@ function removeCouponCode() {
 function applyCouponCode() {
   const input = document.getElementById('couponCodeInput');
   const code = input ? input.value.trim().toUpperCase() : '';
-  
+
   if (!code || !COUPONS[code]) {
     showToast('Invalid Coupon Code! Try STYLE200 or MEESHO50', 'warning');
     return;
@@ -2028,12 +2702,6 @@ function configureProfileForm(mode, addressIndex = -1) {
   addressInput.value = selectedAddress?.address || '';
   cityInput.value = selectedAddress?.city || '';
   pinInput.value = selectedAddress?.pincode || '';
-  if (location) {
-    setLocationBoundFields(location);
-    restoreDeliveryLocationStatus();
-  } else {
-    setDeliveryLocationStatus('Required to check the 100 km delivery area. Your location is saved in this browser and is not sent to a maps service.', '');
-  }
 }
 
 function openAuthModal() {
@@ -2050,34 +2718,43 @@ function handleAuthSubmit(e) {
   const addressInput = document.getElementById('userAddress');
   const cityInput = document.getElementById('userCity');
   const pinInput = document.getElementById('userPincodeInput');
+
   const currentName = state.userProfile?.name || '';
   const currentPhone = state.userProfile?.phone || '';
   const name = profileFormMode === 'login' ? nameInput?.value.trim() : currentName;
   const phone = profileFormMode === 'login' ? phoneInput?.value.trim() : currentPhone;
-  const location = profileFormLocation;
-  const address = location
-    ? `Current location (${location.latitude.toFixed(5)}, ${location.longitude.toFixed(5)})`
-    : addressInput?.value.trim() || '';
-  const city = location ? 'GPS location' : cityInput?.value.trim() || '';
-  const pincode = location ? '' : pinInput?.value.trim() || '';
+  const address = addressInput?.value.trim() || '';
+  const city = cityInput?.value.trim() || '';
+  const pincode = pinInput?.value.trim() || '';
 
   const fieldsToValidate = [];
   if (profileFormMode === 'login') {
-    nameInput.setCustomValidity(/^[\p{L}]+(?:\s+[\p{L}]+)*$/u.test(name || '')
-      ? '' : 'Enter a name using letters and spaces only.');
-    phoneInput.setCustomValidity(/^[6-9]\d{9}$/.test(phone || '')
-      ? '' : 'Enter a 10-digit Indian mobile number starting with 6, 7, 8, or 9.');
-    fieldsToValidate.push(nameInput, phoneInput);
-  }
-  if (!location) {
-    addressInput.setCustomValidity(address.length >= 5 ? '' : 'Enter a complete street address (at least 5 characters).');
-    cityInput.setCustomValidity(/^[\p{L}]+(?:\s+[\p{L}]+)*$/u.test(city)
-      ? '' : 'Enter a city using letters and spaces only.');
-    pinInput.setCustomValidity(/^\d{6}$/.test(pincode) ? '' : 'Enter a 6-digit pincode.');
-    fieldsToValidate.push(addressInput, cityInput, pinInput);
+    if (nameInput) {
+      nameInput.setCustomValidity(/^[a-zA-Z\s]+$/.test(name || '') ? '' : 'Full Name must contain only letters and spaces.');
+      fieldsToValidate.push(nameInput);
+    }
+    if (phoneInput) {
+      phoneInput.setCustomValidity(/^[6-9]\d{9}$/.test(phone || '') ? '' : 'Enter a 10-digit mobile number starting with 6, 7, 8, or 9.');
+      fieldsToValidate.push(phoneInput);
+    }
   }
 
-  const invalidInput = fieldsToValidate.find(input => !input.checkValidity());
+  if (addressInput) {
+    addressInput.setCustomValidity(address.length >= 5 ? '' : 'Enter a complete street address (at least 5 characters).');
+    fieldsToValidate.push(addressInput);
+  }
+
+  if (cityInput) {
+    cityInput.setCustomValidity(/^[a-zA-Z\s]+$/.test(city) ? '' : 'City must contain only letters.');
+    fieldsToValidate.push(cityInput);
+  }
+
+  if (pinInput) {
+    pinInput.setCustomValidity(/^\d{6}$/.test(pincode) ? '' : 'Pincode must contain only numbers and length must be 6 digits.');
+    fieldsToValidate.push(pinInput);
+  }
+
+  const invalidInput = fieldsToValidate.find(input => input && !input.checkValidity());
   if (invalidInput) {
     invalidInput.reportValidity();
     return;
@@ -2236,9 +2913,10 @@ function updateBadgesUI() {
     cartBadge.hidden = cartCount === 0;
   }
   if (cartDrawerBadge) cartDrawerBadge.textContent = cartCount;
+  
   if (wishlistBadge) {
-    wishlistBadge.textContent = state.wishlist.length;
-    wishlistBadge.hidden = state.wishlist.length === 0;
+    wishlistBadge.hidden = true;
+    wishlistBadge.style.display = 'none';
   }
   if (wishlistDrawerBadge) wishlistDrawerBadge.textContent = state.wishlist.length;
 }
