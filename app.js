@@ -943,6 +943,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderProductsCatalog();
   initSearchAutocomplete();
   initPageScrollLock();
+  updateBadgesUI();
   initProductDetailPage();
 });
 
@@ -1284,6 +1285,8 @@ function initProductDetailPage() {
   const product = PRODUCTS_DATA.find(p => p.id === productId) || PRODUCTS_DATA[0];
 
   if (!product) return;
+  currentProductSizeCategory = product.category;
+  currentProductDetail = product;
 
   document.title = `${product.title} - ${product.brand} | StyleMart`;
 
@@ -1302,80 +1305,123 @@ function initProductDetailPage() {
   ];
 
   const isSaree = product.title.toLowerCase().includes('saree') || (product.sizes.length === 1 && product.sizes[0] === 'Free Size');
-  selectedModalSize = isSaree ? 'Free Size' : null;
+  selectedModalSize = null;
 
   layout.innerHTML = `
-    <div class="row g-4" style="background:#ffffff; padding:28px; border-radius:var(--radius-lg); box-shadow:var(--shadow-sm); border:1px solid var(--border-color);">
-      <div class="col-lg-6">
-        <div class="main-product-img-wrapper" style="position:relative; width:100%; height:460px; border-radius:var(--radius-md); overflow:hidden; background:#ffffff; border:1px solid var(--border-color); margin-bottom:16px; display:flex; align-items:center; justify-content:center; padding:12px;">
-          <img id="mainProductViewImg" src="${thumbs[0].url}" alt="${product.title}" style="max-width:100%; max-height:100%; object-fit:contain;">
-          <span class="card-badge discount" style="position:absolute; top:12px; left:12px; font-size:0.85rem; padding:4px 12px;">${product.discount}% OFF</span>
-        </div>
-        <div class="thumbs-flex" style="display:flex; gap:12px; overflow-x:auto; padding-bottom:4px;">
-          ${thumbs.map((t, idx) => `
-            <div class="thumb-card ${idx === 0 ? 'active' : ''}" onclick="switchMainProductThumb('${t.url}', this)" style="width:80px; height:90px; border-radius:var(--radius-sm); overflow:hidden; border:2px solid ${idx === 0 ? 'var(--primary)' : 'var(--border-color)'}; cursor:pointer; flex-shrink:0; background:#f8fafc; padding:4px; display:flex; align-items:center; justify-content:center;">
-              <img src="${t.url}" alt="${t.label}" style="max-width:100%; max-height:100%; object-fit:contain;">
-            </div>
-          `).join('')}
-        </div>
-      </div>
+    <div class="product-detail-card product-detail-layout">
+      <section class="product-gallery-col">
+        <div class="product-gallery-side-layout">
+          <div class="thumbs-col">
+            ${thumbs.map((t, idx) => `
+              <div class="thumb-card ${idx === 0 ? 'active' : ''}" onclick="switchMainProductThumb('${t.url}', this)" style="border-color:${idx === 0 ? 'var(--primary)' : 'var(--border-color)'};">
+                <img src="${t.url}" alt="${t.label}">
+              </div>
+            `).join('')}
+          </div>
 
-      <div class="col-lg-6" style="display:flex; flex-direction:column; justify-content:center;">
-        <span class="product-brand" style="font-size:0.85rem; font-weight:800; color:var(--primary); text-transform:uppercase; letter-spacing:1px; margin-bottom:4px;">${product.brand}</span>
-        <h1 style="font-size:1.6rem; font-weight:800; color:var(--secondary); margin:0 0 10px 0; line-height:1.3;">${product.title}</h1>
+          <div class="main-product-img-wrapper">
+            <img id="mainProductViewImg" src="${thumbs[0].url}" alt="${product.title}">
+            <button type="button" class="wishlist-toggle-btn product-image-wishlist-btn ${state.wishlist.includes(product.id) ? 'active' : ''}" data-product-id="${product.id}" onclick="event.stopPropagation(); toggleWishlist('${product.id}')" aria-label="${state.wishlist.includes(product.id) ? 'Remove from wishlist' : 'Add to wishlist'}" title="Save to Wishlist">♥</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="product-info-col">
+        <div class="product-detail-brand-row">
+          <span class="product-brand" style="font-size:0.82rem; font-weight:800; color:var(--primary); text-transform:uppercase; letter-spacing:1px;">${product.brand}</span>
+          <div class="stock-pulse-badge">
+            <span class="pulse-dot"></span>
+            <span>Only ${product.stockLeft || 7} left in stock</span>
+          </div>
+        </div>
+
+        <h1 class="product-detail-title">${product.title}</h1>
         
-        <div class="rating-badge-row" style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
-          <span style="background:#fff9c4; color:#854d0e; font-weight:800; padding:4px 12px; border-radius:var(--radius-full); font-size:0.85rem; display:inline-flex; align-items:center; gap:4px;">
-            ⭐ ${product.rating} / 5.0
+        <div class="rating-badge-row" style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+          <span style="background:#fff9c4; color:#854d0e; font-weight:800; padding:3px 10px; border-radius:var(--radius-full); font-size:0.82rem; display:inline-flex; align-items:center; gap:4px;">
+            ${product.rating} ★
           </span>
-          <span style="font-size:0.85rem; color:var(--text-muted); font-weight:600;">
-            ${product.reviewsCount} verified ratings
+          <span style="font-size:0.82rem; color:var(--text-muted); font-weight:600;">
+            ${product.reviewsCount} verified customer ratings
           </span>
         </div>
 
-        <div class="price-box-large" style="display:flex; align-items:center; gap:12px; margin-bottom:20px; padding:12px 16px; background:#fff5f7; border-radius:var(--radius-md); border:1px solid rgba(255,63,108,0.2); flex-wrap:wrap;">
+        <div class="price-box-large" style="display:flex; align-items:center; gap:10px; margin-bottom:12px; padding:8px 12px; background:#fff5f7; border-radius:var(--radius-md); border:1px solid rgba(255,63,108,0.2); flex-wrap:wrap;">
+          <span style="font-size:1.1rem; color:var(--text-muted); text-decoration:line-through; font-weight:600;">₹${product.originalPrice.toLocaleString('en-IN')}</span>
           <span style="font-size:1.75rem; font-weight:800; color:var(--secondary);">₹${product.price.toLocaleString('en-IN')}</span>
-          <span style="font-size:1.05rem; color:var(--text-muted); text-decoration:line-through;">₹${product.originalPrice.toLocaleString('en-IN')}</span>
-          <span style="font-size:0.85rem; font-weight:800; color:var(--primary); background:#ffffff; padding:4px 10px; border-radius:var(--radius-full); border:1px solid rgba(255,63,108,0.3);">Save ₹${(product.originalPrice - product.price).toLocaleString('en-IN')} (${product.discount}% OFF)</span>
+          <span style="font-size:0.82rem; font-weight:800; color:var(--primary); background:#ffffff; padding:3px 8px; border-radius:var(--radius-full); border:1px solid rgba(255,63,108,0.3);">Save ₹${(product.originalPrice - product.price).toLocaleString('en-IN')} (${product.discount}% OFF)</span>
         </div>
 
-        <p style="font-size:0.9rem; color:var(--text-main); line-height:1.6; margin-bottom:16px;">
+        <p class="product-detail-description">
           ${product.description || 'Elevate your daily style with this premium fashion piece. Designed with superior fabric and a modern fitment.'}
         </p>
 
-        ${product.fabric ? `<div style="font-size:0.88rem; color:var(--secondary); margin-bottom:16px;"><strong>Fabric:</strong> ${product.fabric}</div>` : ''}
-
-        <div class="size-selector-block" style="margin-bottom:20px;">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-            <label style="font-weight:800; font-size:0.85rem; color:var(--secondary); text-transform:uppercase; letter-spacing:0.5px;">SELECT SIZE</label>
-            ${!isSaree ? `<span style="font-size:0.82rem; font-weight:700; color:var(--primary); cursor:pointer; text-decoration:underline;" onclick="openSizeChartModal()">📏 Size Guide</span>` : ''}
+        <div class="size-selector-block product-detail-size">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+            <label style="font-weight:800; font-size:0.82rem; color:var(--secondary); text-transform:uppercase; letter-spacing:0.5px;">SELECT SIZE</label>
+            <span style="font-size:0.8rem; font-weight:700; color:var(--primary); cursor:pointer; text-decoration:underline;" onclick="openSizeChartModal('${product.category}')">Size Guide</span>
           </div>
-          <div class="size-chips-grid" style="display:flex; gap:10px; flex-wrap:wrap;">
+          <div class="size-chips-grid" style="display:flex; gap:8px; flex-wrap:wrap;">
             ${product.sizes.map((sz) => `
-              <button class="size-chip-btn ${selectedModalSize === sz ? 'active' : ''}" onclick="selectProductPageSize('${sz}', this)">${sz}</button>
+              <button class="size-chip-btn" onclick="selectProductPageSize('${sz}', this)">${formatProductSize(product, sz)}</button>
             `).join('')}
           </div>
         </div>
 
-        <div class="action-buttons-row" style="display:flex; gap:12px; margin-bottom:20px; flex-wrap:wrap; align-items:center;">
-          <button class="btn btn-primary btn-glow btn-lg" style="flex:1; min-width:160px; height:48px; display:inline-flex; align-items:center; justify-content:center; gap:8px;" onclick="quickAddToCart('${product.id}', selectedModalSize)">
-            🛒 Add to Cart
+        <div class="action-buttons-row product-detail-actions">
+          <button class="btn btn-primary btn-glow btn-lg" style="flex:1; min-width:150px; height:46px; display:inline-flex; align-items:center; justify-content:center; gap:8px;" onclick="openSelectSizeModal('${product.id}')">
+            Add to Cart
           </button>
-          <button class="btn btn-secondary btn-lg" style="flex:1; min-width:140px; height:48px; display:inline-flex; align-items:center; justify-content:center; gap:8px; background:var(--secondary); color:#ffffff; border:none;" onclick="quickAddToCart('${product.id}', selectedModalSize); openCartDrawer();">
-            ⚡ Buy Now
-          </button>
-          <button class="icon-action-btn ${state.wishlist.includes(product.id) ? 'active' : ''}" onclick="toggleWishlist('${product.id}')" style="width:48px; height:48px; border-radius:var(--radius-md); border:1px solid var(--border-color); display:inline-flex; align-items:center; justify-content:center; font-size:1.2rem;" title="Wishlist">
-            ♥
+          <button class="btn btn-secondary btn-lg" style="flex:1; min-width:130px; height:46px; display:inline-flex; align-items:center; justify-content:center; gap:8px; background:var(--secondary); color:#ffffff; border:none;" onclick="addProductDetailToCart(true)">
+            Buy Now
           </button>
         </div>
 
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; background:#f8fafc; padding:12px 14px; border-radius:var(--radius-md); border:1px solid var(--border-color); font-size:0.82rem; font-weight:700; color:var(--secondary);">
-          <div style="display:flex; align-items:center; gap:6px;">🚚 Free Shipping Available</div>
-          <div style="display:flex; align-items:center; gap:6px;">🔄 7 Days Easy Returns</div>
-          <div style="display:flex; align-items:center; gap:6px;">💵 Cash on Delivery</div>
-          <div style="display:flex; align-items:center; gap:6px;">🔒 100% Genuine Product</div>
+        <div class="product-specs-box">
+          <div class="specs-title">📋 Key Specifications</div>
+          <div class="specs-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:8px;">
+            <div class="spec-item" style="padding:6px 10px;">
+              <span class="spec-label" style="font-size:0.68rem;">Fabric</span>
+              <span class="spec-val" style="font-size:0.8rem;">${product.fabric || '100% Pure Cotton'}</span>
+            </div>
+            <div class="spec-item" style="padding:6px 10px;">
+              <span class="spec-label" style="font-size:0.68rem;">Fit Type</span>
+              <span class="spec-val" style="font-size:0.8rem;">${product.title.includes('Relaxed') ? 'Relaxed Fit' : product.title.includes('Slim') ? 'Slim Fit' : isSaree ? 'Traditional Draped' : 'Regular Fit'}</span>
+            </div>
+            <div class="spec-item" style="padding:6px 10px;">
+              <span class="spec-label" style="font-size:0.68rem;">Pattern</span>
+              <span class="spec-val" style="font-size:0.8rem;">${isSaree ? 'Woven Zari' : 'Solid / Casual'}</span>
+            </div>
+            <div class="spec-item" style="padding:6px 10px;">
+              <span class="spec-label" style="font-size:0.68rem;">Care</span>
+              <span class="spec-val" style="font-size:0.8rem;">${isSaree ? 'Dry Clean Only' : 'Machine Wash'}</span>
+            </div>
+          </div>
         </div>
-      </div>
+
+        <div class="product-return-policy">
+          <span class="return-policy-icon" aria-hidden="true">↩</span>
+          <div><strong>7-day return policy</strong><span>Return eligible items within 7 days of delivery, unused and with original tags.</span></div>
+        </div>
+
+        <div class="product-detail-review">
+          <div class="product-review-heading">
+            <h2>Review highlights</h2>
+            <span class="product-review-summary"><strong>${product.rating} ★</strong> · ${product.reviewsCount.toLocaleString('en-IN')} ratings</span>
+          </div>
+          <article class="product-review-card">
+            <div class="product-review-stars" aria-label="${product.rating} out of 5 stars">${'★'.repeat(Math.max(0, Math.min(5, Math.round(product.rating))))}<span>${'★'.repeat(5 - Math.max(0, Math.min(5, Math.round(product.rating))))}</span></div>
+            <p>Comfortable fit and great everyday quality. The finish looks just like the product photos.</p>
+            <span class="product-review-author">Customer feedback</span>
+          </article>
+          <article class="product-review-card">
+            <div class="product-review-stars" aria-label="${product.rating} out of 5 stars">${'★'.repeat(Math.max(0, Math.min(5, Math.round(product.rating))))}<span>${'★'.repeat(5 - Math.max(0, Math.min(5, Math.round(product.rating))))}</span></div>
+            <p>Good value for the price, with a soft feel and a style that is easy to wear.</p>
+            <span class="product-review-author">Customer feedback</span>
+          </article>
+        </div>
+
+      </section>
     </div>
   `;
 
@@ -1390,14 +1436,43 @@ function initProductDetailPage() {
 function switchMainProductThumb(imgUrl, elem) {
   const mainImg = document.getElementById('mainProductViewImg');
   if (mainImg) mainImg.src = imgUrl;
-  document.querySelectorAll('.thumb-card').forEach(t => t.style.borderColor = 'var(--border-color)');
-  if (elem) elem.style.borderColor = 'var(--primary)';
+  document.querySelectorAll('.thumb-card').forEach(t => {
+    t.classList.remove('active');
+    t.style.borderColor = 'var(--border-color)';
+  });
+  if (elem) {
+    elem.classList.add('active');
+    elem.style.borderColor = 'var(--primary)';
+  }
+}
+
+function checkDeliveryPincode() {
+  const input = document.getElementById('pincodeInput');
+  const result = document.getElementById('pincodeResult');
+  if (!input || !result) return;
+  const pin = input.value.trim();
+  result.style.display = 'flex';
+  if (pin.length === 6 && /^\d+$/.test(pin)) {
+    result.innerHTML = `<span style="color:#16a34a; font-size:0.82rem; font-weight:600;">✓ Delivery available for <strong>${pin}</strong>! Guaranteed delivery by <strong>Thursday, 5 PM</strong> with Free Express Shipping. COD available.</span>`;
+  } else {
+    result.innerHTML = `<span style="color:#dc2626; font-size:0.82rem; font-weight:600;">⚠ Please enter a valid 6-digit postal PIN code.</span>`;
+  }
 }
 
 function selectProductPageSize(size, btnElem) {
   selectedModalSize = size;
   document.querySelectorAll('.size-chip-btn').forEach(b => b.classList.remove('active'));
   if (btnElem) btnElem.classList.add('active');
+}
+
+function addProductDetailToCart(openCartAfterAdd) {
+  if (!currentProductDetail) return;
+  if (!selectedModalSize) {
+    showToast('Please select a size first.', 'error');
+    return;
+  }
+  quickAddToCart(currentProductDetail.id, selectedModalSize);
+  if (openCartAfterAdd) openCartDrawer();
 }
 
 const CATEGORY_SUBFILTERS = {
@@ -1453,6 +1528,13 @@ const CATEGORY_SUBFILTERS = {
 
 let activeSubfilter = 'all';
 
+function formatProductSize(product, size) {
+  if (product.category === 'footwear') {
+    return String(size).replace(/^uk\s*/i, '').trim();
+  }
+  return size;
+}
+
 function renderCategorySubfilterBar() {
   const container = document.getElementById('categorySubfilterBar');
   if (!container) return;
@@ -1470,6 +1552,25 @@ function renderCategorySubfilterBar() {
       <span>${item.label}</span>
     </button>
   `).join('');
+}
+
+function renderCategorySizeFilters() {
+  const container = document.getElementById('categorySizeFilters');
+  if (!container) return;
+
+  const categoryProducts = PRODUCTS_DATA.filter(product => {
+    if (state.selectedCategory === 'budget') return product.price <= 499;
+    if (state.selectedCategory === 'all') return true;
+    return product.category === state.selectedCategory;
+  });
+  const sizes = [...new Set(categoryProducts.flatMap(product => product.sizes))];
+
+  container.innerHTML = sizes.length
+    ? `<span class="category-size-label">Size</span>${sizes.map(size => {
+      const productForSize = categoryProducts.find(product => product.sizes.includes(size));
+      return `<button type="button" class="category-size-chip ${state.selectedSizes.includes(size) ? 'active' : ''}" onclick="toggleSizeFilter('${size}', this)">${formatProductSize(productForSize, size)}</button>`;
+    }).join('')}`
+    : '';
 }
 
 function setSubfilter(subId, btnElem) {
@@ -1562,6 +1663,7 @@ function renderProductsCatalog() {
   if (!container) return;
 
   renderCategorySubfilterBar();
+  renderCategorySizeFilters();
 
   const filteredList = getFilteredProducts();
   const categoryProducts = state.selectedCategory === 'budget'
@@ -1695,7 +1797,10 @@ function setCategoryFilter(category) {
 
 function handlePriceRangeChange(val) {
   state.maxPrice = parseInt(val);
-  document.getElementById('priceRangeValue').textContent = `₹${parseInt(val).toLocaleString('en-IN')}`;
+  const priceRangeValue = document.getElementById('priceRangeValue');
+  if (priceRangeValue) priceRangeValue.textContent = `₹${parseInt(val).toLocaleString('en-IN')}`;
+  const categoryPriceFilter = document.getElementById('categoryPriceFilter');
+  if (categoryPriceFilter) categoryPriceFilter.value = String(state.maxPrice);
   renderProductsCatalog();
 }
 
@@ -1706,12 +1811,12 @@ function handleBrandFilterChange() {
 }
 
 function toggleSizeFilter(size, btnElem) {
-  btnElem.classList.toggle('active');
   if (state.selectedSizes.includes(size)) {
     state.selectedSizes = state.selectedSizes.filter(s => s !== size);
   } else {
     state.selectedSizes.push(size);
   }
+  if (btnElem) btnElem.classList.toggle('active', state.selectedSizes.includes(size));
   renderProductsCatalog();
 }
 
@@ -1722,6 +1827,27 @@ function setRatingFilter(rating) {
 
 function handleSortChange(sortVal) {
   state.sortBy = sortVal;
+  renderProductsCatalog();
+}
+
+function clearCategoryPageFilters() {
+  state.maxPrice = 5000;
+  state.selectedBrands = [];
+  state.selectedSizes = [];
+  state.minRating = 0;
+  state.sortBy = 'popular';
+  state.searchQuery = '';
+  activeSubfilter = 'all';
+  const price = document.getElementById('categoryPriceFilter');
+  const rating = document.getElementById('categoryRatingFilter');
+  const sort = document.getElementById('categorySortFilter');
+  if (price) price.value = '5000';
+  if (rating) rating.value = '0';
+  if (sort) sort.value = 'popular';
+  const search = document.getElementById('searchInput');
+  const clearSearch = document.getElementById('clearSearchBtn');
+  if (search) search.value = '';
+  if (clearSearch) clearSearch.style.display = 'none';
   renderProductsCatalog();
 }
 
@@ -1940,7 +2066,12 @@ function toggleWishlist(productId) {
   renderProductsCatalog();
   renderWishlistDrawer();
   document.querySelectorAll(`.wishlist-toggle-btn[data-product-id="${productId}"]`).forEach(button => {
-    button.classList.toggle('active', state.wishlist.includes(productId));
+    const isWishlisted = state.wishlist.includes(productId);
+    button.classList.toggle('active', isWishlisted);
+    if (button.classList.contains('product-image-wishlist-btn')) {
+      button.setAttribute('aria-label', isWishlisted ? 'Remove from wishlist' : 'Add to wishlist');
+      button.title = isWishlisted ? 'Remove from Wishlist' : 'Save to Wishlist';
+    }
   });
 }
 
@@ -2069,7 +2200,7 @@ function openSelectSizeModal(productId) {
   if (!product) return;
 
   pendingSizeProductId = productId;
-  selectedPromptSize = product.sizes[0] || 'M';
+  selectedPromptSize = null;
 
   let modal = document.getElementById('selectSizeModal');
   if (!modal) {
@@ -2097,13 +2228,13 @@ function openSelectSizeModal(productId) {
           Select Size to Add to Cart:
         </label>
         <div class="prompt-size-grid" style="display: flex; gap: 10px; flex-wrap: wrap;">
-          ${product.sizes.map((sz, idx) => `
-            <button type="button" class="size-chip-btn ${idx === 0 ? 'active' : ''}" onclick="selectPromptSizeChoice('${sz}', this)">${sz}</button>
+          ${product.sizes.map(sz => `
+            <button type="button" class="size-chip-btn" onclick="selectPromptSizeChoice('${sz}', this)">${formatProductSize(product, sz)}</button>
           `).join('')}
         </div>
       </div>
 
-      <button type="button" class="btn btn-primary btn-block btn-lg btn-glow" onclick="confirmSizeAndAddToCart()">
+      <button type="button" class="btn btn-primary btn-block btn-lg btn-glow" id="confirmSizeAndAddButton" onclick="confirmSizeAndAddToCart()" disabled>
         Confirm Size & Add to Cart &rarr;
       </button>
     </div>
@@ -2119,6 +2250,8 @@ function selectPromptSizeChoice(size, btnElem) {
     parent.querySelectorAll('.size-chip-btn').forEach(b => b.classList.remove('active'));
   }
   btnElem.classList.add('active');
+  const confirmButton = document.getElementById('confirmSizeAndAddButton');
+  if (confirmButton) confirmButton.disabled = false;
 }
 
 function confirmSizeAndAddToCart() {
@@ -2127,6 +2260,8 @@ function confirmSizeAndAddToCart() {
     const sz = selectedPromptSize;
     closeSelectSizeModal();
     quickAddToCart(pid, sz);
+    pendingSizeProductId = null;
+    selectedPromptSize = null;
   }
 }
 
@@ -2158,7 +2293,30 @@ function quickAddToCart(productId, sizeOverride = null) {
   }
 
   syncLocalStorage();
-  showToast(`Added (${targetSize}) to Cart! 🛒`, 'success');
+  showCartAddedPopup(product, targetSize);
+}
+
+function showCartAddedPopup(product, size) {
+  const modal = document.getElementById('cartAddedModal');
+  if (!modal) {
+    showToast('Item added to cart.', 'success');
+    return;
+  }
+
+  const image = document.getElementById('cartAddedImage');
+  const name = document.getElementById('cartAddedProductName');
+  const selectedSize = document.getElementById('cartAddedProductSize');
+  if (image) {
+    image.src = product.image;
+    image.alt = product.title;
+  }
+  if (name) name.textContent = product.title;
+  if (selectedSize) selectedSize.textContent = `Size: ${formatProductSize(product, size)}`;
+  modal.classList.add('active');
+}
+
+function closeCartAddedPopup() {
+  document.getElementById('cartAddedModal')?.classList.remove('active');
 }
 
 function toggleCartDrawer() {
@@ -2222,7 +2380,7 @@ function renderCartDrawer() {
             <div class="cart-meta-pill">
               <label>Size:</label>
               <select class="cart-size-select" onchange="changeCartItemSize(${index}, this.value)">
-                ${product.sizes.map(s => `<option value="${s}" ${s === item.selectedSize ? 'selected' : ''}>${s}</option>`).join('')}
+                ${product.sizes.map(s => `<option value="${s}" ${s === item.selectedSize ? 'selected' : ''}>${formatProductSize(product, s)}</option>`).join('')}
               </select>
             </div>
             ${product.rating ? `<span class="cart-rating-pill">⭐ ${product.rating} (${product.reviewsCount})</span>` : ''}
@@ -2458,12 +2616,25 @@ function copyCouponCode(code) {
 // 12. PRODUCT QUICK VIEW MODAL
 // --------------------------------------------------------------------------
 let selectedModalSize = null;
+let currentProductSizeCategory = 'all';
+let currentProductDetail = null;
+
+function goBackToProducts() {
+  const referrer = document.referrer;
+  if (referrer && new URL(referrer).origin === window.location.origin) {
+    window.history.back();
+    return;
+  }
+  const category = currentProductDetail?.category || 'all';
+  window.location.href = `category.html?category=${encodeURIComponent(category)}`;
+}
 
 function openProductModal(productId) {
   const product = PRODUCTS_DATA.find(p => p.id === productId);
   if (!product) return;
 
-  selectedModalSize = product.sizes[0] || 'M';
+  selectedModalSize = null;
+  currentProductSizeCategory = product.category;
   const body = document.getElementById('productModalBody');
 
   const thumbs = product.thumbs && product.thumbs.length > 0 ? product.thumbs : [
@@ -2494,12 +2665,12 @@ function openProductModal(productId) {
       <h2 class="modal-product-title">${product.title}</h2>
       
       <div class="rating-badge" style="margin-bottom:14px;">
-        ⭐ ${product.rating} | ${product.reviewsCount} Customer Reviews
+        ${product.rating} / 5.0 | ${product.reviewsCount} Customer Reviews
       </div>
 
       <div class="modal-price-box">
-        <span class="modal-current-price">₹${product.price.toLocaleString('en-IN')}</span>
-        <span class="modal-original-price">₹${product.originalPrice.toLocaleString('en-IN')}</span>
+        <span class="modal-original-price" style="text-decoration: line-through; color: var(--text-muted); font-size: 1.05rem; font-weight: 500; margin-right: 6px;">₹${product.originalPrice.toLocaleString('en-IN')}</span>
+        <span class="modal-current-price" style="font-size: 1.6rem; font-weight: 800; color: var(--secondary);">₹${product.price.toLocaleString('en-IN')}</span>
         <span class="modal-discount-tag">${product.discount}% OFF</span>
       </div>
 
@@ -2510,18 +2681,18 @@ function openProductModal(productId) {
       <div class="size-select-section">
         <div class="size-header-row">
           <label style="font-size:0.88rem; font-weight:700;">SELECT SIZE</label>
-          <span class="size-guide-link" onclick="openSizeChartModal()">📏 Size Guide</span>
+          <span class="size-guide-link" onclick="openSizeChartModal('${product.category}')">Size Guide</span>
         </div>
         <div class="size-options-grid">
           ${product.sizes.map((sz) => `
-            <button class="modal-size-btn ${sz === selectedModalSize ? 'selected' : ''}" onclick="selectModalSize('${sz}', this)">${sz}</button>
+            <button class="modal-size-btn" onclick="selectModalSize('${sz}', this)">${formatProductSize(product, sz)}</button>
           `).join('')}
         </div>
       </div>
 
       <div style="background:#f8fafc; border:1px solid var(--border-color); border-radius:var(--radius-md); padding:12px; margin-top:14px;">
         <div style="font-size:0.82rem; font-weight:700; color:var(--secondary); margin-bottom:4px;">
-          🚚 Guaranteed Delivery & Service
+          Guaranteed Delivery & Service
         </div>
         <div style="font-size:0.8rem; color:var(--budget-green); font-weight:600;">
           ✓ Delivery to your logged-in address available on checkout
@@ -2529,7 +2700,7 @@ function openProductModal(productId) {
       </div>
 
       <div class="modal-actions-row" style="margin-top:20px; display:flex; gap:12px;">
-        <button class="btn btn-primary btn-block btn-lg btn-glow" onclick="addFromModalToCart('${product.id}')">
+        <button class="btn btn-primary btn-block btn-lg btn-glow modal-add-cart-btn" onclick="addFromModalToCart('${product.id}')" disabled>
           🛒 Add to Cart
         </button>
         <button class="wishlist-toggle-btn ${state.wishlist.includes(product.id) ? 'active' : ''}" data-product-id="${product.id}" id="modalWishlistBtn" style="position:static; width:48px; height:48px; border-radius: var(--radius-md); flex-shrink:0;" onclick="toggleWishlist('${product.id}')" title="Save to Wishlist">
@@ -2546,6 +2717,8 @@ function selectModalSize(size, btnElem) {
   selectedModalSize = size;
   document.querySelectorAll('.modal-size-btn').forEach(b => b.classList.remove('selected'));
   if (btnElem) btnElem.classList.add('selected');
+  const addButton = document.querySelector('.modal-add-cart-btn');
+  if (addButton) addButton.disabled = false;
 }
 
 function switchModalThumb(imgSrc, cardElem) {
@@ -2556,12 +2729,65 @@ function switchModalThumb(imgSrc, cardElem) {
 }
 
 function addFromModalToCart(productId) {
+  if (!selectedModalSize) {
+    showToast('Please select a size first.', 'error');
+    return;
+  }
   quickAddToCart(productId, selectedModalSize);
   closeProductModal();
 }
 
 function closeProductModal() { document.getElementById('productModal')?.classList.remove('active'); }
-function openSizeChartModal() { document.getElementById('sizeChartModal')?.classList.add('active'); }
+function openSizeChartModal(category = currentProductSizeCategory) {
+  const modal = document.getElementById('sizeChartModal');
+  if (!modal) return;
+  const guides = {
+    women: {
+      title: "Women's Size Guide",
+      note: 'Body measurements in inches. Choose the size that best matches your bust, waist, and hip measurements.',
+      columns: ['Size', 'Bust (in)', 'Waist (in)', 'Hip (in)'],
+      rows: [['XS', '32–33', '26–27', '35–36'], ['S', '34–35', '28–29', '37–38'], ['M', '36–37', '30–31', '39–40'], ['L', '38–40', '32–34', '41–43'], ['XL', '41–43', '35–37', '44–46']]
+    },
+    men: {
+      title: "Men's Size Guide",
+      note: 'Body measurements in inches. For a relaxed fit, consider choosing one size up.',
+      columns: ['Size', 'Chest (in)', 'Waist (in)', 'Length (in)'],
+      rows: [['S', '36–38', '30–32', '27'], ['M', '38–40', '32–34', '28'], ['L', '40–42', '34–36', '29'], ['XL', '42–44', '36–38', '30'], ['XXL', '44–46', '38–40', '31']]
+    },
+    kids: {
+      title: "Kids' Size Guide",
+      note: 'Approximate body measurements. Age ranges are a guide; height is the best fit reference.',
+      columns: ['Size', 'Age', 'Height (cm)', 'Chest (in)'],
+      rows: [['2–3Y', '2–3 years', '92–98', '21–22'], ['4–5Y', '4–5 years', '104–110', '22–23'], ['6–7Y', '6–7 years', '116–122', '24–25'], ['8–9Y', '8–9 years', '128–134', '26–27'], ['10–12Y', '10–12 years', '140–152', '28–31']]
+    },
+    footwear: {
+      title: 'Footwear Size Guide',
+      note: 'Indian shoe sizes with approximate foot length. Measure from heel to the tip of your longest toe.',
+      columns: ['India size', 'Foot length (cm)'],
+      rows: [['4', '22.9'], ['5', '23.7'], ['6', '24.6'], ['7', '25.4'], ['8', '26.2'], ['9', '27.1'], ['10', '27.9']]
+    },
+    ethnic: {
+      title: 'Ethnic Wear Size Guide',
+      note: 'Body measurements in inches. Blouse and kurta sizing may vary by garment style.',
+      columns: ['Size', 'Bust (in)', 'Waist (in)', 'Hip (in)'],
+      rows: [['XS', '32–33', '26–27', '35–36'], ['S', '34–35', '28–29', '37–38'], ['M', '36–37', '30–31', '39–40'], ['L', '38–40', '32–34', '41–43'], ['XL', '41–43', '35–37', '44–46']]
+    }
+  };
+  const guide = guides[category] || guides.men;
+  const title = modal.querySelector('#sizeGuideTitle');
+  const content = modal.querySelector('#sizeGuideContent');
+  if (title) title.textContent = guide.title;
+  if (content) {
+    content.innerHTML = `
+      <p>${guide.note}</p>
+      <div class="size-guide-table-wrap"><table class="size-table">
+        <thead><tr>${guide.columns.map(column => `<th>${column}</th>`).join('')}</tr></thead>
+        <tbody>${guide.rows.map(row => `<tr>${row.map((cell, index) => `<td>${index === 0 ? `<strong>${cell}</strong>` : cell}</td>`).join('')}</tr>`).join('')}</tbody>
+      </table></div>
+    `;
+  }
+  modal.classList.add('active');
+}
 function closeSizeChartModal() { document.getElementById('sizeChartModal')?.classList.remove('active'); }
 
 function escapeProfileText(value) {
@@ -2614,7 +2840,20 @@ function openProfileModal(section = 'details') {
 
   content.innerHTML = `
     <div class="profile-modal-header">
-      <div class="logo-icon inline-logo">🛍️</div>
+      <div class="logo-icon-wrap" style="margin-bottom: 6px;">
+        <svg width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="40" height="40" rx="10" fill="url(#profLogoGrad)"/>
+          <path d="M12 15C12 11.686 14.686 9 18 9H22C25.314 9 28 11.686 28 15V16H29.5C30.605 16 31.5 16.895 31.5 18L30 30C30 31.105 29.105 32 28 32H12C10.895 32 10 31.105 10 30L8.5 18C8.5 16.895 9.395 16 10.5 16H12V15Z" stroke="white" stroke-width="2.2" stroke-linejoin="round"/>
+          <path d="M15 16V14.5C15 11.739 17.239 9.5 20 9.5C22.761 9.5 25 11.739 25 14.5V16" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M16 22.5L20 26.5L24 22.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <defs>
+            <linearGradient id="profLogoGrad" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#FF3F6C"/>
+              <stop offset="1" stop-color="#8B5CF6"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
       <h3>My Account</h3>
       <p>Welcome, ${escapeProfileText(profile.name)}</p>
     </div>

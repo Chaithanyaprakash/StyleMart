@@ -31,7 +31,20 @@
 
         <!-- Logo -->
         <a href="index.html" class="brand-logo" onclick="resetCatalogFilter()">
-          <div class="logo-icon">🛍️</div>
+          <div class="logo-icon-wrap">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="40" height="40" rx="10" fill="url(#headerLogoGrad)"/>
+              <path d="M12 15C12 11.686 14.686 9 18 9H22C25.314 9 28 11.686 28 15V16H29.5C30.605 16 31.5 16.895 31.5 18L30 30C30 31.105 29.105 32 28 32H12C10.895 32 10 31.105 10 30L8.5 18C8.5 16.895 9.395 16 10.5 16H12V15Z" stroke="white" stroke-width="2.2" stroke-linejoin="round"/>
+              <path d="M15 16V14.5C15 11.739 17.239 9.5 20 9.5C22.761 9.5 25 11.739 25 14.5V16" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+              <path d="M16 22.5L20 26.5L24 22.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <defs>
+                <linearGradient id="headerLogoGrad" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#FF3F6C"/>
+                  <stop offset="1" stop-color="#8B5CF6"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
           <div class="logo-text">
             <span class="logo-primary">Style<span class="logo-highlight">Mart</span></span>
           </div>
@@ -67,13 +80,13 @@
             <button class="close-mobile-nav" id="closeMobileNavBtn" aria-label="Close menu">&times;</button>
           </div>
           <ul class="nav-list">
-            <li class="nav-item"><a href="index.html" class="nav-link" data-home="true"><b>Home</b></a></li>
-            <li class="nav-item"><a href="category.html?category=women" class="nav-link" data-category="women"><b>Women</b></a></li>
-            <li class="nav-item"><a href="category.html?category=men" class="nav-link" data-category="men"><b>Men</b></a></li>
-            <li class="nav-item"><a href="category.html?category=kids" class="nav-link" data-category="kids"><b>Kids</b></a></li>
-            <li class="nav-item"><a href="category.html?category=footwear" class="nav-link" data-category="footwear"><b>Footwear</b></a></li>
-            <li class="nav-item"><a href="category.html?category=ethnic" class="nav-link" data-category="ethnic"><b>Ethnic Wear</b></a></li>
-            <li class="nav-item"><a href="category.html?category=budget" class="nav-link" data-category="budget"><b>Budget</b> <span class="nav-badge budget">Under ₹499</span></a></li>
+            <li class="nav-item"><a href="index.html" class="nav-link" data-home="true">Home</a></li>
+            <li class="nav-item"><a href="category.html?category=women" class="nav-link" data-category="women">Women</a></li>
+            <li class="nav-item"><a href="category.html?category=men" class="nav-link" data-category="men">Men</a></li>
+            <li class="nav-item"><a href="category.html?category=kids" class="nav-link" data-category="kids">Kids</a></li>
+            <li class="nav-item"><a href="category.html?category=footwear" class="nav-link" data-category="footwear">Footwear</a></li>
+            <li class="nav-item"><a href="category.html?category=ethnic" class="nav-link" data-category="ethnic">Ethnic Wear</a></li>
+            <li class="nav-item"><a href="category.html?category=budget" class="nav-link" data-category="budget">Budget</a></li>
           </ul>
         </nav>
 
@@ -439,7 +452,20 @@
     <div class="modal-container auth-modal">
       <button class="modal-close-btn" onclick="closeAuthModal()">&times;</button>
       <div class="auth-header">
-        <div class="logo-icon inline-logo">🛍️</div>
+        <div class="logo-icon-wrap" style="margin-bottom: 8px;">
+          <svg width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="40" height="40" rx="10" fill="url(#authIndexLogoGrad)"/>
+            <path d="M12 15C12 11.686 14.686 9 18 9H22C25.314 9 28 11.686 28 15V16H29.5C30.605 16 31.5 16.895 31.5 18L30 30C30 31.105 29.105 32 28 32H12C10.895 32 10 31.105 10 30L8.5 18C8.5 16.895 9.395 16 10.5 16H12V15Z" stroke="white" stroke-width="2.2" stroke-linejoin="round"/>
+            <path d="M15 16V14.5C15 11.739 17.239 9.5 20 9.5C22.761 9.5 25 11.739 25 14.5V16" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M16 22.5L20 26.5L24 22.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs>
+              <linearGradient id="authIndexLogoGrad" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FF3F6C"/>
+                <stop offset="1" stop-color="#8B5CF6"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
         <h3 id="authModalTitle">Welcome to StyleMart</h3>
         <p id="authModalSub">Login & enter your delivery address to proceed with orders!</p>
       </div>
@@ -616,12 +642,29 @@
         
         <div class="footer-col brand-col">
           <div class="brand-logo footer-logo">
-            <div class="logo-icon">🛍️</div>
+            <div class="logo-icon-wrap">
+              <svg width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="40" height="40" rx="10" fill="url(#footerLogoGrad)"/>
+                <path d="M12 15C12 11.686 14.686 9 18 9H22C25.314 9 28 11.686 28 15V16H29.5C30.605 16 31.5 16.895 31.5 18L30 30C30 31.105 29.105 32 28 32H12C10.895 32 10 31.105 10 30L8.5 18C8.5 16.895 9.395 16 10.5 16H12V15Z" stroke="white" stroke-width="2.2" stroke-linejoin="round"/>
+                <path d="M15 16V14.5C15 11.739 17.239 9.5 20 9.5C22.761 9.5 25 11.739 25 14.5V16" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+                <path d="M16 22.5L20 26.5L24 22.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <defs>
+                  <linearGradient id="footerLogoGrad" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#FF3F6C"/>
+                    <stop offset="1" stop-color="#8B5CF6"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
             <div class="logo-text">
               <span class="logo-primary">Style<span class="logo-highlight">Mart</span></span>
             </div>
           </div>
           <p>StyleMart is India's premier online fashion destination. Shop top fashion trends, ethnic wear, streetwear & footwear at unbeatable prices.</p>
+          <div class="footer-extra-content" style="margin-top: 12px; font-size: 0.8rem; color: #cbd5e1;">
+            <p><strong>Support:</strong> support@stylemart.in</p>
+            <p><strong>Toll Free:</strong> 1800-123-STYLE (7 AM - 11 PM)</p>
+          </div>
         </div>
 
         <div class="footer-col">
@@ -637,20 +680,36 @@
           </ul>
         </div>
 
+        <div class="footer-col footer-extra-content">
+          <h4>CUSTOMER SERVICE</h4>
+          <ul>
+            <li><a href="#">Track Your Order</a></li>
+            <li><a href="#">7 Days Easy Returns</a></li>
+            <li><a href="#">Shipping & Express Delivery</a></li>
+            <li><a href="#">Size & Fit Guide</a></li>
+            <li><a href="#">Frequently Asked Questions</a></li>
+            <li><a href="#">Privacy Policy & Terms</a></li>
+          </ul>
+        </div>
+
         <div class="footer-col">
           <h4>SHOP WITH CONFIDENCE</h4>
           <p>Discover everyday styles, seasonal trends, and great deals across the StyleMart collection.</p>
           <div class="payment-badges">
-            <span class="pay-tag">💳 UPI / GPay</span>
-            <span class="pay-tag">💳 Cards</span>
-            <span class="pay-tag">💵 Cash on Delivery</span>
+            <span class="pay-tag">UPI / GPay</span>
+            <span class="pay-tag">Credit & Debit Cards</span>
+            <span class="pay-tag">Cash on Delivery</span>
+          </div>
+          <div class="footer-extra-content" style="margin-top: 14px;">
+            <h4 style="font-size: 0.8rem; margin-bottom: 6px;">100% ORIGINAL GUARANTEE</h4>
+            <p style="font-size: 0.78rem; color: #94a3b8;">All products are sourced directly from authorized brand partners.</p>
           </div>
         </div>
 
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; 2026 StyleMart Custom Fashion India.</p>
+        <p>&copy; 2026 StyleMart Custom Fashion India. All rights reserved.</p>
       </div>
     </div>
   </footer>
