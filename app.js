@@ -2,13 +2,19 @@
 // 1. PRODUCT DATABASE
 // --------------------------------------------------------------------------
 const PRODUCTS_DATA = [
+  // --------------------------------------------------------------------------
+  // MEN CATEGORY
+  // Options: casual, formal, jeans, tshirts, track pants
+  // Brands: Rare Rabbit, The Indian Garage Co., Allen Solly, Peter England, Levi's, Raymond, Tommy Hilfiger, Louis Philippe, Wrogn, Roadster
+  // --------------------------------------------------------------------------
   {
     id: 'sm-101',
     showInDealsOfDay: true,
     showInAllFashion: true,
-    title: 'Men Regular Fit',
+    title: 'Men Regular Fit Casual Pure Cotton Shirt',
     brand: 'Rare Rabbit',
     category: 'men',
+    subcategory: 'casual',
     price: 1153,
     originalPrice: 2799,
     discount: 59,
@@ -16,24 +22,24 @@ const PRODUCTS_DATA = [
     reviewsCount: 578,
     image: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/shirt/o/u/v/-original-imahzy69b2x7ndnk.jpeg?q=90',
     thumbs: [
-      { label: 'Front View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/shirt/l/h/j/-original-imahzy69eumpucqs.jpeg?q=90' },
-      { label: 'Back View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/shirt/i/4/1/-original-imahzy69nxsxqttp.jpeg?q=90' },
-      { label: 'Side View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/shirt/z/z/g/-original-imahzy69ehw4ryfd.jpeg?q=90' }
+      { label: 'Front View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/shirt/o/u/v/-original-imahzy69b2x7ndnk.jpeg?q=90' }
     ],
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    tags: ['Trending'],
+    colors: ['Sage Green', 'Navy'],
+    tags: ['Trending', 'Casual Wear'],
     isFlashSale: true,
     stockLeft: 12,
-    description: 'Elevate your Style with this Regular Fit Shirt from Rare Rabbit. Crafted with 100% pure cotton, it offers a comfortable and breathable experience. Perfect for casual outings or semi-formal occasions, this shirt is a versatile addition to your wardrobe.',
+    description: 'Elevate your daily look with this Regular Fit Shirt from Rare Rabbit. Crafted with 100% pure breathable cotton, featuring spread collar and rounded cuffs.',
     fabric: '100% Pure Cotton'
   },
   {
     id: 'sm-102',
     showInDealsOfDay: false,
     showInAllFashion: true,
-    title: 'Men Relaxed Fit',
+    title: 'Men Relaxed Fit Checkered Casual Shirt',
     brand: 'The Indian Garage Co.',
     category: 'men',
+    subcategory: 'casual',
     price: 550,
     originalPrice: 1999,
     discount: 72,
@@ -41,146 +47,1191 @@ const PRODUCTS_DATA = [
     reviewsCount: 74,
     image: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/shirt/d/c/4/l-0924-shwfyd-05-01-the-indian-garage-co-original-imahaar3wfpkz7fk.jpeg?q=90',
     thumbs: [
-      { label: 'Front View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/shirt/d/c/4/l-0924-shwfyd-05-01-the-indian-garage-co-original-imahaar3wfpkz7fk.jpeg?q=90' },
-      { label: 'Back View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/shirt/d/j/2/l-0924-shwfyd-05-01-the-indian-garage-co-original-imahaar3ugbfqzyp.jpeg?q=90' },
-      { label: 'Side View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/shirt/q/f/v/l-0924-shwfyd-05-01-the-indian-garage-co-original-imahaar3nhzv6vdz.jpeg?q=90' }
+      { label: 'Front View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/shirt/d/c/4/l-0924-shwfyd-05-01-the-indian-garage-co-original-imahaar3wfpkz7fk.jpeg?q=90' }
     ],
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     colors: ['Vintage Black', 'Off White'],
-    tags: ['Best Seller', 'Under ₹499'],
+    tags: ['Best Seller', 'Under ₹999'],
     isFlashSale: false,
     stockLeft: 8,
     description: 'Designed for ultimate street style comfort. Made with 240 GSM combed cotton with drop-shoulder modern fit.',
     fabric: '240 GSM Combed Cotton'
   },
   {
-    id: 'sm-103',
-    showInDealsOfDay: true,
-    showInAllFashion: false,
-    title: 'Woven Banarasi Saree',
-    brand: 'FabIndia',
-    category: 'ethnic',
-    price: 578,
-    originalPrice: 1999,
-    discount: 71,
-    rating: 3.8,
-    reviewsCount: 51,
-    image: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/sari/g/z/i/free-red-slvr-pln-bhm-kathla-unstitched-original-imahmbabfeqdnfet.jpeg?q=90',
+    id: 'sm-m03',
+    showInDealsOfDay: false,
+    showInAllFashion: true,
+    title: 'Men Solid Casual Classic Oxford Shirt',
+    brand: 'Tommy Hilfiger',
+    category: 'men',
+    subcategory: 'casual',
+    price: 2499,
+    originalPrice: 5999,
+    discount: 58,
+    rating: 4.6,
+    reviewsCount: 310,
+    image: 'https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=1200&q=85',
     thumbs: [
-      { label: 'Front View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/sari/g/z/i/free-red-slvr-pln-bhm-kathla-unstitched-original-imahmbabfeqdnfet.jpeg?q=90' },
-      { label: 'Back View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/sari/o/a/u/free-red-slvr-pln-bhm-kathla-unstitched-original-imahmbabdeufkcfx.jpeg?q=90' },
-      { label: 'Side View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/sari/o/a/u/free-red-slvr-pln-bhm-kathla-unstitched-original-imahmbabdeufkcfx.jpeg?q=90' }
+      { label: 'Front View', url: 'https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=1200&q=85' }
     ],
-    sizes: ['Free Size'],
-    colors: ['Royal Red'],
-    tags: ['Luxury Ethnic'],
-    isFlashSale: true,
-    description: 'Authentic Banarasi Art Saree featuring regal floral motifs and gold zari border work. Includes unstitched blouse piece.',
-    fabric: 'Banarasi Art Silk'
+    sizes: ['M', 'L', 'XL', 'XXL'],
+    colors: ['Sky Blue', 'White'],
+    tags: ['Premium Casual'],
+    isFlashSale: false,
+    stockLeft: 14,
+    description: 'Iconic Tommy Hilfiger button-down collar casual shirt made with premium organic Oxford cotton weave.',
+    fabric: '100% Organic Cotton'
   },
   {
-    id: 'sm-401',
-    showInDealsOfDay: true,
+    id: 'sm-105',
+    showInDealsOfDay: false,
+    showInAllFashion: true,
+    title: 'Men Formal Slim Fit Solid Executive Shirt',
+    brand: 'Peter England',
+    category: 'men',
+    subcategory: 'formal',
+    price: 899,
+    originalPrice: 1899,
+    discount: 53,
+    rating: 4.4,
+    reviewsCount: 420,
+    image: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/shirt/7/n/r/40-alsfcu10000735-allen-solly-original-imahpy2evzqjhb2j.jpeg?q=90',
+    thumbs: [
+      { label: 'Front View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/shirt/7/n/r/40-alsfcu10000735-allen-solly-original-imahpy2evzqjhb2j.jpeg?q=90' }
+    ],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    colors: ['Crisp White', 'Formal Blue'],
+    tags: ['Formal Wear', 'Workwear Essential'],
+    isFlashSale: false,
+    description: 'Crisp, structured formal shirt from Peter England. Wrinkle-resistant finish for confident boardroom meetings.',
+    fabric: '80% Cotton, 20% Polyester'
+  },
+  {
+    id: 'sm-m05',
+    showInDealsOfDay: false,
     showInAllFashion: false,
-    title: 'Silk Blend Saree',
-    brand: 'Laxmipati sarees',
-    category: 'ethnic',
-    price: 3539,
-    originalPrice: 14999,
-    discount: 76,
+    title: 'Raymond Tailored Executive Formal Trousers',
+    brand: 'Raymond',
+    category: 'men',
+    subcategory: 'formal',
+    price: 1499,
+    originalPrice: 3499,
+    discount: 57,
+    rating: 4.5,
+    reviewsCount: 260,
+    image: 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=800&q=80',
+    thumbs: [
+      { label: 'Front View', url: 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=800&q=80' }
+    ],
+    sizes: ['30', '32', '34', '36', '38'],
+    colors: ['Charcoal Grey', 'Navy'],
+    tags: ['Formal Wear'],
+    isFlashSale: false,
+    stockLeft: 11,
+    description: 'Precision-tailored slim formal trousers by Raymond. Breathable poly-viscose blend with sharp crease retention.',
+    fabric: 'Poly-Viscose Suiting'
+  },
+  {
+    id: 'sm-m06',
+    showInDealsOfDay: false,
+    showInAllFashion: true,
+    title: 'Louis Philippe Solid Navy Formal Blazer',
+    brand: 'Louis Philippe',
+    category: 'men',
+    subcategory: 'formal',
+    price: 4999,
+    originalPrice: 9999,
+    discount: 50,
+    rating: 4.8,
+    reviewsCount: 180,
+    image: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=800&q=80',
+    thumbs: [
+      { label: 'Front View', url: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=800&q=80' }
+    ],
+    sizes: ['38', '40', '42', '44'],
+    colors: ['Midnight Navy'],
+    tags: ['Executive Luxury'],
+    isFlashSale: false,
+    stockLeft: 6,
+    description: 'Impeccable single-breasted two-button formal blazer with notch lapels and signature crest lining.',
+    fabric: 'Fine Wool Blend'
+  },
+  {
+    id: 'sm-m07',
+    showInDealsOfDay: false,
+    showInAllFashion: true,
+    title: "Levi's 511 Slim Fit Stretch Denim Jeans",
+    brand: "Levi's",
+    category: 'men',
+    subcategory: 'jeans',
+    price: 2199,
+    originalPrice: 4299,
+    discount: 49,
+    rating: 4.6,
+    reviewsCount: 890,
+    image: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/jean/y/q/p/30-ctjwpc003-l-cosmic-trio-original-imah3xkzentvghwp.jpeg?q=90',
+    thumbs: [
+      { label: 'Front View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/jean/y/q/p/30-ctjwpc003-l-cosmic-trio-original-imah3xkzentvghwp.jpeg?q=90' }
+    ],
+    sizes: ['30', '32', '34', '36', '38'],
+    colors: ['Indigo Dark Wash'],
+    tags: ['Best Seller', 'Denim Icon'],
+    isFlashSale: false,
+    stockLeft: 22,
+    description: "Authentic Levi's 511 slim fit jeans cut close without being too tight, infused with all-day comfort stretch.",
+    fabric: '99% Cotton, 1% Elastane'
+  },
+  {
+    id: 'sm-m08',
+    showInDealsOfDay: false,
+    showInAllFashion: false,
+    title: 'Wrogn Tapered Fit Washed Distressed Jeans',
+    brand: 'Wrogn',
+    category: 'men',
+    subcategory: 'jeans',
+    price: 1399,
+    originalPrice: 2999,
+    discount: 53,
     rating: 4.3,
-    reviewsCount: 7190,
-    image: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/sari/8/i/d/free-n-3357-laxmipati-sarees-unstitched-original-imahzpu3gggm9zgt.jpeg?q=90',
+    reviewsCount: 312,
+    image: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=800&q=80',
     thumbs: [
-      { label: 'Front View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/sari/c/x/y/free-n-3357-laxmipati-sarees-unstitched-original-imahzpu36pyugtte.jpeg?q=90' },
-      { label: 'Back View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/sari/5/t/t/free-n-3357-laxmipati-sarees-unstitched-original-imahzpu3ynrvuubu.jpeg?q=90' },
-      { label: 'Side View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/sari/u/m/o/free-n-3357-laxmipati-sarees-unstitched-original-imahzpu3czgaen2b.jpeg?q=90' }
+      { label: 'Front View', url: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=800&q=80' }
     ],
-    sizes: ['Free Size'],
-    colors: ['Pink'],
-    tags: ['Festive Wear'],
-    isFlashSale: true,
-    description: 'Elegant silk blend saree with intricate zari work and a contrasting blouse piece. Perfect for weddings and festive occasions.',
-    fabric: 'Silk Blend'
+    sizes: ['28', '30', '32', '34', '36'],
+    colors: ['Medium Blue Fade'],
+    tags: ['Street Style'],
+    isFlashSale: false,
+    stockLeft: 15,
+    description: 'Modern tapered fit jeans with knee whiskering and subtle stone wash treatment for effortless urban styling.',
+    fabric: 'Stretch Cotton Denim'
   },
   {
-    id: 'sm-402',
+    id: 'sm-213',
+    showInDealsOfDay: false,
+    showInAllFashion: true,
+    title: 'Roadster Straight Fit Rugged Washed Jeans',
+    brand: 'Roadster',
+    category: 'men',
+    subcategory: 'jeans',
+    price: 999,
+    originalPrice: 2499,
+    discount: 60,
+    rating: 4.2,
+    reviewsCount: 124,
+    image: 'https://images.unsplash.com/photo-1542272604-780c96856592?auto=format&fit=crop&w=800&q=80',
+    thumbs: [
+      { label: 'Front View', url: 'https://images.unsplash.com/photo-1542272604-780c96856592?auto=format&fit=crop&w=800&q=80' }
+    ],
+    sizes: ['30', '32', '34', '36'],
+    colors: ['Vintage Blue'],
+    tags: ['Casual Wear'],
+    isFlashSale: false,
+    description: 'Rugged straight-fit denim jeans with mid-rise waist, 5 pockets, and reinforced stitching.',
+    fabric: 'Cotton denim'
+  },
+  {
+    id: 'sm-m10',
     showInDealsOfDay: true,
-    showInAllFashion: false,
-    title: 'Girls Festive & Party Angarkha and Sharara Set ',
-    brand: 'Tulasi',
-    category: 'ethnic',
-    price: 326,
-    originalPrice: 1999,
-    discount: 84,
-    rating: 3.9,
-    reviewsCount: 71,
-    image: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/kids-ethnic-set/t/j/s/6-7-years-g136-md-enterprise-original-imahgbg2ydn4thxf.jpeg?q=90',
-    sizes: ['Free Size'],
-    colors: ['Purple'],
-    tags: ['Traditional'],
+    showInAllFashion: true,
+    title: 'Allen Solly Polo Collar Classic Cotton T-Shirt',
+    brand: 'Allen Solly',
+    category: 'men',
+    subcategory: 'tshirts',
+    price: 749,
+    originalPrice: 1499,
+    discount: 50,
+    rating: 4.4,
+    reviewsCount: 680,
+    image: 'https://images.unsplash.com/photo-1581655353564-df123a1eb820?auto=format&fit=crop&w=800&q=80',
+    thumbs: [
+      { label: 'Front View', url: 'https://images.unsplash.com/photo-1581655353564-df123a1eb820?auto=format&fit=crop&w=800&q=80' }
+    ],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    colors: ['Maroon', 'Navy Blue'],
+    tags: ['Best Seller'],
     isFlashSale: true,
-    description: 'Beautifully crafted girls festive and party wear angarkha and sharara set with intricate embroidery and vibrant colors. Perfect for weddings and special occasions.',
-    fabric: 'Angarkha: Cotton Blend, Sharara: Cotton Blend'
+    stockLeft: 18,
+    description: 'Finely spun pique cotton polo t-shirt with signature deer embroidery on chest and ribbed collar.',
+    fabric: '100% Pique Cotton'
+  },
+  {
+    id: 'sm-m11',
+    showInDealsOfDay: false,
+    showInAllFashion: true,
+    title: 'Rare Rabbit Minimalist Graphic Print T-Shirt',
+    brand: 'Rare Rabbit',
+    category: 'men',
+    subcategory: 'tshirts',
+    price: 899,
+    originalPrice: 1999,
+    discount: 55,
+    rating: 4.5,
+    reviewsCount: 340,
+    image: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80',
+    thumbs: [
+      { label: 'Front View', url: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80' }
+    ],
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: ['Off-White', 'Black'],
+    tags: ['Trending'],
+    isFlashSale: false,
+    stockLeft: 10,
+    description: 'Premium heavyweight cotton tee featuring understated typographic art on the chest.',
+    fabric: '220 GSM Bio-Washed Cotton'
+  },
+  {
+    id: 'sm-m12',
+    showInDealsOfDay: false,
+    showInAllFashion: true,
+    title: 'The Indian Garage Co. Oversized Streetwear Tee',
+    brand: 'The Indian Garage Co.',
+    category: 'men',
+    subcategory: 'tshirts',
+    price: 499,
+    originalPrice: 1299,
+    discount: 61,
+    rating: 4.2,
+    reviewsCount: 520,
+    image: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=800&q=80',
+    thumbs: [
+      { label: 'Front View', url: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=800&q=80' }
+    ],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    colors: ['Onyx Black'],
+    tags: ['Under ₹499'],
+    isFlashSale: false,
+    stockLeft: 25,
+    description: 'Drop-shoulder baggy fit streetwear t-shirt with soft hand-feel and pre-shrunk cotton fabric.',
+    fabric: '100% Cotton'
+  },
+  {
+    id: 'sm-m13',
+    showInDealsOfDay: false,
+    showInAllFashion: true,
+    title: 'Wrogn Slim Fit Cargo Active Track Pants',
+    brand: 'Wrogn',
+    category: 'men',
+    subcategory: 'track pants',
+    price: 1199,
+    originalPrice: 2499,
+    discount: 52,
+    rating: 4.4,
+    reviewsCount: 390,
+    image: 'https://images.unsplash.com/photo-1552902865-b72c031ac5ea?auto=format&fit=crop&w=800&q=80',
+    thumbs: [
+      { label: 'Front View', url: 'https://images.unsplash.com/photo-1552902865-b72c031ac5ea?auto=format&fit=crop&w=800&q=80' }
+    ],
+    sizes: ['M', 'L', 'XL', 'XXL'],
+    colors: ['Military Olive', 'Jet Black'],
+    tags: ['Activewear'],
+    isFlashSale: false,
+    stockLeft: 12,
+    description: 'Utility inspired cargo track pants featuring dual thigh pockets, elasticated waistband with drawstrings, and cuffed ankles.',
+    fabric: 'Cotton Lycra Stretch'
+  },
+  {
+    id: 'sm-m14',
+    showInDealsOfDay: false,
+    showInAllFashion: false,
+    title: 'Roadster Cotton Performance Jogger Track Pants',
+    brand: 'Roadster',
+    category: 'men',
+    subcategory: 'track pants',
+    price: 799,
+    originalPrice: 1899,
+    discount: 58,
+    rating: 4.1,
+    reviewsCount: 280,
+    image: 'https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?auto=format&fit=crop&w=800&q=80',
+    thumbs: [
+      { label: 'Front View', url: 'https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?auto=format&fit=crop&w=800&q=80' }
+    ],
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: ['Melange Heather Grey'],
+    tags: ['Comfort Fit'],
+    isFlashSale: false,
+    stockLeft: 16,
+    description: 'Everyday lounge and workout joggers crafted with French Terry cotton for supreme breathability.',
+    fabric: 'French Terry Cotton'
+  },
+  {
+    id: 'sm-m15',
+    showInDealsOfDay: false,
+    showInAllFashion: true,
+    title: 'Allen Solly Solid Sporty Athleisure Track Pants',
+    brand: 'Allen Solly',
+    category: 'men',
+    subcategory: 'track pants',
+    price: 999,
+    originalPrice: 2199,
+    discount: 54,
+    rating: 4.3,
+    reviewsCount: 195,
+    image: 'https://images.unsplash.com/photo-1517438476312-10d79c077509?auto=format&fit=crop&w=800&q=80',
+    thumbs: [
+      { label: 'Front View', url: 'https://images.unsplash.com/photo-1517438476312-10d79c077509?auto=format&fit=crop&w=800&q=80' }
+    ],
+    sizes: ['M', 'L', 'XL', 'XXL'],
+    colors: ['Navy Blue'],
+    tags: ['Athleisure'],
+    isFlashSale: false,
+    stockLeft: 9,
+    description: 'Smart straight-cut track pants with zippered side pockets and quick-drying moisture wicking technology.',
+    fabric: 'Poly-Cotton Blend'
+  },
+
+  // --------------------------------------------------------------------------
+  // WOMEN CATEGORY
+  // Options: dresses, top, jeans, formal, casual, saree
+  // Brands: Zara, Biba, W for Woman, Vero Moda, Forever 21, H&M, Global Desi, MANGO, Tokyo Talkies, Levi's
+  // --------------------------------------------------------------------------
+  {
+    id: 'sm-211',
+    showInDealsOfDay: true,
+    showInAllFashion: true,
+    title: 'Zara Floral Printed A-Line Tiered Maxi Dress',
+    brand: 'Zara',
+    category: 'women',
+    subcategory: 'dresses',
+    price: 1990,
+    originalPrice: 3990,
+    discount: 50,
+    rating: 4.5,
+    reviewsCount: 420,
+    image: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/gown/j/z/p/14-l-half-sleeve-stitched-gown-black-nikkutexttles-18-original-imahnfpeg8hzzzjb.jpeg?q=90',
+    thumbs: [
+      { label: 'Front View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/gown/j/z/p/14-l-half-sleeve-stitched-gown-black-nikkutexttles-18-original-imahnfpeg8hzzzjb.jpeg?q=90' }
+    ],
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    colors: ['Black Floral'],
+    tags: ['Best Seller', 'Summer Edit'],
+    isFlashSale: true,
+    stockLeft: 9,
+    description: 'Breezy bohemian floral maxi dress with subtle puff sleeves, V-neckline, and tiered flowy skirt hem.',
+    fabric: '100% Breathable Chiffon'
+  },
+  {
+    id: 'sm-w02',
+    showInDealsOfDay: false,
+    showInAllFashion: true,
+    title: 'Vero Moda A-Line Midi Cocktail Dress',
+    brand: 'Vero Moda',
+    category: 'women',
+    subcategory: 'dresses',
+    price: 1699,
+    originalPrice: 3499,
+    discount: 51,
+    rating: 4.4,
+    reviewsCount: 230,
+    image: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=800&q=80',
+    thumbs: [
+      { label: 'Front View', url: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=800&q=80' }
+    ],
+    sizes: ['S', 'M', 'L'],
+    colors: ['Emerald Green', 'Wine Red'],
+    tags: ['Party Pick'],
+    isFlashSale: false,
+    stockLeft: 7,
+    description: 'Flattering A-line silhouette midi dress with cinched tie waist and graceful pleated flare.',
+    fabric: 'Viscose Georgette'
+  },
+  {
+    id: 'sm-w03',
+    showInDealsOfDay: false,
+    showInAllFashion: false,
+    title: 'Forever 21 Floral Tiered Wrap Slip Dress',
+    brand: 'Forever 21',
+    category: 'women',
+    subcategory: 'dresses',
+    price: 1299,
+    originalPrice: 2799,
+    discount: 54,
+    rating: 4.2,
+    reviewsCount: 165,
+    image: 'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=800&q=80',
+    thumbs: [
+      { label: 'Front View', url: 'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=800&q=80' }
+    ],
+    sizes: ['XS', 'S', 'M', 'L'],
+    colors: ['Blush Pink'],
+    tags: ['Trending'],
+    isFlashSale: false,
+    stockLeft: 12,
+    description: 'Chic slip dress featuring delicate floral print, adjustable spaghetti straps, and sweetheart neck.',
+    fabric: 'Soft Rayon Blend'
+  },
+  {
+    id: 'sm-109',
+    showInDealsOfDay: false,
+    showInAllFashion: true,
+    title: 'H&M Ribbed Sweetheart Crop Top',
+    brand: 'H&M',
+    category: 'women',
+    subcategory: 'top',
+    price: 699,
+    originalPrice: 1499,
+    discount: 53,
+    rating: 4.3,
+    reviewsCount: 587,
+    image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80',
+    thumbs: [
+      { label: 'Front View', url: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80' }
+    ],
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: ['Rust Brown', 'Cream'],
+    tags: ['Best Seller'],
+    isFlashSale: false,
+    stockLeft: 20,
+    description: 'Fitted sweetheart neckline crop top knitted with stretchy ribbed cotton jersey fabric.',
+    fabric: '95% Cotton, 5% Elastane'
+  },
+  {
+    id: 'sm-w05',
+    showInDealsOfDay: true,
+    showInAllFashion: true,
+    title: 'Tokyo Talkies Peplum Floral Blouse Top',
+    brand: 'Tokyo Talkies',
+    category: 'women',
+    subcategory: 'top',
+    price: 549,
+    originalPrice: 1599,
+    discount: 65,
+    rating: 4.1,
+    reviewsCount: 310,
+    image: 'https://images.unsplash.com/photo-1765365353704-ed0b6e1b11c2?auto=format&fit=crop&w=800&q=80',
+    thumbs: [
+      { label: 'Front View', url: 'https://images.unsplash.com/photo-1765365353704-ed0b6e1b11c2?auto=format&fit=crop&w=800&q=80' }
+    ],
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    colors: ['Baby Pink'],
+    tags: ['Under ₹999'],
+    isFlashSale: true,
+    stockLeft: 14,
+    description: 'Charming peplum flared silhouette top adorned with delicate micro-floral motifs and elasticated waist.',
+    fabric: 'Pure Georgette'
+  },
+  {
+    id: 'sm-w06',
+    showInDealsOfDay: false,
+    showInAllFashion: true,
+    title: 'MANGO Satin Finish Button-Down Collar Top',
+    brand: 'MANGO',
+    category: 'women',
+    subcategory: 'top',
+    price: 1490,
+    originalPrice: 2990,
+    discount: 50,
+    rating: 4.6,
+    reviewsCount: 180,
+    image: 'https://images.unsplash.com/photo-1551803091-e20673f15770?auto=format&fit=crop&w=800&q=80',
+    thumbs: [
+      { label: 'Front View', url: 'https://images.unsplash.com/photo-1551803091-e20673f15770?auto=format&fit=crop&w=800&q=80' }
+    ],
+    sizes: ['S', 'M', 'L'],
+    colors: ['Pearl White'],
+    tags: ['Luxury Top'],
+    isFlashSale: false,
+    stockLeft: 8,
+    description: 'Lustrous satin finish button-down top with relaxed shoulders and fluid drape for day-to-night styling.',
+    fabric: 'Silky Satin'
   },
   {
     id: 'sm-104',
     showInDealsOfDay: false,
     showInAllFashion: true,
-    title: 'Cosmic TrioWomen High-Waist Wide-Leg Denim Jeans',
-    brand: 'Urbanic',
+    title: "Levi's 721 High-Rise Skinny Denim Jeans",
+    brand: "Levi's",
     category: 'women',
-    price: 506,
-    originalPrice: 1599,
-    discount: 68,
-    rating: 3.7,
-    reviewsCount: 151,
-    image: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/jean/y/q/p/30-ctjwpc003-l-cosmic-trio-original-imah3xkzentvghwp.jpeg?q=90',
+    subcategory: 'jeans',
+    price: 2499,
+    originalPrice: 4599,
+    discount: 46,
+    rating: 4.6,
+    reviewsCount: 710,
+    image: 'https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=1200&q=85',
     thumbs: [
-      { label: 'Front View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/jean/y/q/p/30-ctjwpc003-l-cosmic-trio-original-imah3xkzentvghwp.jpeg?q=90' },
-      { label: 'Back View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/jean/o/g/o/30-ctjwpc003-l-cosmic-trio-original-imah3xkzsqh6gz9v.jpeg?q=90' },
-      { label: 'Side View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/jean/a/6/i/30-ctjwpc003-l-cosmic-trio-original-imahf7z4pvnq8nza.jpeg?q=90' }
+      { label: 'Front View', url: 'https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=1200&q=85' }
     ],
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    colors: ['Medium Wash Blue'],
-    tags: ['Trending'],
+    sizes: ['26', '28', '30', '32', '34'],
+    colors: ['Medium Indigo Wash'],
+    tags: ['Iconic Denim'],
     isFlashSale: false,
     stockLeft: 15,
-    description: 'Retro 90s aesthetic high-waist relaxed wide leg denim jeans.',
-    fabric: '98% Cotton, 2% Elastane'
+    description: "Levi's signature 721 high-rise skinny jeans engineered with sculpt fabrication that smooths and holds.",
+    fabric: '70% Cotton, 28% Poly, 2% Elastane'
   },
   {
-    id: 'sm-105',
+    id: 'sm-w08',
+    showInDealsOfDay: false,
+    showInAllFashion: true,
+    title: 'Zara Wide Leg Vintage Washed Denim Jeans',
+    brand: 'Zara',
+    category: 'women',
+    subcategory: 'jeans',
+    price: 2290,
+    originalPrice: 3990,
+    discount: 43,
+    rating: 4.5,
+    reviewsCount: 410,
+    image: 'https://images.unsplash.com/photo-1582418702059-97ebafb35d09?auto=format&fit=crop&w=800&q=80',
+    thumbs: [
+      { label: 'Front View', url: 'https://images.unsplash.com/photo-1582418702059-97ebafb35d09?auto=format&fit=crop&w=800&q=80' }
+    ],
+    sizes: ['26', '28', '30', '32'],
+    colors: ['Light Vintage Blue'],
+    tags: ['Trending'],
+    isFlashSale: false,
+    stockLeft: 11,
+    description: 'High-waist wide-leg silhouette jeans featuring clean hem and non-stretch rigid authentic denim structure.',
+    fabric: '100% Rigid Denim'
+  },
+  {
+    id: 'sm-w09',
     showInDealsOfDay: false,
     showInAllFashion: false,
-    title: 'Men Casual Slim Fit Solid Oxford Shirt',
-    brand: 'Allen Solly',
-    category: 'men',
-    price: 725,
-    originalPrice: 1699,
-    discount: 57,
-    rating: 4.1,
-    reviewsCount: 153,
-    image: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/shirt/7/n/r/40-alsfcu10000735-allen-solly-original-imahpy2evzqjhb2j.jpeg?q=90',
+    title: 'Vero Moda Clean Ankle Length Mom Jeans',
+    brand: 'Vero Moda',
+    category: 'women',
+    subcategory: 'jeans',
+    price: 1799,
+    originalPrice: 3299,
+    discount: 45,
+    rating: 4.2,
+    reviewsCount: 220,
+    image: 'https://images.unsplash.com/photo-1584273143981-41c073dfe8f8?auto=format&fit=crop&w=800&q=80',
     thumbs: [
-      { label: 'Front View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/shirt/7/n/r/40-alsfcu10000735-allen-solly-original-imahpy2evzqjhb2j.jpeg?q=90' },
-      { label: 'Back View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/shirt/m/q/3/40-alsfcu10000735-allen-solly-original-imahpy2eq2hhgdsv.jpeg?q=90' },
-      { label: 'Side View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/shirt/v/j/c/40-alsfcu10000735-allen-solly-original-imahpy2e2szhwfvn.jpeg?q=90' }
+      { label: 'Front View', url: 'https://images.unsplash.com/photo-1584273143981-41c073dfe8f8?auto=format&fit=crop&w=800&q=80' }
     ],
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    colors: ['White'],
-    tags: ['Workwear Essential'],
+    sizes: ['28', '30', '32'],
+    colors: ['Classic Blue'],
+    tags: ['Everyday Comfort'],
     isFlashSale: false,
-    description: 'Tailored slim fit button-down Oxford shirt crafted from breathable cotton weave.',
-    fabric: 'Cotton Blend'
+    stockLeft: 8,
+    description: 'Relaxed through the hip and tapered at the ankle, providing comfortable casual style with vintage edge.',
+    fabric: '98% Cotton, 2% Spandex'
+  },
+  {
+    id: 'sm-212',
+    showInDealsOfDay: false,
+    showInAllFashion: true,
+    title: 'MANGO Tailored Single-Breasted Office Blazer',
+    brand: 'MANGO',
+    category: 'women',
+    subcategory: 'formal',
+    price: 3490,
+    originalPrice: 6990,
+    discount: 50,
+    rating: 4.7,
+    reviewsCount: 195,
+    image: 'https://images.unsplash.com/photo-1591369822096-ffd140ec946f?auto=format&fit=crop&w=800&q=80',
+    thumbs: [
+      { label: 'Front View', url: 'https://images.unsplash.com/photo-1591369822096-ffd140ec946f?auto=format&fit=crop&w=800&q=80' }
+    ],
+    sizes: ['XS', 'S', 'M', 'L'],
+    colors: ['Camel Beige', 'Black'],
+    tags: ['Formal Wear', 'Workwear Essential'],
+    isFlashSale: false,
+    stockLeft: 6,
+    description: 'Sleek structured single-breasted blazer with flap pockets, tortoiseshell buttons, and tailored silhouette.',
+    fabric: 'Crepe Suiting Fabric'
+  },
+  {
+    id: 'sm-w11',
+    showInDealsOfDay: false,
+    showInAllFashion: false,
+    title: 'Zara High-Waist Pleated Formal Work Trousers',
+    brand: 'Zara',
+    category: 'women',
+    subcategory: 'formal',
+    price: 1990,
+    originalPrice: 3490,
+    discount: 43,
+    rating: 4.4,
+    reviewsCount: 260,
+    image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=80',
+    thumbs: [
+      { label: 'Front View', url: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=80' }
+    ],
+    sizes: ['26', '28', '30', '32'],
+    colors: ['Dark Charcoal'],
+    tags: ['Office Formal'],
+    isFlashSale: false,
+    stockLeft: 14,
+    description: 'Crisp front pleats with tapered straight fit. Hook and zip fly fastening for sharp formal presentation.',
+    fabric: 'Poly-Viscose Stretch'
+  },
+  {
+    id: 'sm-w12',
+    showInDealsOfDay: false,
+    showInAllFashion: true,
+    title: 'Forever 21 Women Tailored Formal Cotton Poplin Shirt',
+    brand: 'Forever 21',
+    category: 'women',
+    subcategory: 'formal',
+    price: 1199,
+    originalPrice: 2299,
+    discount: 48,
+    rating: 4.3,
+    reviewsCount: 140,
+    image: 'https://images.unsplash.com/photo-1598554747436-c9293d6a588f?auto=format&fit=crop&w=800&q=80',
+    thumbs: [
+      { label: 'Front View', url: 'https://images.unsplash.com/photo-1598554747436-c9293d6a588f?auto=format&fit=crop&w=800&q=80' }
+    ],
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: ['Pure White'],
+    tags: ['Corporate Essential'],
+    isFlashSale: false,
+    stockLeft: 18,
+    description: 'Crisp cotton poplin tailored women button-down shirt with classic point collar and barrel cuffs.',
+    fabric: '100% Crisp Cotton Poplin'
+  },
+  {
+    id: 'sm-w13',
+    showInDealsOfDay: true,
+    showInAllFashion: true,
+    title: 'Global Desi Boho Printed Casual Cotton Tunic',
+    brand: 'Global Desi',
+    category: 'women',
+    subcategory: 'casual',
+    price: 899,
+    originalPrice: 1999,
+    discount: 55,
+    rating: 4.3,
+    reviewsCount: 380,
+    image: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/top/z/n/6/m-1-singel-buti-01-chhapainama-fashion-original-imahz5bzjwczv852.jpeg?q=90',
+    thumbs: [
+      { label: 'Front View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/top/z/n/6/m-1-singel-buti-01-chhapainama-fashion-original-imahz5bzjwczv852.jpeg?q=90' }
+    ],
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: ['Indigo Block Print'],
+    tags: ['Casual Wear'],
+    isFlashSale: true,
+    stockLeft: 12,
+    description: 'Relaxed bohemian flair tunic with notch collar and three-quarter sleeves for warm summer days.',
+    fabric: '100% Breathable Cotton'
+  },
+  {
+    id: 'sm-w14',
+    showInDealsOfDay: false,
+    showInAllFashion: true,
+    title: 'H&M Women Oversized Casual Linen-Blend Shirt',
+    brand: 'H&M',
+    category: 'women',
+    subcategory: 'casual',
+    price: 1299,
+    originalPrice: 2499,
+    discount: 48,
+    rating: 4.5,
+    reviewsCount: 460,
+    image: 'https://images.unsplash.com/photo-1564257631407-4deb1f99d992?auto=format&fit=crop&w=800&q=80',
+    thumbs: [
+      { label: 'Front View', url: 'https://images.unsplash.com/photo-1564257631407-4deb1f99d992?auto=format&fit=crop&w=800&q=80' }
+    ],
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    colors: ['Sage Mint'],
+    tags: ['Summer Casual'],
+    isFlashSale: false,
+    stockLeft: 15,
+    description: 'Airy linen-cotton blend relaxed shirt with drop shoulders, curved hem, and front patch pocket.',
+    fabric: '55% Linen, 45% Cotton'
+  },
+  {
+    id: 'sm-w15',
+    showInDealsOfDay: false,
+    showInAllFashion: false,
+    title: 'W for Woman Casual Printed Short Kurti Top',
+    brand: 'W for Woman',
+    category: 'women',
+    subcategory: 'casual',
+    price: 999,
+    originalPrice: 2199,
+    discount: 54,
+    rating: 4.2,
+    reviewsCount: 190,
+    image: 'https://images.unsplash.com/photo-1561052623-76bca41705fe?auto=format&fit=crop&w=800&q=80',
+    thumbs: [
+      { label: 'Front View', url: 'https://images.unsplash.com/photo-1561052623-76bca41705fe?auto=format&fit=crop&w=800&q=80' }
+    ],
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: ['Coral Pink'],
+    tags: ['Daily Wear'],
+    isFlashSale: false,
+    stockLeft: 10,
+    description: 'Short tunic kurti paired best with jeans or leggings for casual outings and college days.',
+    fabric: 'Soft Rayon'
+  },
+  {
+    id: 'sm-w16',
+    showInDealsOfDay: true,
+    showInAllFashion: true,
+    title: 'Biba Festive Kanjeevaram Art Silk Saree',
+    brand: 'Biba',
+    category: 'women',
+    subcategory: 'saree',
+    price: 2799,
+    originalPrice: 6999,
+    discount: 60,
+    rating: 4.7,
+    reviewsCount: 520,
+    image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85',
+    thumbs: [
+      { label: 'Kanjeevaram Drape', url: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85' }
+    ],
+    sizes: ['Free Size'],
+    colors: ['Royal Crimson Red'],
+    tags: ['Festive Luxury', 'Best Seller'],
+    isFlashSale: true,
+    stockLeft: 8,
+    description: 'Regal Kanjeevaram art silk saree featuring elaborate golden zari peacock motifs on the pallu and running borders.',
+    fabric: 'Kanjeevaram Art Silk'
+  },
+  {
+    id: 'sm-w17',
+    showInDealsOfDay: false,
+    showInAllFashion: true,
+    title: 'W for Woman Floral Printed Chiffon Saree',
+    brand: 'W for Woman',
+    category: 'women',
+    subcategory: 'saree',
+    price: 1499,
+    originalPrice: 3999,
+    discount: 62,
+    rating: 4.4,
+    reviewsCount: 280,
+    image: 'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1200&q=85',
+    thumbs: [
+      { label: 'Floral Drape', url: 'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1200&q=85' }
+    ],
+    sizes: ['Free Size'],
+    colors: ['Pastel Rose'],
+    tags: ['Party Wear'],
+    isFlashSale: false,
+    stockLeft: 12,
+    description: 'Feather-light printed chiffon saree with scalloped lace border. Includes coordinating unstitched blouse piece.',
+    fabric: 'Lightweight Chiffon'
+  },
+  {
+    id: 'sm-w18',
+    showInDealsOfDay: false,
+    showInAllFashion: false,
+    title: 'Global Desi Handwoven Zari Border Saree',
+    brand: 'Global Desi',
+    category: 'women',
+    subcategory: 'saree',
+    price: 1999,
+    originalPrice: 4999,
+    discount: 60,
+    rating: 4.3,
+    reviewsCount: 175,
+    image: 'https://images.unsplash.com/photo-1609357605129-26f69add5d6e?auto=format&fit=crop&w=1200&q=85',
+    thumbs: [
+      { label: 'Zari Border Drape', url: 'https://images.unsplash.com/photo-1609357605129-26f69add5d6e?auto=format&fit=crop&w=1200&q=85' }
+    ],
+    sizes: ['Free Size'],
+    colors: ['Mustard Gold'],
+    tags: ['Traditional'],
+    isFlashSale: false,
+    stockLeft: 10,
+    description: 'Traditional woven saree with intricate border detailing and elegant motifs for poojas and festivities.',
+    fabric: 'Chanderi Silk Cotton'
+  },
+
+  // --------------------------------------------------------------------------
+  // KIDS CATEGORY
+  // Options: boy, girl, nightwear
+  // Brands: Mothercare, Gini & Jony, FirstCry, Hopscotch, Tommy Kids, U.S. Polo Kids, H&M Kids
+  // --------------------------------------------------------------------------
+  {
+    id: 'sm-107',
+    showInDealsOfDay: true,
+    showInAllFashion: true,
+    title: 'Tommy Kids Boys Cotton Striped Polo & Shorts Set',
+    brand: 'Tommy Kids',
+    category: 'kids',
+    subcategory: 'boy',
+    price: 1299,
+    originalPrice: 2799,
+    discount: 54,
+    rating: 4.6,
+    reviewsCount: 310,
+    image: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/kids-apparel-combo/9/m/d/3-4-years-nttz04-nuttiezzz-original-imahqtgarqz8yhyq.jpeg?q=90',
+    thumbs: [
+      { label: 'Front View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/kids-apparel-combo/9/m/d/3-4-years-nttz04-nuttiezzz-original-imahqtgarqz8yhyq.jpeg?q=90' }
+    ],
+    sizes: ['2-3 years', '4-5 years', '6-7 years', '8-9 years', '10-12 years'],
+    colors: ['Navy Striped'],
+    tags: ['Best Seller', 'Boys Set'],
+    isFlashSale: true,
+    stockLeft: 12,
+    description: 'Dapper 2-piece set for boys including a smart cotton polo tee and matching tailored chino shorts.',
+    fabric: '100% Breathable Combed Cotton'
+  },
+  {
+    id: 'sm-k02',
+    showInDealsOfDay: false,
+    showInAllFashion: true,
+    title: 'U.S. Polo Kids Boys Graphic Crewneck T-Shirt',
+    brand: 'U.S. Polo Kids',
+    category: 'kids',
+    subcategory: 'boy',
+    price: 599,
+    originalPrice: 1299,
+    discount: 54,
+    rating: 4.4,
+    reviewsCount: 220,
+    image: 'https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=800&q=80',
+    thumbs: [
+      { label: 'Front View', url: 'https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=800&q=80' }
+    ],
+    sizes: ['3-4 years', '5-6 years', '7-8 years', '9-10 years'],
+    colors: ['Cobalt Blue'],
+    tags: ['Everyday Wear'],
+    isFlashSale: false,
+    stockLeft: 18,
+    description: 'Sporty active graphic tee with signature polo badge and bio-washed gentle cotton.',
+    fabric: '100% Cotton'
+  },
+  {
+    id: 'sm-k03',
+    showInDealsOfDay: false,
+    showInAllFashion: false,
+    title: 'Gini & Jony Boys Stretch Denim Jeans',
+    brand: 'Gini & Jony',
+    category: 'kids',
+    subcategory: 'boy',
+    price: 899,
+    originalPrice: 1999,
+    discount: 55,
+    rating: 4.3,
+    reviewsCount: 140,
+    image: 'https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=800&q=80',
+    thumbs: [
+      { label: 'Front View', url: 'https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=800&q=80' }
+    ],
+    sizes: ['4-5 years', '6-7 years', '8-9 years', '10-12 years'],
+    colors: ['Dark Wash Indigo'],
+    tags: ['Durable'],
+    isFlashSale: false,
+    stockLeft: 10,
+    description: 'Hard-wearing stretch denim jeans featuring adjustable inner waistband elastic for growing boys.',
+    fabric: 'Cotton Denim Stretch'
+  },
+  {
+    id: 'sm-108',
+    showInDealsOfDay: true,
+    showInAllFashion: true,
+    title: 'Mothercare Girls Floral Tiered Party Frock',
+    brand: 'Mothercare',
+    category: 'kids',
+    subcategory: 'girl',
+    price: 1499,
+    originalPrice: 2999,
+    discount: 50,
+    rating: 4.6,
+    reviewsCount: 380,
+    image: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/kids-dress/e/8/d/18-24-months-frock-mom-dad-stgarment-resized-original-imah9y4gpjpeb2ta.jpeg?q=90',
+    thumbs: [
+      { label: 'Front View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/kids-dress/e/8/d/18-24-months-frock-mom-dad-stgarment-resized-original-imah9y4gpjpeb2ta.jpeg?q=90' }
+    ],
+    sizes: ['2-3 years', '4-5 years', '6-7 years', '8-9 years'],
+    colors: ['Blossom Pink'],
+    tags: ['Best Seller', 'Party Frock'],
+    isFlashSale: true,
+    stockLeft: 8,
+    description: 'Charming festive dress for girls with delicate floral lace overlay, satin sash ribbon bow, and cotton lining.',
+    fabric: 'Cotton Lining with Net'
+  },
+  {
+    id: 'sm-k05',
+    showInDealsOfDay: false,
+    showInAllFashion: true,
+    title: 'FirstCry Girls Embroidered Cotton Sundress',
+    brand: 'FirstCry',
+    category: 'kids',
+    subcategory: 'girl',
+    price: 799,
+    originalPrice: 1799,
+    discount: 56,
+    rating: 4.3,
+    reviewsCount: 195,
+    image: 'https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?auto=format&fit=crop&w=800&q=80',
+    thumbs: [
+      { label: 'Front View', url: 'https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?auto=format&fit=crop&w=800&q=80' }
+    ],
+    sizes: ['1-2 years', '3-4 years', '5-6 years'],
+    colors: ['Sunny Yellow'],
+    tags: ['Casual Dress'],
+    isFlashSale: false,
+    stockLeft: 14,
+    description: 'Lightweight summer frock with embroidered hemline and soft ruffled sleeves for active play.',
+    fabric: '100% Breathable Cotton'
+  },
+  {
+    id: 'sm-k06',
+    showInDealsOfDay: false,
+    showInAllFashion: false,
+    title: 'Hopscotch Girls Embellished Tutu Party Jumpsuit',
+    brand: 'Hopscotch',
+    category: 'kids',
+    subcategory: 'girl',
+    price: 999,
+    originalPrice: 2299,
+    discount: 57,
+    rating: 4.4,
+    reviewsCount: 155,
+    image: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=1200&q=85',
+    thumbs: [
+      { label: 'Party Outfit', url: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=1200&q=85' }
+    ],
+    sizes: ['3-4 years', '5-6 years', '7-8 years'],
+    colors: ['Lavender Purple'],
+    tags: ['Trending'],
+    isFlashSale: false,
+    stockLeft: 9,
+    description: 'Eye-catching party jumpsuit with sparkling sequin yoke and fluffy tulle layered waist.',
+    fabric: 'Georgette & Tulle'
+  },
+  {
+    id: 'sm-k07',
+    showInDealsOfDay: false,
+    showInAllFashion: true,
+    title: 'Mothercare Kids Pure Organic Cotton Pajama Set',
+    brand: 'Mothercare',
+    category: 'kids',
+    subcategory: 'nightwear',
+    price: 699,
+    originalPrice: 1499,
+    discount: 53,
+    rating: 4.7,
+    reviewsCount: 410,
+    image: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/kids-apparel-combo/9/m/d/3-4-years-nttz04-nuttiezzz-original-imahqtgarqz8yhyq.jpeg?q=90',
+    thumbs: [
+      { label: 'Front View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/kids-apparel-combo/9/m/d/3-4-years-nttz04-nuttiezzz-original-imahqtgarqz8yhyq.jpeg?q=90' }
+    ],
+    sizes: ['2-3 years', '4-5 years', '6-7 years', '8-9 years'],
+    colors: ['Cloud Blue'],
+    tags: ['Sleepwear', 'Organic Cotton'],
+    isFlashSale: false,
+    stockLeft: 22,
+    description: 'Cozy two-piece sleepwear suit made with certified skin-safe organic cotton. Soft elasticated cuffs prevent riding up.',
+    fabric: '100% Organic Cotton'
+  },
+  {
+    id: 'sm-k08',
+    showInDealsOfDay: false,
+    showInAllFashion: true,
+    title: 'H&M Kids Fun Dinosaur Printed Sleepwear Suit',
+    brand: 'H&M Kids',
+    category: 'kids',
+    subcategory: 'nightwear',
+    price: 899,
+    originalPrice: 1699,
+    discount: 47,
+    rating: 4.5,
+    reviewsCount: 290,
+    image: 'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=1200&q=85',
+    thumbs: [
+      { label: 'Sleepwear Front', url: 'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=1200&q=85' }
+    ],
+    sizes: ['2-3 years', '4-5 years', '6-7 years'],
+    colors: ['Mint Green'],
+    tags: ['Cute Sleepwear'],
+    isFlashSale: false,
+    stockLeft: 16,
+    description: 'Fun glow-in-the-dark dinosaur illustration print on super soft brushed cotton jersey.',
+    fabric: 'Brushed Cotton Jersey'
+  },
+  {
+    id: 'sm-k09',
+    showInDealsOfDay: true,
+    showInAllFashion: false,
+    title: 'FirstCry Starry Night Soft Cotton Sleep Suit (2-Pack)',
+    brand: 'FirstCry',
+    category: 'kids',
+    subcategory: 'nightwear',
+    price: 549,
+    originalPrice: 1199,
+    discount: 54,
+    rating: 4.4,
+    reviewsCount: 340,
+    image: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=1200&q=85',
+    thumbs: [
+      { label: 'Cotton Sleepsuit', url: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=1200&q=85' }
+    ],
+    sizes: ['1-2 years', '2-3 years', '3-4 years'],
+    colors: ['Starry Grey & White'],
+    tags: ['Value Pack'],
+    isFlashSale: true,
+    stockLeft: 20,
+    description: 'Pack of two all-night comfortable sleep suits with snap buttons for easy midnight changes.',
+    fabric: '100% Interlock Cotton'
+  },
+
+  // --------------------------------------------------------------------------
+  // FOOTWEAR CATEGORY
+  // Options: men, women, formal, casual, sports
+  // Brands: Nike, Adidas, Puma, Woodland, Bata, Red Tape, Clarks, Skechers
+  // --------------------------------------------------------------------------
+  {
+    id: 'sm-301',
+    showInDealsOfDay: true,
+    showInAllFashion: true,
+    title: 'Woodland Brown Leather Rugged Men Boots',
+    brand: 'Woodland',
+    category: 'footwear',
+    subcategory: 'men',
+    price: 3295,
+    originalPrice: 4995,
+    discount: 34,
+    rating: 4.6,
+    reviewsCount: 1840,
+    image: 'https://images.unsplash.com/photo-1520639888713-7851133b1ed0?auto=format&fit=crop&w=1200&q=85',
+    thumbs: [
+      { label: 'Rugged Boot Profile', url: 'https://images.unsplash.com/photo-1520639888713-7851133b1ed0?auto=format&fit=crop&w=1200&q=85' },
+      { label: 'Nubuck Leather Texture', url: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=1200&q=85' }
+    ],
+    sizes: ['UK 7', 'UK 8', 'UK 9', 'UK 10', 'UK 11'],
+    colors: ['Camel Brown'],
+    tags: ['Rugged Outdoor', 'Best Seller'],
+    isFlashSale: true,
+    stockLeft: 11,
+    description: 'Iconic Woodland nubuck leather high-ankle outdoor boots with deep-tread grooved rubber outsole.',
+    fabric: 'Genuine Nubuck Leather'
+  },
+  {
+    id: 'sm-f02',
+    showInDealsOfDay: false,
+    showInAllFashion: true,
+    title: 'Bata Men Classic Derby Brogue Shoes',
+    brand: 'Bata',
+    category: 'footwear',
+    subcategory: 'men',
+    price: 1499,
+    originalPrice: 2999,
+    discount: 50,
+    rating: 4.3,
+    reviewsCount: 620,
+    image: 'https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?auto=format&fit=crop&w=1200&q=85',
+    thumbs: [
+      { label: 'Classic Brogue Punching', url: 'https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?auto=format&fit=crop&w=1200&q=85' }
+    ],
+    sizes: ['UK 6', 'UK 7', 'UK 8', 'UK 9', 'UK 10'],
+    colors: ['Tan Brown', 'Black'],
+    tags: ['Workwear'],
+    isFlashSale: false,
+    stockLeft: 15,
+    description: 'Traditional brogue punching on burnished synthetic leather upper with cushioned insole for day-long office comfort.',
+    fabric: 'Synthetic Leather & TPR Sole'
+  },
+  {
+    id: 'sm-202',
+    showInDealsOfDay: false,
+    showInAllFashion: true,
+    title: 'Clarks Women Comfort Block Heel Sandals',
+    brand: 'Clarks',
+    category: 'footwear',
+    subcategory: 'women',
+    price: 2499,
+    originalPrice: 4999,
+    discount: 50,
+    rating: 4.5,
+    reviewsCount: 390,
+    image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=1200&q=85',
+    thumbs: [
+      { label: 'Block Heel Profile', url: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=1200&q=85' }
+    ],
+    sizes: ['UK 4', 'UK 5', 'UK 6', 'UK 7'],
+    colors: ['Nude Blush', 'Black'],
+    tags: ['Women Comfort'],
+    isFlashSale: false,
+    stockLeft: 8,
+    description: 'Elegant 2-inch block heel sandals with Clarks Cushion Soft padding and adjustable ankle strap.',
+    fabric: 'Faux Suede Leather'
+  },
+  {
+    id: 'sm-f04',
+    showInDealsOfDay: true,
+    showInAllFashion: false,
+    title: 'Bata Women Comfy Memory Foam Ballerinas',
+    brand: 'Bata',
+    category: 'footwear',
+    subcategory: 'women',
+    price: 799,
+    originalPrice: 1599,
+    discount: 50,
+    rating: 4.2,
+    reviewsCount: 510,
+    image: 'https://images.unsplash.com/photo-1535043934128-cf0b28d52f95?auto=format&fit=crop&w=1200&q=85',
+    thumbs: [
+      { label: 'Ballerina Flat Profile', url: 'https://images.unsplash.com/photo-1535043934128-cf0b28d52f95?auto=format&fit=crop&w=1200&q=85' }
+    ],
+    sizes: ['UK 4', 'UK 5', 'UK 6', 'UK 7', 'UK 8'],
+    colors: ['Cherry Red', 'Black'],
+    tags: ['Under ₹999'],
+    isFlashSale: true,
+    stockLeft: 22,
+    description: 'Slip-on flat ballerinas equipped with high-density memory foam insole and bow toe accent.',
+    fabric: 'Soft Synthetic Fabric'
+  },
+  {
+    id: 'sm-203',
+    showInDealsOfDay: false,
+    showInAllFashion: true,
+    title: 'Red Tape Men Formal Leather Oxford Shoes',
+    brand: 'Red Tape',
+    category: 'footwear',
+    subcategory: 'formal',
+    price: 1799,
+    originalPrice: 4299,
+    discount: 58,
+    rating: 4.4,
+    reviewsCount: 880,
+    image: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/shoe/w/6/2/8-accs-5035-black-8-allen-cooper-black-original-imahg3cymbebbhhc.jpeg?q=90',
+    thumbs: [
+      { label: 'Formal Oxford Profile', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/shoe/w/6/2/8-accs-5035-black-8-allen-cooper-black-original-imahg3cymbebbhhc.jpeg?q=90' }
+    ],
+    sizes: ['UK 7', 'UK 8', 'UK 9', 'UK 10'],
+    colors: ['Polished Black', 'Cognac Brown'],
+    tags: ['Executive Oxford', 'Formal Shoes'],
+    isFlashSale: false,
+    stockLeft: 14,
+    description: 'Classic closed-lacing Oxford formal dress shoes with clean toe cap and anti-slip rubberised outsole.',
+    fabric: '100% Genuine Leather'
+  },
+  {
+    id: 'sm-f06',
+    showInDealsOfDay: false,
+    showInAllFashion: false,
+    title: 'Clarks Formal Black Leather Slip-On Dress Shoes',
+    brand: 'Clarks',
+    category: 'footwear',
+    subcategory: 'formal',
+    price: 3199,
+    originalPrice: 5999,
+    discount: 47,
+    rating: 4.7,
+    reviewsCount: 310,
+    image: 'https://images.unsplash.com/photo-1533867617858-e7b97e060509?auto=format&fit=crop&w=1200&q=85',
+    thumbs: [
+      { label: 'Black Loafer Profile', url: 'https://images.unsplash.com/photo-1533867617858-e7b97e060509?auto=format&fit=crop&w=1200&q=85' }
+    ],
+    sizes: ['UK 7', 'UK 8', 'UK 9', 'UK 10'],
+    colors: ['Classic Black'],
+    tags: ['Luxury Formal'],
+    isFlashSale: false,
+    stockLeft: 7,
+    description: 'Slip-on formal loafers with hidden elastic side gussets for effortless wear and timeless executive appeal.',
+    fabric: 'Premium Full-Grain Leather'
   },
   {
     id: 'sm-106',
     showInDealsOfDay: false,
     showInAllFashion: true,
-    title: 'Unisex Retro Chunky White Lifestyle Sneakers',
+    title: 'Puma Smashic Retro Canvas Lifestyle Sneakers',
     brand: 'Puma',
     category: 'footwear',
+    subcategory: 'casual',
     price: 1869,
     originalPrice: 5499,
     discount: 66,
@@ -188,345 +1239,378 @@ const PRODUCTS_DATA = [
     reviewsCount: 4500,
     image: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/shoe/e/h/3/-original-imahrrjhwaqft4rf.jpeg?q=90',
     thumbs: [
-      { label: 'Top\Back View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/shoe/3/f/f/-original-imahpg6q8kwkedgd.jpeg?q=90' },
-      { label: 'Side View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/shoe/e/h/3/-original-imahrrjhwaqft4rf.jpeg?q=90' }
+      { label: 'Puma Sneaker Profile', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/shoe/e/h/3/-original-imahrrjhwaqft4rf.jpeg?q=90' }
     ],
     sizes: ['UK 6', 'UK 7', 'UK 8', 'UK 9', 'UK 10'],
-    colors: ['White-Dark'],
-    tags: ['Best Seller'],
+    colors: ['White-Navy'],
+    tags: ['Best Seller', 'Sneakers'],
     isFlashSale: false,
-    stockLeft: 5,
-    description: 'Chunky dad sneakers with cushioned ortholite sole and lightweight breathable mesh upper.',
+    stockLeft: 18,
+    description: 'Chunky tennis-inspired retro sneakers with cushioned SoftFoam+ sockliner and durable rubber cupsole.',
     fabric: 'Synthetic Leather & Mesh'
   },
   {
-    id: 'sm-301',
-    showInDealsOfDay: true,
+    id: 'sm-f08',
+    showInDealsOfDay: false,
     showInAllFashion: true,
-    title: 'Men Slippers',
-    brand: 'HRX',
+    title: 'Skechers GOwalk Memory Foam Slip-On Casual Shoes',
+    brand: 'Skechers',
     category: 'footwear',
-    price: 628,
-    originalPrice: 2399,
-    discount: 74,
-    rating: 4.1,
-    reviewsCount: 4428,
-    image: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/slipper-flip-flop/2/q/5/-watermarked-original-imahmd3xtfddu6gt.jpeg?q=90',
+    subcategory: 'casual',
+    price: 2799,
+    originalPrice: 4999,
+    discount: 44,
+    rating: 4.6,
+    reviewsCount: 1120,
+    image: 'https://images.unsplash.com/photo-1560769629-975ec94e6a86?auto=format&fit=crop&w=1200&q=85',
     thumbs: [
-      { label: 'Top\Back View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/slipper-flip-flop/w/z/u/-original-imahmd3zgzdhcxvr.jpeg?q=90' },
-      { label: 'Side View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/slipper-flip-flop/j/m/q/-original-imahmd3zmvqcbqkh.jpeg?q=90' }
+      { label: 'Slip-On Comfort Profile', url: 'https://images.unsplash.com/photo-1560769629-975ec94e6a86?auto=format&fit=crop&w=1200&q=85' },
+      { label: 'Breathable Mesh Upper', url: 'https://images.unsplash.com/photo-1595341888016-a392ef81b7de?auto=format&fit=crop&w=1200&q=85' }
     ],
     sizes: ['UK 6', 'UK 7', 'UK 8', 'UK 9', 'UK 10'],
-    colors: ['Grey'],
-    tags: ['Branded Footwear', 'Best Seller'],
+    colors: ['Charcoal Grey'],
+    tags: ['Ultra Comfort'],
     isFlashSale: false,
-    stockLeft: 522,
-    description: 'Lightweight and durable slip-on slippers with cushioned footbed and anti-slip sole for all-day comfort.',
-    fabric: 'Synthetic Leather & Rubber Sole'
+    stockLeft: 12,
+    description: 'High-rebound cushioning with responsive ULTRA GO technology and breathable athletic mesh upper.',
+    fabric: 'Athletic Mesh Knit'
   },
   {
-    id: 'sm-107',
+    id: 'sm-201',
+    showInDealsOfDay: true,
+    showInAllFashion: true,
+    title: 'Nike Air Zoom Pegasus Running Sports Shoes',
+    brand: 'Nike',
+    category: 'footwear',
+    subcategory: 'sports',
+    price: 4295,
+    originalPrice: 7995,
+    discount: 46,
+    rating: 4.8,
+    reviewsCount: 3200,
+    image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=85',
+    thumbs: [
+      { label: 'Nike Profile with Swoosh', url: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=85' },
+      { label: 'Side Angle Running Fit', url: 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?auto=format&fit=crop&w=1200&q=85' },
+      { label: 'Air Zoom Sole Cushion', url: 'https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=1200&q=85' },
+      { label: 'Top-Down Lacing View', url: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=1200&q=85' }
+    ],
+    sizes: ['UK 7', 'UK 8', 'UK 9', 'UK 10'],
+    colors: ['Volt Grey & White'],
+    tags: ['Pro Running', 'Best Seller'],
+    isFlashSale: true,
+    stockLeft: 8,
+    description: 'Signature Nike Air Zoom unit in forefoot delivers energetic bounce. Engineered mesh for maximum airflow during marathons.',
+    fabric: 'Engineered Breathable Mesh'
+  },
+  {
+    id: 'sm-f10',
     showInDealsOfDay: false,
     showInAllFashion: true,
-    title: 'Boys Full Sleeve Cotton Dress Shirt & Pant Set for Kids',
-    brand: 'NUTTIEZZZ',
-    category: 'kids',
-    price: 900,
-    originalPrice: 3999,
-    discount: 77,
-    rating: 3.8,
-    reviewsCount: 118,
-    image: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/kids-apparel-combo/9/m/d/3-4-years-nttz04-nuttiezzz-original-imahqtgarqz8yhyq.jpeg?q=90',
+    title: 'Adidas Ultraboost Lightweight Sports Shoes',
+    brand: 'Adidas',
+    category: 'footwear',
+    subcategory: 'sports',
+    price: 3899,
+    originalPrice: 7599,
+    discount: 49,
+    rating: 4.7,
+    reviewsCount: 2450,
+    image: 'https://images.unsplash.com/photo-1587563871167-1ee9c731aefb?auto=format&fit=crop&w=1200&q=85',
     thumbs: [
-      { label: 'Front View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/kids-apparel-combo/9/m/d/3-4-years-nttz04-nuttiezzz-original-imahqtgarqz8yhyq.jpeg?q=90' },
-      { label: 'Side View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/kids-apparel-combo/a/2/l/3-4-years-nttz04-nuttiezzz-original-imahqtgarhxanj8c.jpeg?q=90' },
-      { label: 'Back View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/kids-apparel-combo/p/q/0/2-3-years-nttz04-nuttiezzz-original-imahqtgazdwfa8c6.jpeg?q=90' }
+      { label: 'Adidas 3-Stripes Angle', url: 'https://images.unsplash.com/photo-1587563871167-1ee9c731aefb?auto=format&fit=crop&w=1200&q=85' },
+      { label: 'Ultraboost Sole Profile', url: 'https://images.unsplash.com/photo-1518002171953-a080ee817e1f?auto=format&fit=crop&w=1200&q=85' },
+      { label: 'Front Mesh Upper', url: 'https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?auto=format&fit=crop&w=1200&q=85' }
     ],
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    colors: ['checked'],
-    tags: ['Best Seller'],
+    sizes: ['UK 7', 'UK 8', 'UK 9', 'UK 10'],
+    colors: ['Core Black', 'Solar Red'],
+    tags: ['Boost Technology'],
     isFlashSale: false,
-    stockLeft: 5,
-    description: 'Classic Kids Dress Shirt & Pant Set for Boys, perfect for formal occasions and school events. Made with soft, breathable cotton for all-day comfort.',
-    fabric: 'Cotton'
+    stockLeft: 10,
+    description: 'Hundreds of Boost capsules fused together to deliver incredible energy return on every running stride.',
+    fabric: 'Primeknit Textile Upper'
   },
-  {
-    id: 'sm-108',
-    showInDealsOfDay: false,
-    showInAllFashion: false,
-    title: 'STGarment Girls Above Knee Casual Dress',
-    brand: 'NAMMABABY',
-    category: 'kids',
-    price: 227,
-    originalPrice: 1999,
-    discount: 83,
-    rating: 4.2,
-    reviewsCount: 32,
-    image: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/kids-dress/e/8/d/18-24-months-frock-mom-dad-stgarment-resized-original-imah9y4gpjpeb2ta.jpeg?q=90',
-    thumbs: [
-      { label: 'Front View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/kids-dress/e/8/d/18-24-months-frock-mom-dad-stgarment-resized-original-imah9y4gpjpeb2ta.jpeg?q=90' },
-      { label: 'Back View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/kids-dress/z/k/q/18-24-months-frock-mom-dad-stgarment-original-imah9y4gfsgnznyq.jpeg?q=90' },
-      { label: 'Zoom View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/kids-dress/b/n/g/18-24-months-frock-mom-dad-stgarment-original-imah9y4gfbgk3yzk.jpeg?q=90' }
-    ],
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    colors: ['White-Pink'],
-    tags: ['Cheaper'],
-    isFlashSale: false,
-    stockLeft: 5,
-    description: 'Adorable Girls Casual Dress with a playful design, perfect for everyday wear and special occasions. Made with soft, breathable fabric for comfort and style.',
-    fabric: 'cotton'
-  },
-  {
-    id: 'sm-109',
-    showInDealsOfDay: false,
-    showInAllFashion: true,
-    title: 'Chapainama fashion Women Brown Top',
-    brand: 'urbanic',
-    category: 'women',
-    price: 279,
-    originalPrice: 2199,
-    discount: 87,
-    rating: 4.1,
-    reviewsCount: 587,
-    image: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/top/z/n/6/m-1-singel-buti-01-chhapainama-fashion-original-imahz5bzjwczv852.jpeg?q=90',
-    thumbs: [
-      { label: 'Front View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/top/h/u/n/s-1-singel-buti-01-chhapainama-fashion-original-imahz5bzky94epru.jpeg?q=90' },
-      { label: 'Back View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/top/3/6/s/m-1-singel-buti-01-chhapainama-fashion-original-imahz5bzgnz7jcme.jpeg?q=90' },
-      { label: 'Side View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/top/z/n/6/m-1-singel-buti-01-chhapainama-fashion-original-imahz5bzjwczv852.jpeg?q=90' }
-    ],
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    colors: ['Rust'],
-    tags: ['Best Seller'],
-    isFlashSale: false,
-    stockLeft: 32,
-    description: 'Stylish and comfortable printed top for women, perfect for casual outings and everyday wear. Made with high-quality fabric for a flattering fit.',
-    fabric: 'cotton'
-  },
+
+  // --------------------------------------------------------------------------
+  // ETHNIC CATEGORY
+  // Options: men, women, kids
+  // Brands: Manyavar, FabIndia, Laxmipati sarees, Mohey, Biba Ethnic, Soch, Kalki Fashion
+  // --------------------------------------------------------------------------
   {
     id: 'sm-110',
     showInDealsOfDay: true,
     showInAllFashion: true,
-    title: 'House of Pataudi Kurta for Men',
-    brand: 'urbanic',
+    title: 'Manyavar Regal Jacquard Sherwani & Kurta Set',
+    brand: 'Manyavar',
     category: 'ethnic',
-    price: 1371,
-    originalPrice: 4499,
-    discount: 70,
-    rating: 3.5,
-    reviewsCount: 11,
+    subcategory: 'men',
+    price: 4999,
+    originalPrice: 11999,
+    discount: 58,
+    rating: 4.8,
+    reviewsCount: 740,
     image: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/kurta/v/j/v/s-hopmk451-house-of-pataudi-original-imahggvrdbd9ezaz.jpeg?q=90',
     thumbs: [
-      { label: 'Front View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/kurta/u/f/q/s-hopmk451-house-of-pataudi-original-imahggvrxbnjxbk7.jpeg?q=90' },
-      { label: 'Back View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/kurta/5/r/o/s-hopmk451-house-of-pataudi-original-imahggvrezk36yyb.jpeg?q=90' },
-      { label: 'Side View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/kurta/p/e/o/xxl-hopmk451-house-of-pataudi-original-imahggvr3qwafmcm.jpeg?q=90' }
+      { label: 'Front View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/kurta/v/j/v/s-hopmk451-house-of-pataudi-original-imahggvrdbd9ezaz.jpeg?q=90' }
     ],
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    colors: ['Black'],
-    tags: ['Festive Wear'],
-    isFlashSale: false,
-    stockLeft: 32,
-    description: 'Elegant and traditional embroidered kurta for men, perfect for festive occasions and cultural events. Made with soft viscose rayon for comfort and style.',
-    fabric: 'cotton'
+    colors: ['Royal Gold & Ivory'],
+    tags: ['Wedding Collection', 'Best Seller'],
+    isFlashSale: true,
+    stockLeft: 7,
+    description: 'Magnificent brocade jacquard sherwani set tailored with mandarin collar, ornate metallic buttons, and matching churidar.',
+    fabric: 'Brocade Silk Blend'
   },
   {
-    id: 'sm-201',
+    id: 'sm-e02',
+    showInDealsOfDay: false,
+    showInAllFashion: true,
+    title: 'FabIndia Men Embroidered Silk Kurta Pajama',
+    brand: 'FabIndia',
+    category: 'ethnic',
+    subcategory: 'men',
+    price: 1890,
+    originalPrice: 3790,
+    discount: 50,
+    rating: 4.5,
+    reviewsCount: 390,
+    image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=85',
+    thumbs: [
+      { label: 'Silk Kurta Profile', url: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=85' }
+    ],
+    sizes: ['M', 'L', 'XL', 'XXL'],
+    colors: ['Tussar Beige'],
+    tags: ['Festive Classic'],
+    isFlashSale: false,
+    stockLeft: 12,
+    description: 'Handcrafted tussar silk kurta featuring traditional thread embroidery along the placket, paired with cotton pajama.',
+    fabric: 'Tussar Silk & Cotton'
+  },
+  {
+    id: 'sm-e03',
     showInDealsOfDay: false,
     showInAllFashion: false,
-    title: 'Men Air Cushion Breathable Running Sports Shoes',
-    brand: 'Reebok',
-    category: 'footwear',
-    price: 1231,
-    originalPrice: 2799,
-    discount: 56,
-    rating: 4.3,
-    reviewsCount: 540,
-    image: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/shoe/r/5/7/-watermarked-original-imahjgs2fwzggxuv.jpeg?q=90',
+    title: 'Manyavar Silk Blend Festive Nehru Jacket Set',
+    brand: 'Manyavar',
+    category: 'ethnic',
+    subcategory: 'men',
+    price: 2999,
+    originalPrice: 5999,
+    discount: 50,
+    rating: 4.6,
+    reviewsCount: 210,
+    image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1200&q=85',
     thumbs: [
-      { label: 'Front/Back View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/shoe/r/b/q/-original-imahjgs2yyndwtht.jpeg?q=90' },
-      { label: 'Side View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/shoe/r/5/7/-watermarked-original-imahjgs2fwzggxuv.jpeg?q=90' }
+      { label: 'Nehru Jacket Fit', url: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1200&q=85' }
     ],
-    sizes: ['UK 7', 'UK 8', 'UK 9', 'UK 10'],
-    colors: ['White'],
-    tags: ['Trending', 'Sports'],
+    sizes: ['38', '40', '42', '44'],
+    colors: ['Forest Green'],
+    tags: ['Festive Edit'],
+    isFlashSale: false,
+    stockLeft: 9,
+    description: 'Sleeveless woven Nehru jacket featuring welt pockets and metallic buttons, worn over fine solid kurta.',
+    fabric: 'Silk Blend'
+  },
+  {
+    id: 'sm-103',
+    showInDealsOfDay: true,
+    showInAllFashion: true,
+    title: 'FabIndia Authentic Woven Banarasi Art Saree',
+    brand: 'FabIndia',
+    category: 'ethnic',
+    subcategory: 'women',
+    price: 1578,
+    originalPrice: 4999,
+    discount: 68,
+    rating: 4.5,
+    reviewsCount: 890,
+    image: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/sari/g/z/i/free-red-slvr-pln-bhm-kathla-unstitched-original-imahmbabfeqdnfet.jpeg?q=90',
+    thumbs: [
+      { label: 'Front View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/sari/g/z/i/free-red-slvr-pln-bhm-kathla-unstitched-original-imahmbabfeqdnfet.jpeg?q=90' }
+    ],
+    sizes: ['Free Size'],
+    colors: ['Royal Crimson Red'],
+    tags: ['Luxury Ethnic', 'Best Seller'],
+    isFlashSale: true,
+    stockLeft: 14,
+    description: 'Authentic Banarasi Art Saree featuring regal floral motifs and gold zari border work. Includes unstitched blouse piece.',
+    fabric: 'Banarasi Art Silk'
+  },
+  {
+    id: 'sm-401',
+    showInDealsOfDay: true,
+    showInAllFashion: true,
+    title: 'Laxmipati Sarees Pure Silk Blend Saree',
+    brand: 'Laxmipati sarees',
+    category: 'ethnic',
+    subcategory: 'women',
+    price: 3539,
+    originalPrice: 14999,
+    discount: 76,
+    rating: 4.7,
+    reviewsCount: 7190,
+    image: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/sari/8/i/d/free-n-3357-laxmipati-sarees-unstitched-original-imahzpu3gggm9zgt.jpeg?q=90',
+    thumbs: [
+      { label: 'Front View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/sari/8/i/d/free-n-3357-laxmipati-sarees-unstitched-original-imahzpu3gggm9zgt.jpeg?q=90' }
+    ],
+    sizes: ['Free Size'],
+    colors: ['Festive Rose Pink'],
+    tags: ['Festive Wear', 'Wedding Special'],
+    isFlashSale: true,
+    stockLeft: 8,
+    description: 'Exquisite silk blend saree with intricate zari work and contrasting designer blouse piece.',
+    fabric: 'Silk Blend'
+  },
+  {
+    id: 'sm-e06',
+    showInDealsOfDay: false,
+    showInAllFashion: true,
+    title: 'Mohey Heavily Embroidered Bridal Lehenga Choli',
+    brand: 'Mohey',
+    category: 'ethnic',
+    subcategory: 'women',
+    price: 6999,
+    originalPrice: 15999,
+    discount: 56,
+    rating: 4.9,
+    reviewsCount: 620,
+    image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80',
+    thumbs: [
+      { label: 'Front View', url: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80' }
+    ],
+    sizes: ['Semi-Stitched', 'M', 'L'],
+    colors: ['Ruby Red'],
+    tags: ['Bridal Edition'],
+    isFlashSale: false,
+    stockLeft: 5,
+    description: 'Masterpiece semi-stitched velvet lehenga choli layered with resham dori and zardozi embroidery.',
+    fabric: 'Micro Velvet with Satin Lining'
+  },
+  {
+    id: 'sm-e07',
+    showInDealsOfDay: false,
+    showInAllFashion: true,
+    title: 'Biba Ethnic Anarkali Suit with Zari Dupatta',
+    brand: 'Biba Ethnic',
+    category: 'ethnic',
+    subcategory: 'women',
+    price: 2999,
+    originalPrice: 6499,
+    discount: 54,
+    rating: 4.6,
+    reviewsCount: 480,
+    image: 'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=800&q=80',
+    thumbs: [
+      { label: 'Front View', url: 'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=800&q=80' }
+    ],
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: ['Teal Green'],
+    tags: ['Festive Pick'],
+    isFlashSale: false,
+    stockLeft: 11,
+    description: 'Floor-length flared Anarkali kurta adorned with gotta patti accents on neckline and borders.',
+    fabric: 'Chanderi Silk'
+  },
+  {
+    id: 'sm-e08',
+    showInDealsOfDay: false,
+    showInAllFashion: false,
+    title: 'Soch Georgette Embroidered Sharara Festive Suit',
+    brand: 'Soch',
+    category: 'ethnic',
+    subcategory: 'women',
+    price: 2499,
+    originalPrice: 5299,
+    discount: 53,
+    rating: 4.5,
+    reviewsCount: 310,
+    image: 'https://images.unsplash.com/photo-1616788494707-ec28f08d05a1?auto=format&fit=crop&w=1200&q=85',
+    thumbs: [
+      { label: 'Sharara Suit Profile', url: 'https://images.unsplash.com/photo-1616788494707-ec28f08d05a1?auto=format&fit=crop&w=1200&q=85' }
+    ],
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: ['Plum Purple'],
+    tags: ['Celebration Wear'],
     isFlashSale: false,
     stockLeft: 7,
-    description: 'Performance air cushion sole for shock absorption during high impact workouts and outdoor running.',
-    fabric: 'Breathable Knit & Rubber Sole'
+    description: 'Short peplum style kurta with flared sharara pants and sheer dupatta carrying mirror work.',
+    fabric: 'Georgette'
   },
   {
-    id: 'sm-202',
-    showInDealsOfDay: false,
-    showInAllFashion: true,
-    title: 'Women Chunky Pastel Colorblocked Streetwear Sneakers',
-    brand: 'Urbanic',
-    category: 'footwear',
-    price: 541,
-    originalPrice: 999,
-    discount: 46,
-    rating: 4,
-    reviewsCount: 496,
-    image: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/shoe/c/k/t/7-cnv7030-40-vendoz-pink-white-original-imahfyfsptg2zsrz.jpeg?q=90',
-    thumbs: [
-      { label: 'Front/Back View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/shoe/u/6/5/7-cnv7030-40-vendoz-pink-white-original-imahfyfs636usqty.jpeg?q=90' },
-      { label: 'Side View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/shoe/l/v/k/7-cnv7030-40-vendoz-pink-white-original-imahfyfsjjk6cuab.jpeg?q=90' }
-    ],
-    sizes: ['UK 4', 'UK 5', 'UK 6', 'UK 7'],
-    colors: ['Pink-White'],
-    tags: ['Trending'],
-    isFlashSale: false,
-    description: 'Trendy platform dad sneakers with multi-pastel contrast overlays and cushioned memory foam footbed.',
-    fabric: 'Faux Leather & Rubber'
-  },
-  {
-    id: 'sm-203',
-    showInDealsOfDay: false,
-    showInAllFashion: false,
-    title: 'Men Handcrafted Genuine Leather Formal Derby Shoes',
-    brand: 'Allen Cooper',
-    category: 'footwear',
-    price: 1334,
-    originalPrice: 5499,
-    discount: 76,
-    rating: 4.1,
-    reviewsCount: 382,
-    image: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/shoe/w/6/2/8-accs-5035-black-8-allen-cooper-black-original-imahg3cymbebbhhc.jpeg?q=90',
-    thumbs: [
-      { label: 'Front/Back View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/shoe/5/h/q/8-accs-5035-black-8-allen-cooper-black-original-imahg3cyukfzvmpy.jpeg?q=90' },
-      { label: 'Side View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/shoe/1/i/7/8-accs-5035-black-8-allen-cooper-black-resized-original-imahg3cyrzfkzyqf.jpeg?q=90' }
-    ],
-    sizes: ['UK 7', 'UK 8', 'UK 9', 'UK 10'],
-    colors: ['Cognac Brown', 'Black'],
-    tags: ['Formal Wear'],
-    isFlashSale: false,
-    description: 'Executive polished genuine leather lace-up derby shoes with anti-skid TPR sole.',
-    fabric: '100% Genuine Leather'
-  },
-  {
-    id: 'sm-206',
+    id: 'sm-402',
     showInDealsOfDay: true,
-    showInAllFashion: false,
-    title: 'Men Rugged Vintage Classic Trucker Denim Jacket',
-    brand: 'Roadster',
-    category: 'men',
-    price: 859,
-    originalPrice: 2599,
+    showInAllFashion: true,
+    title: 'Kalki Fashion Girls Festive Angarkha & Sharara Set',
+    brand: 'Kalki Fashion',
+    category: 'ethnic',
+    subcategory: 'kids',
+    price: 1326,
+    originalPrice: 3999,
     discount: 67,
-    rating: 4.8,
-    reviewsCount: 1159,
-    image: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/jacket/c/8/d/m-1-no-29790638-roadster-original-imahgcq6jhnrpaxd.jpeg?q=90',
+    rating: 4.4,
+    reviewsCount: 180,
+    image: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/kids-ethnic-set/t/j/s/6-7-years-g136-md-enterprise-original-imahgbg2ydn4thxf.jpeg?q=90',
     thumbs: [
-      { label: 'Front View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/jacket/2/j/6/m-1-no-29790638-roadster-original-imahgcq6ff89z6xm.jpeg?q=90' },
-      { label: 'Back View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/jacket/j/g/f/m-1-no-29790638-roadster-original-imahgcq6evztyrvp.jpeg?q=90' },
-      { label: 'Side View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/jacket/w/e/w/xxl-1-no-29790638-roadster-original-imahjgsgan8zep4x.jpeg?q=90' }
+      { label: 'Front View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/kids-ethnic-set/t/j/s/6-7-years-g136-md-enterprise-original-imahgbg2ydn4thxf.jpeg?q=90' }
     ],
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    colors: ['Black Wash'],
-    tags: ['Trending'],
+    sizes: ['3-4 years', '5-6 years', '7-8 years', '9-10 years'],
+    colors: ['Royal Purple'],
+    tags: ['Traditional Kids'],
     isFlashSale: true,
     stockLeft: 10,
-    description: 'Classic button-down denim jacket with chest flap pockets and heavy contrast stitching.',
-    fabric: '100% Rigid Denim Cotton'
+    description: 'Beautifully crafted girls festive Angarkha kurta and ruffled sharara set with gold foil print borders.',
+    fabric: 'Cotton Blend'
   },
   {
-    id: 'sm-207',
+    id: 'sm-e10',
     showInDealsOfDay: false,
     showInAllFashion: true,
-    title: 'Men Oversized Heavyweight Fleece Hoodie',
-    brand: 'HRX',
-    category: 'men',
-    price: 733,
-    originalPrice: 2199,
-    discount: 67,
-    rating: 4.1,
-    reviewsCount: 592,
-    image: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/sweatshirt/p/l/i/m-hrxss07olive-hrx-by-hrithik-roshan-original-imahh3v3zjrqu7hg.jpeg?q=90',
+    title: 'FabIndia Kids Pure Silk Kurta Dhoti Set',
+    brand: 'FabIndia',
+    category: 'ethnic',
+    subcategory: 'kids',
+    price: 1290,
+    originalPrice: 2590,
+    discount: 50,
+    rating: 4.6,
+    reviewsCount: 220,
+    image: 'https://images.unsplash.com/photo-1503944583220-79d8926ad5e2?auto=format&fit=crop&w=1200&q=85',
     thumbs: [
-      { label: 'Front View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/sweatshirt/h/6/n/m-hrxss07olive-hrx-by-hrithik-roshan-original-imahh3v3khzkh6vq.jpeg?q=90' },
-      { label: 'Back View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/sweatshirt/u/k/f/xxl-hrxss07olive-hrx-by-hrithik-roshan-original-imahh3v3gtgymstw.jpeg?q=90' },
-      { label: 'Side View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/sweatshirt/o/w/5/m-hrxss07olive-hrx-by-hrithik-roshan-original-imahh3v39rsrxrmh.jpeg?q=90' }
+      { label: 'Silk Kurta Dhoti Fit', url: 'https://images.unsplash.com/photo-1503944583220-79d8926ad5e2?auto=format&fit=crop&w=1200&q=85' }
     ],
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    colors: ['Dark Green'],
-    tags: ['Best Seller'],
-    isFlashSale: true,
-    description: 'Ultra-soft fleece lined pullover hooded sweatshirt with kangaroo pocket and ribbed cuffs.',
-    fabric: '320 GSM Fleece Blend'
+    sizes: ['2-3 years', '4-5 years', '6-7 years'],
+    colors: ['Turmeric Yellow'],
+    tags: ['Festive Kids'],
+    isFlashSale: false,
+    stockLeft: 12,
+    description: 'Traditional readymade dhoti with golden zari border paired with fine silk-blend mandarin collar kurta.',
+    fabric: 'Pure Silk Blend'
   },
   {
-    id: 'sm-208',
+    id: 'sm-e11',
     showInDealsOfDay: false,
-    showInAllFashion: true,
-    title: 'Men Rain Suit',
-    brand: 'Wildcraft',
-    category: 'men',
-    price: 849,
-    originalPrice: 1799,
-    discount: 53,
-    rating: 3.9,
-    reviewsCount: 322,
-    image: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/raincoat/d/b/z/-original-imagqtpy6symx4ke.jpeg?q=90',
+    showInAllFashion: false,
+    title: 'Manyavar Kids Festive Brocade Sherwani Set',
+    brand: 'Manyavar',
+    category: 'ethnic',
+    subcategory: 'kids',
+    price: 1999,
+    originalPrice: 3999,
+    discount: 50,
+    rating: 4.7,
+    reviewsCount: 165,
+    image: 'https://images.unsplash.com/photo-1519457431-44ccd64a579b?auto=format&fit=crop&w=1200&q=85',
     thumbs: [
-      { label: 'Front View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/raincoat/d/b/z/-original-imagqtpy6symx4ke.jpeg?q=90' },
-      { label: 'Back View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/raincoat/z/g/q/-original-imagqtpyjd6kktvh.jpeg?q=90' },
-      { label: 'Side View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/raincoat/k/x/2/-original-imagqtpydgdg4m75.jpeg?q=90' }
+      { label: 'Boys Sherwani Profile', url: 'https://images.unsplash.com/photo-1519457431-44ccd64a579b?auto=format&fit=crop&w=1200&q=85' }
     ],
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    colors: ['Brown'],
-    tags: ['Lowest Price'],
-    isFlashSale: true,
-    description: 'Water-resistant raincoat with adjustable hood and reinforced seams.',
-    fabric: '100% Polyester'
-  },
-  {
-    id: 'sm-209',
-    showInDealsOfDay: false,
-    showInAllFashion: true,
-    title: 'Women Rain Suit',
-    brand: 'RockSport',
-    category: 'women',
-    price: 713,
-    originalPrice: 1199,
-    discount: 41,
-    rating: 4,
-    reviewsCount: 73,
-    image: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/raincoat/p/k/k/free-rain-poncho-trekking-hiking-grey-rocksport-resized-original-imahctm9f2nzdqzj.jpeg?q=90',
-    thumbs: [
-      { label: 'Front View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/raincoat/p/k/k/free-rain-poncho-trekking-hiking-grey-rocksport-resized-original-imahctm9f2nzdqzj.jpeg?q=90' },
-      { label: 'Side View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/raincoat/l/5/o/free-rain-poncho-trekking-hiking-grey-rocksport-original-imahctm9ft5dydnh.jpeg?q=90' }
-    ],
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    colors: ['Grey'],
-    tags: ['Rain Wear'],
-    isFlashSale: true,
-    description: 'Water-resistant raincoat with adjustable hood and reinforced seams.',
-    fabric: '100% Polyester'
-  },
-  {
-    id: 'sm-211',
-    showInDealsOfDay: true,
-    showInAllFashion: true,
-    title: 'Women Floral Printed A-Line Tiered Maxi Dress',
-    brand: 'Urbanic',
-    category: 'women',
-    price: 450,
-    originalPrice: 999,
-    discount: 55,
-    rating: 3.7,
-    reviewsCount: 340,
-    image: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/gown/j/z/p/14-l-half-sleeve-stitched-gown-black-nikkutexttles-18-original-imahnfpeg8hzzzjb.jpeg?q=90',
-    thumbs: [
-      { label: 'Front View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/gown/j/z/p/14-l-half-sleeve-stitched-gown-black-nikkutexttles-18-original-imahnfpeg8hzzzjb.jpeg?q=90' },
-      { label: 'Back View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/gown/y/x/o/14-3xl-half-sleeve-stitched-gown-black-nikkutexttles-18-original-imahnfpejpzfurhg.jpeg?q=90' },
-      { label: 'Side View', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/gown/y/x/o/14-3xl-half-sleeve-stitched-gown-black-nikkutexttles-18-original-imahnfpejpzfurhg.jpeg?q=90' }
-    ],
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    colors: ['Black Floral'],
-    tags: ['Best Seller'],
-    isFlashSale: true,
-    stockLeft: 9,
-    description: 'Breezy bohemian floral maxi dress with ruffle puff sleeves and tiered skirt hem.',
-    fabric: '100% Breathable Chiffon'
-  },
+    sizes: ['3-4 years', '5-6 years', '7-8 years', '9-10 years'],
+    colors: ['Maroon Gold'],
+    tags: ['Wedding Special'],
+    isFlashSale: false,
+    stockLeft: 8,
+    description: 'Royal brocade sherwani with pocket square, broach, and elasticated churidar pants for young boys.',
+    fabric: 'Brocade Jacquard'
+  }
 ];
 
 const PRODUCT_CATEGORIES = ['men', 'women', 'kids', 'footwear', 'ethnic'];
@@ -601,35 +1685,50 @@ function normalizeProduct(product) {
   };
 }
 
-function loadCustomProducts() {
-  const savedProducts = localStorage.getItem(CUSTOM_PRODUCTS_STORAGE_KEY);
-  if (!savedProducts) return;
-
-  let products;
+function safeGetStoredJSON(key, fallback) {
   try {
-    products = JSON.parse(savedProducts);
-  } catch (error) {
-    console.error('Could not load saved custom products because their stored JSON is invalid.', error);
-    return;
+    const raw = localStorage.getItem(key);
+    if (!raw || raw === 'undefined' || raw === 'null') return fallback;
+    const parsed = JSON.parse(raw);
+    return parsed !== null && parsed !== undefined ? parsed : fallback;
+  } catch (err) {
+    console.warn(`Could not read "${key}" from localStorage:`, err);
+    return fallback;
   }
+}
 
-  if (!Array.isArray(products)) {
-    console.error('Could not load saved custom products: the saved product data must be an array.');
-    return;
-  }
+function loadCustomProducts() {
+  try {
+    const savedProducts = localStorage.getItem(CUSTOM_PRODUCTS_STORAGE_KEY);
+    if (!savedProducts || savedProducts === 'undefined' || savedProducts === 'null') return;
 
-  products.forEach(product => {
+    let products;
     try {
-      const normalizedProduct = normalizeProduct(product);
-      if (PRODUCTS_DATA.some(existing => existing.id === normalizedProduct.id)) {
-        console.error(`Skipped saved product "${normalizedProduct.id}" because that product ID already exists.`);
-        return;
-      }
-      PRODUCTS_DATA.push(normalizedProduct);
+      products = JSON.parse(savedProducts);
     } catch (error) {
-      console.error('Skipped an invalid saved custom product.', error);
+      console.error('Could not load saved custom products because their stored JSON is invalid.', error);
+      return;
     }
-  });
+
+    if (!Array.isArray(products)) {
+      console.error('Could not load saved custom products: the saved product data must be an array.');
+      return;
+    }
+
+    products.forEach(product => {
+      try {
+        const normalizedProduct = normalizeProduct(product);
+        if (PRODUCTS_DATA.some(existing => existing.id === normalizedProduct.id)) {
+          return;
+        }
+        PRODUCTS_DATA.push(normalizedProduct);
+      } catch (error) {
+        console.error('Skipped an invalid saved custom product.', error);
+      }
+    });
+  } catch (err) {
+    console.warn('loadCustomProducts failed safely:', err);
+  }
 }
 
 function addProduct(product) {
@@ -640,7 +1739,11 @@ function addProduct(product) {
 
   const customProducts = PRODUCTS_DATA.filter(item => item.isCustomProduct);
   const savedProducts = [...customProducts, normalizedProduct];
-  localStorage.setItem(CUSTOM_PRODUCTS_STORAGE_KEY, JSON.stringify(savedProducts));
+  try {
+    localStorage.setItem(CUSTOM_PRODUCTS_STORAGE_KEY, JSON.stringify(savedProducts));
+  } catch (e) {
+    console.warn('Could not save custom product to localStorage:', e);
+  }
   PRODUCTS_DATA.push(normalizedProduct);
 
   renderFlashSaleProducts();
@@ -653,16 +1756,17 @@ loadCustomProducts();
 // --------------------------------------------------------------------------
 // 2. STATE MANAGEMENT
 // --------------------------------------------------------------------------
+const IS_CATEGORY_PAGE = window.location.pathname.toLowerCase().includes('category.html');
 const DELIVERY_LOCATION_STORAGE_KEY = 'stylemart_delivery_location';
 
 let state = {
-  cart: JSON.parse(localStorage.getItem('stylemart_cart')) || [],
-  wishlist: JSON.parse(localStorage.getItem('stylemart_wishlist')) || [],
-  userProfile: JSON.parse(localStorage.getItem('stylemart_user')) || null,
+  cart: safeGetStoredJSON('stylemart_cart', []),
+  wishlist: safeGetStoredJSON('stylemart_wishlist', []),
+  userProfile: safeGetStoredJSON('stylemart_user', null),
   deliveryLocation: loadSavedDeliveryLocation(),
   pendingCheckout: false,
   selectedCategory: getInitialCategory(),
-  maxPrice: 5000,
+  maxPrice: 10000,
   selectedBrands: [],
   selectedSizes: [],
   minRating: 0,
@@ -699,17 +1803,23 @@ state.userProfile = normalizeUserProfile(state.userProfile);
 
 function getInitialCategory() {
   const category = new URLSearchParams(window.location.search).get('category');
-  const supportedCategories = ['all', 'women', 'men', 'ethnic', 'budget', 'kids', 'footwear'];
-  return supportedCategories.includes(category) ? category : 'all';
+  const supportedCategories = ['women', 'men', 'ethnic', 'budget', 'kids', 'footwear'];
+  if (IS_CATEGORY_PAGE) {
+    return (category && supportedCategories.includes(category)) ? category : 'women';
+  }
+  return (category && supportedCategories.includes(category)) ? category : 'all';
 }
 
 function updateActiveNavigation() {
+  const isAboutPage = window.location.pathname.toLowerCase().includes('about.html');
   document.querySelectorAll('.nav-link, .amazon-sub-link').forEach(link => {
     const isHomeLink = link.dataset.home === 'true';
     const isCategoryLink = link.dataset.category !== undefined;
+    const isAboutLink = link.dataset.about === 'true';
     link.classList.toggle('active',
-      (isHomeLink && !IS_CATEGORY_PAGE)
-      || (IS_CATEGORY_PAGE && isCategoryLink && link.dataset.category === state.selectedCategory));
+      (isHomeLink && !IS_CATEGORY_PAGE && !isAboutPage)
+      || (IS_CATEGORY_PAGE && isCategoryLink && link.dataset.category === state.selectedCategory)
+      || (isAboutPage && isAboutLink));
   });
 }
 
@@ -722,7 +1832,6 @@ const CATEGORY_HEADINGS = {
   kids: 'Kids & Toddlers Collection',
   footwear: 'Footwear & Sneakers'
 };
-const IS_CATEGORY_PAGE = window.location.pathname.toLowerCase().includes('category.html');
 
 let pageScrollLocked = false;
 let pageScrollPosition = 0;
@@ -918,40 +2027,61 @@ function captureDeliveryLocation() {
 // --------------------------------------------------------------------------
 // 3. DOM READY INITIALIZATION
 // --------------------------------------------------------------------------
-document.addEventListener('DOMContentLoaded', () => {
-  initHeroSlider();
-  initCountdownTimers();
-  const catalogHeading = document.getElementById('catalogHeading');
-  if (catalogHeading) catalogHeading.textContent = CATEGORY_HEADINGS[state.selectedCategory];
-  const categoryPageTitle = document.getElementById('categoryPageTitle');
-  if (categoryPageTitle) categoryPageTitle.textContent = CATEGORY_HEADINGS[state.selectedCategory];
-  const categoryCatalogHeading = document.getElementById('categoryCatalogHeading');
-  if (categoryCatalogHeading) categoryCatalogHeading.textContent = CATEGORY_HEADINGS[state.selectedCategory];
-  if (state.selectedCategory !== 'all') {
-    document.title = `${CATEGORY_HEADINGS[state.selectedCategory]} | StyleMart`;
-  }
-  const searchInput = document.getElementById('searchInput');
-  if (searchInput && state.searchQuery) searchInput.value = state.searchQuery;
-  const clearSearchButton = document.getElementById('clearSearchBtn');
-  if (clearSearchButton && state.searchQuery) clearSearchButton.style.display = 'block';
-  updateActiveNavigation();
-  initProfileInputValidation();
+function initApp() {
+  try { initHeroSlider(); } catch (e) { console.error('Hero slider init error:', e); }
+  try { initCountdownTimers(); } catch (e) { console.error('Timers init error:', e); }
 
-  updateUserProfileUI();
-  renderFlashSaleProducts();
-  renderFashionProducts('all');
-  renderProductsCatalog();
-  initSearchAutocomplete();
-  initPageScrollLock();
-  updateBadgesUI();
-  initProductDetailPage();
-});
+  try {
+    const catalogHeading = document.getElementById('catalogHeading');
+    if (catalogHeading) catalogHeading.textContent = CATEGORY_HEADINGS[state.selectedCategory] || CATEGORY_HEADINGS.all;
+    const categoryPageTitle = document.getElementById('categoryPageTitle');
+    if (categoryPageTitle) categoryPageTitle.textContent = CATEGORY_HEADINGS[state.selectedCategory] || CATEGORY_HEADINGS.all;
+    const categoryCatalogHeading = document.getElementById('categoryCatalogHeading');
+    if (categoryCatalogHeading) categoryCatalogHeading.textContent = CATEGORY_HEADINGS[state.selectedCategory] || CATEGORY_HEADINGS.all;
+    if (state.selectedCategory !== 'all') {
+      document.title = `${CATEGORY_HEADINGS[state.selectedCategory] || 'Fashion'} | StyleMart`;
+    }
+    const deptSelect = document.getElementById('categoryDepartmentSelect');
+    if (deptSelect && state.selectedCategory) {
+      deptSelect.value = state.selectedCategory;
+    }
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput && state.searchQuery) searchInput.value = state.searchQuery;
+    const clearSearchButton = document.getElementById('clearSearchBtn');
+    if (clearSearchButton && state.searchQuery) clearSearchButton.style.display = 'block';
+    updateActiveNavigation();
+    initProfileInputValidation();
+    updateUserProfileUI();
+  } catch (e) {
+    console.error('Header & navigation init error:', e);
+  }
+
+  // Critical product render steps - resilient to individual issues
+  try { renderFlashSaleProducts(); } catch (e) { console.error('Flash sale render error:', e); }
+  try { renderFashionProducts('all'); } catch (e) { console.error('Fashion products render error:', e); }
+  try { renderProductsCatalog(); } catch (e) { console.error('Products catalog render error:', e); }
+  try { initSearchAutocomplete(); } catch (e) { console.error('Search autocomplete error:', e); }
+  try { initPageScrollLock(); } catch (e) { console.error('Page scroll lock error:', e); }
+  try { updateBadgesUI(); } catch (e) { console.error('Badges update error:', e); }
+  try { initProductDetailPage(); } catch (e) { console.error('Product detail page error:', e); }
+  try { updatePriceBarFill(); } catch (e) { console.error('Price bar fill error:', e); }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+}
 
 function syncLocalStorage() {
-  localStorage.setItem('stylemart_cart', JSON.stringify(state.cart));
-  localStorage.setItem('stylemart_wishlist', JSON.stringify(state.wishlist));
-  if (state.userProfile) {
-    localStorage.setItem('stylemart_user', JSON.stringify(state.userProfile));
+  try {
+    localStorage.setItem('stylemart_cart', JSON.stringify(state.cart));
+    localStorage.setItem('stylemart_wishlist', JSON.stringify(state.wishlist));
+    if (state.userProfile) {
+      localStorage.setItem('stylemart_user', JSON.stringify(state.userProfile));
+    }
+  } catch (e) {
+    console.warn('Could not write to localStorage:', e);
   }
   updateBadgesUI();
   updateUserProfileUI();
@@ -970,48 +2100,53 @@ function updateUserProfileUI() {
 // --------------------------------------------------------------------------
 // 4. HERO SLIDER LOGIC
 // --------------------------------------------------------------------------
-let sliderInterval;
+let sliderInterval = null;
 
-function initHeroSlider() {
+function goToSlide(index) {
   const slides = document.querySelectorAll('#heroSliderTrack .slide');
   const dots = document.querySelectorAll('#sliderDots .dot');
   if (!slides.length) return;
+  const targetIndex = ((index % slides.length) + slides.length) % slides.length;
+  state.activeSlide = targetIndex;
+  slides.forEach((s, i) => s.classList.toggle('active', i === targetIndex));
+  dots.forEach((d, i) => {
+    d.classList.toggle('active', i === targetIndex);
+    if (i === targetIndex) d.setAttribute('aria-current', 'true');
+    else if (typeof d.removeAttribute === 'function') d.removeAttribute('aria-current');
+  });
 
-  function showSlide(index) {
-    slides.forEach((s, i) => s.classList.toggle('active', i === index));
-    dots.forEach((d, i) => d.classList.toggle('active', i === index));
-    state.activeSlide = index;
+  if (sliderInterval) {
+    clearInterval(sliderInterval);
+    sliderInterval = setInterval(() => {
+      goToSlide(state.activeSlide + 1);
+    }, 5500);
   }
+}
+window.goToSlide = goToSlide;
+
+function initHeroSlider() {
+  const slides = document.querySelectorAll('#heroSliderTrack .slide');
+  if (!slides.length) return;
 
   document.getElementById('nextSlideBtn')?.addEventListener('click', () => {
-    let nextIndex = (state.activeSlide + 1) % slides.length;
-    showSlide(nextIndex);
+    goToSlide(state.activeSlide + 1);
   });
 
   document.getElementById('prevSlideBtn')?.addEventListener('click', () => {
-    let prevIndex = (state.activeSlide - 1 + slides.length) % slides.length;
-    showSlide(prevIndex);
+    goToSlide(state.activeSlide - 1);
   });
 
+  if (sliderInterval) clearInterval(sliderInterval);
   sliderInterval = setInterval(() => {
-    let nextIndex = (state.activeSlide + 1) % slides.length;
-    showSlide(nextIndex);
-  }, 5000);
-}
-
-function goToSlide(index) {
-  state.activeSlide = index;
-  const slides = document.querySelectorAll('#heroSliderTrack .slide');
-  const dots = document.querySelectorAll('#sliderDots .dot');
-  slides.forEach((s, i) => s.classList.toggle('active', i === index));
-  dots.forEach((d, i) => d.classList.toggle('active', i === index));
+    goToSlide(state.activeSlide + 1);
+  }, 5500);
 }
 
 // --------------------------------------------------------------------------
 // 5. COUNTDOWN TIMERS
 // --------------------------------------------------------------------------
 function initCountdownTimers() {
-  let secondsRemaining = 4 * 3600 + 28 * 60 + 15;
+  let secondsRemaining = 10 * 3600 + 35 * 60 + 25; // Matching 10:35:25 in Template 1
 
   setInterval(() => {
     if (secondsRemaining <= 0) return;
@@ -1027,12 +2162,12 @@ function initCountdownTimers() {
     if (headerTimer) headerTimer.textContent = formattedTime;
 
     const flashHours = document.getElementById('flashHours');
-    const flashMins = document.getElementById('flashMins');
-    const flashSecs = document.getElementById('flashSecs');
+    const flashMinutes = document.getElementById('flashMinutes') || document.getElementById('flashMins');
+    const flashSeconds = document.getElementById('flashSeconds') || document.getElementById('flashSecs');
     if (flashHours) {
       flashHours.textContent = String(h).padStart(2, '0');
-      flashMins.textContent = String(m).padStart(2, '0');
-      flashSecs.textContent = String(s).padStart(2, '0');
+      if (flashMinutes) flashMinutes.textContent = String(m).padStart(2, '0');
+      if (flashSeconds) flashSeconds.textContent = String(s).padStart(2, '0');
     }
   }, 1000);
 }
@@ -1040,201 +2175,128 @@ function initCountdownTimers() {
 // --------------------------------------------------------------------------
 // 6. FLASH SALE, FASHION & CATALOG RENDER
 // --------------------------------------------------------------------------
-let currentFlashIndex = 0;
-let currentFlashOffset = 0;
+let activeFlashIndex = 0;
+let isFlashTransitioning = false;
+let flashAutoScrollTimer = null;
+
+function getFlashDealsProducts() {
+  const filtered = PRODUCTS_DATA.filter(p => p.showInDealsOfDay);
+  const list = (filtered && filtered.length > 0)
+    ? [...filtered]
+    : [...PRODUCTS_DATA].sort((a, b) => b.discount - a.discount).slice(0, 16);
+
+  // Guarantee sm-401 (Laxmipati Sarees Pure Silk Blend Saree) is at index 0 as default hero deal
+  const targetIdx = list.findIndex(p => p.id === 'sm-401');
+  if (targetIdx > 0) {
+    const [target] = list.splice(targetIdx, 1);
+    list.unshift(target);
+  } else if (targetIdx === -1) {
+    const target = PRODUCTS_DATA.find(p => p.id === 'sm-401');
+    if (target) list.unshift(target);
+  }
+  return list;
+}
+
 let flashAutoScrollInterval = null;
-let isFlashTouchpadInitialized = false;
 
 function renderFlashSaleProducts() {
   const container = document.getElementById('flashProductsGrid');
-  const dotsContainer = document.getElementById('flashDotsContainer');
   if (!container) return;
-  const flashItems = PRODUCTS_DATA.filter(p => p.showInDealsOfDay);
-  container.innerHTML = flashItems.map(p => createProductCardHTML(p, true)).join('');
 
-  if (dotsContainer) {
-    dotsContainer.innerHTML = flashItems.map((_, idx) => `
-      <span class="flash-dot ${idx === 0 ? 'active' : ''}" onclick="goToFlashSlide(${idx})" title="Go to product ${idx + 1}"></span>
-    `).join('');
-  }
+  const deals = getFlashDealsProducts();
+  if (!deals || deals.length === 0) return;
 
-  currentFlashOffset = 0;
-  currentFlashIndex = 0;
-  initFlashAutoScroll(flashItems.length);
-  initFlashTouchpadScroll();
+  // Render clean flash cards with dynamic JS pricing without special highlighting
+  container.innerHTML = deals.map(p => createProductCardHTML(p, true, false)).join('');
+
+  initFlashCardsScroll();
 }
 
-function goToFlashSlide(index) {
-  const container = document.getElementById('flashProductsGrid');
+function navigateFlashCards(direction) {
   const wrapper = document.getElementById('flashCarouselContainer');
-  const dots = document.querySelectorAll('.flash-dot');
-  if (!container || !wrapper) return;
-
-  const cards = container.children;
-  if (!cards || !cards.length) return;
-
-  const maxScroll = Math.max(0, container.scrollWidth - wrapper.clientWidth);
-  if (maxScroll <= 0) {
-    container.style.transform = 'translateX(0px)';
-    currentFlashOffset = 0;
-    if (flashAutoScrollInterval) {
-      clearInterval(flashAutoScrollInterval);
-      flashAutoScrollInterval = null;
-    }
-    return;
-  }
-
-  const cardWidth = cards[0].offsetWidth + 20;
-  let targetOffset = index * cardWidth;
-
-  if (targetOffset >= maxScroll) {
-    targetOffset = maxScroll; // Right corner will be the last product only!
-    if (flashAutoScrollInterval) {
-      clearInterval(flashAutoScrollInterval);
-      flashAutoScrollInterval = null;
-    }
-  }
-
-  currentFlashIndex = Math.min(index, cards.length - 1);
-  currentFlashOffset = targetOffset;
-  container.style.transform = `translateX(-${targetOffset}px)`;
-
-  dots.forEach((dot, idx) => {
-    dot.classList.toggle('active', idx === currentFlashIndex || (targetOffset === maxScroll && idx === cards.length - 1));
-  });
+  if (!wrapper) return;
+  const scrollAmount = Math.max(220, Math.floor(wrapper.clientWidth * 0.75));
+  wrapper.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
 }
 
-function initFlashTouchpadScroll() {
+function initFlashCardsScroll() {
   const wrapper = document.getElementById('flashCarouselContainer');
-  const container = document.getElementById('flashProductsGrid');
-  if (!wrapper || !container || isFlashTouchpadInitialized) return;
+  if (!wrapper) return;
 
-  isFlashTouchpadInitialized = true;
-
-  // Touchpad / Trackpad 2-finger horizontal scroll & wheel event listener
-  wrapper.addEventListener('wheel', (e) => {
-    const maxScroll = Math.max(0, container.scrollWidth - wrapper.clientWidth);
-    if (maxScroll <= 0) return;
-
-    let delta = 0;
-    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
-      delta = e.deltaX;
-    } else if (e.shiftKey) {
-      delta = e.deltaY;
-    }
-
-    if (delta !== 0) {
-      e.preventDefault();
-      if (flashAutoScrollInterval) {
-        clearInterval(flashAutoScrollInterval);
-        flashAutoScrollInterval = null;
-      }
-
-      currentFlashOffset += delta;
-      if (currentFlashOffset < 0) currentFlashOffset = 0;
-      if (currentFlashOffset > maxScroll) currentFlashOffset = maxScroll;
-
-      container.style.transform = `translateX(-${currentFlashOffset}px)`;
-
-      const cards = container.children;
-      if (cards && cards.length) {
-        const cardWidth = cards[0].offsetWidth + 20;
-        let activeIdx = Math.round(currentFlashOffset / cardWidth);
-        activeIdx = Math.min(Math.max(0, activeIdx), cards.length - 1);
-        currentFlashIndex = activeIdx;
-
-        const dots = document.querySelectorAll('.flash-dot');
-        dots.forEach((dot, idx) => {
-          dot.classList.toggle('active', idx === activeIdx || (currentFlashOffset === maxScroll && idx === cards.length - 1));
-        });
-      }
-    }
-  }, { passive: false });
-
-  // Touchscreen swipe support
-  let touchStartX = 0;
-  let startOffset = 0;
-
-  wrapper.addEventListener('touchstart', (e) => {
-    if (e.touches.length > 0) {
-      touchStartX = e.touches[0].clientX;
-      startOffset = currentFlashOffset;
-      if (flashAutoScrollInterval) {
-        clearInterval(flashAutoScrollInterval);
-        flashAutoScrollInterval = null;
-      }
-    }
-  }, { passive: true });
-
-  wrapper.addEventListener('touchmove', (e) => {
-    if (e.touches.length > 0) {
-      const diffX = touchStartX - e.touches[0].clientX;
-      const maxScroll = Math.max(0, container.scrollWidth - wrapper.clientWidth);
-      if (maxScroll <= 0) return;
-
-      let newOffset = startOffset + diffX;
-      if (newOffset < 0) newOffset = 0;
-      if (newOffset > maxScroll) newOffset = maxScroll;
-
-      currentFlashOffset = newOffset;
-      container.style.transform = `translateX(-${currentFlashOffset}px)`;
-
-      const cards = container.children;
-      if (cards && cards.length) {
-        const cardWidth = cards[0].offsetWidth + 20;
-        let activeIdx = Math.round(currentFlashOffset / cardWidth);
-        activeIdx = Math.min(Math.max(0, activeIdx), cards.length - 1);
-        currentFlashIndex = activeIdx;
-
-        const dots = document.querySelectorAll('.flash-dot');
-        dots.forEach((dot, idx) => {
-          dot.classList.toggle('active', idx === activeIdx || (currentFlashOffset === maxScroll && idx === cards.length - 1));
-        });
-      }
-    }
-  }, { passive: true });
-}
-
-function initFlashAutoScroll(totalItems) {
   if (flashAutoScrollInterval) clearInterval(flashAutoScrollInterval);
-  if (!totalItems) return;
-
-  const container = document.getElementById('flashProductsGrid');
-  const wrapper = document.getElementById('flashCarouselContainer');
-  if (!container || !wrapper) return;
-
-  const maxScroll = Math.max(0, container.scrollWidth - wrapper.clientWidth);
-  if (maxScroll <= 0) {
-    return; // No offscreen products to scroll!
-  }
-
-  currentFlashIndex = 0;
 
   flashAutoScrollInterval = setInterval(() => {
-    const cards = container.children;
-    if (!cards || !cards.length) return;
-    const cardWidth = cards[0].offsetWidth + 20;
-    const nextOffset = (currentFlashIndex + 1) * cardWidth;
+    if (!wrapper) return;
+    const maxScroll = wrapper.scrollWidth - wrapper.clientWidth;
+    if (maxScroll <= 0) return;
 
-    if (nextOffset >= maxScroll) {
-      goToFlashSlide(currentFlashIndex + 1);
-      // Stop scrolling when reaching end where right corner is last product!
+    if (wrapper.scrollLeft + 10 >= maxScroll) {
+      wrapper.scrollTo({ left: 0, behavior: 'smooth' });
+    } else {
+      wrapper.scrollBy({ left: 240, behavior: 'smooth' });
+    }
+  }, 4000);
+
+  wrapper.onmouseenter = () => {
+    if (flashAutoScrollInterval) {
       clearInterval(flashAutoScrollInterval);
       flashAutoScrollInterval = null;
-    } else {
-      currentFlashIndex++;
-      goToFlashSlide(currentFlashIndex);
     }
-  }, 3500);
+  };
+  wrapper.onmouseleave = () => {
+    initFlashCardsScroll();
+  };
+  wrapper.ontouchstart = () => {
+    if (flashAutoScrollInterval) {
+      clearInterval(flashAutoScrollInterval);
+      flashAutoScrollInterval = null;
+    }
+  };
 
-  if (wrapper) {
-    wrapper.onmouseenter = () => {
-      if (flashAutoScrollInterval) {
-        clearInterval(flashAutoScrollInterval);
-        flashAutoScrollInterval = null;
+  // Smooth desktop mouse drag-to-scroll
+  if (!wrapper.dataset.dragBound) {
+    wrapper.dataset.dragBound = 'true';
+    let isDown = false;
+    let startX = 0;
+    let scrollStart = 0;
+    let hasDragged = false;
+
+    wrapper.addEventListener('mousedown', (e) => {
+      if (e.target.closest('button')) return;
+      isDown = true;
+      hasDragged = false;
+      wrapper.classList.add('grabbing');
+      startX = e.pageX - wrapper.offsetLeft;
+      scrollStart = wrapper.scrollLeft;
+    });
+
+    window.addEventListener('mouseup', () => {
+      if (isDown) {
+        isDown = false;
+        wrapper.classList.remove('grabbing');
       }
-    };
+    });
+
+    wrapper.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      const x = e.pageX - wrapper.offsetLeft;
+      const walk = (x - startX) * 1.25;
+      if (Math.abs(walk) > 5) hasDragged = true;
+      wrapper.scrollLeft = scrollStart - walk;
+    });
+
+    wrapper.addEventListener('click', (e) => {
+      if (hasDragged) {
+        e.preventDefault();
+        e.stopPropagation();
+        hasDragged = false;
+      }
+    }, true);
   }
+}
+
+function navigateFlashCarousel(direction) {
+  navigateFlashCards(direction);
 }
 
 function renderFashionProducts(category = 'all') {
@@ -1253,7 +2315,7 @@ function renderFashionProducts(category = 'all') {
     fashionItems = PRODUCTS_DATA.slice(0, 8);
   }
 
-  container.innerHTML = fashionItems.slice(0, 8).map(p => createProductCardHTML(p, false)).join('');
+  container.innerHTML = fashionItems.map(p => createProductCardHTML(p, false)).join('');
 
   document.querySelectorAll('.fashion-tab-btn').forEach(btn => {
     const cat = btn.getAttribute('data-category');
@@ -1262,18 +2324,257 @@ function renderFashionProducts(category = 'all') {
 }
 
 function redirectToCategoryPage(category) {
-  if (category === 'all') {
-    renderFashionProducts('all');
-    return;
-  }
-  const targetCategory = category === 'best-deals' ? 'budget' : category;
-  window.location.href = `category.html?category=${encodeURIComponent(targetCategory)}`;
+  renderFashionProducts(category);
 }
 
 function openProductWindow(productId, event) {
   if (event) event.stopPropagation();
   const url = `product.html?id=${encodeURIComponent(productId)}`;
   window.location.href = url;
+}
+
+let selectedModalSize = null;
+let currentProductSizeCategory = 'all';
+let currentProductDetail = null;
+
+const EDITORIAL_COLOR_MAP = {
+  'Camel': '#c19a6b',
+  'Camel Beige': '#c5a059',
+  'Camel Brown': '#a77b46',
+  'Tan Brown': '#9a3412',
+  'Cognac Brown': '#854d0e',
+  'Rust Brown': '#7c2d12',
+  'Black': '#18181b',
+  'Jet Black': '#09090b',
+  'Core Black': '#111827',
+  'Onyx Black': '#1c1917',
+  'Classic Black': '#171717',
+  'Vintage Black': '#262626',
+  'Polished Black': '#18181b',
+  'White': '#ffffff',
+  'Pure White': '#ffffff',
+  'Crisp White': '#fcfcfc',
+  'Off White': '#f5f5f0',
+  'Off-White': '#f5f5f0',
+  'Cream': '#fef9c3',
+  'Pearl White': '#f8fafc',
+  'Charcoal Grey': '#475569',
+  'Dark Charcoal': '#334155',
+  'Starry Grey & White': '#64748b',
+  'Volt Grey & White': '#94a3b8',
+  'Melange Heather Grey': '#64748b',
+  'Navy': '#1e293b',
+  'Navy Blue': '#172554',
+  'Midnight Navy': '#0f172a',
+  'Classic Blue': '#1d4ed8',
+  'Formal Blue': '#2563eb',
+  'Sky Blue': '#7dd3fc',
+  'Cloud Blue': '#93c5fd',
+  'Cobalt Blue': '#1d4ed8',
+  'Vintage Blue': '#3b82f6',
+  'Light Vintage Blue': '#60a5fa',
+  'Medium Blue Fade': '#60a5fa',
+  'Medium Indigo Wash': '#4338ca',
+  'Indigo Dark Wash': '#1e1b4b',
+  'Dark Wash Indigo': '#312e81',
+  'Indigo Block Print': '#1e3a8a',
+  'Sage Green': '#84a98c',
+  'Sage Mint': '#86efac',
+  'Mint Green': '#a7f3d0',
+  'Forest Green': '#065f46',
+  'Emerald Green': '#047857',
+  'Teal Green': '#0f766e',
+  'Military Olive': '#4d7c0f',
+  'Maroon': '#881337',
+  'Wine Red': '#4c0519',
+  'Ruby Red': '#9f1239',
+  'Cherry Red': '#be123c',
+  'Royal Crimson Red': '#dc2626',
+  'Solar Red': '#ef4444',
+  'Baby Pink': '#fbcfe8',
+  'Blush Pink': '#f472b6',
+  'Pastel Rose': '#fda4af',
+  'Festive Rose Pink': '#e11d48',
+  'Coral Pink': '#fb7185',
+  'Nude Blush': '#fecdd3',
+  'Lavender Purple': '#c084fc',
+  'Plum Purple': '#7e22ce',
+  'Royal Purple': '#581c87',
+  'Mustard Gold': '#d97706',
+  'Sunny Yellow': '#facc15',
+  'Turmeric Yellow': '#eab308',
+  'Tussar Beige': '#e7dfd5',
+  'Maroon Gold': '#78350f',
+  'Royal Gold & Ivory': '#fef08a'
+};
+
+function getEditorialColorHex(colorName) {
+  if (!colorName) return '#94a3b8';
+  if (EDITORIAL_COLOR_MAP[colorName]) return EDITORIAL_COLOR_MAP[colorName];
+  const lower = colorName.toLowerCase();
+  for (const [k, v] of Object.entries(EDITORIAL_COLOR_MAP)) {
+    if (lower.includes(k.toLowerCase()) || k.toLowerCase().includes(lower)) return v;
+  }
+  return '#cbd5e1';
+}
+
+function getEditorialHeroTitle(product) {
+  if (!product) return 'The Essential Collection';
+  const title = (product.title || '').toLowerCase();
+  if (title.includes('overcoat') || title.includes('coat') || title.includes('jacket') || title.includes('blazer')) {
+    return 'The Essential Coat';
+  }
+  if (title.includes('saree') || title.includes('sari')) {
+    return 'The Essential Saree';
+  }
+  if (title.includes('shirt')) {
+    return 'The Essential Shirt';
+  }
+  if (title.includes('dress') || title.includes('gown') || title.includes('jumpsuit')) {
+    return 'The Essential Dress';
+  }
+  if (title.includes('kurta') || title.includes('kurti')) {
+    return 'The Essential Kurta';
+  }
+  if (title.includes('jeans') || title.includes('denim')) {
+    return 'The Essential Denim';
+  }
+  if (title.includes('t-shirt') || title.includes('tshirt') || title.includes('tee')) {
+    return 'The Essential Tee';
+  }
+  if (title.includes('shoe') || title.includes('sneaker') || title.includes('heel') || product.category === 'footwear') {
+    return 'The Essential Footwear';
+  }
+  if (product.category === 'men') return 'The Essential Menswear';
+  if (product.category === 'women') return 'The Essential Womenswear';
+  if (product.category === 'ethnic') return 'The Essential Ethnic Edit';
+  return 'The Essential Collection';
+}
+
+function renderEditorialStars(rating) {
+  const r = Math.round(Number(rating) || 4.5);
+  let starsHtml = '';
+  for (let i = 1; i <= 5; i++) {
+    starsHtml += i <= r ? '★' : '☆';
+  }
+  return starsHtml;
+}
+
+function getProductViewTemplates(product) {
+  if (!product) return [];
+  const main = product.image;
+  const title = (product.title || '').toLowerCase();
+  const cat = (product.category || '').toLowerCase();
+  const sub = (product.subcategory || '').toLowerCase();
+
+  // If product already has multiple distinct thumbs defined
+  if (product.thumbs && product.thumbs.length > 1) {
+    const urls = new Set(product.thumbs.map(t => t.url));
+    if (urls.size > 1) {
+      return product.thumbs;
+    }
+  }
+
+  // Distinct templates providing genuine alternate views so switching is visibly effective
+  if (title.includes('saree') || title.includes('sari') || sub === 'saree') {
+    return [
+      { label: 'Front Model View', url: main },
+      { label: 'Draped Pallu Detail', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/sari/8/i/d/free-n-3357-laxmipati-sarees-unstitched-original-imahzpu3gggm9zgt.jpeg?q=90' },
+      { label: 'Zari Border Detail', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/sari/g/z/i/free-red-slvr-pln-bhm-kathla-unstitched-original-imahmbabfeqdnfet.jpeg?q=90' },
+      { label: 'Pleats & Texture Macro', url: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/sari/s/u/t/free-3004s2099-samah-unstitched-original-imahf3hyy5dfh6wz.jpeg?q=90' }
+    ];
+  }
+
+  if (title.includes('t-shirt') || title.includes('tshirt') || title.includes('polo') || title.includes('tee') || sub === 'tshirts') {
+    return [
+      { label: 'Front Studio View', url: main },
+      { label: 'Side Angle Perspective', url: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80' },
+      { label: 'Collar & Fabric Macro', url: 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=800&q=80' },
+      { label: 'Streetwear Model View', url: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=800&q=80' }
+    ];
+  }
+
+  if (title.includes('shirt') || sub === 'casual' || sub === 'formal') {
+    return [
+      { label: 'Front Studio View', url: main },
+      { label: 'Side Angle Profile', url: 'https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=800&q=80' },
+      { label: 'Cuff & Fabric Texture', url: 'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=800&q=80' },
+      { label: 'Tailored Styling Fit', url: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80' }
+    ];
+  }
+
+  if (title.includes('jeans') || title.includes('denim') || title.includes('trouser') || title.includes('pant') || sub === 'jeans' || sub === 'track pants') {
+    return [
+      { label: 'Front Full Length', url: main },
+      { label: 'Pocket & Rivet Detail', url: 'https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=800&q=80' },
+      { label: 'Wash Texture Detail', url: 'https://images.unsplash.com/photo-1582552938357-32b906df40cb?auto=format&fit=crop&w=800&q=80' },
+      { label: 'Side Seam Profile', url: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=800&q=80' }
+    ];
+  }
+
+  if (title.includes('dress') || title.includes('gown') || title.includes('kurta') || title.includes('kurti') || cat === 'women') {
+    return [
+      { label: 'Front Silhouette', url: main },
+      { label: 'Side Angle Perspective', url: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=800&q=80' },
+      { label: 'Neckline & Pattern Macro', url: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=80' },
+      { label: 'Back Drape Silhouette', url: 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=80' }
+    ];
+  }
+
+  if (cat === 'footwear' || title.includes('shoe') || title.includes('sneaker') || title.includes('heel') || title.includes('sandal')) {
+    return [
+      { label: 'Side Angle Profile', url: main },
+      { label: 'Top Down Pair View', url: 'https://images.unsplash.com/photo-1560769629-975ec94e6a86?auto=format&fit=crop&w=800&q=80' },
+      { label: 'Sole & Grip Macro', url: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=800&q=80' },
+      { label: 'Heel Counter View', url: 'https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?auto=format&fit=crop&w=800&q=80' }
+    ];
+  }
+
+  if (cat === 'kids') {
+    return [
+      { label: 'Front Cheerful View', url: main },
+      { label: 'Print Graphic Detail', url: 'https://images.unsplash.com/photo-1519457431-44ccd64a579b?auto=format&fit=crop&w=800&q=80' },
+      { label: 'Soft Cotton Texture', url: 'https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?auto=format&fit=crop&w=800&q=80' },
+      { label: 'Folded Flat Lay View', url: 'https://images.unsplash.com/photo-1503944583220-79d8926ad5e2?auto=format&fit=crop&w=800&q=80' }
+    ];
+  }
+
+  return [
+    { label: 'Front View', url: main },
+    { label: 'Side Angle View', url: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80' },
+    { label: 'Fabric Detail', url: 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=800&q=80' },
+    { label: 'Back Angle View', url: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=800&q=80' }
+  ];
+}
+
+function toggleEditorialWishlist(productId) {
+  toggleWishlist(productId);
+  const btn = document.getElementById('editorialWishlistBtn');
+  if (btn) {
+    const isW = state.wishlist.includes(productId);
+    btn.classList.toggle('active', isW);
+    const svg = btn.querySelector('svg');
+    if (svg) {
+      svg.setAttribute('fill', isW ? 'currentColor' : 'none');
+    }
+  }
+}
+
+function isFreeSizeProduct(product) {
+  if (!product) return false;
+  if (product.sizes && product.sizes.length === 1) {
+    const s = String(product.sizes[0]).trim().toLowerCase();
+    if (s === 'free size' || s === 'standard' || s === 'one size' || s === 'onesize') return true;
+  }
+  const title = (product.title || '').toLowerCase();
+  const cat = (product.category || '').toLowerCase();
+  if (title.includes('saree') || title.includes('sari') || title.includes('dupatta') || title.includes('shawl')) {
+    return true;
+  }
+  if (cat === 'ethnic' && product.sizes && product.sizes.length === 1 && String(product.sizes[0]).toLowerCase() === 'free size') {
+    return true;
+  }
+  return false;
 }
 
 function initProductDetailPage() {
@@ -1285,7 +2586,7 @@ function initProductDetailPage() {
   const product = PRODUCTS_DATA.find(p => p.id === productId) || PRODUCTS_DATA[0];
 
   if (!product) return;
-  currentProductSizeCategory = product.category;
+  currentProductSizeCategory = getProductSizeGuideCategory(product);
   currentProductDetail = product;
 
   document.title = `${product.title} - ${product.brand} | StyleMart`;
@@ -1298,151 +2599,180 @@ function initProductDetailPage() {
   }
   if (bTitle) bTitle.textContent = product.title;
 
-  const thumbs = (product.thumbs && product.thumbs.length > 0) ? product.thumbs : [
-    { label: 'Front View', url: product.image },
-    { label: 'Side View', url: product.image },
-    { label: 'Back View', url: product.image }
-  ];
+  const isFreeSize = isFreeSizeProduct(product);
+  const isSaree = isFreeSize || (product.title || '').toLowerCase().includes('saree') || (product.title || '').toLowerCase().includes('sari');
+  selectedModalSize = isFreeSize ? 'Free Size' : null;
 
-  const isSaree = product.title.toLowerCase().includes('saree') || (product.sizes.length === 1 && product.sizes[0] === 'Free Size');
-  selectedModalSize = null;
+  // Distinct templates for interactive image switching
+  const thumbs = getProductViewTemplates(product);
+
+  // Editorial SKU format (e.g. ALL-CT-010, MSN-CT-001, BIB-ET-016)
+  const brandCode = (product.brand || 'MSN').replace(/[^a-zA-Z]/g, '').slice(0, 3).toUpperCase().padEnd(3, 'X');
+  const catCode = (product.category === 'footwear' ? 'FT' : product.category === 'ethnic' ? 'ET' : product.category === 'women' ? 'WN' : product.category === 'kids' ? 'KD' : 'CT');
+  const numCode = (product.id || '001').replace(/[^0-9]/g, '').padStart(3, '0').slice(-3);
+  const productSku = `${brandCode}-${catCode}-${numCode}`;
+
+  const isWishlisted = state.wishlist.includes(product.id);
 
   layout.innerHTML = `
-    <div class="product-detail-card product-detail-layout">
-      <section class="product-gallery-col">
-        <div class="product-gallery-side-layout">
-          <div class="thumbs-col">
-            ${thumbs.map((t, idx) => `
-              <div class="thumb-card ${idx === 0 ? 'active' : ''}" onclick="switchMainProductThumb('${t.url}', this)" style="border-color:${idx === 0 ? 'var(--primary)' : 'var(--border-color)'};">
-                <img src="${t.url}" alt="${t.label}">
-              </div>
-            `).join('')}
-          </div>
-
-          <div class="main-product-img-wrapper">
-            <img id="mainProductViewImg" src="${thumbs[0].url}" alt="${product.title}">
-            <button type="button" class="wishlist-toggle-btn product-image-wishlist-btn ${state.wishlist.includes(product.id) ? 'active' : ''}" data-product-id="${product.id}" onclick="event.stopPropagation(); toggleWishlist('${product.id}')" aria-label="${state.wishlist.includes(product.id) ? 'Remove from wishlist' : 'Add to wishlist'}" title="Save to Wishlist">♥</button>
-          </div>
-        </div>
-      </section>
-
-      <section class="product-info-col">
-        <div class="product-detail-brand-row">
-          <span class="product-brand" style="font-size:0.82rem; font-weight:800; color:var(--primary); text-transform:uppercase; letter-spacing:1px;">${product.brand}</span>
-          <div class="stock-pulse-badge">
-            <span class="pulse-dot"></span>
-            <span>Only ${product.stockLeft || 7} left in stock</span>
-          </div>
-        </div>
-
-        <h1 class="product-detail-title">${product.title}</h1>
+    <div class="editorial-page-wrapper">
+      <!-- Main 2-Column Showcase Layout (Clean, snug top without featured header) -->
+      <div class="editorial-showcase-card product-detail-card product-detail-layout">
         
-        <div class="rating-badge-row" style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
-          <span style="background:#fff9c4; color:#854d0e; font-weight:800; padding:3px 10px; border-radius:var(--radius-full); font-size:0.82rem; display:inline-flex; align-items:center; gap:4px;">
-            ${product.rating} ★
-          </span>
-          <span style="font-size:0.82rem; color:var(--text-muted); font-weight:600;">
-            ${product.reviewsCount} verified customer ratings
-          </span>
-        </div>
-
-        <div class="price-box-large" style="display:flex; align-items:center; gap:10px; margin-bottom:12px; padding:8px 12px; background:#fff5f7; border-radius:var(--radius-md); border:1px solid rgba(255,63,108,0.2); flex-wrap:wrap;">
-          <span style="font-size:1.1rem; color:var(--text-muted); text-decoration:line-through; font-weight:600;">₹${product.originalPrice.toLocaleString('en-IN')}</span>
-          <span style="font-size:1.75rem; font-weight:800; color:var(--secondary);">₹${product.price.toLocaleString('en-IN')}</span>
-          <span style="font-size:0.82rem; font-weight:800; color:var(--primary); background:#ffffff; padding:3px 8px; border-radius:var(--radius-full); border:1px solid rgba(255,63,108,0.3);">Save ₹${(product.originalPrice - product.price).toLocaleString('en-IN')} (${product.discount}% OFF)</span>
-        </div>
-
-        <p class="product-detail-description">
-          ${product.description || 'Elevate your daily style with this premium fashion piece. Designed with superior fabric and a modern fitment.'}
-        </p>
-
-        <div class="size-selector-block product-detail-size">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
-            <label style="font-weight:800; font-size:0.82rem; color:var(--secondary); text-transform:uppercase; letter-spacing:0.5px;">SELECT SIZE</label>
-            <span style="font-size:0.8rem; font-weight:700; color:var(--primary); cursor:pointer; text-decoration:underline;" onclick="openSizeChartModal('${product.category}')">Size Guide</span>
+        <!-- Left Column: Main Image on Top, Templates Strictly at the Bottom -->
+        <section class="editorial-gallery-col">
+          <div class="editorial-main-img-wrap" id="mainProductViewWrap">
+            <img id="mainProductViewImg" 
+                 src="${thumbs[0].url}" 
+                 alt="${product.title}" 
+                 onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&w=800&q=80';">
           </div>
-          <div class="size-chips-grid" style="display:flex; gap:8px; flex-wrap:wrap;">
-            ${product.sizes.map((sz) => `
-              <button class="size-chip-btn" onclick="selectProductPageSize('${sz}', this)">${formatProductSize(product, sz)}</button>
+
+          <!-- Template Images Placed Directly at the Bottom with Interactive Switching -->
+          <div class="editorial-thumbs-row" id="editorialThumbsRow">
+            ${thumbs.map((t, idx) => `
+              <button type="button" 
+                      class="editorial-thumb-card ${idx === 0 ? 'active' : ''}" 
+                      onclick="switchMainProductThumb('${t.url}', this)" 
+                      title="${t.label} (Click to switch image)" 
+                      aria-label="${t.label}">
+                <img src="${t.url}" alt="${t.label}">
+              </button>
             `).join('')}
           </div>
-        </div>
+        </section>
 
-        <div class="action-buttons-row product-detail-actions">
-          <button class="btn btn-primary btn-glow btn-lg" style="flex:1; min-width:150px; height:46px; display:inline-flex; align-items:center; justify-content:center; gap:8px;" onclick="openSelectSizeModal('${product.id}')">
-            Add to Cart
-          </button>
-          <button class="btn btn-secondary btn-lg" style="flex:1; min-width:130px; height:46px; display:inline-flex; align-items:center; justify-content:center; gap:8px; background:var(--secondary); color:#ffffff; border:none;" onclick="addProductDetailToCart(true)">
-            Buy Now
-          </button>
-        </div>
+        <!-- Right Column: Product Information & Controls (No color clutter, snug spacing) -->
+        <section class="editorial-info-col">
+          <!-- Top Meta Row: Brand on left, SKU code on right -->
+          <div class="editorial-meta-row">
+            <span class="editorial-brand">${product.brand.toUpperCase()}</span>
+            <span class="editorial-sku">${productSku}</span>
+          </div>
 
-        <div class="product-specs-box">
-          <div class="specs-title">📋 Key Specifications</div>
-          <div class="specs-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:8px;">
-            <div class="spec-item" style="padding:6px 10px;">
-              <span class="spec-label" style="font-size:0.68rem;">Fabric</span>
-              <span class="spec-val" style="font-size:0.8rem;">${product.fabric || '100% Pure Cotton'}</span>
+          <!-- Product Title -->
+          <h1 class="editorial-product-title">${product.title}</h1>
+
+          <!-- Rating & Reviews Row -->
+          <div class="editorial-rating-row">
+            <div class="editorial-stars" aria-label="${product.rating} stars out of 5">
+              ${renderEditorialStars(product.rating)}
             </div>
-            <div class="spec-item" style="padding:6px 10px;">
-              <span class="spec-label" style="font-size:0.68rem;">Fit Type</span>
-              <span class="spec-val" style="font-size:0.8rem;">${product.title.includes('Relaxed') ? 'Relaxed Fit' : product.title.includes('Slim') ? 'Slim Fit' : isSaree ? 'Traditional Draped' : 'Regular Fit'}</span>
+            <span class="editorial-reviews-text">${product.rating} · ${product.reviewsCount} reviews</span>
+          </div>
+
+          <!-- Price Row: Original Price First, Then Price -->
+          <div class="editorial-price-row">
+            ${product.originalPrice > product.price ? `<span class="editorial-original-price">₹${product.originalPrice.toLocaleString('en-IN')}</span>` : ''}
+            <span class="editorial-current-price">₹${product.price.toLocaleString('en-IN')}</span>
+            ${product.discount ? `<span class="editorial-discount-tag">${product.discount}% OFF</span>` : ''}
+          </div>
+
+          <!-- Size Selector -->
+          <div class="editorial-size-section">
+            <div class="editorial-size-header">
+              <span class="editorial-size-label">Size</span>
+              ${!isSaree ? `<button type="button" class="editorial-size-guide-btn" onclick="openSizeChartModal('${getProductSizeGuideCategory(product)}')">Size guide</button>` : ''}
             </div>
-            <div class="spec-item" style="padding:6px 10px;">
-              <span class="spec-label" style="font-size:0.68rem;">Pattern</span>
-              <span class="spec-val" style="font-size:0.8rem;">${isSaree ? 'Woven Zari' : 'Solid / Casual'}</span>
-            </div>
-            <div class="spec-item" style="padding:6px 10px;">
-              <span class="spec-label" style="font-size:0.68rem;">Care</span>
-              <span class="spec-val" style="font-size:0.8rem;">${isSaree ? 'Dry Clean Only' : 'Machine Wash'}</span>
+            <div class="editorial-sizes-grid">
+              ${product.sizes.map((sz, idx) => `
+                <button type="button" 
+                        class="editorial-size-btn size-chip-btn ${sz === selectedModalSize ? 'active' : ''}" 
+                        onclick="selectProductPageSize('${sz}', this)">
+                  ${formatProductSize(product, sz)}
+                </button>
+              `).join('')}
             </div>
           </div>
-        </div>
 
-        <div class="product-return-policy">
-          <span class="return-policy-icon" aria-hidden="true">↩</span>
-          <div><strong>7-day return policy</strong><span>Return eligible items within 7 days of delivery, unused and with original tags.</span></div>
-        </div>
-
-        <div class="product-detail-review">
-          <div class="product-review-heading">
-            <h2>Review highlights</h2>
-            <span class="product-review-summary"><strong>${product.rating} ★</strong> · ${product.reviewsCount.toLocaleString('en-IN')} ratings</span>
+          <!-- Action Buttons: Add to Cart + Wishlist -->
+          <div class="editorial-actions-row">
+            <button type="button" 
+                    class="editorial-add-to-cart-btn" 
+                    id="editorialAddToCartBtn" 
+                    onclick="addProductDetailToCart(false)">
+              <span class="btn-check-icon">✓</span> ADD TO CART
+            </button>
+            <button type="button" 
+                    class="editorial-wishlist-btn ${isWishlisted ? 'active' : ''}" 
+                    id="editorialWishlistBtn" 
+                    onclick="toggleEditorialWishlist('${product.id}')" 
+                    aria-label="${isWishlisted ? 'Remove from wishlist' : 'Add to wishlist'}" 
+                    title="Save to Wishlist">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="${isWishlisted ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="1.8">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.78-8.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </button>
           </div>
-          <article class="product-review-card">
-            <div class="product-review-stars" aria-label="${product.rating} out of 5 stars">${'★'.repeat(Math.max(0, Math.min(5, Math.round(product.rating))))}<span>${'★'.repeat(5 - Math.max(0, Math.min(5, Math.round(product.rating))))}</span></div>
-            <p>Comfortable fit and great everyday quality. The finish looks just like the product photos.</p>
-            <span class="product-review-author">Customer feedback</span>
-          </article>
-          <article class="product-review-card">
-            <div class="product-review-stars" aria-label="${product.rating} out of 5 stars">${'★'.repeat(Math.max(0, Math.min(5, Math.round(product.rating))))}<span>${'★'.repeat(5 - Math.max(0, Math.min(5, Math.round(product.rating))))}</span></div>
-            <p>Good value for the price, with a soft feel and a style that is easy to wear.</p>
-            <span class="product-review-author">Customer feedback</span>
-          </article>
-        </div>
 
-      </section>
+          <!-- Delivery Perk Note -->
+          <div class="editorial-perk-note">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+            <span>Free delivery on orders over ₹999</span>
+          </div>
+
+          <!-- Clean Compact Accordion -->
+          <div class="editorial-accordion-container">
+            <details class="editorial-details-item" open>
+              <summary class="editorial-details-summary">
+                <span>Product Overview & Details</span>
+                <span class="acc-chevron">›</span>
+              </summary>
+              <div class="editorial-details-body">
+                <p>${product.description || 'Elevate your daily style with this premium fashion piece. Designed with superior fabric and a modern fitment.'}</p>
+                <div class="editorial-specs-grid">
+                  <div><span class="spec-k">Fabric:</span> <span class="spec-v">${product.fabric || '100% Pure Cotton'}</span></div>
+                  <div><span class="spec-k">Fit:</span> <span class="spec-v">${product.title.includes('Relaxed') ? 'Relaxed Fit' : product.title.includes('Slim') ? 'Slim Fit' : isSaree ? 'Traditional Draped' : 'Regular Fit'}</span></div>
+                  <div><span class="spec-k">Pattern:</span> <span class="spec-v">${isSaree ? 'Woven Zari' : 'Solid / Casual'}</span></div>
+                  <div><span class="spec-k">Care:</span> <span class="spec-v">${isSaree ? 'Dry Clean Only' : 'Machine Wash'}</span></div>
+                </div>
+              </div>
+            </details>
+            
+            <details class="editorial-details-item">
+              <summary class="editorial-details-summary">
+                <span>Returns & Delivery Guarantee</span>
+                <span class="acc-chevron">›</span>
+              </summary>
+              <div class="editorial-details-body">
+                <p>Hassle-free 7-day doorstep returns & exchanges. 100% genuine guaranteed, sourced directly from verified brand manufacturers.</p>
+              </div>
+            </details>
+          </div>
+
+        </section>
+      </div>
     </div>
   `;
 
+  // Render Exactly 6 Similar Products
   const relatedContainer = document.getElementById('relatedProductsGrid');
   if (relatedContainer) {
-    const relatedList = PRODUCTS_DATA.filter(p => p.id !== product.id && (p.category === product.category || p.brand === product.brand)).slice(0, 4);
-    const listToDisplay = relatedList.length > 0 ? relatedList : PRODUCTS_DATA.filter(p => p.id !== product.id).slice(0, 4);
+    let relatedList = PRODUCTS_DATA.filter(p => p.id !== product.id && (p.category === product.category || p.brand === product.brand));
+    if (relatedList.length < 6) {
+      const fallback = PRODUCTS_DATA.filter(p => p.id !== product.id && !relatedList.some(r => r.id === p.id));
+      relatedList = [...relatedList, ...fallback];
+    }
+    const listToDisplay = relatedList.slice(0, 6);
     relatedContainer.innerHTML = listToDisplay.map(p => createProductCardHTML(p, false)).join('');
   }
 }
 
 function switchMainProductThumb(imgUrl, elem) {
   const mainImg = document.getElementById('mainProductViewImg');
-  if (mainImg) mainImg.src = imgUrl;
-  document.querySelectorAll('.thumb-card').forEach(t => {
+  if (mainImg) {
+    mainImg.style.transition = 'opacity 0.15s ease';
+    mainImg.style.opacity = '0.35';
+    mainImg.src = imgUrl;
+    setTimeout(() => {
+      mainImg.style.opacity = '1';
+    }, 150);
+  }
+  document.querySelectorAll('.editorial-thumb-card').forEach(t => {
     t.classList.remove('active');
-    t.style.borderColor = 'var(--border-color)';
   });
   if (elem) {
     elem.classList.add('active');
-    elem.style.borderColor = 'var(--primary)';
   }
 }
 
@@ -1459,85 +2789,150 @@ function checkDeliveryPincode() {
   }
 }
 
+function checkDetailDeliveryPincode() {
+  const input = document.getElementById('detailPincodeInput');
+  const result = document.getElementById('detailPincodeResult');
+  if (!input || !result) return;
+  const pin = input.value.trim();
+  if (pin.length === 6 && /^\d+$/.test(pin)) {
+    result.innerHTML = `
+      <div class="pincode-badge-success">
+        <span class="check-icon">✓</span>
+        <span>Delivery to <strong>${pin}</strong> by <strong>Tomorrow, 5:00 PM</strong> | <strong style="color:var(--budget-green);">FREE Delivery</strong></span>
+      </div>
+      <div class="delivery-perks-row">
+        <span>💵 Cash on Delivery available</span>
+        <span>⚡ Dispatched within 24 hours</span>
+        <span>🛡️ 100% Genuine Certified</span>
+      </div>
+    `;
+    showToast(`Delivery available for pincode ${pin}!`, 'success');
+  } else {
+    result.innerHTML = `
+      <div style="color:#e11d48; font-size:0.78rem; font-weight:700; margin-top:4px;">
+        ⚠️ Please enter a valid 6-digit Indian pincode.
+      </div>
+    `;
+  }
+}
+
 function selectProductPageSize(size, btnElem) {
   selectedModalSize = size;
-  document.querySelectorAll('.size-chip-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.editorial-size-btn, .size-chip-btn').forEach(b => b.classList.remove('active'));
   if (btnElem) btnElem.classList.add('active');
 }
 
 function addProductDetailToCart(openCartAfterAdd) {
   if (!currentProductDetail) return;
-  if (!selectedModalSize) {
-    showToast('Please select a size first.', 'error');
+  const isFreeSize = isFreeSizeProduct(currentProductDetail);
+
+  if (!isFreeSize && !selectedModalSize) {
+    showToast('Please select a size first before adding to cart!', 'warning');
+    const sizeSec = document.querySelector('.editorial-size-section') || document.querySelector('.size-select-section');
+    if (sizeSec) {
+      sizeSec.classList.add('highlight-pulse');
+      sizeSec.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setTimeout(() => sizeSec.classList.remove('highlight-pulse'), 1800);
+    }
     return;
   }
-  quickAddToCart(currentProductDetail.id, selectedModalSize);
+
+  const targetSize = isFreeSize ? ((currentProductDetail.sizes && currentProductDetail.sizes[0]) || 'Free Size') : selectedModalSize;
+  quickAddToCart(currentProductDetail.id, targetSize);
+  
+  const btn = document.getElementById('editorialAddToCartBtn');
+  if (btn) {
+    const origHtml = btn.innerHTML;
+    btn.innerHTML = '<span class="btn-check-icon">✓</span> ADDED TO CART';
+    btn.classList.add('added');
+    setTimeout(() => {
+      btn.innerHTML = origHtml;
+      btn.classList.remove('added');
+    }, 1500);
+  }
+  
   if (openCartAfterAdd) openCartDrawer();
 }
 
 const CATEGORY_SUBFILTERS = {
-  women: [
-    { id: 'all', label: 'All Products', icon: '✨' },
-    { id: 'shirts', label: 'Shirts & Tops', icon: '👔' },
-    { id: 'pants', label: 'Pants & Jeans', icon: '👖' },
-    { id: 'casual', label: 'Casual', icon: '☕' },
-    { id: 'formal', label: 'Formal & Workwear', icon: '💼' }
-  ],
   men: [
-    { id: 'all', label: 'All Products', icon: '✨' },
-    { id: 'shirts', label: 'Shirts', icon: '👔' },
-    { id: 'pants', label: 'Pants & Jeans', icon: '👖' },
-    { id: 'hoodies', label: 'Hoodies & Jackets', icon: '🧥' },
-    { id: 'casual', label: 'Casual', icon: '☕' },
-    { id: 'formal', label: 'Formal', icon: '💼' }
+    { id: 'all', label: 'All Men' },
+    { id: 'casual', label: 'Casual' },
+    { id: 'formal', label: 'Formal' },
+    { id: 'jeans', label: 'Jeans' },
+    { id: 'tshirts', label: 'T-Shirts' },
+    { id: 'track pants', label: 'Track Pants' }
+  ],
+  women: [
+    { id: 'all', label: 'All Women' },
+    { id: 'dresses', label: 'Dresses' },
+    { id: 'top', label: 'Top' },
+    { id: 'jeans', label: 'Jeans' },
+    { id: 'formal', label: 'Formal' },
+    { id: 'casual', label: 'Casual' },
+    { id: 'saree', label: 'Saree' }
   ],
   kids: [
-    { id: 'all', label: 'All Products', icon: '✨' },
-    { id: 'dresses', label: 'Dresses & Frocks', icon: '👗' },
-    { id: 'sets', label: 'Shirt & Pant Sets', icon: '👔' },
-    { id: 'casual', label: 'Casual', icon: '🧸' },
-    { id: 'formal', label: 'Party Wear', icon: '🎉' }
+    { id: 'all', label: 'All Kids' },
+    { id: 'boy', label: 'Boy' },
+    { id: 'girl', label: 'Girl' },
+    { id: 'nightwear', label: 'Nightwear' }
   ],
   footwear: [
-    { id: 'all', label: 'All Products', icon: '✨' },
-    { id: 'sneakers', label: 'Sneakers', icon: '👟' },
-    { id: 'sports', label: 'Sports Shoes', icon: '🏃' },
-    { id: 'formal', label: 'Formal Shoes', icon: '👞' },
-    { id: 'slippers', label: 'Slippers & Slides', icon: '🩴' }
+    { id: 'all', label: 'All Footwear' },
+    { id: 'men', label: 'Men' },
+    { id: 'women', label: 'Women' },
+    { id: 'formal', label: 'Formal' },
+    { id: 'casual', label: 'Casual' },
+    { id: 'sports', label: 'Sports' }
   ],
   ethnic: [
-    { id: 'all', label: 'All Products', icon: '✨' },
-    { id: 'sarees', label: 'Sarees', icon: '🥻' },
-    { id: 'kurtas', label: 'Kurtas', icon: '👘' },
-    { id: 'festive', label: 'Festive & Sharara Sets', icon: '✨' }
+    { id: 'all', label: 'All Ethnic' },
+    { id: 'men', label: 'Men' },
+    { id: 'women', label: 'Women' },
+    { id: 'kids', label: 'Kids' }
   ],
   budget: [
-    { id: 'all', label: 'All Under ₹499', icon: '✨' },
-    { id: 'shirts', label: 'Shirts & Tops', icon: '👔' },
-    { id: 'casual', label: 'Casual', icon: '☕' },
-    { id: 'bestsellers', label: 'Best Sellers', icon: '🔥' }
+    { id: 'all', label: 'All Under ₹499' },
+    { id: 'casual', label: 'Casual' },
+    { id: 'formal', label: 'Formal' }
   ],
   all: [
-    { id: 'all', label: 'All Collections', icon: '✨' },
-    { id: 'shirts', label: 'Shirts & Tops', icon: '👔' },
-    { id: 'pants', label: 'Pants & Jeans', icon: '👖' },
-    { id: 'casual', label: 'Casual Wear', icon: '☕' },
-    { id: 'formal', label: 'Formal Wear', icon: '💼' }
+    { id: 'all', label: 'All Collections' },
+    { id: 'casual', label: 'Casual' },
+    { id: 'formal', label: 'Formal' },
+    { id: 'jeans', label: 'Jeans' }
   ]
+};
+
+const CATEGORY_BRANDS = {
+  men: ['Allen Solly', "Levi's", 'Louis Philippe', 'Peter England', 'Rare Rabbit', 'Raymond', 'Roadster', 'The Indian Garage Co.', 'Tommy Hilfiger', 'Wrogn'],
+  women: ['Biba', 'Forever 21', 'Global Desi', 'H&M', "Levi's", 'MANGO', 'Tokyo Talkies', 'Vero Moda', 'W for Woman', 'Zara'],
+  kids: ['FirstCry', 'Gini & Jony', 'H&M Kids', 'Hopscotch', 'Mothercare', 'Tommy Kids', 'U.S. Polo Kids'],
+  footwear: ['Adidas', 'Bata', 'Clarks', 'Nike', 'Puma', 'Red Tape', 'Skechers', 'Woodland'],
+  ethnic: ['Biba Ethnic', 'FabIndia', 'Kalki Fashion', 'Laxmipati sarees', 'Manyavar', 'Mohey', 'Soch']
 };
 
 let activeSubfilter = 'all';
 
 function formatProductSize(product, size) {
-  if (product.category === 'footwear') {
+  if (product && product.category === 'footwear') {
     return String(size).replace(/^uk\s*/i, '').trim();
   }
   return size;
 }
 
+function getProductSizeGuideCategory(product) {
+  if (product.category === 'kids' || /\b(kids?|children|boys?|girls?)\b/i.test(product.title)) {
+    return 'kids';
+  }
+  return product.category;
+}
+
 function renderCategorySubfilterBar() {
+  const selectElem = document.getElementById('categorySubfilterSelect');
   const container = document.getElementById('categorySubfilterBar');
-  if (!container) return;
+  if (!selectElem && !container) return;
 
   const currentCat = state.selectedCategory || 'all';
   const filtersList = CATEGORY_SUBFILTERS[currentCat] || CATEGORY_SUBFILTERS.all;
@@ -1546,17 +2941,28 @@ function renderCategorySubfilterBar() {
     activeSubfilter = 'all';
   }
 
-  container.innerHTML = filtersList.map(item => `
-    <button type="button" class="subfilter-pill ${item.id === activeSubfilter ? 'active' : ''}" onclick="setSubfilter('${item.id}', this)">
-      <span class="subfilter-icon">${item.icon}</span>
-      <span>${item.label}</span>
-    </button>
+  const optionsHtml = filtersList.map(item => `
+    <option value="${item.id}" ${item.id === activeSubfilter ? 'selected' : ''}>${item.label}</option>
   `).join('');
+
+  if (selectElem) {
+    selectElem.innerHTML = optionsHtml;
+    selectElem.value = activeSubfilter;
+  } else if (container) {
+    container.innerHTML = `
+      <label class="category-control" style="display:block; margin:0;">
+        <select id="categorySubfilterSelect" class="studio-select" onchange="setSubfilter(this.value)">
+          ${optionsHtml}
+        </select>
+      </label>
+    `;
+  }
 }
 
 function renderCategorySizeFilters() {
+  const select = document.getElementById('categorySizeFilterSelect');
   const container = document.getElementById('categorySizeFilters');
-  if (!container) return;
+  if (!select && !container) return;
 
   const categoryProducts = PRODUCTS_DATA.filter(product => {
     if (state.selectedCategory === 'budget') return product.price <= 499;
@@ -1565,25 +2971,107 @@ function renderCategorySizeFilters() {
   });
   const sizes = [...new Set(categoryProducts.flatMap(product => product.sizes))];
 
-  container.innerHTML = sizes.length
-    ? `<span class="category-size-label">Size</span>${sizes.map(size => {
+  const sizeOrder = ['Free Size', 'XS', 'S', 'M', 'L', 'XL', '2XL', 'XXL', '3XL', '38', '40', '42', '44', '46', '6', '7', '8', '9', '10', '11', '12'];
+  sizes.sort((a, b) => {
+    const idxA = sizeOrder.indexOf(a);
+    const idxB = sizeOrder.indexOf(b);
+    if (idxA !== -1 && idxB !== -1) return idxA - idxB;
+    if (idxA !== -1) return -1;
+    if (idxB !== -1) return 1;
+    return String(a).localeCompare(String(b), undefined, { numeric: true });
+  });
+
+  const currentSelectedSize = state.selectedSizes.length > 0 ? state.selectedSizes[0] : 'all';
+
+  const optionsHtml = `
+    <option value="all">All Sizes</option>
+    ${sizes.map(size => {
       const productForSize = categoryProducts.find(product => product.sizes.includes(size));
-      return `<button type="button" class="category-size-chip ${state.selectedSizes.includes(size) ? 'active' : ''}" onclick="toggleSizeFilter('${size}', this)">${formatProductSize(productForSize, size)}</button>`;
-    }).join('')}`
-    : '';
+      const formatted = formatProductSize(productForSize, size);
+      const isSelected = state.selectedSizes.includes(size);
+      return `<option value="${size}" ${isSelected ? 'selected' : ''}>Size ${formatted}</option>`;
+    }).join('')}
+  `;
+
+  if (select) {
+    select.innerHTML = optionsHtml;
+    select.value = currentSelectedSize;
+  } else if (container) {
+    container.innerHTML = `
+      <label class="category-control" style="display:block; margin:0;">
+        <select id="categorySizeFilterSelect" class="studio-select" onchange="handleCategorySizeSelect(this.value)">
+          ${optionsHtml}
+        </select>
+      </label>
+    `;
+  }
+}
+
+function handleCategorySizeSelect(size) {
+  if (!size || size === 'all') {
+    state.selectedSizes = [];
+  } else {
+    state.selectedSizes = [size];
+  }
+  const select = document.getElementById('categorySizeFilterSelect');
+  if (select && select.value !== size) {
+    select.value = size;
+  }
+  renderProductsCatalog();
+  if (typeof updateCategoryPageActiveChips === 'function') {
+    updateCategoryPageActiveChips();
+  }
 }
 
 function setSubfilter(subId, btnElem) {
   activeSubfilter = subId;
+  const selectElem = document.getElementById('categorySubfilterSelect');
+  if (selectElem && selectElem.value !== subId) {
+    selectElem.value = subId;
+  }
   document.querySelectorAll('.subfilter-pill').forEach(b => b.classList.remove('active'));
   if (btnElem) btnElem.classList.add('active');
 
+  renderProductsCatalog();
+  if (typeof updateCategoryPageActiveChips === 'function') {
+    updateCategoryPageActiveChips();
+  }
+}
+
+function renderCategoryBrandFilter() {
+  const select = document.getElementById('categoryBrandFilter');
+  if (!select) return;
+
+  const currentCat = state.selectedCategory || 'all';
+  let brands = [];
+  if (CATEGORY_BRANDS[currentCat]) {
+    brands = CATEGORY_BRANDS[currentCat];
+  } else {
+    const categoryProducts = currentCat === 'budget'
+      ? PRODUCTS_DATA.filter(p => p.price <= 499)
+      : currentCat === 'all'
+        ? PRODUCTS_DATA
+        : PRODUCTS_DATA.filter(p => p.category === currentCat);
+    brands = [...new Set(categoryProducts.map(p => p.brand).filter(Boolean))].sort();
+  }
+
+  const currentValue = state.selectedBrands.length === 1 ? state.selectedBrands[0] : 'all';
+
+  select.innerHTML = `<option value="all">All Brands</option>` +
+    brands.map(b => `<option value="${b}" ${b === currentValue ? 'selected' : ''}>${b}</option>`).join('');
+}
+
+function handleCategoryBrandFilter(brand) {
+  if (brand === 'all') {
+    state.selectedBrands = [];
+  } else {
+    state.selectedBrands = [brand];
+  }
   renderProductsCatalog();
 }
 
 function getFilteredProducts() {
   return PRODUCTS_DATA.filter(p => {
-    if (!IS_CATEGORY_PAGE && state.selectedCategory === 'all' && !p.showInAllFashion) return false;
     if (state.selectedCategory === 'budget') {
       if (p.price > 499) return false;
     } else if (state.selectedCategory !== 'all' && p.category !== state.selectedCategory) {
@@ -1595,38 +3083,64 @@ function getFilteredProducts() {
     if (p.rating < state.minRating) return false;
 
     if (activeSubfilter && activeSubfilter !== 'all') {
-      const text = (p.title + ' ' + (p.description || '') + ' ' + (p.fabric || '') + ' ' + (p.tags || []).join(' ')).toLowerCase();
+      const targetSub = activeSubfilter.toLowerCase();
+      const pSub = (p.subcategory || '').toLowerCase();
+      const text = (p.title + ' ' + (p.description || '') + ' ' + (p.fabric || '') + ' ' + (p.tags || []).join(' ') + ' ' + pSub).toLowerCase();
 
-      if (activeSubfilter === 'brands') {
-        if (!p.brand) return false;
-      } else if (activeSubfilter === 'shirts') {
-        if (!text.includes('shirt') && !text.includes('top') && !text.includes('tee') && !text.includes('blouse')) return false;
-      } else if (activeSubfilter === 'pants') {
-        if (!text.includes('jean') && !text.includes('pant') && !text.includes('bottom') && !text.includes('trouser') && !text.includes('sharara')) return false;
-      } else if (activeSubfilter === 'casual') {
-        if (!text.includes('casual') && !text.includes('street') && !text.includes('relax') && !text.includes('regular') && !text.includes('trending')) return false;
-      } else if (activeSubfilter === 'formal') {
-        if (!text.includes('formal') && !text.includes('workwear') && !text.includes('executive') && !text.includes('party') && !text.includes('festive') && !text.includes('gown')) return false;
-      } else if (activeSubfilter === 'hoodies') {
-        if (!text.includes('hoodie') && !text.includes('jacket') && !text.includes('sweatshirt')) return false;
-      } else if (activeSubfilter === 'dresses') {
-        if (!text.includes('dress') && !text.includes('frock')) return false;
-      } else if (activeSubfilter === 'sets') {
-        if (!text.includes('set') && !text.includes('combo')) return false;
-      } else if (activeSubfilter === 'sneakers') {
-        if (!text.includes('sneaker') && !text.includes('lifestyle')) return false;
-      } else if (activeSubfilter === 'sports') {
-        if (!text.includes('sport') && !text.includes('running') && !text.includes('cushion')) return false;
-      } else if (activeSubfilter === 'slippers') {
-        if (!text.includes('slipper') && !text.includes('slide') && !text.includes('flip')) return false;
-      } else if (activeSubfilter === 'sarees') {
-        if (!text.includes('saree') && !text.includes('sari')) return false;
-      } else if (activeSubfilter === 'kurtas') {
-        if (!text.includes('kurta')) return false;
-      } else if (activeSubfilter === 'festive') {
-        if (!text.includes('festive') && !text.includes('traditional') && !text.includes('ethnic') && !text.includes('party')) return false;
-      } else if (activeSubfilter === 'bestsellers') {
-        if (!p.tags || !p.tags.includes('Best Seller')) return false;
+      // Ethnic category filtering
+      if (p.category === 'ethnic') {
+        if (pSub) {
+          if (pSub !== targetSub) return false;
+        } else {
+          if (targetSub === 'men' && (!/\bmen\b/i.test(p.title) || /\bwomen\b/i.test(p.title) || /\b(girls?|boys?|kids?)\b/i.test(p.title))) return false;
+          if (targetSub === 'women' && !/\b(women|woman|saree|sari|lehenga|anarkali|choli)\b/i.test(text)) return false;
+          if (targetSub === 'kids' && !/\b(kids?|boys?|girls?|dhoti)\b/i.test(text)) return false;
+        }
+      } else if (p.category === 'footwear') {
+        // Footwear category filtering
+        if (targetSub === 'men') {
+          if (pSub === 'women' || /\bwomen\b/i.test(p.title)) return false;
+          if (pSub !== 'men' && !/\bmen\b/i.test(text) && !/\b(boots|derby|oxford)\b/i.test(text)) return false;
+        } else if (targetSub === 'women') {
+          if (pSub === 'men') return false;
+          if (pSub !== 'women' && !/\b(women|heels|ballerinas?|sandals?)\b/i.test(text)) return false;
+        } else if (targetSub === 'formal') {
+          if (pSub !== 'formal' && !/\b(formal|oxford|derby|dress|leather)\b/i.test(text)) return false;
+        } else if (targetSub === 'casual') {
+          if (pSub !== 'casual' && !/\b(casual|sneakers?|canvas|slip-on)\b/i.test(text)) return false;
+        } else if (targetSub === 'sports') {
+          if (pSub !== 'sports' && !/\b(sports?|running|boost|pegasus)\b/i.test(text)) return false;
+        } else if (pSub !== targetSub) {
+          return false;
+        }
+      } else if (pSub === targetSub) {
+        // Direct subcategory match
+      } else if (targetSub === 'casual' && (text.includes('casual') || text.includes('street') || text.includes('relax') || text.includes('regular'))) {
+        // match
+      } else if (targetSub === 'formal' && (text.includes('formal') || text.includes('executive') || text.includes('blazer') || text.includes('trousers') || text.includes('oxford') || text.includes('derby'))) {
+        // match
+      } else if (targetSub === 'jeans' && (text.includes('jean') || text.includes('denim'))) {
+        // match
+      } else if (targetSub === 'tshirts' && (text.includes('t-shirt') || text.includes('tee') || text.includes('tshirt') || text.includes('polo'))) {
+        // match
+      } else if (targetSub === 'track pants' && (text.includes('track') || text.includes('jogger') || text.includes('sweatpant'))) {
+        // match
+      } else if (targetSub === 'dresses' && (text.includes('dress') || text.includes('frock') || text.includes('gown'))) {
+        // match
+      } else if (targetSub === 'top' && (text.includes('top') || text.includes('blouse') || text.includes('shirt') || text.includes('crop') || text.includes('tunic'))) {
+        // match
+      } else if (targetSub === 'saree' && (text.includes('saree') || text.includes('sari'))) {
+        // match
+      } else if (targetSub === 'boy' && (text.includes('boy') || text.includes('boys'))) {
+        // match
+      } else if (targetSub === 'girl' && (text.includes('girl') || text.includes('girls') || text.includes('frock') || text.includes('ghagra'))) {
+        // match
+      } else if (targetSub === 'nightwear' && (text.includes('night') || text.includes('sleep') || text.includes('pajama') || text.includes('pyjama'))) {
+        // match
+      } else if (targetSub === 'sports' && (text.includes('sport') || text.includes('running') || text.includes('ultraboost') || text.includes('sneaker') || text.includes('pegasus'))) {
+        // match
+      } else {
+        return false;
       }
     }
 
@@ -1664,6 +3178,7 @@ function renderProductsCatalog() {
 
   renderCategorySubfilterBar();
   renderCategorySizeFilters();
+  renderCategoryBrandFilter();
 
   const filteredList = getFilteredProducts();
   const categoryProducts = state.selectedCategory === 'budget'
@@ -1678,7 +3193,7 @@ function renderProductsCatalog() {
     } else if (IS_CATEGORY_PAGE && state.selectedCategory !== 'all') {
       countLabel.textContent = `Showing ${filteredList.length} of ${categoryProducts.length} items in this collection`;
     } else {
-      countLabel.textContent = `Showing ${filteredList.length} of ${IS_CATEGORY_PAGE ? categoryProducts.length : PRODUCTS_DATA.filter(p => p.showInAllFashion).length} featured items`;
+      countLabel.textContent = `Showing ${filteredList.length} of ${categoryProducts.length} items`;
     }
   }
 
@@ -1703,48 +3218,90 @@ function renderProductsCatalog() {
   updateActiveFilterChips();
 }
 
-function createProductCardHTML(product, isFlash = false) {
-  const isWishlisted = state.wishlist.includes(product.id);
-  const thumbs = (product.thumbs && product.thumbs.length > 0) ? product.thumbs : [
-    { label: 'Front View', url: product.image },
-    { label: 'Side View', url: product.image },
-    { label: 'Fabric Detail', url: product.image }
-  ];
-  const imageList = thumbs.map(thumb => thumb.url).filter(Boolean);
-  const initialImg = imageList[0] || product.image;
+function createProductCardHTML(product, isFlash = false, isFeatured = false) {
+  const isWishlisted = state.wishlist && state.wishlist.includes(product.id);
+  const initialImg = product.image;
+  const imageList = [product.image, ...(product.thumbs ? product.thumbs.map(t => t.url).filter(u => u && u !== product.image) : [])];
+  
+  // Dynamic pricing and ratings directly taken from JS (PRODUCTS_DATA)
+  const currentPriceFormatted = `₹${product.price.toLocaleString('en-IN')}`;
+  const origPriceFormatted = `₹${product.originalPrice.toLocaleString('en-IN')}`;
+  const discountFormatted = `${product.discount}% OFF`;
+  const ratingVal = (product.rating || 4.8).toFixed(1);
+  const reviewCountFormatted = product.reviewsCount
+    ? (product.reviewsCount >= 1000 ? `${(product.reviewsCount / 1000).toFixed(1)}k` : product.reviewsCount)
+    : '4.2k';
 
+  // -------------------------------------------------------------------------
+  // 1. TEMPLATE 1: FLASH SALE PRODUCT CARD (Reference: media_1792571028358_f563b565.png)
+  // -------------------------------------------------------------------------
+  if (isFlash) {
+    return `
+      <div class="flash-product-card" data-id="${product.id}" onclick="openProductWindow('${product.id}', event)">
+        <div class="flash-card-img-wrap">
+          <img id="flash-img-${product.id}" src="${initialImg}" alt="${product.title}" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&w=800&q=80';">
+        </div>
+
+        <div class="flash-card-info">
+          <div class="flash-placeholder-lines" aria-hidden="true">
+            <div class="flash-line line-1"></div>
+            <div class="flash-line line-2"></div>
+          </div>
+          <div class="flash-card-title-snippet" title="${product.brand} - ${product.title}">${product.title}</div>
+
+          <div class="flash-price-row">
+            <span class="flash-original-price">${origPriceFormatted}</span>
+            <span class="flash-current-price">${currentPriceFormatted}</span>
+          </div>
+
+          <button type="button" class="flash-add-btn" onclick="event.stopPropagation(); quickAddToCart('${product.id}')">Add to Cart</button>
+        </div>
+      </div>
+    `;
+  }
+
+  // -------------------------------------------------------------------------
+  // 2. TEMPLATE 2: STANDARD PRODUCT CARD (Reference: media_1792571044343_4bb63e9a.png)
+  // -------------------------------------------------------------------------
   return `
     <div class="product-card" data-id="${product.id}">
-      <div class="product-card-img-wrap" onclick="openProductWindow('${product.id}', event)">
-        <img id="card-img-${product.id}" src="${initialImg}" alt="${product.title}" loading="lazy">
+      <div class="product-card-img-wrap${product.id === 'sm-106' ? ' puma-shoe-image' : ''}" onclick="openProductWindow('${product.id}', event)">
+        <img id="card-img-${product.id}" src="${initialImg}" alt="${product.title}" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&w=800&q=80';">
         
-        <div class="card-badge-container">
-          <span class="card-badge discount">${product.discount}% OFF</span>
-          ${product.tags && product.tags.includes('Trending') ? '<span class="card-badge trending">TRENDING</span>' : ''}
-        </div>
-
-        <button class="wishlist-toggle-btn ${isWishlisted ? 'active' : ''}" data-product-id="${product.id}"
-                onclick="event.stopPropagation(); toggleWishlist('${product.id}')" title="Save to Wishlist">
-          ♥
+        <button type="button" class="card-wishlist-btn wishlist-toggle-btn ${isWishlisted ? 'active' : ''}" data-product-id="${product.id}"
+                onclick="event.stopPropagation(); toggleWishlist('${product.id}')" title="${isWishlisted ? 'Remove from Wishlist' : 'Save to Wishlist'}" aria-label="Save to Wishlist">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="${isWishlisted ? '#ef4444' : 'none'}" stroke="${isWishlisted ? '#ef4444' : '#ffffff'}" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
         </button>
 
-        ${imageList.length > 1 ? `
-          <div class="card-image-dots" onclick="event.stopPropagation();">
-            ${imageList.map((_, idx) => `
-              <span class="card-img-dot ${idx === 0 ? 'active' : ''}" id="dot-${product.id}-${idx}" onclick="event.stopPropagation(); setCardImage('${product.id}', ${idx})" title="Image ${idx + 1}"></span>
-            `).join('')}
-          </div>
-        ` : ''}
+        <div class="card-image-dots" onclick="event.stopPropagation();">
+          ${imageList.slice(0, 5).map((_, idx) => `
+            <span class="card-img-dot ${idx === 0 ? 'active' : ''}" id="dot-${product.id}-${idx}" onclick="event.stopPropagation(); setCardImage('${product.id}', ${idx})" title="Image ${idx + 1}"></span>
+          `).join('')}
+        </div>
       </div>
 
-      <div class="product-card-info" onclick="openProductWindow('${product.id}', event)" style="cursor:pointer;">
-        <span class="product-brand">${product.brand}</span>
-        <h3 class="product-title">${product.title}</h3>
-        
-        <div class="price-row" style="display:flex; align-items:baseline; gap:8px; margin-top:6px;">
-          <span class="original-price" style="text-decoration: line-through; color: var(--text-muted); font-size: 0.88rem; font-weight: 500;">₹${product.originalPrice.toLocaleString('en-IN')}</span>
-          <span class="current-price" style="font-size: 1.15rem; font-weight: 800; color: var(--text-main);">₹${product.price.toLocaleString('en-IN')}</span>
+      <div class="product-card-info" onclick="openProductWindow('${product.id}', event)">
+        <div class="card-brand-row">
+          <span class="product-brand">${product.brand}</span>
+          <div class="card-rating-pill">
+            <span class="rating-star">★</span>
+            <span class="rating-val">${ratingVal}</span>
+            <span class="rating-divider">|</span>
+            <span class="rating-count">${reviewCountFormatted}</span>
+          </div>
         </div>
+
+        <h3 class="product-title" title="${product.title}">${product.title}</h3>
+        
+        <div class="price-row">
+          <span class="original-price">${origPriceFormatted}</span>
+          <span class="current-price">${currentPriceFormatted}</span>
+          <span class="discount-tag">${discountFormatted}</span>
+        </div>
+
+        <button type="button" class="card-add-to-cart-btn" onclick="event.stopPropagation(); quickAddToCart('${product.id}')">Add to cart</button>
       </div>
     </div>
   `;
@@ -1772,6 +3329,11 @@ function setCardImage(productId, index) {
 // --------------------------------------------------------------------------
 // 7. FILTER HANDLERS
 // --------------------------------------------------------------------------
+function switchCategoryPageDepartment(category) {
+  if (!category) return;
+  window.location.href = `category.html?category=${encodeURIComponent(category)}`;
+}
+
 function filterByCategory(category) {
   if (!IS_CATEGORY_PAGE && category !== 'all') {
     window.location.href = `category.html?category=${encodeURIComponent(category)}`;
@@ -1795,13 +3357,38 @@ function setCategoryFilter(category) {
   renderProductsCatalog();
 }
 
-function handlePriceRangeChange(val) {
-  state.maxPrice = parseInt(val);
-  const priceRangeValue = document.getElementById('priceRangeValue');
-  if (priceRangeValue) priceRangeValue.textContent = `₹${parseInt(val).toLocaleString('en-IN')}`;
-  const categoryPriceFilter = document.getElementById('categoryPriceFilter');
-  if (categoryPriceFilter) categoryPriceFilter.value = String(state.maxPrice);
+function updatePriceBarFill(priceBar) {
+  if (!priceBar) priceBar = document.getElementById('categoryPriceBar');
+  if (!priceBar) return;
+  const min = parseFloat(priceBar.min) || 0;
+  const max = parseFloat(priceBar.max) || 10000;
+  const val = parseFloat(priceBar.value) || 0;
+  const pct = Math.min(100, Math.max(0, ((val - min) / (max - min)) * 100));
+  priceBar.style.setProperty('background', `linear-gradient(to right, #0f5948 0%, #0f5948 ${pct}%, #cbd5e1 ${pct}%, #cbd5e1 100%)`, 'important');
+}
+
+function handlePriceBarChange(val) {
+  const numVal = parseInt(val, 10);
+  state.maxPrice = numVal;
+  const priceDisplay = document.getElementById('priceRangeDisplay');
+  const priceBar = document.getElementById('categoryPriceBar');
+  if (priceDisplay) {
+    priceDisplay.textContent = numVal >= 10000 ? '₹0 - ₹10,000+' : `₹0 - ₹${numVal.toLocaleString('en-IN')}`;
+  }
+  if (priceBar) {
+    if (parseInt(priceBar.value, 10) !== numVal) {
+      priceBar.value = numVal;
+    }
+    updatePriceBarFill(priceBar);
+  }
+  document.querySelectorAll('.price-chip-btn').forEach(btn => {
+    btn.classList.toggle('active', parseInt(btn.dataset.price, 10) === numVal);
+  });
   renderProductsCatalog();
+}
+
+function handlePriceRangeChange(val) {
+  handlePriceBarChange(val);
 }
 
 function handleBrandFilterChange() {
@@ -1831,27 +3418,52 @@ function handleSortChange(sortVal) {
 }
 
 function clearCategoryPageFilters() {
-  state.maxPrice = 5000;
+  state.maxPrice = 10000;
   state.selectedBrands = [];
   state.selectedSizes = [];
   state.minRating = 0;
   state.sortBy = 'popular';
   state.searchQuery = '';
   activeSubfilter = 'all';
-  const price = document.getElementById('categoryPriceFilter');
+  const priceBar = document.getElementById('categoryPriceBar');
+  const priceDisplay = document.getElementById('priceRangeDisplay');
   const rating = document.getElementById('categoryRatingFilter');
   const sort = document.getElementById('categorySortFilter');
-  if (price) price.value = '5000';
+  const brand = document.getElementById('categoryBrandFilter');
+  if (priceBar) {
+    priceBar.value = '10000';
+    updatePriceBarFill(priceBar);
+  }
+  if (priceDisplay) priceDisplay.textContent = '₹0 - ₹10,000';
   if (rating) rating.value = '0';
   if (sort) sort.value = 'popular';
+  if (brand) brand.value = 'all';
+  const subfilterSelect = document.getElementById('categorySubfilterSelect');
+  if (subfilterSelect) subfilterSelect.value = 'all';
+  const sizeSelect = document.getElementById('categorySizeFilterSelect');
+  if (sizeSelect) sizeSelect.value = 'all';
+  document.querySelectorAll('.price-chip-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.price === '10000');
+  });
+  document.querySelectorAll('.category-size-chip').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  document.querySelectorAll('.subfilter-pill').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === 'all styles' || btn.textContent.trim().toLowerCase() === 'all');
+  });
   const search = document.getElementById('searchInput');
   const clearSearch = document.getElementById('clearSearchBtn');
   if (search) search.value = '';
   if (clearSearch) clearSearch.style.display = 'none';
   renderProductsCatalog();
+  showToast('Filters reset', 'info');
 }
 
 function clearAllFilters() {
+  if (IS_CATEGORY_PAGE) {
+    clearCategoryPageFilters();
+    return;
+  }
   state.selectedCategory = 'all';
   state.maxPrice = 5000;
   state.selectedBrands = [];
@@ -1859,27 +3471,50 @@ function clearAllFilters() {
   state.minRating = 0;
   state.searchQuery = '';
   state.sortBy = 'popular';
-  document.querySelectorAll('input[name="categoryFilter"]')[0].checked = true;
-  document.getElementById('priceRangeInput').value = 5000;
-  document.getElementById('priceRangeValue').textContent = '₹5,000';
+  activeSubfilter = 'all';
+  const catInput = document.querySelector('input[name="categoryFilter"]');
+  if (catInput) catInput.checked = true;
+  const priceInput = document.getElementById('priceRangeInput');
+  if (priceInput) priceInput.value = 5000;
+  const priceVal = document.getElementById('priceRangeValue');
+  if (priceVal) priceVal.textContent = '₹5,000';
   document.querySelectorAll('.brand-check').forEach(cb => cb.checked = false);
   document.querySelectorAll('.size-chip-btn').forEach(b => b.classList.remove('active'));
-  document.querySelectorAll('input[name="ratingFilter"]')[0].checked = true;
-  document.getElementById('searchInput').value = '';
-  document.getElementById('clearSearchBtn').style.display = 'none';
+  const ratingInput = document.querySelector('input[name="ratingFilter"]');
+  if (ratingInput) ratingInput.checked = true;
+  const searchInput = document.getElementById('searchInput');
+  if (searchInput) searchInput.value = '';
+  const clearSearchBtn = document.getElementById('clearSearchBtn');
+  if (clearSearchBtn) clearSearchBtn.style.display = 'none';
   renderProductsCatalog();
   showToast('Filters reset', 'info');
 }
 
+function toggleMobileSearch() {
+  const wrappers = document.querySelectorAll('.search-wrapper');
+  wrappers.forEach(w => {
+    w.classList.toggle('mobile-active');
+    if (w.classList.contains('mobile-active')) {
+      const input = w.querySelector('#searchInput') || w.querySelector('input');
+      if (input) input.focus();
+    }
+  });
+}
+
 function scrollToCatalog() {
+  const section = document.getElementById('catalogSection');
+  if (section) {
+    section.hidden = false;
+    section.scrollIntoView({ behavior: 'smooth' });
+    renderProductsCatalog();
+    return;
+  }
   if (!IS_CATEGORY_PAGE) {
     const search = state.searchQuery.trim();
     const query = search ? `&search=${encodeURIComponent(search)}` : '';
     window.location.href = `category.html?category=all${query}`;
     return;
   }
-  document.getElementById('catalogSection')?.scrollIntoView({ behavior: 'smooth' });
-  renderProductsCatalog();
 }
 
 function scrollToStudio() {
@@ -1887,7 +3522,21 @@ function scrollToStudio() {
 }
 
 function toggleMobileFilters() {
-  document.getElementById('filterSidebar')?.classList.toggle('active');
+  const sidebar = document.getElementById('filterSidebar') || document.getElementById('categoryFilterSidebar');
+  const overlay = document.getElementById('categoryFilterOverlay');
+  if (sidebar) sidebar.classList.toggle('active');
+  if (overlay) overlay.classList.toggle('active');
+}
+
+function toggleMobileCategoryFilters() {
+  toggleMobileFilters();
+}
+
+function closeMobileCategoryFilters() {
+  const sidebar = document.getElementById('filterSidebar') || document.getElementById('categoryFilterSidebar');
+  const overlay = document.getElementById('categoryFilterOverlay');
+  if (sidebar) sidebar.classList.remove('active');
+  if (overlay) overlay.classList.remove('active');
 }
 
 function updateActiveFilterChips() {
@@ -1903,12 +3552,15 @@ function updateActiveFilterChips() {
     chips.push(`Search: "${state.searchQuery}" <span onclick="clearSearchQuery()" style="cursor:pointer; font-weight:800; margin-left:4px;">&times;</span>`);
     count++;
   }
-  if (state.selectedCategory !== 'all') {
+  if (!IS_CATEGORY_PAGE && state.selectedCategory !== 'all') {
     chips.push(`Category: ${state.selectedCategory} <span onclick="setCategoryFilter('all')" style="cursor:pointer; font-weight:800; margin-left:4px;">&times;</span>`);
     count++;
   }
-  if (state.maxPrice < 5000) {
-    chips.push(`Max ₹${state.maxPrice} <span onclick="handlePriceRangeChange(5000)" style="cursor:pointer; font-weight:800; margin-left:4px;">&times;</span>`);
+  if (IS_CATEGORY_PAGE && state.maxPrice < 10000) {
+    chips.push(`Max ₹${state.maxPrice.toLocaleString('en-IN')} <span onclick="handlePriceBarChange(10000)" style="cursor:pointer; font-weight:800; margin-left:4px;">&times;</span>`);
+    count++;
+  } else if (!IS_CATEGORY_PAGE && state.maxPrice < 5000) {
+    chips.push(`Max ₹${state.maxPrice.toLocaleString('en-IN')} <span onclick="handlePriceRangeChange(5000)" style="cursor:pointer; font-weight:800; margin-left:4px;">&times;</span>`);
     count++;
   }
   state.selectedBrands.forEach(b => {
@@ -1919,6 +3571,14 @@ function updateActiveFilterChips() {
     chips.push(`Size: ${s} <span onclick="removeSizeChip('${s}')" style="cursor:pointer; font-weight:800; margin-left:4px;">&times;</span>`);
     count++;
   });
+  if (activeSubfilter && activeSubfilter !== 'all') {
+    chips.push(`Style: ${activeSubfilter} <span onclick="setSubfilter('all')" style="cursor:pointer; font-weight:800; margin-left:4px;">&times;</span>`);
+    count++;
+  }
+  if (state.minRating > 0) {
+    chips.push(`Rating: ${state.minRating}★+ <span onclick="setRatingFilter(0)" style="cursor:pointer; font-weight:800; margin-left:4px;">&times;</span>`);
+    count++;
+  }
 
   if (chips.length > 0) {
     bar.style.display = 'flex';
@@ -1934,12 +3594,30 @@ function updateActiveFilterChips() {
 }
 
 function removeBrandChip(brand) {
+  if (IS_CATEGORY_PAGE) {
+    const sel = document.getElementById('categoryBrandFilter');
+    if (sel) sel.value = 'all';
+    handleCategoryBrandFilter('all');
+    return;
+  }
   const cb = Array.from(document.querySelectorAll('.brand-check')).find(c => c.value === brand);
   if (cb) cb.checked = false;
   handleBrandFilterChange();
 }
 
 function removeSizeChip(size) {
+  if (IS_CATEGORY_PAGE) {
+    state.selectedSizes = state.selectedSizes.filter(s => s !== size);
+    const sizeSelect = document.getElementById('categorySizeFilterSelect');
+    if (sizeSelect) {
+      sizeSelect.value = state.selectedSizes.length > 0 ? state.selectedSizes[0] : 'all';
+    }
+    renderProductsCatalog();
+    if (typeof updateCategoryPageActiveChips === 'function') {
+      updateCategoryPageActiveChips();
+    }
+    return;
+  }
   const btn = Array.from(document.querySelectorAll('.size-chip-btn')).find(b => b.dataset.size === size);
   if (btn) toggleSizeFilter(size, btn);
 }
@@ -2001,6 +3679,13 @@ function initSearchAutocomplete() {
       suggestionsBox?.classList.remove('active');
       scrollToCatalog();
     }
+  });
+
+  const searchSubmitBtn = document.getElementById('headerSearchSubmitBtn');
+  searchSubmitBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    suggestionsBox?.classList.remove('active');
+    scrollToCatalog();
   });
 
   clearBtn?.addEventListener('click', () => {
@@ -2116,8 +3801,8 @@ function renderWishlistDrawer() {
         <span class="product-brand" style="font-size:0.75rem; font-weight:800; color:var(--primary); text-transform:uppercase;">${p.brand}</span>
         <h4 class="cart-item-title" style="font-size:0.9rem; font-weight:700; color:var(--secondary); margin:2px 0 6px 0;">${p.title}</h4>
         <div class="price-row" style="margin-bottom:8px; display:flex; align-items:baseline; gap:8px;">
-          <span class="current-price" style="font-size:0.95rem; font-weight:800; color:var(--secondary);">₹${p.price.toLocaleString('en-IN')}</span>
           <span class="original-price" style="text-decoration:line-through; color:var(--text-muted); font-size:0.8rem;">₹${p.originalPrice.toLocaleString('en-IN')}</span>
+          <span class="current-price" style="font-size:0.95rem; font-weight:800; color:var(--secondary);">₹${p.price.toLocaleString('en-IN')}</span>
         </div>
         <button class="btn btn-primary btn-block" style="padding:6px 12px; font-size:0.8rem;" onclick="moveItemFromWishlistToCart('${p.id}')">
           Move to Cart
@@ -2211,7 +3896,7 @@ function openSelectSizeModal(productId) {
   }
 
   modal.innerHTML = `
-    <div class="modal-container size-select-modal" style="max-width: 440px; padding: 24px; border-radius: var(--radius-lg); background: #ffffff; text-align: left; position: relative;">
+    <div class="modal-container size-select-modal" style="max-width: 440px; padding: 24px; border-radius: var(--radius-lg); background: #ffffff; text-align: left; position: relative;" onclick="event.stopPropagation()">
       <button class="modal-close-btn" onclick="closeSelectSizeModal()">&times;</button>
       
       <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--border-color);">
@@ -2219,7 +3904,10 @@ function openSelectSizeModal(productId) {
         <div>
           <span style="font-size: 0.75rem; font-weight: 800; color: var(--primary); text-transform: uppercase;">${product.brand}</span>
           <h4 style="font-size: 0.98rem; font-weight: 700; color: var(--secondary); margin: 2px 0 6px 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.3;">${product.title}</h4>
-          <span style="font-size: 1.1rem; font-weight: 800; color: var(--secondary);">₹${product.price.toLocaleString('en-IN')}</span>
+          <div style="display: flex; align-items: baseline; gap: 8px;">
+            <span style="font-size: 0.88rem; font-weight: 500; color: var(--text-muted); text-decoration: line-through;">₹${product.originalPrice.toLocaleString('en-IN')}</span>
+            <span style="font-size: 1.1rem; font-weight: 800; color: var(--secondary);">₹${product.price.toLocaleString('en-IN')}</span>
+          </div>
         </div>
       </div>
 
@@ -2240,6 +3928,7 @@ function openSelectSizeModal(productId) {
     </div>
   `;
 
+  modal.onclick = function(e) { if (e.target === this) closeSelectSizeModal(); };
   modal.classList.add('active');
 }
 
@@ -2274,9 +3963,11 @@ function quickAddToCart(productId, sizeOverride = null) {
   const product = PRODUCTS_DATA.find(p => p.id === productId);
   if (!product) return;
 
+  const isFreeSize = isFreeSizeProduct(product);
+
   if (!sizeOverride) {
-    if (product.sizes.length === 1 && product.sizes[0] === 'Free Size') {
-      sizeOverride = 'Free Size';
+    if (isFreeSize) {
+      sizeOverride = (product.sizes && product.sizes[0]) || 'Free Size';
     } else {
       openSelectSizeModal(productId);
       return;
@@ -2293,25 +3984,52 @@ function quickAddToCart(productId, sizeOverride = null) {
   }
 
   syncLocalStorage();
+  updateCartBadges();
+  showToast(`Added "${product.title}" (${formatProductSize(product, targetSize)}) to Cart! 🛍️`, 'success');
   showCartAddedPopup(product, targetSize);
 }
 
 function showCartAddedPopup(product, size) {
-  const modal = document.getElementById('cartAddedModal');
+  let modal = document.getElementById('cartAddedModal');
   if (!modal) {
-    showToast('Item added to cart.', 'success');
-    return;
+    modal = document.createElement('div');
+    modal.id = 'cartAddedModal';
+    modal.className = 'modal-overlay cart-added-overlay';
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-labelledby', 'cartAddedTitle');
+    modal.onclick = function(e) { if (e.target === this) closeCartAddedPopup(); };
+    modal.innerHTML = `
+      <section class="modal-container cart-added-modal">
+        <button type="button" class="modal-close-btn" onclick="closeCartAddedPopup()" aria-label="Close confirmation">&times;</button>
+        <div class="cart-added-check" aria-hidden="true">✓</div>
+        <h2 id="cartAddedTitle">Item added to cart</h2>
+        <div class="cart-added-product">
+          <img id="cartAddedImage" src="${product.image}" alt="${product.title}">
+          <div>
+            <strong id="cartAddedProductName">${product.title}</strong>
+            <span id="cartAddedProductSize">Size: ${formatProductSize(product, size)}</span>
+          </div>
+        </div>
+        <div class="cart-added-actions">
+          <button type="button" class="btn btn-secondary" onclick="closeCartAddedPopup()">Continue shopping</button>
+          <button type="button" class="btn btn-primary" onclick="closeCartAddedPopup(); openCartDrawer()">View cart</button>
+        </div>
+      </section>
+    `;
+    document.body.appendChild(modal);
+  } else {
+    const image = document.getElementById('cartAddedImage');
+    const name = document.getElementById('cartAddedProductName');
+    const selectedSize = document.getElementById('cartAddedProductSize');
+    if (image) {
+      image.src = product.image;
+      image.alt = product.title;
+    }
+    if (name) name.textContent = product.title;
+    if (selectedSize) selectedSize.textContent = `Size: ${formatProductSize(product, size)}`;
   }
 
-  const image = document.getElementById('cartAddedImage');
-  const name = document.getElementById('cartAddedProductName');
-  const selectedSize = document.getElementById('cartAddedProductSize');
-  if (image) {
-    image.src = product.image;
-    image.alt = product.title;
-  }
-  if (name) name.textContent = product.title;
-  if (selectedSize) selectedSize.textContent = `Size: ${formatProductSize(product, size)}`;
   modal.classList.add('active');
 }
 
@@ -2615,10 +4333,6 @@ function copyCouponCode(code) {
 // --------------------------------------------------------------------------
 // 12. PRODUCT QUICK VIEW MODAL
 // --------------------------------------------------------------------------
-let selectedModalSize = null;
-let currentProductSizeCategory = 'all';
-let currentProductDetail = null;
-
 function goBackToProducts() {
   const referrer = document.referrer;
   if (referrer && new URL(referrer).origin === window.location.origin) {
@@ -2633,8 +4347,9 @@ function openProductModal(productId) {
   const product = PRODUCTS_DATA.find(p => p.id === productId);
   if (!product) return;
 
-  selectedModalSize = null;
-  currentProductSizeCategory = product.category;
+  const isFreeSize = isFreeSizeProduct(product);
+  selectedModalSize = isFreeSize ? ((product.sizes && product.sizes[0]) || 'Free Size') : null;
+  currentProductSizeCategory = getProductSizeGuideCategory(product);
   const body = document.getElementById('productModalBody');
 
   const thumbs = product.thumbs && product.thumbs.length > 0 ? product.thumbs : [
@@ -2668,10 +4383,9 @@ function openProductModal(productId) {
         ${product.rating} / 5.0 | ${product.reviewsCount} Customer Reviews
       </div>
 
-      <div class="modal-price-box">
-        <span class="modal-original-price" style="text-decoration: line-through; color: var(--text-muted); font-size: 1.05rem; font-weight: 500; margin-right: 6px;">₹${product.originalPrice.toLocaleString('en-IN')}</span>
+      <div class="modal-price-box" style="display:flex; align-items:baseline; gap:8px;">
+        <span class="modal-original-price" style="text-decoration: line-through; color: var(--text-muted); font-size: 1.05rem; font-weight: 500;">₹${product.originalPrice.toLocaleString('en-IN')}</span>
         <span class="modal-current-price" style="font-size: 1.6rem; font-weight: 800; color: var(--secondary);">₹${product.price.toLocaleString('en-IN')}</span>
-        <span class="modal-discount-tag">${product.discount}% OFF</span>
       </div>
 
       <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:16px;">
@@ -2681,11 +4395,11 @@ function openProductModal(productId) {
       <div class="size-select-section">
         <div class="size-header-row">
           <label style="font-size:0.88rem; font-weight:700;">SELECT SIZE</label>
-          <span class="size-guide-link" onclick="openSizeChartModal('${product.category}')">Size Guide</span>
+          ${!isFreeSize ? `<span class="size-guide-link" onclick="openSizeChartModal('${getProductSizeGuideCategory(product)}')">Size Guide</span>` : ''}
         </div>
         <div class="size-options-grid">
           ${product.sizes.map((sz) => `
-            <button class="modal-size-btn" onclick="selectModalSize('${sz}', this)">${formatProductSize(product, sz)}</button>
+            <button class="modal-size-btn ${isFreeSize ? 'selected' : ''}" onclick="selectModalSize('${sz}', this)">${formatProductSize(product, sz)}</button>
           `).join('')}
         </div>
       </div>
@@ -2700,7 +4414,7 @@ function openProductModal(productId) {
       </div>
 
       <div class="modal-actions-row" style="margin-top:20px; display:flex; gap:12px;">
-        <button class="btn btn-primary btn-block btn-lg btn-glow modal-add-cart-btn" onclick="addFromModalToCart('${product.id}')" disabled>
+        <button class="btn btn-primary btn-block btn-lg btn-glow modal-add-cart-btn" onclick="addFromModalToCart('${product.id}')" ${isFreeSize ? '' : 'disabled'}>
           🛒 Add to Cart
         </button>
         <button class="wishlist-toggle-btn ${state.wishlist.includes(product.id) ? 'active' : ''}" data-product-id="${product.id}" id="modalWishlistBtn" style="position:static; width:48px; height:48px; border-radius: var(--radius-md); flex-shrink:0;" onclick="toggleWishlist('${product.id}')" title="Save to Wishlist">
@@ -2729,11 +4443,14 @@ function switchModalThumb(imgSrc, cardElem) {
 }
 
 function addFromModalToCart(productId) {
-  if (!selectedModalSize) {
-    showToast('Please select a size first.', 'error');
+  const product = PRODUCTS_DATA.find(p => p.id === productId);
+  const isFreeSize = isFreeSizeProduct(product);
+  if (!isFreeSize && !selectedModalSize) {
+    showToast('Please select a size first before adding to cart!', 'warning');
     return;
   }
-  quickAddToCart(productId, selectedModalSize);
+  const targetSize = isFreeSize ? ((product && product.sizes && product.sizes[0]) || 'Free Size') : selectedModalSize;
+  quickAddToCart(productId, targetSize);
   closeProductModal();
 }
 
@@ -2757,8 +4474,8 @@ function openSizeChartModal(category = currentProductSizeCategory) {
     kids: {
       title: "Kids' Size Guide",
       note: 'Approximate body measurements. Age ranges are a guide; height is the best fit reference.',
-      columns: ['Size', 'Age', 'Height (cm)', 'Chest (in)'],
-      rows: [['2–3Y', '2–3 years', '92–98', '21–22'], ['4–5Y', '4–5 years', '104–110', '22–23'], ['6–7Y', '6–7 years', '116–122', '24–25'], ['8–9Y', '8–9 years', '128–134', '26–27'], ['10–12Y', '10–12 years', '140–152', '28–31']]
+      columns: ['Age range', 'Height (cm)', 'Chest (in)'],
+      rows: [['2-3 years', '92-98', '21-22'], ['4-5 years', '104-110', '22-23'], ['6-7 years', '116-122', '24-25'], ['8-9 years', '128-134', '26-27'], ['10-12 years', '140-152', '28-31']]
     },
     footwear: {
       title: 'Footwear Size Guide',
@@ -2840,20 +4557,7 @@ function openProfileModal(section = 'details') {
 
   content.innerHTML = `
     <div class="profile-modal-header">
-      <div class="logo-icon-wrap" style="margin-bottom: 6px;">
-        <svg width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="40" height="40" rx="10" fill="url(#profLogoGrad)"/>
-          <path d="M12 15C12 11.686 14.686 9 18 9H22C25.314 9 28 11.686 28 15V16H29.5C30.605 16 31.5 16.895 31.5 18L30 30C30 31.105 29.105 32 28 32H12C10.895 32 10 31.105 10 30L8.5 18C8.5 16.895 9.395 16 10.5 16H12V15Z" stroke="white" stroke-width="2.2" stroke-linejoin="round"/>
-          <path d="M15 16V14.5C15 11.739 17.239 9.5 20 9.5C22.761 9.5 25 11.739 25 14.5V16" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
-          <path d="M16 22.5L20 26.5L24 22.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <defs>
-            <linearGradient id="profLogoGrad" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#FF3F6C"/>
-              <stop offset="1" stop-color="#8B5CF6"/>
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
+      <img class="profile-brand-logo" src="assets/images/stylemart-logo.png" alt="StyleMart" width="48" height="48">
       <h3>My Account</h3>
       <p>Welcome, ${escapeProfileText(profile.name)}</p>
     </div>
@@ -3175,10 +4879,9 @@ function showToast(message, type = 'success') {
   }, 3000);
 }
 
-function toggleMobileFilters() {
-  const sidebar = document.getElementById('filterSidebar');
-  if (sidebar) sidebar.classList.toggle('active');
-}
+// Mobile Filter helper alias
+window.toggleMobileCategoryFilters = toggleMobileCategoryFilters;
+window.closeMobileCategoryFilters = closeMobileCategoryFilters;
 
 // Mobile Menu Listeners
 document.getElementById('mobileMenuBtn')?.addEventListener('click', () => {
