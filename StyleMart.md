@@ -137,6 +137,8 @@ StyleMart was engineered iteratively between **October 8, 2026** and **October 2
 ### Chronological Git Commit Log
 
 ```
+* 4f4e944 - 2026-10-24 13:39:25 +0530 : fix(ci): standardize banner image filenames to lowercase and add cross-platform case-sensitive validation (Chaithanyaprakash)
+* 4f16acb - 2026-10-24 13:14:24 +0530 : docs: update git commit history log in StyleMart.md (Chaithanyaprakash)
 * e448573 - 2026-10-24 13:13:34 +0530 : feat: restore mobile category filter bar & drawer, match botanical mobile footer, update documentation (Chaithanyaprakash)
 * 40802ba - 2026-10-24 12:35:27 +0530 : docs: update commit log in StyleMart.md (Chaithanyaprakash)
 * f533b95 - 2026-10-24 12:34:10 +0530 : feat: complete luxury redesign, responsive mobile profile, 2-column footer, and verified CI/CD pipeline (Chaithanyaprakash)
@@ -331,6 +333,16 @@ Throughout the 17-day development cycle, several critical bugs were encountered,
   3. Aligned the SHOP and ABOUT columns in a 2-column layout with a crisp 1px gold vertical dividing line (`border-right: 1px solid rgba(197, 155, 39, 0.45);`).
   4. Added 44px thick gold underline pills under `SHOP` and `ABOUT` headings and horizontal gold flank lines around the tagline.
   5. Placed a full-width 1px gold dividing line above the centered copyright text (`© 2026 StyleMart. All Rights Reserved.`).
+
+---
+
+### Bug 13: CI/CD Case-Sensitive Asset Validation Failure on Linux Runner
+- **Reported Symptom:** GitHub Actions CI/CD pipeline failed during the `Validate HTML Structure, DOCTYPE & Asset Integrity` step with errors: `[FAIL] index.html: Referenced local image "assets/images/banner-1.png" does not exist!`, despite passing locally on Windows development machines.
+- **Root Cause:** Git tracked hero carousel images with uppercase filenames (`Banner-1.png`, `Banner-2.png`, `Banner-3.png`) from a historical commit, while [index.html](index.html) referenced them in lowercase (`banner-1.png`, `banner-2.png`, `banner-3.png`). Windows NTFS is case-insensitive, but GitHub Actions operates on `ubuntu-latest` (Linux ext4) which is strictly case-sensitive.
+- **Consequences Faced:** The automated CI/CD pipeline blocked deployment on GitHub Actions due to the casing mismatch.
+- **Resolution Implemented:**
+  1. Performed a two-step Git case rename (`git mv assets/images/Banner-1.png assets/images/banner-1.png`, etc.) to standardize tracked assets to standard web lowercase.
+  2. Upgraded [scripts/validate-html.js](scripts/validate-html.js) with a cross-platform case-sensitive check (`fileExistsCaseSensitive`), ensuring local tests on Windows catch case discrepancies before pushing to remote Linux runners.
 
 ---
 
