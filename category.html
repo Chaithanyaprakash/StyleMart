@@ -3,157 +3,143 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collections & Categories | StyleMart</title>
   <meta name="description" content="Explore the latest styles and deals at StyleMart.">
   <!-- Google Fonts Poppins -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
 
   <!-- Favicon & Mobile Touch Icons -->
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png?v=20261021-logo-v1">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png?v=20261021-logo-v1">
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png?v=20261021-logo-v1">
-  <link rel="shortcut icon" href="favicon.ico?v=20261021-logo-v1">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png?v=20261022-v4">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png?v=20261022-v4">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png?v=20261022-v4">
+  <link rel="shortcut icon" href="favicon.ico?v=20261022-v4">
 
-  <link rel="stylesheet" href="styles.css?v=20261021-fullpin-aspect-v1">
+  <link rel="stylesheet" href="styles.css?v=20261024-v12">
 </head>
 <body class="category-page">
+  <div class="mobile-nav-backdrop" id="mobileNavBackdrop" onclick="closeMobileNav()"></div>
+  <!-- Main Header Matching Image 2 Design -->
   <header class="main-header" id="mainHeader">
     <div class="header-main-row">
       <div class="header-container">
         
-        <!-- Mobile Menu Hamburger -->
-        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open Menu">
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open navigation menu">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
         </button>
 
-        <!-- Brand Logo -->
-        <a href="index.html" class="brand-logo" aria-label="StyleMart Home">
-          <div class="logo-icon-wrap">
-            <img class="brand-logo-image" src="assets/images/stylemart-logo.png?v=20261021-logo-v1" alt="StyleMart Logo" width="38" height="38">
-          </div>
-          <div class="logo-text">
-            <span class="logo-primary">Style<span class="logo-highlight">Mart</span></span>
-          </div>
+        <!-- Brand Logo (Serif Luxury: Logo Mark + Style in White, Mart in Gold) -->
+        <a href="index.html" class="brand-logo" aria-label="StyleMart Home" title="StyleMart - Fashion For Every You">
+          <img src="assets/images/stylemart-logo.png?v=20261023-logo-v1" alt="StyleMart - Fashion For Every You" class="brand-logo-image header-logo-full">
         </a>
 
-        <!-- Desktop Navigation: Single-Line with Category Icons (No down arrows) -->
+        <!-- Desktop Navigation: Strictly Home, Women, Men, Kids, Footwear, Ethnic -->
         <nav class="nav-menu" id="navMenu" aria-label="Shop categories">
           <div class="mobile-nav-header">
+            <button class="close-mobile-nav" id="closeMobileNavBtn" onclick="closeMobileNav()" aria-label="Close menu">&times;</button>
             <a href="index.html" class="brand-logo" aria-label="StyleMart Home">
-              <div class="logo-icon-wrap">
-                <img class="brand-logo-image" src="assets/images/stylemart-logo.png?v=20261021-logo-v1" alt="StyleMart Logo" width="34" height="34">
-              </div>
-              <div class="logo-text">
-                <span class="logo-primary">Style<span class="logo-highlight">Mart</span></span>
-              </div>
+              <img src="assets/images/stylemart-logo.png?v=20261023-logo-v1" alt="StyleMart" class="brand-logo-image header-logo-full">
             </a>
-            <button class="close-mobile-nav" id="closeMobileNavBtn" aria-label="Close menu">&times;</button>
           </div>
+          <div class="mobile-nav-divider"></div>
           <ul class="nav-list">
             <li class="nav-item">
-              <a href="index.html" class="nav-link" data-home="true">
-                <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-                <span>Home</span>
-              </a>
+              <a href="index.html" class="nav-link" data-home="true">Home</a>
             </li>
             <li class="nav-item">
-              <a href="category.html?category=women" class="nav-link" data-category="women">
-                <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6l1 4-2.5 1.5L18 21H6l4.5-12.5L8 7l1-4z"/><path d="M10 3a2 2 0 0 0 4 0"/></svg>
-                <span>Women</span>
-              </a>
+              <a href="category.html?category=women" class="nav-link" data-category="women">Women</a>
             </li>
             <li class="nav-item">
-              <a href="category.html?category=men" class="nav-link" data-category="men">
-                <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.5a2 2 0 0 0 1.98 1.67L6 10.5V20a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-9.5l1.16.36a2 2 0 0 0 1.98-1.67l.58-3.5a2 2 0 0 0-1.34-2.23z"/></svg>
-                <span>Men</span>
-              </a>
+              <a href="category.html?category=men" class="nav-link" data-category="men">Men</a>
             </li>
             <li class="nav-item">
-              <a href="category.html?category=kids" class="nav-link" data-category="kids">
-                <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="14" r="7"/><path d="M7 10c0-3.5 2.5-6 5-6s5 2.5 5 6"/><path d="M12 4V2"/><circle cx="9.5" cy="13.5" r="1" fill="currentColor"/><circle cx="14.5" cy="13.5" r="1" fill="currentColor"/><path d="M10 17c.8.8 3.2.8 4 0"/></svg>
-                <span>Kids</span>
-              </a>
+              <a href="category.html?category=kids" class="nav-link" data-category="kids">Kids</a>
             </li>
             <li class="nav-item">
-              <a href="category.html?category=footwear" class="nav-link" data-category="footwear">
-                <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 18h17c.8 0 1.5-.7 1.5-1.5 0-1.2-.8-2.2-2-2.5l-4.5-1.5L12 8.5 7.5 12 3 14c-.6.3-1 .9-1 1.6 0 1.3 1.1 2.4 2.5 2.4z"/><path d="M3 18v2h18v-2"/><line x1="8" y1="12" x2="11" y2="15"/></svg>
-                <span>Footwear</span>
-              </a>
+              <a href="category.html?category=footwear" class="nav-link" data-category="footwear">Footwear</a>
             </li>
             <li class="nav-item">
-              <a href="category.html?category=ethnic" class="nav-link" data-category="ethnic">
-                <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 5-3 2-2-1v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V9L5 10 2 8l4-5z"/><line x1="12" y1="3" x2="12" y2="14"/><path d="M10 3a2 2 0 0 0 4 0"/></svg>
-                <span>Ethnic Wear</span>
-              </a>
+              <a href="category.html?category=ethnic" class="nav-link" data-category="ethnic">Ethnic</a>
             </li>
           </ul>
         </nav>
 
-        <!-- Product Search Box with Search Submit Button -->
+        <!-- Pill Search Box -->
         <div class="search-wrapper">
           <div class="search-box">
             <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-            <input type="text" id="searchInput" placeholder="Search for dresses, shirts, jeans, footwear, ethnic wear..." autocomplete="off">
+            <input type="text" id="searchInput" placeholder="Search for products..." autocomplete="off">
+            <button type="button" class="header-studio-magic-btn" onclick="openProductTemplateStudio(document.getElementById('searchInput') ? document.getElementById('searchInput').value : '')" title="Generate Images & Templates for Product Name"><i class="fa-solid fa-wand-magic-sparkles"></i></button>
             <button type="button" class="clear-search-btn" id="clearSearchBtn" style="display:none;" title="Clear search">&times;</button>
-            <button type="button" class="header-search-submit-btn" id="headerSearchSubmitBtn" aria-label="Search">Search</button>
           </div>
           <!-- Live Search Auto-Suggestions Box -->
           <div class="search-suggestions" id="searchSuggestions">
+            <div class="trending-searches">
+              <div class="suggestion-title">🔥 Trending Searches</div>
+              <div class="search-tags">
+                <span class="search-tag" onclick="applySearchTag('Hoodie')">Hoodie</span>
+                <span class="search-tag" onclick="applySearchTag('Allen Solly')">Allen Solly</span>
+                <span class="search-tag" onclick="applySearchTag('Silk Saree')">Silk Saree</span>
+                <span class="search-tag" onclick="applySearchTag('Sneakers')">Sneakers</span>
+                <span class="search-tag" onclick="applySearchTag('Track Pants')">Track Pants</span>
+                <span class="search-tag" onclick="applySearchTag('Kurta Set')">Kurta Set</span>
+              </div>
+            </div>
             <div class="live-search-results" id="liveSearchResults"></div>
           </div>
         </div>
 
-        <!-- Action Utilities Icons with Labels -->
+        <!-- Right Corner Utilities: Wishlist, Cart, Profile (all content color white, bg forest green) -->
         <div class="header-actions">
           <!-- Mobile Search Toggle Button -->
-          <button class="icon-action-btn mobile-search-btn" id="mobileSearchBtn" onclick="toggleMobileSearch()" aria-label="Search styles" title="Search">
+          <button class="icon-action-btn mobile-search-btn" id="mobileSearchBtn" onclick="toggleMobileSearch(); event.stopPropagation();" aria-label="Search styles" title="Search">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
           </button>
 
-          <!-- Wishlist -->
-          <button class="header-action-item icon-action-btn" id="wishlistBtn" onclick="toggleWishlistDrawer()" aria-label="Wishlist" title="Wishlist">
+          <!-- 1. Wishlist -->
+          <button class="header-action-item" id="wishlistBtn" onclick="toggleWishlistDrawer()" aria-label="Wishlist" title="Wishlist">
             <div class="action-icon-wrap">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.78-8.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.78-8.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
               <span class="badge-count" id="wishlistCount" hidden>0</span>
             </div>
-            <span class="action-label">Wishlist</span>
+            <span class="header-action-text">Wishlist</span>
           </button>
 
-          <!-- Cart Drawer Button -->
-          <button class="header-action-item icon-action-btn" id="cartBtn" onclick="toggleCartDrawer()" aria-label="Shopping Cart" title="Cart">
+          <!-- 2. Cart -->
+          <button class="header-action-item" id="cartBtn" onclick="toggleCartDrawer()" aria-label="Shopping Cart" title="Cart">
             <div class="action-icon-wrap">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-              <span class="badge-count" id="cartCount" hidden>0</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+              <span class="badge-count header-cart-badge" id="cartCount">0</span>
             </div>
-            <span class="action-label">Cart</span>
+            <span class="header-action-text">Cart</span>
           </button>
 
-          <!-- Profile/Account -->
-          <button class="header-action-item icon-action-btn" id="userProfileBtn" onclick="handleProfileIconClick()" aria-label="User Account" title="Profile">
+          <!-- 3. Profile -->
+          <button class="header-action-item" id="userProfileBtn" onclick="handleProfileIconClick()" aria-label="User Account" title="Profile">
             <div class="action-icon-wrap">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
             </div>
-            <span class="action-label">Profile</span>
+            <span class="header-action-text">Profile</span>
           </button>
 
         </div>
+      </div>
+    </div>
+
+    <!-- Expandable Mobile Search Bar (Opens on Clicking Search Icon) -->
+    <div class="mobile-expandable-search-bar" id="mobileExpandableSearchBar">
+      <div class="mobile-search-pill-box">
+        <svg class="mobile-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="mobileSearchInput" placeholder="Search for dresses, tops, jeans, footwear..." autocomplete="off" oninput="handleMobileSearchInput(this.value)" onkeydown="if(event.key==='Enter') executeMobileSearch(this.value)">
+        <button type="button" class="mobile-search-close-btn" onclick="toggleMobileSearch(false); event.stopPropagation();">&times;</button>
       </div>
     </div>
   </header>
 
     <section class="catalog-section category-catalog-section" id="catalogSection">
       <div class="section-container">
-        <div class="catalog-header category-page-catalog-header">
-          <div>
-            <h1 class="section-heading" id="categoryPageTitle">Shop Collection</h1>
-            <p class="section-subtext" id="catalogProductCount">Browse the collection</p>
-          </div>
-          <!-- Mobile Filter Drawer Trigger -->
-          <button type="button" class="btn btn-outline filter-toggle-btn" id="filterToggleBtn" onclick="toggleMobileCategoryFilters()">
-            Filters
-          </button>
-        </div>
+        <span id="categoryPageTitle" style="display:none;"></span><span id="catalogProductCount" style="display:none;"></span>
 
         <!-- Applied Filters Chips Bar -->
         <div class="active-filters-bar" id="activeFiltersBar" style="display:none;">
@@ -170,20 +156,6 @@
               <button type="button" class="close-sidebar-btn" onclick="toggleMobileCategoryFilters()">&times;</button>
             </div>
 
-            <!-- 1. Department Selection Filter -->
-            <div class="filter-group">
-              <h4 class="filter-title">Department</h4>
-              <label class="category-control">
-                <select id="categoryDepartmentSelect" class="studio-select" onchange="switchCategoryPageDepartment(this.value)">
-                  <option value="women">Women's Fashion</option>
-                  <option value="men">Men's Apparel</option>
-                  <option value="kids">Kids & Toddlers</option>
-                  <option value="footwear">Footwear & Sneakers</option>
-                  <option value="ethnic">Ethnic Wear & Sarees</option>
-                  <option value="budget">Budget Store (Under ₹499)</option>
-                </select>
-              </label>
-            </div>
 
             <!-- 2. Subcategories / Style Options for Selected Category -->
             <div class="filter-group">
@@ -256,7 +228,6 @@
               <label class="category-control">
                 <select id="categorySortFilter" class="studio-select" onchange="handleSortChange(this.value)">
                   <option value="popular">Popularity</option>
-                  <option value="rating">Top rated</option>
                   <option value="price-low">Price: Low to High</option>
                   <option value="price-high">Price: High to Low</option>
                   <option value="discount">Biggest discount</option>
@@ -433,73 +404,224 @@
   <div class="toast-container" id="toastContainer"></div>
 
   <!-- Footer -->
-  <footer class="main-footer">
-    <div class="section-container">
-      <div class="footer-top">
+    <!-- Main Footer Matching Image media_1792745887278.png -->
+  <footer class="main-footer" id="mainFooter">
+    <!-- Botanical Gold Leaf Ornaments in Top-Left and Bottom-Right Corners -->
+    <div class="footer-leaf-ornament footer-leaf-tl" aria-hidden="true">
+      <svg viewBox="0 0 160 160" fill="none" stroke="#e2c589" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M-10,-10 C40,20 80,70 110,140 C95,95 70,55 20,25 Z"/>
+        <path d="M15,10 C45,15 80,45 95,85 C75,55 50,35 15,25 Z"/>
+        <path d="M-5,30 C30,35 65,70 75,110 C60,80 40,55 0,45 Z"/>
+        <path d="M-10,65 C15,70 45,100 50,135 C40,110 25,90 -5,80 Z"/>
+        <path d="M30,-5 C60,25 90,45 140,50 C110,40 85,25 55,-5 Z"/>
+      </svg>
+    </div>
+    <div class="footer-leaf-ornament footer-leaf-br" aria-hidden="true">
+      <svg viewBox="0 0 160 160" fill="none" stroke="#e2c589" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M170,170 C120,140 80,90 50,20 C65,65 90,105 140,135 Z"/>
+        <path d="M145,150 C115,145 80,115 65,75 C85,105 110,125 145,135 Z"/>
+        <path d="M165,130 C130,125 95,90 85,50 C100,80 120,105 160,115 Z"/>
+        <path d="M170,95 C145,90 115,60 110,25 C120,50 135,70 165,80 Z"/>
+        <path d="M130,165 C100,135 70,115 20,110 C50,120 75,135 105,165 Z"/>
+      </svg>
+    </div>
+
+    <div class="section-container footer-section-container">
+      <!-- Top Grid: Brand | Divider | SHOP | HELP | ABOUT | Divider | STAY UPDATED -->
+      <div class="footer-top-grid">
         
-        <div class="footer-col brand-col">
-          <div class="brand-logo footer-logo">
-            <div class="logo-icon-wrap">
-              <img class="brand-logo-image" src="assets/images/stylemart-logo.png?v=20261021-logo-v1" alt="StyleMart Logo" width="36" height="36">
-            </div>
-            <div class="logo-text">
-              <span class="logo-primary" style="color: #ffffff;">Style<span class="logo-highlight">Mart</span></span>
-            </div>
-          </div>
-          <p>StyleMart is India's premier online fashion destination. Shop top fashion trends, ethnic wear, streetwear & footwear at unbeatable prices.</p>
-          <div class="footer-extra-content" style="margin-top: 6px; font-size: 0.78rem; color: #cbd5e1;">
-            <p style="margin: 2px 0;"><strong>Support:</strong> support@stylemart.in</p>
-            <p style="margin: 2px 0;"><strong>Toll Free:</strong> 1800-123-STYLE (7 AM - 11 PM)</p>
+        <!-- 1. Brand Column -->
+        <div class="footer-col footer-brand-col">
+          <a href="index.html" class="footer-brand-logo" aria-label="StyleMart Home" title="StyleMart - Fashion For Everyone">
+            <img src="assets/images/stylemart-logo.png?v=20261023-logo-v1" alt="StyleMart - Fashion For Everyone" class="brand-logo-image header-logo-full">
+          </a>
+          <p class="footer-brand-tagline">— Fashion For Everyone —</p>
+          <p class="footer-brand-desc">Your one-stop online fashion destination for trendy apparel, ethnic wear, footwear and more — for everyone.</p>
+          <div class="footer-social-row">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-circle-btn" aria-label="Instagram" title="Instagram">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-circle-btn" aria-label="Facebook" title="Facebook">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-circle-btn" aria-label="YouTube" title="YouTube">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><polygon points="10 15 15 12 10 9 10 15"/></svg>
+            </a>
+            <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" class="social-circle-btn" aria-label="Pinterest" title="Pinterest">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="9" x2="12" y2="22"/><path d="M8 12a4 4 0 1 1 8 0c0 3-2 6-5 6a3.5 3.5 0 0 1-3-1.5"/><circle cx="12" cy="5" r="1.5"/></svg>
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-circle-btn" aria-label="X (Twitter)" title="X">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
           </div>
         </div>
 
-        <div class="footer-col">
-          <h4>SHOP CATEGORIES</h4>
-          <ul>
-            <li><a href="index.html">Home</a></li>
+        <div class="footer-v-divider" aria-hidden="true"></div>
+
+        <!-- 2. SHOP -->
+        <div class="footer-col footer-nav-col footer-col-shop">
+          <h4 class="footer-heading">SHOP</h4>
+          <div class="footer-gold-line"></div>
+          <ul class="footer-links-list">
             <li><a href="category.html?category=women">Women</a></li>
             <li><a href="category.html?category=men">Men</a></li>
             <li><a href="category.html?category=kids">Kids</a></li>
-            <li><a href="category.html?category=footwear">Footwear</a></li>
             <li><a href="category.html?category=ethnic">Ethnic Wear</a></li>
-            <li><a href="category.html?category=budget">Budget Store (Under ₹499)</a></li>
+            <li><a href="category.html?category=footwear">Footwear</a></li>
+            <li><a href="index.html#flashSaleSection">Offers &amp; Deals</a></li>
+          </ul>
+        </div>
+
+        <!-- 3. HELP -->
+        <div class="footer-col footer-nav-col footer-col-help">
+          <h4 class="footer-heading">HELP</h4>
+          <div class="footer-gold-line"></div>
+          <ul class="footer-links-list">
+            <li><a href="profile.html?tab=orders">Track Your Order</a></li>
+            <li><a href="about.html#returns">Returns &amp; Refunds</a></li>
+            <li><a href="about.html#shipping">Shipping &amp; Delivery</a></li>
+            <li><a href="about.html#size-guide">Size &amp; Fit Guide</a></li>
+            <li><a href="about.html#faqs">FAQs</a></li>
+          </ul>
+        </div>
+
+        <!-- 4. ABOUT -->
+        <div class="footer-col footer-nav-col footer-col-about">
+          <h4 class="footer-heading">ABOUT</h4>
+          <div class="footer-gold-line"></div>
+          <ul class="footer-links-list">
             <li><a href="about.html">About StyleMart</a></li>
+            <li><a href="about.html#careers">Careers</a></li>
+            <li><a href="about.html#blog">Blog &amp; Style Tips</a></li>
+            <li><a href="about.html#contact">Contact Us</a></li>
           </ul>
         </div>
 
-        <div class="footer-col footer-extra-content">
-          <h4>CUSTOMER SERVICE</h4>
-          <ul>
-            <li><a href="#">Track Your Order</a></li>
-            <li><a href="#">7 Days Easy Returns</a></li>
-            <li><a href="#">Shipping & Express Delivery</a></li>
-            <li><a href="#">Size & Fit Guide</a></li>
-            <li><a href="#">Frequently Asked Questions</a></li>
-            <li><a href="#">Privacy Policy & Terms</a></li>
-          </ul>
-        </div>
+        <div class="footer-v-divider" aria-hidden="true"></div>
 
-        <div class="footer-col">
-          <h4>SHOP WITH CONFIDENCE</h4>
-          <p>Discover everyday styles, seasonal trends, and great deals across the StyleMart collection.</p>
-          <div class="payment-badges">
-            <span class="pay-tag">UPI / GPay</span>
-            <span class="pay-tag">Credit & Debit Cards</span>
-            <span class="pay-tag">Cash on Delivery</span>
-          </div>
-          <div class="footer-extra-content" style="margin-top: 6px;">
-            <h4 style="font-size: 0.8rem; margin: 0 0 2px 0;">100% ORIGINAL GUARANTEE</h4>
-            <p style="font-size: 0.76rem; margin: 0; color: #94a3b8;">All products are sourced directly from authorized brand partners.</p>
-          </div>
+        <!-- 5. STAY UPDATED -->
+        <div class="footer-col footer-subscribe-col">
+          <h4 class="footer-heading">STAY UPDATED</h4>
+          <div class="footer-gold-line"></div>
+          <p class="footer-subscribe-desc">Subscribe to our newsletter for the latest collections, offers and style updates.</p>
+          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); const val=this.querySelector('input').value; if(val){ if(typeof showToast==='function') showToast('Thank you for subscribing to StyleMart updates!','success'); this.reset(); }">
+            <div class="newsletter-input-box">
+              <svg class="newsletter-mail-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              <input type="email" placeholder="Enter your email address" required aria-label="Enter your email address">
+              <button type="submit" class="newsletter-submit-btn">Subscribe</button>
+            </div>
+          </form>
         </div>
 
       </div>
 
-      <div class="footer-bottom">
-        <p>&copy; 2026 StyleMart Custom Fashion India. All rights reserved.</p>
+      <!-- Middle: Trust Badges Row -->
+      <div class="footer-trust-row">
+        <div class="trust-badge-item">
+          <div class="trust-badge-icon">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#e2a856" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-5.2a2 2 0 0 0-.6-1.4l-3-3A2 2 0 0 0 17 7h-3v11h2"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/>
+            </svg>
+          </div>
+          <div class="trust-badge-text">
+            <span class="trust-title">Free Shipping</span>
+            <span class="trust-sub">Above ₹999</span>
+          </div>
+        </div>
+
+        <div class="trust-badge-item">
+          <div class="trust-badge-icon">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#e2a856" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/><path d="M7 16l-3 1.7L1 16"/>
+            </svg>
+          </div>
+          <div class="trust-badge-text">
+            <span class="trust-title">7 Days</span>
+            <span class="trust-sub">Easy Returns</span>
+          </div>
+        </div>
+
+        <div class="trust-badge-item">
+          <div class="trust-badge-icon">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#e2a856" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/>
+            </svg>
+          </div>
+          <div class="trust-badge-text">
+            <span class="trust-title">100% Original</span>
+            <span class="trust-sub">Products</span>
+          </div>
+        </div>
+
+        <div class="trust-badge-item">
+          <div class="trust-badge-icon">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#e2a856" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="20" height="14" x="2" y="6" rx="2"/><path d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><circle cx="12" cy="13" r="1.5"/><path d="M12 14.5V17"/>
+            </svg>
+          </div>
+          <div class="trust-badge-text">
+            <span class="trust-title">Secure</span>
+            <span class="trust-sub">Payments</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar: We Accept | Copyright | Legal Links -->
+      <div class="footer-bottom-row">
+        <div class="footer-payment-group">
+          <span class="we-accept-label">We Accept:</span>
+          <div class="payment-cards-list">
+            <!-- VISA Badge -->
+            <span class="pay-card-pill" title="Visa">
+              <svg width="40" height="14" viewBox="0 0 48 16" fill="none">
+                <path d="M19.2 1.2L13.8 14.8H9.6L6.2 3.8C6.0 3.1 5.8 2.7 5.2 2.4C4.3 1.9 2.8 1.5 1.5 1.2L1.6 0.8H8.2C9.1 0.8 9.9 1.4 10.1 2.4L11.8 11.2L16.0 0.8H19.2ZM35.8 10.2C35.8 6.4 30.5 6.2 30.6 4.4C30.6 3.9 31.1 3.3 32.2 3.2C32.8 3.1 34.3 3.0 36.0 3.8L36.7 0.9C35.7 0.5 34.4 0.2 32.8 0.2C28.8 0.2 26.0 2.3 26.0 5.4C25.9 7.7 28.0 9.0 29.5 9.8C31.1 10.6 31.7 11.1 31.7 11.8C31.6 12.9 30.4 13.4 29.2 13.4C27.2 13.4 26.0 12.8 25.0 12.3L24.3 15.3C25.4 15.8 27.2 16.2 29.1 16.2C33.4 16.2 35.8 14.0 35.8 10.2ZM46.5 14.8H50.2L47.0 0.8H43.6C42.8 0.8 42.1 1.2 41.8 2.0L35.7 14.8H40.0L40.9 12.4H45.9L46.5 14.8ZM42.1 9.4L44.2 3.6L45.4 9.4H42.1ZM25.3 0.8L21.9 14.8H18.0L21.4 0.8H25.3Z" fill="#1A1F71"/>
+              </svg>
+            </span>
+
+            <!-- Mastercard Badge -->
+            <span class="pay-card-pill" title="Mastercard">
+              <svg width="32" height="18" viewBox="0 0 34 20" fill="none">
+                <circle cx="12" cy="10" r="8" fill="#EB001B"/>
+                <circle cx="22" cy="10" r="8" fill="#F79E1B" fill-opacity="0.9"/>
+              </svg>
+            </span>
+
+            <!-- RuPay Badge -->
+            <span class="pay-card-pill" title="RuPay">
+              <svg width="44" height="14" viewBox="0 0 60 18" fill="none">
+                <text x="2" y="14" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-weight="800" font-style="italic" font-size="13" fill="#092B65">Ru<tspan fill="#F47920">Pay</tspan></text>
+                <polygon points="46,3 52,9 46,15" fill="#F47920"/>
+                <polygon points="51,3 57,9 51,15" fill="#00A551"/>
+              </svg>
+            </span>
+
+            <!-- UPI Badge -->
+            <span class="pay-card-pill" title="UPI">
+              <svg width="34" height="14" viewBox="0 0 48 18" fill="none">
+                <text x="2" y="14" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-weight="900" font-size="14" fill="#007934">U<tspan fill="#007934">P</tspan><tspan fill="#007934">I</tspan></text>
+                <polygon points="33,2 43,9 33,16" fill="#007934"/>
+                <polygon points="37,2 47,9 37,16" fill="#F47920"/>
+              </svg>
+            </span>
+          </div>
+        </div>
+
+        <div class="footer-bottom-v-divider" aria-hidden="true"></div>
+
+        <div class="footer-copyright-text">
+          &copy; 2026 StyleMart. All Rights Reserved.
+        </div>
+
+        <div class="footer-legal-links">
+          <a href="about.html#privacy">Privacy Policy</a>
+          <span class="legal-separator">|</span>
+          <a href="about.html#terms">Terms &amp; Conditions</a>
+          <span class="legal-separator">|</span>
+          <a href="about.html#returns">Return Policy</a>
+        </div>
       </div>
     </div>
   </footer>
-  <script src="app.js?v=20261021-edge-nobadge-v1"></script>
+  <script src="app.js?v=20261024-v12"></script>
 </body>
 </html>

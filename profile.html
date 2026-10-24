@@ -1,0 +1,1526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Orders & Account | StyleMart</title>
+  <meta name="description" content="View and manage your recent orders, track fashion deliveries, and update profile details at StyleMart.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles.css?v=20261024-v12">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* Profile Page Specific Luxury & Responsive Styling */
+    .profile-page-wrapper {
+      background: #f8fafc;
+      min-height: calc(100vh - 200px);
+      padding: 30px 0 60px 0;
+    }
+    .profile-breadcrumbs {
+      font-size: 0.85rem;
+      color: #64748b;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .profile-breadcrumbs a {
+      color: #07261e;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .profile-breadcrumbs a:hover {
+      text-decoration: underline;
+    }
+    .profile-layout-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+    
+    /* Left Sidebar (Desktop) */
+    .profile-sidebar {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      position: sticky;
+      top: 90px;
+    }
+    .profile-user-hero {
+      background: linear-gradient(135deg, #07261e 0%, #0d3d31 100%);
+      padding: 24px 20px;
+      color: #ffffff;
+      text-align: center;
+      position: relative;
+    }
+    .profile-avatar-circle {
+      width: 68px;
+      height: 68px;
+      background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 100%);
+      color: #07261e;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin: 0 auto 12px auto;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    .profile-user-name {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .profile-user-phone {
+      font-size: 0.85rem;
+      color: #94a3b8;
+    }
+    .profile-member-pill {
+      display: inline-block;
+      margin-top: 10px;
+      background: rgba(212, 175, 55, 0.2);
+      border: 1px solid rgba(212, 175, 55, 0.6);
+      color: #f3e5ab;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      text-transform: uppercase;
+    }
+    .profile-nav-menu {
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .profile-nav-btn {
+      width: 100%;
+      text-align: left;
+      background: transparent;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #475569;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .profile-nav-btn:hover {
+      background: #f1f5f9;
+      color: #07261e;
+    }
+    .profile-nav-btn.active {
+      background: #07261e;
+      color: #ffffff;
+    }
+    .profile-nav-btn.active .nav-badge {
+      background: #ff2d87;
+      color: #ffffff;
+    }
+    .nav-badge {
+      font-size: 0.75rem;
+      background: #e2e8f0;
+      color: #475569;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      font-weight: 700;
+    }
+    
+    /* Right Content Area (Desktop) */
+    .profile-content-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    }
+    .content-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+    }
+    .content-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0;
+    }
+    .content-subtitle {
+      font-size: 0.88rem;
+      color: #64748b;
+      margin-top: 2px;
+    }
+    
+    /* Order Cards (Desktop) */
+    .order-item-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      margin-bottom: 24px;
+      background: #ffffff;
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .order-item-card:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    }
+    .order-card-header {
+      background: #f8fafc;
+      padding: 14px 20px;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .order-meta-info {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 0.86rem;
+      color: #475569;
+    }
+    .order-meta-info strong {
+      color: #0f172a;
+    }
+    .order-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #dcfce7;
+      color: #15803d;
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 4px 12px;
+      border-radius: 9999px;
+    }
+    .order-status-badge::before {
+      content: '';
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      background: #15803d;
+      border-radius: 50%;
+    }
+    
+    /* Order Stepper Tracker */
+    .order-tracker-bar {
+      padding: 16px 20px;
+      background: #ffffff;
+      border-bottom: 1px dashed #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+    .tracker-step {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: #64748b;
+      font-weight: 600;
+      z-index: 1;
+    }
+    .tracker-step.completed {
+      color: #15803d;
+    }
+    .tracker-step.active {
+      color: #07261e;
+      font-weight: 700;
+    }
+    .tracker-dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      background: #e2e8f0;
+      color: #475569;
+    }
+    .tracker-step.completed .tracker-dot {
+      background: #15803d;
+      color: #ffffff;
+    }
+    .tracker-step.active .tracker-dot {
+      background: #07261e;
+      color: #ffffff;
+      box-shadow: 0 0 0 3px rgba(7, 38, 30, 0.15);
+    }
+    .tracker-line {
+      flex: 1;
+      height: 2px;
+      background: #e2e8f0;
+      margin: 0 8px;
+    }
+    .tracker-line.active {
+      background: #15803d;
+    }
+    
+    /* Order Product Row */
+    .order-product-row {
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .order-product-row:last-child {
+      border-bottom: none;
+    }
+    .order-product-main-info {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex: 1;
+    }
+    .order-thumb-wrap {
+      width: 76px;
+      height: 100px;
+      border-radius: 10px;
+      overflow: hidden;
+      flex-shrink: 0;
+      border: 1px solid #e2e8f0;
+      background: #f8fafc;
+    }
+    .order-thumb-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .order-details-col {
+      flex: 1;
+    }
+    .order-brand-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .order-item-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #0f172a;
+      text-decoration: none;
+      display: block;
+      margin: 4px 0 6px 0;
+      line-height: 1.4;
+    }
+    .order-item-title:hover {
+      color: #07261e;
+      text-decoration: underline;
+    }
+    .order-item-specs {
+      font-size: 0.85rem;
+      color: #64748b;
+      margin-bottom: 6px;
+    }
+    .order-item-price {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #07261e;
+    }
+    .order-actions-col {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    
+    /* Order Footer */
+    .order-card-footer {
+      background: #f8fafc;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 0.86rem;
+      color: #475569;
+    }
+    .order-delivery-address-note {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    /* Empty State */
+    .empty-orders-view {
+      text-align: center;
+      padding: 60px 20px;
+    }
+    .empty-orders-view .empty-icon {
+      font-size: 3.5rem;
+      margin-bottom: 14px;
+    }
+    .empty-orders-view h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 6px;
+    }
+    .empty-orders-view p {
+      color: #64748b;
+      font-size: 0.92rem;
+      max-width: 420px;
+      margin: 0 auto 20px auto;
+    }
+
+    /* ------------------------------------------------------------- */
+    /* RESPONSIVE MOBILE PROFILE OVERHAUL (Max-Width: 900px)         */
+    /* ------------------------------------------------------------- */
+    @media (max-width: 900px) {
+      .profile-page-wrapper {
+        padding: 14px 0 36px 0;
+      }
+      .profile-layout-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      .profile-sidebar {
+        position: static;
+        border-radius: 14px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+        margin-bottom: 4px;
+      }
+
+      /* Compact Horizontal Luxury User Hero */
+      .profile-user-hero {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        text-align: left;
+        padding: 14px 16px;
+        gap: 14px;
+        background: linear-gradient(135deg, #07261e 0%, #0d3d31 100%);
+      }
+      .profile-avatar-circle {
+        width: 52px;
+        height: 52px;
+        min-width: 52px;
+        font-size: 1.35rem;
+        margin: 0;
+        border: 2px solid rgba(212, 175, 55, 0.6);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+      }
+      .profile-user-meta-wrap {
+        flex: 1;
+        min-width: 0;
+      }
+      .profile-user-name {
+        font-size: 1.05rem;
+        font-weight: 700;
+        margin-bottom: 2px;
+        color: #ffffff;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .profile-user-phone {
+        font-size: 0.8rem;
+        color: #cbd5e1;
+      }
+      .profile-member-pill {
+        margin-top: 4px;
+        font-size: 0.68rem;
+        padding: 2px 8px;
+        display: inline-block;
+      }
+
+      /* Sleek Swipeable Horizontal Navigation Tabs */
+      .profile-nav-menu {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        gap: 8px;
+        padding: 10px 12px;
+        background: #ffffff;
+        border-top: 1px solid #f1f5f9;
+      }
+      .profile-nav-menu::-webkit-scrollbar {
+        display: none;
+      }
+      .profile-nav-btn {
+        flex: 0 0 auto;
+        width: auto;
+        padding: 7px 14px;
+        font-size: 0.84rem;
+        font-weight: 600;
+        border-radius: 9999px;
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        color: #475569;
+        white-space: nowrap;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .profile-nav-btn.active {
+        background: #07261e;
+        color: #ffffff;
+        border-color: #07261e;
+        box-shadow: 0 2px 8px rgba(7, 38, 30, 0.2);
+      }
+      .profile-nav-btn.active .nav-badge {
+        background: #d4af37;
+        color: #07261e;
+      }
+
+      /* Content Area Compacted */
+      .profile-content-card {
+        padding: 16px 14px;
+        border-radius: 14px;
+      }
+      .content-header-row {
+        margin-bottom: 12px;
+        padding-bottom: 10px;
+      }
+      .content-title {
+        font-size: 1.1rem;
+      }
+      .content-subtitle {
+        font-size: 0.8rem;
+        margin-top: 2px;
+      }
+
+      /* Responsive Order Cards */
+      .order-item-card {
+        border-radius: 12px;
+        margin-bottom: 16px;
+      }
+      .order-card-header {
+        padding: 10px 12px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+      }
+      .order-meta-info {
+        font-size: 0.8rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+      .order-status-badge {
+        font-size: 0.72rem;
+        padding: 3px 8px;
+        flex-shrink: 0;
+      }
+      .order-tracker-bar {
+        padding: 10px 12px;
+        gap: 6px;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+      .order-tracker-bar::-webkit-scrollbar {
+        display: none;
+      }
+      .tracker-step {
+        font-size: 0.72rem;
+        gap: 4px;
+        white-space: nowrap;
+      }
+      .tracker-dot {
+        width: 18px;
+        height: 18px;
+        font-size: 0.65rem;
+      }
+      .tracker-line {
+        min-width: 14px;
+        margin: 0 4px;
+      }
+      .order-product-row {
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      .order-product-main-info {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 12px;
+        width: 100%;
+      }
+      .order-thumb-wrap {
+        width: 64px;
+        height: 82px;
+        min-width: 64px;
+        border-radius: 8px;
+      }
+      .order-details-col {
+        flex: 1;
+        min-width: 0;
+      }
+      .order-brand-label {
+        font-size: 0.68rem;
+      }
+      .order-item-title {
+        font-size: 0.84rem;
+        line-height: 1.3;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .order-item-specs {
+        font-size: 0.76rem;
+        margin-top: 3px;
+      }
+      .order-item-price {
+        font-size: 0.95rem;
+        margin-top: 4px;
+        font-weight: 700;
+      }
+      .order-actions-col {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        gap: 8px;
+        margin-top: 4px;
+      }
+      .order-actions-col .btn {
+        flex: 1;
+        font-size: 0.78rem;
+        padding: 7px 10px;
+        text-align: center;
+        justify-content: center;
+      }
+      .order-card-footer {
+        padding: 10px 12px;
+        font-size: 0.76rem;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="mobile-nav-backdrop" id="mobileNavBackdrop" onclick="closeMobileNav()"></div>
+
+  <!-- Header Navigation Matching Index.html -->
+  <header class="main-header" id="mainHeader">
+    <div class="header-main-row">
+      <div class="header-container">
+        
+        <!-- Mobile Menu Hamburger -->
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+
+        <!-- Brand Logo (Serif Luxury: Logo Mark + Style in White, Mart in Gold) -->
+        <a href="index.html" class="brand-logo" aria-label="StyleMart Home" title="StyleMart - Fashion For Every You">
+          <img src="assets/images/stylemart-logo.png?v=20261023-logo-v1" alt="StyleMart - Fashion For Every You" class="brand-logo-image header-logo-full">
+        </a>
+
+        <!-- Desktop Navigation: Strictly Home, Women, Men, Kids, Footwear, Ethnic -->
+        <nav class="nav-menu" id="navMenu" aria-label="Shop categories">
+          <div class="mobile-nav-header">
+            <button class="close-mobile-nav" id="closeMobileNavBtn" onclick="closeMobileNav()" aria-label="Close menu">&times;</button>
+            <a href="index.html" class="brand-logo" aria-label="StyleMart Home">
+              <img src="assets/images/stylemart-logo.png?v=20261023-logo-v1" alt="StyleMart" class="brand-logo-image header-logo-full">
+            </a>
+          </div>
+          <div class="mobile-nav-divider"></div>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="index.html" class="nav-link" data-home="true">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="category.html?category=women" class="nav-link" data-category="women">Women</a>
+            </li>
+            <li class="nav-item">
+              <a href="category.html?category=men" class="nav-link" data-category="men">Men</a>
+            </li>
+            <li class="nav-item">
+              <a href="category.html?category=kids" class="nav-link" data-category="kids">Kids</a>
+            </li>
+            <li class="nav-item">
+              <a href="category.html?category=footwear" class="nav-link" data-category="footwear">Footwear</a>
+            </li>
+            <li class="nav-item">
+              <a href="category.html?category=ethnic" class="nav-link" data-category="ethnic">Ethnic</a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Pill Search Box -->
+        <div class="search-wrapper">
+          <div class="search-box">
+            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            <input type="text" id="searchInput" placeholder="Search for products..." autocomplete="off">
+            <button type="button" class="header-studio-magic-btn" onclick="openProductTemplateStudio(document.getElementById('searchInput') ? document.getElementById('searchInput').value : '')" title="Generate Images & Templates for Product Name"><i class="fa-solid fa-wand-magic-sparkles"></i></button>
+            <button type="button" class="clear-search-btn" id="clearSearchBtn" style="display:none;" title="Clear search">&times;</button>
+          </div>
+          <!-- Live Search Auto-Suggestions Box -->
+          <div class="search-suggestions" id="searchSuggestions">
+            <div class="trending-searches">
+              <div class="suggestion-title">🔥 Trending Searches</div>
+              <div class="search-tags">
+                <span class="search-tag" onclick="applySearchTag('Hoodie')">Hoodie</span>
+                <span class="search-tag" onclick="applySearchTag('Allen Solly')">Allen Solly</span>
+                <span class="search-tag" onclick="applySearchTag('Silk Saree')">Silk Saree</span>
+                <span class="search-tag" onclick="applySearchTag('Sneakers')">Sneakers</span>
+                <span class="search-tag" onclick="applySearchTag('Cargo Pants')">Cargo Pants</span>
+                <span class="search-tag" onclick="applySearchTag('Kurta Set')">Kurta Set</span>
+              </div>
+            </div>
+            <div class="live-search-results" id="liveSearchResults"></div>
+          </div>
+        </div>
+
+        <!-- Right Corner Utilities: Wishlist, Cart, Profile -->
+        <div class="header-actions">
+          <!-- Mobile Search Toggle Button -->
+          <button class="icon-action-btn mobile-search-btn" id="mobileSearchBtn" onclick="toggleMobileSearch(); event.stopPropagation();" aria-label="Search styles" title="Search">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </button>
+
+          <!-- 1. Wishlist -->
+          <button class="header-action-item" id="wishlistBtn" onclick="toggleWishlistDrawer()" aria-label="Wishlist" title="Wishlist">
+            <div class="action-icon-wrap">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.78-8.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              <span class="badge-count" id="wishlistCount" hidden>0</span>
+            </div>
+            <span class="header-action-text">Wishlist</span>
+          </button>
+
+          <!-- 2. Cart -->
+          <button class="header-action-item" id="cartBtn" onclick="toggleCartDrawer()" aria-label="Shopping Cart" title="Cart">
+            <div class="action-icon-wrap">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+              <span class="badge-count header-cart-badge" id="cartCount">0</span>
+            </div>
+            <span class="header-action-text">Cart</span>
+          </button>
+
+          <!-- 3. Profile -->
+          <button class="header-action-item active" id="userProfileBtn" onclick="handleProfileIconClick()" aria-label="User Account" title="Profile">
+            <div class="action-icon-wrap">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <span class="header-action-text">Profile</span>
+          </button>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Expandable Mobile Search Bar (Opens on Clicking Search Icon) -->
+    <div class="mobile-expandable-search-bar" id="mobileExpandableSearchBar">
+      <div class="mobile-search-pill-box">
+        <svg class="mobile-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="mobileSearchInput" placeholder="Search for dresses, tops, jeans, footwear..." autocomplete="off" oninput="handleMobileSearchInput(this.value)" onkeydown="if(event.key==='Enter') executeMobileSearch(this.value)">
+        <button type="button" class="mobile-search-close-btn" onclick="toggleMobileSearch(false); event.stopPropagation();">&times;</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Profile Page Wrapper -->
+  <main class="profile-page-wrapper">
+    <div class="section-container">
+      
+      <!-- Breadcrumbs -->
+      <nav class="profile-breadcrumbs" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span>›</span>
+        <a href="profile.html">My Account</a>
+        <span>›</span>
+        <span id="breadcrumbCurrentTab" style="color: #07261e; font-weight: 700;">My Orders</span>
+      </nav>
+
+      <!-- Layout Grid -->
+      <div class="profile-layout-grid">
+        
+        <!-- Left Sidebar Navigation -->
+        <aside class="profile-sidebar">
+          <div class="profile-user-hero">
+            <div class="profile-avatar-circle" id="profileUserAvatar">C</div>
+            <div class="profile-user-meta-wrap">
+              <h2 class="profile-user-name" id="profileUserName">Chaithanya Prakash</h2>
+              <div class="profile-user-phone" id="profileUserPhone">+91 9876543210</div>
+              <span class="profile-member-pill">★ StyleMart Gold Member</span>
+            </div>
+          </div>
+
+          <nav class="profile-nav-menu" aria-label="Account Tabs">
+            <button type="button" class="profile-nav-btn active" id="tabBtnOrders" onclick="switchProfileTab('orders')">
+              <span>🛍️ My Orders</span>
+              <span class="nav-badge" id="sidebarOrdersBadge">0</span>
+            </button>
+            <button type="button" class="profile-nav-btn" id="tabBtnDetails" onclick="switchProfileTab('details')">
+              <span>👤 Personal Details</span>
+            </button>
+            <button type="button" class="profile-nav-btn" id="tabBtnAddresses" onclick="switchProfileTab('addresses')">
+              <span>📍 Saved Addresses</span>
+            </button>
+            <button type="button" class="profile-nav-btn" onclick="toggleWishlistDrawer()">
+              <span>❤️ Saved Wishlist</span>
+              <span class="nav-badge" id="sidebarWishlistBadge">0</span>
+            </button>
+            <button type="button" class="profile-nav-btn" style="color: #ef4444;" onclick="logoutAccount()">
+              <span>🚪 Logout</span>
+            </button>
+          </nav>
+        </aside>
+
+        <!-- Right Main Panel -->
+        <section class="profile-content-card">
+          
+          <!-- TAB 1: MY ORDERS -->
+          <div id="tabContentOrders">
+            <div class="content-header-row">
+              <div>
+                <h1 class="content-title">
+                  <span>🛍️ My Orders</span>
+                  <span style="font-size: 0.95rem; font-weight: 600; color: #64748b;" id="ordersCountHeading"></span>
+                </h1>
+                <p class="content-subtitle">Track, manage and reorder your recent fashion purchases</p>
+              </div>
+              <button class="btn btn-sm btn-outline" onclick="loadUserOrders()" title="Refresh Orders">
+                ↻ Refresh
+              </button>
+            </div>
+
+            <!-- Dynamic Orders List -->
+            <div id="profileOrdersListContainer">
+              <!-- Rendered via JavaScript -->
+            </div>
+
+            <!-- Empty Orders State -->
+            <div class="empty-orders-view" id="emptyOrdersState" style="display: none;">
+              <div class="empty-icon">📦</div>
+              <h3>No orders placed yet</h3>
+              <p>Looks like you haven't placed an order yet. Explore our handcrafted sarees, ethnic suits, and kurtas!</p>
+              <a href="index.html" class="btn btn-primary btn-glow btn-lg" style="text-decoration:none; display:inline-block;">Start Shopping &rarr;</a>
+            </div>
+          </div>
+
+          <!-- TAB 2: PERSONAL DETAILS -->
+          <div id="tabContentDetails" style="display: none;">
+            <div class="content-header-row">
+              <div>
+                <h2 class="content-title">👤 Personal Details</h2>
+                <p class="content-subtitle">Manage your contact information and StyleMart account</p>
+              </div>
+              <button class="btn btn-sm btn-outline" onclick="openAddressForm(0)">Edit Details</button>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 10px;">
+              <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px;">
+                <span style="font-size: 0.78rem; text-transform: uppercase; font-weight: 700; color: #64748b;">Full Name</span>
+                <div style="font-size: 1.05rem; font-weight: 700; color: #0f172a; margin-top: 4px;" id="detailsCardName">Chaithanya Prakash</div>
+              </div>
+              <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px;">
+                <span style="font-size: 0.78rem; text-transform: uppercase; font-weight: 700; color: #64748b;">Phone Number</span>
+                <div style="font-size: 1.05rem; font-weight: 700; color: #0f172a; margin-top: 4px;" id="detailsCardPhone">+91 9876543210</div>
+              </div>
+              <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px;">
+                <span style="font-size: 0.78rem; text-transform: uppercase; font-weight: 700; color: #64748b;">Account Status</span>
+                <div style="font-size: 1.05rem; font-weight: 700; color: #15803d; margin-top: 4px;">✓ Verified Gold Member</div>
+              </div>
+              <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px;">
+                <span style="font-size: 0.78rem; text-transform: uppercase; font-weight: 700; color: #64748b;">Primary Delivery City</span>
+                <div style="font-size: 1.05rem; font-weight: 700; color: #0f172a; margin-top: 4px;" id="detailsCardCity">Bengaluru</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 3: SAVED ADDRESSES -->
+          <div id="tabContentAddresses" style="display: none;">
+            <div class="content-header-row">
+              <div>
+                <h2 class="content-title">📍 Saved Addresses</h2>
+                <p class="content-subtitle">Addresses used for shipping and fast express deliveries</p>
+              </div>
+              <button class="btn btn-sm btn-primary" onclick="openAddressForm()">+ Add New Address</button>
+            </div>
+
+            <div id="addressesListContainer" style="display: flex; flex-direction: column; gap: 14px;">
+              <!-- Rendered via JavaScript -->
+            </div>
+          </div>
+
+        </section>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Side Drawers & Modals (Cart, Wishlist, Checkout, Auth) -->
+  <div class="drawer-overlay" id="cartDrawerOverlay" onclick="toggleCartDrawer()"></div>
+  <aside class="side-drawer" id="cartDrawer">
+    <div class="drawer-header"><h3>🛍️ Shopping Cart (<span id="cartDrawerCount">0</span>)</h3><button class="close-drawer-btn" onclick="toggleCartDrawer()">&times;</button></div>
+    <div class="drawer-body" id="cartDrawerBody"></div>
+    <div class="drawer-footer" id="cartDrawerFooter">
+      <div class="price-summary">
+        <div class="summary-row total-row"><span>Total Amount Payable</span><span id="summaryFinalTotal">₹0</span></div>
+      </div>
+      <button class="btn btn-primary btn-block btn-glow btn-lg" onclick="openCheckoutModal()">Proceed to Checkout &rarr;</button>
+    </div>
+  </aside>
+
+  <div class="drawer-overlay" id="wishlistDrawerOverlay" onclick="toggleWishlistDrawer()"></div>
+  <aside class="side-drawer" id="wishlistDrawer">
+    <div class="drawer-header"><h3>❤️ Saved Items (<span id="wishlistDrawerCount">0</span>)</h3><button class="close-drawer-btn" onclick="toggleWishlistDrawer()">&times;</button></div>
+    <div class="drawer-body" id="wishlistDrawerBody"></div>
+    <div class="drawer-footer" id="wishlistDrawerFooter" style="padding:16px; border-top:1px solid var(--border-color); background:#ffffff;">
+      <button class="btn btn-primary btn-block btn-glow btn-lg" onclick="addAllWishlistToCart()">Proceed to Cart &rarr;</button>
+    </div>
+  </aside>
+
+  <!-- Checkout Stepper Modal -->
+  <div class="modal-overlay" id="checkoutModal">
+    <div class="modal-container checkout-modal">
+      <button class="modal-close-btn" onclick="closeCheckoutModal()">&times;</button>
+      <div class="checkout-stepper">
+        <div class="step-item active" id="stepIndicator1"><span class="step-num">1</span><span class="step-title">Address</span></div>
+        <div class="step-line"></div>
+        <div class="step-item" id="stepIndicator2"><span class="step-num">2</span><span class="step-title">Payment</span></div>
+        <div class="step-line"></div>
+        <div class="step-item" id="stepIndicator3"><span class="step-num">3</span><span class="step-title">Confirmation</span></div>
+      </div>
+      <div class="checkout-body" id="checkoutBodyContent"></div>
+    </div>
+  </div>
+
+  <!-- User Account & Address Modal -->
+  <div class="modal-overlay" id="authModal">
+    <div class="modal-container auth-modal">
+      <button class="modal-close-btn" onclick="closeAuthModal()" aria-label="Close modal">&times;</button>
+      <div class="auth-header">
+        <img class="auth-brand-logo" src="assets/images/stylemart-logo.png" alt="StyleMart Logo" width="48" height="48">
+        <h3 id="authModalTitle">My Account</h3>
+        <p id="authModalSub">Login &amp; enter your delivery address to proceed with orders!</p>
+      </div>
+      <form onsubmit="handleAuthSubmit(event)">
+        <div class="form-group" id="profileNameField">
+          <label for="userName">Full Name *</label>
+          <input type="text" id="userName" placeholder="e.g. Rahul Sharma" required>
+        </div>
+        <div class="form-group" id="profilePhoneField">
+          <label for="mobileOrEmail">Mobile Number *</label>
+          <input type="tel" id="mobileOrEmail" placeholder="10-digit mobile number" maxlength="10" required>
+        </div>
+        <div class="form-group">
+          <label for="userAddress">Street Address / Flat / Building *</label>
+          <input type="text" id="userAddress" placeholder="e.g. Flat 402, Sunshine Apartments, MG Road" required>
+        </div>
+        <div class="form-row" style="display:flex; gap:10px;">
+          <div class="form-group" style="flex:1;">
+            <label for="userCity">City *</label>
+            <input type="text" id="userCity" placeholder="City" required>
+          </div>
+          <div class="form-group" style="flex:1;">
+            <label for="userPincodeInput">PIN Code *</label>
+            <input type="text" id="userPincodeInput" placeholder="6-digit PIN" maxlength="6" required>
+          </div>
+        </div>
+        <button type="submit" id="profileFormSubmit" class="btn btn-primary btn-block btn-glow btn-lg" style="margin-top:12px;">
+          Save &amp; Continue
+        </button>
+      </form>
+    </div>
+  </div>
+
+    <!-- Shopping Cart Side Drawer -->
+  <div class="drawer-overlay" id="cartDrawerOverlay" onclick="toggleCartDrawer()"></div>
+  <aside class="side-drawer" id="cartDrawer">
+    <div class="drawer-header">
+      <h3>🛒 Shopping Cart (<span id="cartDrawerCount">0</span>)</h3>
+      <button class="close-drawer-btn" onclick="toggleCartDrawer()">&times;</button>
+    </div>
+    <div class="drawer-body" id="cartDrawerBody"></div>
+    <div class="drawer-footer" id="cartDrawerFooter">
+      <div class="price-summary">
+        <div class="summary-title-header">PRICE DETAILS (<span id="summaryItemCount">0</span> Items)</div>
+        <div class="summary-row"><span>Total MRP</span><span id="summaryTotalMRP">₹0</span></div>
+        <div class="summary-row text-success"><span>Discount on MRP</span><span id="summaryMRPDiscount">-₹0</span></div>
+        <div class="summary-row total-row"><span>Total Amount</span><span id="summaryFinalTotal">₹0</span></div>
+      </div>
+      <button class="btn btn-primary btn-block btn-glow btn-lg" onclick="openCheckoutModal()">Proceed to Checkout &rarr;</button>
+    </div>
+  </aside>
+
+  <!-- Wishlist Drawer -->
+  <div class="drawer-overlay" id="wishlistDrawerOverlay" onclick="toggleWishlistDrawer()"></div>
+  <aside class="side-drawer" id="wishlistDrawer">
+    <div class="drawer-header"><h3>❤️ Saved Items (<span id="wishlistDrawerCount">0</span>)</h3><button class="close-drawer-btn" onclick="toggleWishlistDrawer()">&times;</button></div>
+    <div class="drawer-body" id="wishlistDrawerBody"></div>
+    <div class="drawer-footer" style="padding:16px; border-top:1px solid var(--border-color); background:#ffffff;">
+      <button class="btn btn-primary btn-block btn-glow btn-lg" onclick="addAllWishlistToCart()">Proceed to Cart &rarr;</button>
+    </div>
+  </aside>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Footer -->
+    <!-- Main Footer Matching Image media_1792745887278.png -->
+  <footer class="main-footer" id="mainFooter">
+    <!-- Botanical Gold Leaf Ornaments in Top-Left and Bottom-Right Corners -->
+    <div class="footer-leaf-ornament footer-leaf-tl" aria-hidden="true">
+      <svg viewBox="0 0 160 160" fill="none" stroke="#e2c589" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M-10,-10 C40,20 80,70 110,140 C95,95 70,55 20,25 Z"/>
+        <path d="M15,10 C45,15 80,45 95,85 C75,55 50,35 15,25 Z"/>
+        <path d="M-5,30 C30,35 65,70 75,110 C60,80 40,55 0,45 Z"/>
+        <path d="M-10,65 C15,70 45,100 50,135 C40,110 25,90 -5,80 Z"/>
+        <path d="M30,-5 C60,25 90,45 140,50 C110,40 85,25 55,-5 Z"/>
+      </svg>
+    </div>
+    <div class="footer-leaf-ornament footer-leaf-br" aria-hidden="true">
+      <svg viewBox="0 0 160 160" fill="none" stroke="#e2c589" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M170,170 C120,140 80,90 50,20 C65,65 90,105 140,135 Z"/>
+        <path d="M145,150 C115,145 80,115 65,75 C85,105 110,125 145,135 Z"/>
+        <path d="M165,130 C130,125 95,90 85,50 C100,80 120,105 160,115 Z"/>
+        <path d="M170,95 C145,90 115,60 110,25 C120,50 135,70 165,80 Z"/>
+        <path d="M130,165 C100,135 70,115 20,110 C50,120 75,135 105,165 Z"/>
+      </svg>
+    </div>
+
+    <div class="section-container footer-section-container">
+      <!-- Top Grid: Brand | Divider | SHOP | HELP | ABOUT | Divider | STAY UPDATED -->
+      <div class="footer-top-grid">
+        
+        <!-- 1. Brand Column -->
+        <div class="footer-col footer-brand-col">
+          <a href="index.html" class="footer-brand-logo" aria-label="StyleMart Home" title="StyleMart - Fashion For Everyone">
+            <img src="assets/images/stylemart-logo.png?v=20261023-logo-v1" alt="StyleMart - Fashion For Everyone" class="brand-logo-image header-logo-full">
+          </a>
+          <p class="footer-brand-tagline">— Fashion For Everyone —</p>
+          <p class="footer-brand-desc">Your one-stop online fashion destination for trendy apparel, ethnic wear, footwear and more — for everyone.</p>
+          <div class="footer-social-row">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-circle-btn" aria-label="Instagram" title="Instagram">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-circle-btn" aria-label="Facebook" title="Facebook">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-circle-btn" aria-label="YouTube" title="YouTube">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><polygon points="10 15 15 12 10 9 10 15"/></svg>
+            </a>
+            <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" class="social-circle-btn" aria-label="Pinterest" title="Pinterest">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="9" x2="12" y2="22"/><path d="M8 12a4 4 0 1 1 8 0c0 3-2 6-5 6a3.5 3.5 0 0 1-3-1.5"/><circle cx="12" cy="5" r="1.5"/></svg>
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-circle-btn" aria-label="X (Twitter)" title="X">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-v-divider" aria-hidden="true"></div>
+
+        <!-- 2. SHOP -->
+        <div class="footer-col footer-nav-col footer-col-shop">
+          <h4 class="footer-heading">SHOP</h4>
+          <div class="footer-gold-line"></div>
+          <ul class="footer-links-list">
+            <li><a href="category.html?category=women">Women</a></li>
+            <li><a href="category.html?category=men">Men</a></li>
+            <li><a href="category.html?category=kids">Kids</a></li>
+            <li><a href="category.html?category=ethnic">Ethnic Wear</a></li>
+            <li><a href="category.html?category=footwear">Footwear</a></li>
+            <li><a href="index.html#flashSaleSection">Offers &amp; Deals</a></li>
+          </ul>
+        </div>
+
+        <!-- 3. HELP -->
+        <div class="footer-col footer-nav-col footer-col-help">
+          <h4 class="footer-heading">HELP</h4>
+          <div class="footer-gold-line"></div>
+          <ul class="footer-links-list">
+            <li><a href="profile.html?tab=orders">Track Your Order</a></li>
+            <li><a href="about.html#returns">Returns &amp; Refunds</a></li>
+            <li><a href="about.html#shipping">Shipping &amp; Delivery</a></li>
+            <li><a href="about.html#size-guide">Size &amp; Fit Guide</a></li>
+            <li><a href="about.html#faqs">FAQs</a></li>
+          </ul>
+        </div>
+
+        <!-- 4. ABOUT -->
+        <div class="footer-col footer-nav-col footer-col-about">
+          <h4 class="footer-heading">ABOUT</h4>
+          <div class="footer-gold-line"></div>
+          <ul class="footer-links-list">
+            <li><a href="about.html">About StyleMart</a></li>
+            <li><a href="about.html#careers">Careers</a></li>
+            <li><a href="about.html#blog">Blog &amp; Style Tips</a></li>
+            <li><a href="about.html#contact">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-v-divider" aria-hidden="true"></div>
+
+        <!-- 5. STAY UPDATED -->
+        <div class="footer-col footer-subscribe-col">
+          <h4 class="footer-heading">STAY UPDATED</h4>
+          <div class="footer-gold-line"></div>
+          <p class="footer-subscribe-desc">Subscribe to our newsletter for the latest collections, offers and style updates.</p>
+          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); const val=this.querySelector('input').value; if(val){ if(typeof showToast==='function') showToast('Thank you for subscribing to StyleMart updates!','success'); this.reset(); }">
+            <div class="newsletter-input-box">
+              <svg class="newsletter-mail-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              <input type="email" placeholder="Enter your email address" required aria-label="Enter your email address">
+              <button type="submit" class="newsletter-submit-btn">Subscribe</button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Middle: Trust Badges Row -->
+      <div class="footer-trust-row">
+        <div class="trust-badge-item">
+          <div class="trust-badge-icon">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#e2a856" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-5.2a2 2 0 0 0-.6-1.4l-3-3A2 2 0 0 0 17 7h-3v11h2"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/>
+            </svg>
+          </div>
+          <div class="trust-badge-text">
+            <span class="trust-title">Free Shipping</span>
+            <span class="trust-sub">Above ₹999</span>
+          </div>
+        </div>
+
+        <div class="trust-badge-item">
+          <div class="trust-badge-icon">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#e2a856" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/><path d="M7 16l-3 1.7L1 16"/>
+            </svg>
+          </div>
+          <div class="trust-badge-text">
+            <span class="trust-title">7 Days</span>
+            <span class="trust-sub">Easy Returns</span>
+          </div>
+        </div>
+
+        <div class="trust-badge-item">
+          <div class="trust-badge-icon">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#e2a856" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/>
+            </svg>
+          </div>
+          <div class="trust-badge-text">
+            <span class="trust-title">100% Original</span>
+            <span class="trust-sub">Products</span>
+          </div>
+        </div>
+
+        <div class="trust-badge-item">
+          <div class="trust-badge-icon">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#e2a856" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="20" height="14" x="2" y="6" rx="2"/><path d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><circle cx="12" cy="13" r="1.5"/><path d="M12 14.5V17"/>
+            </svg>
+          </div>
+          <div class="trust-badge-text">
+            <span class="trust-title">Secure</span>
+            <span class="trust-sub">Payments</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar: We Accept | Copyright | Legal Links -->
+      <div class="footer-bottom-row">
+        <div class="footer-payment-group">
+          <span class="we-accept-label">We Accept:</span>
+          <div class="payment-cards-list">
+            <!-- VISA Badge -->
+            <span class="pay-card-pill" title="Visa">
+              <svg width="40" height="14" viewBox="0 0 48 16" fill="none">
+                <path d="M19.2 1.2L13.8 14.8H9.6L6.2 3.8C6.0 3.1 5.8 2.7 5.2 2.4C4.3 1.9 2.8 1.5 1.5 1.2L1.6 0.8H8.2C9.1 0.8 9.9 1.4 10.1 2.4L11.8 11.2L16.0 0.8H19.2ZM35.8 10.2C35.8 6.4 30.5 6.2 30.6 4.4C30.6 3.9 31.1 3.3 32.2 3.2C32.8 3.1 34.3 3.0 36.0 3.8L36.7 0.9C35.7 0.5 34.4 0.2 32.8 0.2C28.8 0.2 26.0 2.3 26.0 5.4C25.9 7.7 28.0 9.0 29.5 9.8C31.1 10.6 31.7 11.1 31.7 11.8C31.6 12.9 30.4 13.4 29.2 13.4C27.2 13.4 26.0 12.8 25.0 12.3L24.3 15.3C25.4 15.8 27.2 16.2 29.1 16.2C33.4 16.2 35.8 14.0 35.8 10.2ZM46.5 14.8H50.2L47.0 0.8H43.6C42.8 0.8 42.1 1.2 41.8 2.0L35.7 14.8H40.0L40.9 12.4H45.9L46.5 14.8ZM42.1 9.4L44.2 3.6L45.4 9.4H42.1ZM25.3 0.8L21.9 14.8H18.0L21.4 0.8H25.3Z" fill="#1A1F71"/>
+              </svg>
+            </span>
+
+            <!-- Mastercard Badge -->
+            <span class="pay-card-pill" title="Mastercard">
+              <svg width="32" height="18" viewBox="0 0 34 20" fill="none">
+                <circle cx="12" cy="10" r="8" fill="#EB001B"/>
+                <circle cx="22" cy="10" r="8" fill="#F79E1B" fill-opacity="0.9"/>
+              </svg>
+            </span>
+
+            <!-- RuPay Badge -->
+            <span class="pay-card-pill" title="RuPay">
+              <svg width="44" height="14" viewBox="0 0 60 18" fill="none">
+                <text x="2" y="14" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-weight="800" font-style="italic" font-size="13" fill="#092B65">Ru<tspan fill="#F47920">Pay</tspan></text>
+                <polygon points="46,3 52,9 46,15" fill="#F47920"/>
+                <polygon points="51,3 57,9 51,15" fill="#00A551"/>
+              </svg>
+            </span>
+
+            <!-- UPI Badge -->
+            <span class="pay-card-pill" title="UPI">
+              <svg width="34" height="14" viewBox="0 0 48 18" fill="none">
+                <text x="2" y="14" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-weight="900" font-size="14" fill="#007934">U<tspan fill="#007934">P</tspan><tspan fill="#007934">I</tspan></text>
+                <polygon points="33,2 43,9 33,16" fill="#007934"/>
+                <polygon points="37,2 47,9 37,16" fill="#F47920"/>
+              </svg>
+            </span>
+          </div>
+        </div>
+
+        <div class="footer-bottom-v-divider" aria-hidden="true"></div>
+
+        <div class="footer-copyright-text">
+          &copy; 2026 StyleMart. All Rights Reserved.
+        </div>
+
+        <div class="footer-legal-links">
+          <a href="about.html#privacy">Privacy Policy</a>
+          <span class="legal-separator">|</span>
+          <a href="about.html#terms">Terms &amp; Conditions</a>
+          <span class="legal-separator">|</span>
+          <a href="about.html#returns">Return Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js?v=20261024-v12"></script>
+  <script>
+    // Profile Page Specific Logic & Order Management
+    function switchProfileTab(tabName) {
+      const tabs = ['orders', 'details', 'addresses'];
+      tabs.forEach(t => {
+        const btn = document.getElementById('tabBtn' + capitalizeFirstLetter(t));
+        const content = document.getElementById('tabContent' + capitalizeFirstLetter(t));
+        if (btn) btn.classList.toggle('active', t === tabName);
+        if (content) content.style.display = (t === tabName) ? 'block' : 'none';
+      });
+      const breadcrumb = document.getElementById('breadcrumbCurrentTab');
+      if (breadcrumb) {
+        breadcrumb.textContent = tabName === 'orders' ? 'My Orders' : tabName === 'details' ? 'Personal Details' : 'Saved Addresses';
+      }
+    }
+
+    function capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+    function ensureUserProfileInitialized() {
+      let user = null;
+      try {
+        user = JSON.parse(localStorage.getItem('stylemart_user'));
+      } catch (e) {}
+
+      if (!user) {
+        user = {
+          name: 'Chaithanya Prakash',
+          phone: '9876543210',
+          address: 'No. 42, Green Valley Enclave, MG Road',
+          city: 'Bengaluru',
+          pincode: '560001',
+          addresses: [
+            {
+              address: 'No. 42, Green Valley Enclave, MG Road',
+              city: 'Bengaluru',
+              pincode: '560001'
+            }
+          ]
+        };
+        localStorage.setItem('stylemart_user', JSON.stringify(user));
+      }
+
+      // Update sidebar
+      const nameElem = document.getElementById('profileUserName');
+      const phoneElem = document.getElementById('profileUserPhone');
+      const avatarElem = document.getElementById('profileUserAvatar');
+      const dName = document.getElementById('detailsCardName');
+      const dPhone = document.getElementById('detailsCardPhone');
+      const dCity = document.getElementById('detailsCardCity');
+
+      if (nameElem) nameElem.textContent = user.name;
+      if (phoneElem) phoneElem.textContent = '+91 ' + user.phone;
+      if (avatarElem) avatarElem.textContent = user.name.charAt(0).toUpperCase();
+      if (dName) dName.textContent = user.name;
+      if (dPhone) dPhone.textContent = '+91 ' + user.phone;
+      if (dCity) dCity.textContent = user.city;
+
+      // Render addresses tab
+      const addrContainer = document.getElementById('addressesListContainer');
+      if (addrContainer) {
+        const addrs = user.addresses || [{ address: user.address, city: user.city, pincode: user.pincode }];
+        addrContainer.innerHTML = addrs.map((a, idx) => `
+          <div style="border:1px solid #e2e8f0; border-radius:12px; padding:18px; background:#ffffff; display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+                <strong style="color:#0f172a; font-size:1rem;">${idx === 0 ? 'Primary Residence' : 'Delivery Address ' + (idx + 1)}</strong>
+                ${idx === 0 ? '<span class="badge" style="background:#e0f2fe; color:#0369a1; font-weight:700; font-size:0.75rem; padding:2px 8px; border-radius:4px;">PRIMARY</span>' : ''}
+              </div>
+              <p style="color:#64748b; font-size:0.9rem; margin:0;">${a.address}, ${a.city} - ${a.pincode}</p>
+            </div>
+            <button class="btn btn-sm btn-outline" onclick="openAddressForm(${idx})">Edit</button>
+          </div>
+        `).join('');
+      }
+    }
+
+    function ensureInitialOrdersSeed() {
+      let orders = [];
+      try {
+        orders = JSON.parse(localStorage.getItem('stylemart_orders'));
+      } catch (e) {}
+
+      if (!orders || orders.length === 0) {
+        // Seed initial order with reference Biba product
+        orders = [
+          {
+            orderId: 'SM-849201',
+            date: '22 Oct 2026',
+            time: '04:15 PM',
+            status: 'Confirmed',
+            estimatedArrival: 'Tomorrow by 5:00 PM',
+            totalAmount: 1899,
+            paymentMethod: 'UPI / GPay Verified',
+            deliveryAddress: 'Chaithanya Prakash, No. 42, Green Valley Enclave, MG Road, Bengaluru - 560001',
+            items: [
+              {
+                id: 'sm-w-anarkali-01',
+                title: 'Biba Women Indigo Blue Pure Cotton Printed Anarkali Kurta Set with Dupatta',
+                brand: 'Biba',
+                image: 'assets/images/women/indigo-anarkali-suit/front.jpg',
+                price: 1899,
+                originalPrice: 4299,
+                selectedSize: 'M',
+                qty: 1
+              }
+            ]
+          }
+        ];
+        localStorage.setItem('stylemart_orders', JSON.stringify(orders));
+      }
+    }
+
+    function loadUserOrders() {
+      ensureInitialOrdersSeed();
+      let orders = [];
+      try {
+        orders = JSON.parse(localStorage.getItem('stylemart_orders')) || [];
+      } catch (e) {
+        orders = [];
+      }
+
+      // Self-heal legacy / incomplete order items in localStorage
+      let ordersUpdated = false;
+      if (Array.isArray(orders)) {
+        orders.forEach(order => {
+          if (Array.isArray(order.items)) {
+            order.items.forEach(item => {
+              const prod = (typeof PRODUCTS_DATA !== 'undefined' && Array.isArray(PRODUCTS_DATA))
+                ? PRODUCTS_DATA.find(p => p.id === item.id)
+                : null;
+              
+              const isInvalidTitle = !item.title || item.title === 'undefined';
+              const isInvalidBrand = !item.brand || item.brand === 'undefined';
+              const isInvalidImage = !item.image || item.image === 'undefined' || item.image.trim() === '';
+              const isInvalidPrice = item.price === undefined || item.price === null || isNaN(Number(item.price)) || Number(item.price) <= 0;
+
+              if (isInvalidTitle || isInvalidBrand || isInvalidImage || isInvalidPrice) {
+                if (prod) {
+                  item.title = prod.title || 'StyleMart Luxury Apparel';
+                  item.brand = prod.brand || 'StyleMart Fashion';
+                  item.image = prod.image || (prod.thumbs && prod.thumbs[0] ? prod.thumbs[0].url : 'assets/images/stylemart-logo.png');
+                  item.price = Number(prod.price) || 0;
+                  item.originalPrice = Number(prod.originalPrice) || Number(prod.price) || item.price;
+                  ordersUpdated = true;
+                } else {
+                  if (isInvalidTitle) item.title = 'StyleMart Luxury Apparel';
+                  if (isInvalidBrand) item.brand = 'StyleMart Fashion';
+                  if (isInvalidImage) item.image = 'assets/images/stylemart-logo.png';
+                  if (isInvalidPrice) {
+                    item.price = order.totalAmount ? Math.round(order.totalAmount / (order.items.length || 1)) : 0;
+                  }
+                  if (!item.originalPrice || isNaN(Number(item.originalPrice))) {
+                    item.originalPrice = item.price;
+                  }
+                  ordersUpdated = true;
+                }
+              }
+            });
+          }
+        });
+
+        if (ordersUpdated) {
+          try {
+            localStorage.setItem('stylemart_orders', JSON.stringify(orders));
+          } catch (err) {
+            console.warn('Failed to save self-healed orders to localStorage:', err);
+          }
+        }
+      }
+
+      const container = document.getElementById('profileOrdersListContainer');
+      const emptyState = document.getElementById('emptyOrdersState');
+      const badge = document.getElementById('sidebarOrdersBadge');
+      const heading = document.getElementById('ordersCountHeading');
+
+      if (badge) badge.textContent = orders.length;
+      if (heading) heading.textContent = `(${orders.length} ${orders.length === 1 ? 'order' : 'orders'})`;
+
+      if (orders.length === 0) {
+        if (container) container.innerHTML = '';
+        if (emptyState) emptyState.style.display = 'block';
+        return;
+      }
+
+      if (emptyState) emptyState.style.display = 'none';
+      if (!container) return;
+
+      container.innerHTML = orders.map((order, orderIdx) => `
+        <article class="order-item-card">
+          <!-- Order Card Header -->
+          <div class="order-card-header">
+            <div class="order-meta-info">
+              <div><span>Order ID: </span><strong>#${order.orderId}</strong></div>
+              <div><span>Placed On: </span><strong>${order.date}</strong></div>
+              <div><span>Total: </span><strong style="color:#07261e; font-size:0.95rem;">₹${(order.totalAmount || 0).toLocaleString('en-IN')}</strong></div>
+            </div>
+            <div class="order-status-badge">
+              <span>${order.status || 'Confirmed'}</span>
+            </div>
+          </div>
+
+          <!-- Order Stepper Progress Tracker -->
+          <div class="order-tracker-bar">
+            <div class="tracker-step completed">
+              <span class="tracker-dot">✓</span>
+              <span>Placed</span>
+            </div>
+            <div class="tracker-line active"></div>
+            <div class="tracker-step completed">
+              <span class="tracker-dot">✓</span>
+              <span>Confirmed</span>
+            </div>
+            <div class="tracker-line active"></div>
+            <div class="tracker-step active">
+              <span class="tracker-dot">🚚</span>
+              <span>Out for Delivery</span>
+            </div>
+            <div class="tracker-line"></div>
+            <div class="tracker-step">
+              <span class="tracker-dot">🏠</span>
+              <span>${order.estimatedArrival || 'Tomorrow'}</span>
+            </div>
+          </div>
+
+          <!-- Order Items List -->
+          <div class="order-products-container">
+            ${(order.items || []).map(item => {
+              const prod = (typeof PRODUCTS_DATA !== 'undefined' && Array.isArray(PRODUCTS_DATA))
+                ? PRODUCTS_DATA.find(p => p.id === item.id)
+                : null;
+              
+              const title = (item.title && item.title !== 'undefined') 
+                ? item.title 
+                : (prod && prod.title ? prod.title : 'StyleMart Luxury Apparel');
+
+              const brand = (item.brand && item.brand !== 'undefined') 
+                ? item.brand 
+                : (prod && prod.brand ? prod.brand : 'StyleMart Fashion');
+
+              const image = (item.image && item.image !== 'undefined' && item.image.trim() !== '') 
+                ? item.image 
+                : (prod && prod.image ? prod.image : (prod && prod.thumbs && prod.thumbs[0] ? prod.thumbs[0].url : 'assets/images/stylemart-logo.png'));
+
+              const priceNum = (item.price !== undefined && !isNaN(Number(item.price)) && Number(item.price) > 0)
+                ? Number(item.price)
+                : (prod && Number(prod.price) > 0 ? Number(prod.price) : (order.totalAmount ? Math.round(order.totalAmount / (order.items.length || 1)) : 0));
+
+              const origPriceNum = (item.originalPrice !== undefined && !isNaN(Number(item.originalPrice)) && Number(item.originalPrice) > 0)
+                ? Number(item.originalPrice)
+                : (prod && Number(prod.originalPrice) > 0 ? Number(prod.originalPrice) : priceNum);
+
+              const qty = item.qty || 1;
+              const displaySize = item.selectedSize || 'Free Size';
+
+              return `
+              <div class="order-product-row">
+                <div class="order-product-main-info">
+                  <div class="order-thumb-wrap">
+                    <img src="${image}" alt="${title}" loading="lazy" onerror="this.src='assets/images/stylemart-logo.png'">
+                  </div>
+                  <div class="order-details-col">
+                    <div class="order-brand-label">${brand}</div>
+                    <a href="product.html?id=${item.id}" class="order-item-title">${title}</a>
+                    <div class="order-item-specs">
+                      <span>Qty: <strong>${qty}</strong></span>
+                      ${displaySize ? `<span style="margin-left: 10px;">Size: <strong>${displaySize}</strong></span>` : ''}
+                    </div>
+                    <div class="order-item-price">
+                      ₹${priceNum.toLocaleString('en-IN')}
+                      ${origPriceNum > priceNum ? `<span style="font-size:0.85rem; color:#94a3b8; text-decoration:line-through; font-weight:normal; margin-left:6px;">₹${origPriceNum.toLocaleString('en-IN')}</span>` : ''}
+                    </div>
+                  </div>
+                </div>
+                <div class="order-actions-col">
+                  <a href="product.html?id=${item.id}" class="btn btn-sm btn-outline" style="text-decoration:none; text-align:center;">View Details</a>
+                  <button type="button" class="btn btn-sm btn-primary" onclick="quickReorderProduct('${item.id}', '${displaySize}')">Buy Again</button>
+                </div>
+              </div>
+            `;
+            }).join('')}
+          </div>
+
+          <!-- Order Card Footer -->
+          <div class="order-card-footer">
+            <div class="order-delivery-address-note">
+              <span>📍 Delivering to: <strong>${order.deliveryAddress || 'Your delivery address'}</strong></span>
+            </div>
+            <div>
+              <span style="color:#64748b; font-size:0.8rem;">Paid via: <strong>${order.paymentMethod || 'Prepaid'}</strong></span>
+            </div>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function quickReorderProduct(productId, size) {
+      if (typeof quickAddToCart === 'function') {
+        quickAddToCart(productId, size);
+      } else if (typeof addToCart === 'function') {
+        addToCart(productId, size, 1);
+      }
+      if (typeof showToast === 'function') {
+        showToast('Product added back to your cart! 🛍️', 'success');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      ensureUserProfileInitialized();
+      loadUserOrders();
+
+      // Check query param for active tab
+      const params = new URLSearchParams(window.location.search);
+      const tab = params.get('tab');
+      if (tab && ['orders', 'details', 'addresses'].includes(tab)) {
+        switchProfileTab(tab);
+      }
+    });
+  </script>
+</body>
+</html>
