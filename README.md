@@ -62,7 +62,7 @@ python -m http.server 8000
 
 ## 📖 Comprehensive Engineering Documentation
 
-For deep technical documentation, architecture diagrams, development milestones, git commit history, and a complete engineering log of 12 bug post-mortems, please read:
+For deep technical documentation, architecture diagrams, development milestones, git commit history, and a complete engineering log of 13 bug post-mortems, please read:
 
 👉 [**StyleMart.md — Full Engineering Documentation**](StyleMart.md)
 

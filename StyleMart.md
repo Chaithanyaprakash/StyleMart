@@ -334,6 +334,16 @@ Throughout the 17-day development cycle, several critical bugs were encountered,
 
 ---
 
+### Bug 13: CI/CD Case-Sensitive Asset Validation Failure on Linux Runner
+- **Reported Symptom:** GitHub Actions CI/CD pipeline failed during the `Validate HTML Structure, DOCTYPE & Asset Integrity` step with errors: `[FAIL] index.html: Referenced local image "assets/images/banner-1.png" does not exist!`, despite passing locally on Windows development machines.
+- **Root Cause:** Git tracked hero carousel images with uppercase filenames (`Banner-1.png`, `Banner-2.png`, `Banner-3.png`) from a historical commit, while [index.html](index.html) referenced them in lowercase (`banner-1.png`, `banner-2.png`, `banner-3.png`). Windows NTFS is case-insensitive, but GitHub Actions operates on `ubuntu-latest` (Linux ext4) which is strictly case-sensitive.
+- **Consequences Faced:** The automated CI/CD pipeline blocked deployment on GitHub Actions due to the casing mismatch.
+- **Resolution Implemented:**
+  1. Performed a two-step Git case rename (`git mv assets/images/Banner-1.png assets/images/banner-1.png`, etc.) to standardize tracked assets to standard web lowercase.
+  2. Upgraded [scripts/validate-html.js](scripts/validate-html.js) with a cross-platform case-sensitive check (`fileExistsCaseSensitive`), ensuring local tests on Windows catch case discrepancies before pushing to remote Linux runners.
+
+---
+
 ## 8. CI/CD Pipeline & Automated Verification Evidence
 
 The project includes an automated testing and continuous deployment pipeline defined in [StyleMart.yml](StyleMart.yml) and [.github/workflows/StyleMart.yml](.github/workflows/StyleMart.yml).

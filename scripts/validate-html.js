@@ -6,9 +6,32 @@ let hasError = false;
 
 console.log('==> Starting HTML Quality & Asset Reference Validation...\n');
 
+// Cross-platform case-sensitive file existence check (works on both Windows NTFS and Linux ext4)
+function fileExistsCaseSensitive(filepath) {
+  if (!fs.existsSync(filepath)) return false;
+  try {
+    const normalized = path.resolve(filepath);
+    const root = path.parse(normalized).root;
+    let current = root;
+    const parts = normalized.slice(root.length).split(path.sep);
+
+    for (const part of parts) {
+      if (!part) continue;
+      const items = fs.readdirSync(current);
+      if (!items.includes(part)) {
+        return false;
+      }
+      current = path.join(current, part);
+    }
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
 HTML_FILES.forEach(filename => {
   const filePath = path.join(process.cwd(), filename);
-  if (!fs.existsSync(filePath)) {
+  if (!fileExistsCaseSensitive(filePath)) {
     console.error(`[FAIL] ${filename}: File does not exist!`);
     hasError = true;
     return;
@@ -42,8 +65,8 @@ HTML_FILES.forEach(filename => {
     const src = match[1].split('?')[0]; // strip query string
     if (!src.startsWith('http://') && !src.startsWith('https://') && !src.startsWith('//')) {
       const localScriptPath = path.join(process.cwd(), src);
-      if (!fs.existsSync(localScriptPath)) {
-        console.error(`[FAIL] ${filename}: Referenced local script "${src}" not found on disk!`);
+      if (!fileExistsCaseSensitive(localScriptPath)) {
+        console.error(`[FAIL] ${filename}: Referenced local script "${src}" not found on disk (or case mismatch)!`);
         hasError = true;
       }
     }
@@ -54,8 +77,8 @@ HTML_FILES.forEach(filename => {
     const href = match[1].split('?')[0]; // strip query string
     if (!href.startsWith('http://') && !href.startsWith('https://') && !href.startsWith('//')) {
       const localCssPath = path.join(process.cwd(), href);
-      if (!fs.existsSync(localCssPath)) {
-        console.error(`[FAIL] ${filename}: Referenced local stylesheet "${href}" not found on disk!`);
+      if (!fileExistsCaseSensitive(localCssPath)) {
+        console.error(`[FAIL] ${filename}: Referenced local stylesheet "${href}" not found on disk (or case mismatch)!`);
         hasError = true;
       }
     }
@@ -67,8 +90,8 @@ HTML_FILES.forEach(filename => {
     const src = match[1].split('?')[0];
     if (!src.startsWith('http://') && !src.startsWith('https://') && !src.startsWith('data:') && !src.includes('${')) {
       const localImgPath = path.join(process.cwd(), src);
-      if (!fs.existsSync(localImgPath)) {
-        console.error(`[FAIL] ${filename}: Referenced local image "${src}" does not exist!`);
+      if (!fileExistsCaseSensitive(localImgPath)) {
+        console.error(`[FAIL] ${filename}: Referenced local image "${src}" does not exist (or case mismatch)!`);
         hasError = true;
       }
     }
