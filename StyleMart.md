@@ -346,6 +346,16 @@ Throughout the 17-day development cycle, several critical bugs were encountered,
 
 ---
 
+### Bug 14: Smoke Test HTTP 301 Redirect Failure on Static Server
+- **Reported Symptom:** GitHub Actions CI/CD pipeline failed during the `smoke-test` job in step `Test HTTP Endpoints Availability` with error: `Checking http://localhost:8080/category.html -> HTTP 301` and `✗ Route verification failed for http://localhost:8080/category.html (HTTP 301)`.
+- **Root Cause:** The `serve` static web server defaults to `cleanUrls: true`, which automatically issues an `HTTP 301 Moved Permanently` redirect from `/category.html` to `/category`. Because `curl` was executed without the `-L` (`--location`) flag, it evaluated the intermediate 301 status code instead of following the redirect to the final 200 OK response.
+- **Consequences Faced:** The smoke test halted the CI/CD pipeline before reaching headless browser testing or automated deployment.
+- **Resolution Implemented:**
+  1. Created [serve.json](serve.json) with `{"cleanUrls": false}` to disable unwanted redirect rewriting during local testing.
+  2. Added the `-L` flag to `curl` (`curl -s -L -o /dev/null -w "%{http_code}" "$URL"`) across [StyleMart.yml](StyleMart.yml) and [.github/workflows/StyleMart.yml](.github/workflows/StyleMart.yml), ensuring redirects are followed to the final HTTP 200 payload.
+
+---
+
 ## 8. CI/CD Pipeline & Automated Verification Evidence
 
 The project includes an automated testing and continuous deployment pipeline defined in [StyleMart.yml](StyleMart.yml) and [.github/workflows/StyleMart.yml](.github/workflows/StyleMart.yml).

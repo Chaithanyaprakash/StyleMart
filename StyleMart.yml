@@ -84,7 +84,7 @@ jobs:
           echo "==> Verifying application routes respond with HTTP 200..."
           for page in "" "category.html" "product.html" "profile.html" "about.html"; do
             URL="http://localhost:8080/$page"
-            HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" "$URL")
+            HTTP_CODE=$(curl -s -L -o /dev/null -w "%{http_code}" "$URL")
             echo "Checking $URL -> HTTP $HTTP_CODE"
             if [ "$HTTP_CODE" -ne 200 ]; then
               echo "✗ Route verification failed for $URL (HTTP $HTTP_CODE)"
@@ -96,8 +96,8 @@ jobs:
       - name: Test Critical CSS & JS Bundle Delivery
         run: |
           echo "==> Testing asset delivery..."
-          curl -s -f "http://localhost:8080/styles.css" > /dev/null && echo "✓ styles.css delivered successfully"
-          curl -s -f "http://localhost:8080/app.js" > /dev/null && echo "✓ app.js delivered successfully"
+          curl -s -f -L "http://localhost:8080/styles.css" > /dev/null && echo "✓ styles.css delivered successfully"
+          curl -s -f -L "http://localhost:8080/app.js" > /dev/null && echo "✓ app.js delivered successfully"
 
   # ----------------------------------------------------------------------------
   # Job 3: Headless Browser & DOM Functional Smoke Tests
