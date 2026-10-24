@@ -137,6 +137,7 @@ StyleMart was engineered iteratively between **October 8, 2026** and **October 2
 ### Chronological Git Commit Log
 
 ```
+* 44420c4 - 2026-10-24 13:47:13 +0530 : fix(ci): follow redirects in smoke-test curl and configure serve.json to prevent cleanUrls 301 (Chaithanyaprakash)
 * 4f4e944 - 2026-10-24 13:39:25 +0530 : fix(ci): standardize banner image filenames to lowercase and add cross-platform case-sensitive validation (Chaithanyaprakash)
 * 4f16acb - 2026-10-24 13:14:24 +0530 : docs: update git commit history log in StyleMart.md (Chaithanyaprakash)
 * e448573 - 2026-10-24 13:13:34 +0530 : feat: restore mobile category filter bar & drawer, match botanical mobile footer, update documentation (Chaithanyaprakash)
