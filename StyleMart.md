@@ -20,7 +20,8 @@ The platform is styled in an opulent **Imperial Emerald Green (`#07261e`)** and 
 ### Key Capabilities & Highlights
 - **96-Product Master Catalog vs. 24-Item Showcase:** Complete inventory database of 96 curated fashion products across 5 primary departments, with a mathematically calibrated 24-item "All Fashions" homepage showcase that guarantees complete rows without orphan card gaps across all viewports.
 - **Mobile-Optimized User Profile:** A modern luxury mobile dashboard featuring a compact horizontal hero card, swipeable horizontal tab pill bar, and responsive order cards that keep active purchases instantly visible without vertical clutter.
-- **Streamlined 2-Column Mobile Footer:** An uncluttered mobile footer that hides high-overhead decorative content and arranges SHOP on the left and ABOUT on the right in a balanced, luxury 2-column grid.
+- **Mobile Category Filter Bar & Slide-Out Drawer:** A dedicated mobile category bar featuring collection titles, dynamic product counts, and a gold-trimmed filter trigger button that smoothly opens a full-featured slide-out filter drawer with backdrop.
+- **Pixel-Perfect 2-Column Botanical Mobile Footer:** An elegant, tight mobile footer featuring top-left and bottom-right botanical gold leaf illustrations, centered monogram logo, flanked tagline ("— Fashion For Everyone —"), thick gold underline pills, a central vertical gold divider between SHOP & ABOUT, a full-width horizontal divider, and centered copyright.
 - **Interactive Search with Instant Autocomplete:** Real-time client-side search indexing matching titles, brands, and categories with keyboard navigation.
 - **Dynamic Slide-in Cart & Wishlist Drawers:** Real-time quantity adjustments, free shipping progress indicators, instant coupon code application, and tax/discount calculations.
 - **Multi-Step Checkout & Address Management:** Seamless multi-step checkout workflow with customer profile validation, address auto-filling, UPI/COD selection, and celebratory confetti animations.
@@ -159,6 +160,7 @@ StyleMart was engineered iteratively between **October 8, 2026** and **October 2
 | **Phase 7: Catalog Expansion & Grid Perfection** | Oct 23 – Oct 24, 2026 | Ingestion of 15 premium Flipkart catalog items across Women's Dresses, Lehengas, and Jeans. Calibrated All Fashions to exactly 24 items. |
 | **Phase 8: Order Self-Healing & Documentation** | Oct 24, 2026 | Diagnosed corrupted order metadata (`undefined`, `₹NaN`), created self-healing order migration, authored `StyleMart.md` and `StyleMart.yml`. |
 | **Phase 9: Mobile Profile UX & 2-Column Minimalist Footer Overhaul** | Oct 24, 2026 | Redesigned mobile profile (compact horizontal hero banner, swipeable navigation tab bar) and streamlined mobile footer into an uncluttered 2-column layout (SHOP left, ABOUT right). |
+| **Phase 10: Mobile Category Filter Restoration & Botanical Footer Alignment** | Oct 24, 2026 | Restored mobile category filter via sticky action bar and slide-out drawer, eliminating the 165px whitespace void; overhauled mobile footer with botanical gold corner leaves, central vertical dividing line, and tight gap-free spacing. |
 
 ---
 
@@ -302,6 +304,31 @@ Throughout the 17-day development cycle, several critical bugs were encountered,
 - **Root Cause:** Running third-party linting without explicit project rule definitions caused warnings to trigger non-zero exit codes, leading to the use of `|| true` to bypass failures.
 - **Consequences Faced:** A missing `<title>` tag on [category.html](category.html) escaped early detection.
 - **Resolution Implemented:** Authored a dedicated, zero-dependency validation script ([scripts/validate-html.js](scripts/validate-html.js)) that strictly validates DOCTYPE, `<meta charset>`, `<title>`, `<script>`, `<link>`, and local image assets, failing with exit code 1 if any page is broken. Fixed the missing `<title>` in [category.html](category.html) and removed `|| true` from [StyleMart.yml](StyleMart.yml).
+
+---
+
+### Bug 11: Mobile Category Filter Missing & Layout Void Defect
+- **Reported Symptom:** On mobile screens in [category.html](category.html), the product filter controls were completely missing, leaving a large (~165px) empty white void above the product cards, preventing users from refining styles, brands, or prices.
+- **Root Cause:** A conflicting legacy CSS rule applied `position: static` to `#categoryFilterSidebar` without overriding an earlier `transform: translateX(-105%) !important;` rule. This forced the browser to reserve vertical layout space while painting the sidebar offscreen. Additionally, no mobile trigger button was present in the markup to toggle the drawer.
+- **Consequences Faced:** Mobile shoppers could not filter or sort products, and were confronted with awkward whitespace above the collection.
+- **Resolution Implemented:**
+  1. Inserted a sleek mobile category action bar (`.mobile-category-bar`) with collection title, item count, and a gold-trimmed `[Filters]` button (`onclick="toggleMobileCategoryFilters()"`).
+  2. Fixed mobile drawer positioning (`position: fixed; width: 300px; transform: translateX(-105%)`, transitioning smoothly to `0` when `.active`).
+  3. Integrated an interactive backdrop (`#categoryFilterOverlay`) and an explicit "Apply Filters" button at the bottom of the drawer.
+  4. Updated `app.js` to automatically synchronize category titles, product counts, and active filter badge counts.
+
+---
+
+### Bug 12: Mobile Footer Layout Discrepancies & Excess Whitespace
+- **Reported Symptom:** The mobile footer displayed leftover gaps and lacked the gold vertical dividing line, gold underline pills, flanking tagline rules, and botanical corner artwork shown in design mockups.
+- **Root Cause:** Incomplete CSS grid definitions on small viewports left residual margins and gaps after hiding desktop-only elements, and corner leaf SVGs were not calibrated for mobile viewports.
+- **Consequences Faced:** Visual inconsistency and unpolished presentation at the bottom of mobile pages.
+- **Resolution Implemented:**
+  1. Refactored `.main-footer` mobile CSS with a deep emerald background (`#06241c`) and tight, balanced padding (`padding: 24px 0 16px 0;`).
+  2. Anchored prominent botanical gold leaf illustrations (`.footer-leaf-tl` and `.footer-leaf-br`, 150x150px, opacity 0.85) in the top-left and bottom-right corners.
+  3. Aligned the SHOP and ABOUT columns in a 2-column layout with a crisp 1px gold vertical dividing line (`border-right: 1px solid rgba(197, 155, 39, 0.45);`).
+  4. Added 44px thick gold underline pills under `SHOP` and `ABOUT` headings and horizontal gold flank lines around the tagline.
+  5. Placed a full-width 1px gold dividing line above the centered copyright text (`© 2026 StyleMart. All Rights Reserved.`).
 
 ---
 

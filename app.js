@@ -7685,6 +7685,14 @@ function renderProductsCatalog() {
     } else {
       countLabel.textContent = `Showing ${filteredList.length} of ${categoryProducts.length} items`;
     }
+    const mobileCatHeading = document.getElementById('mobileCategoryHeading');
+    if (mobileCatHeading) {
+      mobileCatHeading.textContent = CATEGORY_HEADINGS[state.selectedCategory] || 'Collections';
+    }
+    const mobileCatCount = document.getElementById('mobileCategoryCount');
+    if (mobileCatCount) {
+      mobileCatCount.textContent = `(${filteredList.length} items)`;
+    }
   }
 
   if (filteredList.length === 0) {
@@ -8022,10 +8030,15 @@ function scrollToStudio() {
 }
 
 function toggleMobileFilters() {
-  const sidebar = document.getElementById('filterSidebar') || document.getElementById('categoryFilterSidebar');
+  const sidebar = document.getElementById('categoryFilterSidebar') || document.getElementById('filterSidebar');
   const overlay = document.getElementById('categoryFilterOverlay');
   if (sidebar) sidebar.classList.toggle('active');
   if (overlay) overlay.classList.toggle('active');
+  if (sidebar && sidebar.classList.contains('active')) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
+  }
 }
 
 function toggleMobileCategoryFilters() {
@@ -8033,16 +8046,18 @@ function toggleMobileCategoryFilters() {
 }
 
 function closeMobileCategoryFilters() {
-  const sidebar = document.getElementById('filterSidebar') || document.getElementById('categoryFilterSidebar');
+  const sidebar = document.getElementById('categoryFilterSidebar') || document.getElementById('filterSidebar');
   const overlay = document.getElementById('categoryFilterOverlay');
   if (sidebar) sidebar.classList.remove('active');
   if (overlay) overlay.classList.remove('active');
+  document.body.style.overflow = '';
 }
 
 function updateActiveFilterChips() {
   const chipsContainer = document.getElementById('activeFilterChips');
   const bar = document.getElementById('activeFiltersBar');
   const activeBadge = document.getElementById('filterActiveBadge');
+  const mobileFilterBadge = document.getElementById('mobileFilterBadge');
   if (!chipsContainer || !bar) return;
 
   let chips = [];

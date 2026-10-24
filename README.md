@@ -17,7 +17,8 @@
 * **96-Product Master Catalog:** Comprehensive fashion database across Women's Luxury, Men's Couture, Kids' Wear, Footwear, and Traditional Ethnic collections with high-resolution multi-angle galleries.
 * **Calibrated 24-Item "All Fashions" Showcase:** Homepage grid mathematically calibrated to 24 items to guarantee complete rows with zero orphan card gaps across all screen widths (6 cols ultrawide, 4 cols desktop, 3 cols tablet, 2 cols mobile).
 * **Mobile-Optimized User Profile ([profile.html](profile.html)):** Compact horizontal user hero banner, swipeable horizontal tab pill bar, and responsive order cards that keep active purchases instantly visible without vertical scrolling.
-* **Streamlined 2-Column Mobile Footer:** Clutter-free mobile footer that hides high-overhead decorative content and arranges **SHOP** on the left and **ABOUT** on the right in a balanced, luxury 2-column grid.
+* **Mobile Category Filter & Slide-Out Drawer ([category.html](category.html)):** Dedicated mobile action bar showing collection title, item counts, and a gold-accented filter trigger that opens a smooth slide-out drawer with zero wasted whitespace.
+* **Pixel-Perfect Botanical Mobile Footer:** Uncluttered mobile footer featuring gold corner leaf illustrations, centered monogram logo, vertical column divider between **SHOP** & **ABOUT**, gold underline pills, and horizontal divider.
 * **Interactive Search with Autocomplete:** Real-time client-side search index matching titles, brands, and categories with keyboard navigation.
 * **Slide-in Cart & Wishlist Drawers:** Real-time item count badges, quantity controls, free delivery progress bar, and instant coupon code validation.
 * **Multi-Step Checkout & Address Management:** Customer profile validation, delivery address auto-filling, simulated UPI/COD payment flows, and celebratory confetti animations.
@@ -61,7 +62,7 @@ python -m http.server 8000
 
 ## 📖 Comprehensive Engineering Documentation
 
-For deep technical documentation, architecture diagrams, development milestones, git commit history, and a complete engineering log of 10 bug post-mortems, please read:
+For deep technical documentation, architecture diagrams, development milestones, git commit history, and a complete engineering log of 12 bug post-mortems, please read:
 
 👉 [**StyleMart.md — Full Engineering Documentation**](StyleMart.md)
 

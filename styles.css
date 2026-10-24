@@ -13554,42 +13554,186 @@ body.category-page .products-main {
     font-weight: 700 !important;
   }
 
-  /* E. CATEGORY PAGE: STATIC FILTER BAR & SCROLLABLE PRODUCT CARDS */
-  body.category-page .category-catalog-layout {
+  /* E. CATEGORY PAGE: MOBILE FILTER BAR & SLIDE-OUT FILTER DRAWER */
+  body.category-page .catalog-section,
+  body.category-page .category-catalog-section {
+    padding-top: 8px !important;
+    padding-bottom: 24px !important;
+  }
+
+  /* Sleek mobile filter trigger bar */
+  .mobile-category-bar {
     display: flex !important;
-    flex-direction: column !important;
-    height: calc(100vh - 60px) !important;
-    height: calc(100dvh - 60px) !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 10px !important;
+    padding: 8px 12px !important;
+    margin: 0 0 10px 0 !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+    box-sizing: border-box !important;
+  }
+
+  .mobile-category-meta {
+    display: flex !important;
+    align-items: baseline !important;
+    gap: 6px !important;
     overflow: hidden !important;
+  }
+
+  .mobile-category-heading {
+    font-size: 0.92rem !important;
+    font-weight: 700 !important;
+    color: #04261d !important;
+    margin: 0 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .mobile-category-count {
+    font-size: 0.75rem !important;
+    font-weight: 500 !important;
+    color: #64748b !important;
+    white-space: nowrap !important;
+  }
+
+  .mobile-filter-trigger-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    background: #072e24 !important;
+    color: #ffffff !important;
+    border: 1px solid #d4af37 !important;
+    border-radius: 50px !important;
+    padding: 6px 14px !important;
+    font-size: 0.80rem !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    box-shadow: 0 2px 6px rgba(7, 46, 36, 0.2) !important;
+    transition: all 0.2s ease !important;
+    flex-shrink: 0 !important;
+  }
+
+  .mobile-filter-trigger-btn:hover {
+    background: #0d4436 !important;
+    border-color: #f59e0b !important;
+  }
+
+  .mobile-filter-trigger-btn svg {
+    stroke: #ffffff !important;
+  }
+
+  .mobile-filter-badge {
+    background: #f59e0b !important;
+    color: #04261d !important;
+    font-size: 0.65rem !important;
+    font-weight: 850 !important;
+    border-radius: 10px !important;
+    padding: 1px 6px !important;
+    min-width: 16px !important;
+    text-align: center !important;
+    line-height: 1.2 !important;
+  }
+
+  body.category-page .category-catalog-layout {
+    display: block !important;
+    height: auto !important;
+    overflow: visible !important;
     gap: 0 !important;
   }
 
+  /* Fixed slide-out drawer for category filters on mobile */
   body.category-page .category-filter-sidebar,
   body.category-page #categoryFilterSidebar {
-    position: static !important;
-    width: 100% !important;
-    min-width: 100% !important;
-    max-width: 100% !important;
-    flex-shrink: 0 !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 300px !important;
+    max-width: 86vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    max-height: 100vh !important;
+    z-index: 10005 !important;
     background: #ffffff !important;
-    border: 1px solid #e2e8f0 !important;
-    border-radius: 8px !important;
-    padding: 8px 10px !important;
-    margin: 0 0 6px 0 !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
-    z-index: 25 !important;
-    max-height: 165px !important;
+    box-shadow: 8px 0 32px rgba(0, 0, 0, 0.3) !important;
+    transform: translateX(-105%) !important;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
     overflow-y: auto !important;
+    padding: 16px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    border: none !important;
+    border-radius: 0 14px 14px 0 !important;
+    margin: 0 !important;
+  }
+
+  body.category-page .category-filter-sidebar.active,
+  body.category-page #categoryFilterSidebar.active {
+    transform: translateX(0) !important;
+  }
+
+  body.category-page .category-filter-sidebar .sidebar-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    padding-bottom: 8px !important;
+    margin-bottom: 12px !important;
+  }
+
+  body.category-page .category-filter-sidebar .close-sidebar-btn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 26px !important;
+    border: none !important;
+    background: transparent !important;
+    color: #475569 !important;
+    cursor: pointer !important;
+    padding: 0 !important;
+    line-height: 1 !important;
+  }
+
+  body.category-page .filter-sidebar-overlay.active,
+  #categoryFilterOverlay.active {
     display: block !important;
+    position: fixed !important;
+    inset: 0 !important;
+    background: rgba(0, 0, 0, 0.55) !important;
+    backdrop-filter: blur(2px) !important;
+    z-index: 10000 !important;
+  }
+
+  .mobile-apply-filters-btn {
+    display: block !important;
+    margin-top: 10px !important;
+    background: #072e24 !important;
+    color: #ffffff !important;
+    border: 1px solid #d4af37 !important;
+    border-radius: 8px !important;
+    padding: 10px 14px !important;
+    font-weight: 700 !important;
+    font-size: 0.88rem !important;
+    cursor: pointer !important;
+    text-align: center !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .mobile-apply-filters-btn:hover {
+    background: #0d4436 !important;
   }
 
   body.category-page .category-products-main,
   body.category-page .products-main {
-    flex: 1 1 auto !important;
+    width: 100% !important;
     min-height: 0 !important;
-    overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-    padding: 4px 2px 70px !important;
+    overflow: visible !important;
+    padding: 0 0 40px !important;
   }
 
   /* F. MOBILE PRODUCT CARDS: REDUCED SIZE, 1-WORD TITLE, PRICE, ADD TO CART ON HOVER */
@@ -14223,7 +14367,27 @@ body.category-page .products-main {
     padding: 0 16px !important;
   }
 
-  /* Mobile Footer Clean Hiding of Clutter */
+  /* ==========================================================================
+     MOBILE FOOTER: PIXEL-PERFECT MATCH FOR MEDIA_1792825929539.PNG
+     ========================================================================== */
+  .main-footer {
+    background: #06241c !important; /* Deep Imperial Forest Green */
+    padding: 24px 0 16px 0 !important;
+    margin-top: 24px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    border-top: none !important;
+  }
+
+  .footer-section-container {
+    padding: 0 16px !important;
+    max-width: 440px !important;
+    margin: 0 auto !important;
+    position: relative !important;
+    z-index: 2 !important;
+  }
+
+  /* Clean Hiding of Clutter Elements */
   .footer-brand-desc,
   .footer-social-row,
   .footer-col-help,
@@ -14234,82 +14398,188 @@ body.category-page .products-main {
   .footer-bottom-v-divider,
   .footer-legal-links {
     display: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Corner botanical gold leaves on mobile */
+  .footer-leaf-ornament {
+    display: block !important;
+    opacity: 0.85 !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+  }
+
+  .footer-leaf-tl {
+    top: 0 !important;
+    left: 0 !important;
+    width: 150px !important;
+    height: 150px !important;
+  }
+
+  .footer-leaf-br {
+    bottom: 0 !important;
+    right: 0 !important;
+    width: 150px !important;
+    height: 150px !important;
   }
 
   /* Centered Brand Crest at Top */
   .footer-brand-col {
     grid-column: 1 / -1 !important;
     text-align: center !important;
-    margin: 0 auto 12px auto !important;
+    margin: 0 auto 10px auto !important;
     max-width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 0 !important;
   }
+
   .footer-brand-logo {
     display: inline-block !important;
     margin: 0 auto 4px auto !important;
   }
-  .footer-brand-tagline {
-    margin: 0 auto !important;
-    font-size: 0.78rem !important;
-    letter-spacing: 1px !important;
+
+  .footer-brand-logo img {
+    height: 40px !important;
+    width: auto !important;
+    display: block !important;
   }
 
-  /* SHOP on Left, ABOUT on Right */
+  /* Centered tagline with gold flanking lines */
+  .footer-brand-tagline {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    margin: 2px auto 0 auto !important;
+    font-size: 0.84rem !important;
+    letter-spacing: 1.4px !important;
+    color: #e5e7eb !important;
+    font-style: italic !important;
+    font-weight: 500 !important;
+  }
+
+  /* Grid of 2 columns: SHOP (left) and ABOUT (right) */
   .footer-top-grid {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
-    gap: 16px 20px !important;
-    padding-bottom: 20px !important;
-    align-items: start !important;
-    text-align: left !important;
+    column-gap: 0 !important;
+    row-gap: 16px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    align-items: stretch !important;
   }
 
+  /* SHOP on Left with vertical divider line on right side */
   .footer-col-shop {
     grid-column: 1 / 2 !important;
     width: 100% !important;
+    padding: 0 16px 0 10px !important;
+    border-right: 1px solid rgba(197, 155, 39, 0.45) !important;
+    margin: 0 !important;
+    text-align: left !important;
+    box-sizing: border-box !important;
   }
 
+  /* ABOUT on Right */
   .footer-col-about {
     grid-column: 2 / 3 !important;
     width: 100% !important;
+    padding: 0 10px 0 20px !important;
+    margin: 0 !important;
+    text-align: left !important;
+    box-sizing: border-box !important;
   }
 
   .footer-col-shop .footer-heading,
   .footer-col-about .footer-heading {
-    font-size: 0.95rem !important;
-    letter-spacing: 1px !important;
-    margin-bottom: 6px !important;
+    font-size: 1.05rem !important;
+    font-weight: 750 !important;
+    letter-spacing: 1.2px !important;
+    color: #ffffff !important;
+    margin: 0 0 6px 0 !important;
+    text-transform: uppercase !important;
   }
 
+  /* Thick gold underline pill */
   .footer-col-shop .footer-gold-line,
   .footer-col-about .footer-gold-line {
-    width: 32px !important;
-    margin-bottom: 10px !important;
+    width: 44px !important;
+    height: 3.5px !important;
+    background: #c59b27 !important;
+    border-radius: 2px !important;
+    margin: 0 0 18px 0 !important;
+    display: block !important;
+  }
+
+  .footer-col-shop .footer-links-list,
+  .footer-col-about .footer-links-list {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 13px !important;
   }
 
   .footer-col-shop .footer-links-list li,
   .footer-col-about .footer-links-list li {
-    margin-bottom: 8px !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   .footer-col-shop .footer-links-list a,
   .footer-col-about .footer-links-list a {
-    font-size: 0.84rem !important;
-    line-height: 1.4 !important;
+    font-size: 0.92rem !important;
+    color: #f1f5f9 !important;
+    text-decoration: none !important;
+    font-weight: 400 !important;
+    line-height: 1.3 !important;
+    display: inline-block !important;
+    transition: color 0.2s ease !important;
   }
 
-  /* Bottom Row: Centered Copyright */
+  .footer-col-shop .footer-links-list a:hover,
+  .footer-col-about .footer-links-list a:hover {
+    color: #e2c589 !important;
+  }
+
+  /* Thin horizontal gold dividing line below columns */
   .footer-bottom-row {
-    display: flex !important;
-    justify-content: center !important;
+    display: block !important;
+    width: 100% !important;
+    border-top: 1px solid rgba(197, 155, 39, 0.4) !important;
+    margin: 24px 0 0 0 !important;
+    padding: 16px 0 6px 0 !important;
     text-align: center !important;
-    padding-top: 14px !important;
-    border-top: 1px solid rgba(212, 175, 55, 0.2) !important;
+    box-sizing: border-box !important;
   }
 
+  /* Centered copyright */
   .footer-copyright-text {
+    display: block !important;
     text-align: center !important;
-    font-size: 0.78rem !important;
-    width: 100% !important;
-    color: rgba(255, 255, 255, 0.6) !important;
+    font-size: 0.82rem !important;
+    color: #e2e8f0 !important;
+    margin: 0 auto !important;
+    letter-spacing: 0.4px !important;
+    font-weight: 400 !important;
   }
+}
+
+/* Hide mobile filter bar and mobile apply button on desktop/tablet */
+.mobile-category-bar {
+  display: none !important;
+}
+.mobile-apply-filters-btn {
+  display: none !important;
+}
+.tagline-flank-line {
+  display: inline-block;
+  width: 28px;
+  height: 1.5px;
+  background: #c59b27;
+  vertical-align: middle;
 }
