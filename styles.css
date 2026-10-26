@@ -14360,19 +14360,12 @@ body.category-page .products-main {
     padding: 14px 0 36px 0 !important;
   }
 
-  .main-footer {
-    padding: 24px 0 16px !important;
-  }
-  .footer-section-container {
-    padding: 0 16px !important;
-  }
-
   /* ==========================================================================
      MOBILE FOOTER: PIXEL-PERFECT MATCH FOR MEDIA_1792996385751.PNG
      ========================================================================== */
   .main-footer {
-    background: #06241c !important; /* Deep Imperial Forest Green */
-    padding: 34px 0 22px 0 !important;
+    background: #01291b !important; /* Deep Imperial Forest Green */
+    padding: 34px 0 20px 0 !important;
     margin-top: 24px !important;
     position: relative !important;
     overflow: hidden !important;
@@ -14381,10 +14374,11 @@ body.category-page .products-main {
 
   .footer-section-container {
     padding: 0 16px !important;
-    max-width: 420px !important;
+    max-width: 440px !important;
     margin: 0 auto !important;
     position: relative !important;
     z-index: 2 !important;
+    box-sizing: border-box !important;
   }
 
   /* Clean Hiding of Clutter Elements */
@@ -14407,7 +14401,7 @@ body.category-page .products-main {
   .footer-brand-col {
     grid-column: 1 / -1 !important;
     text-align: center !important;
-    margin: 0 auto 30px auto !important;
+    margin: 0 auto 28px auto !important;
     max-width: 100% !important;
     display: flex !important;
     flex-direction: column !important;
@@ -14431,7 +14425,7 @@ body.category-page .products-main {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 14px !important;
+    gap: 12px !important;
     margin: 4px auto 0 auto !important;
     font-size: 1.05rem !important;
     letter-spacing: 2px !important;
@@ -14449,25 +14443,31 @@ body.category-page .products-main {
     border-radius: 1px !important;
   }
 
-  /* Grid of 2 columns: SHOP (left) and ABOUT (right) */
+  /* Grid of 2 columns: SHOP (left) and ABOUT (right) calibrated for mobile */
   .footer-top-grid {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
     column-gap: 0 !important;
     row-gap: 0 !important;
     padding: 0 !important;
-    margin: 0 !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+    max-width: 380px !important;
     align-items: stretch !important;
+    box-sizing: border-box !important;
   }
 
   /* SHOP on Left with vertical divider line on right side */
   .footer-col-shop {
     grid-column: 1 / 2 !important;
     width: 100% !important;
-    padding: 0 20px 0 14px !important;
+    padding: 0 16px 0 10px !important;
     border-right: 1.5px solid rgba(197, 155, 39, 0.55) !important;
     margin: 0 !important;
     text-align: left !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
     box-sizing: border-box !important;
   }
 
@@ -14475,21 +14475,25 @@ body.category-page .products-main {
   .footer-col-about {
     grid-column: 2 / 3 !important;
     width: 100% !important;
-    padding: 0 14px 0 24px !important;
+    padding: 0 10px 0 24px !important;
     margin: 0 !important;
     text-align: left !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
     box-sizing: border-box !important;
   }
 
   .footer-col-shop .footer-heading,
   .footer-col-about .footer-heading {
-    font-size: 1.25rem !important;
+    font-size: 1.2rem !important;
     font-weight: 800 !important;
     letter-spacing: 1.5px !important;
     color: #ffffff !important;
-    margin: 0 0 8px 0 !important;
+    margin: 0 0 6px 0 !important;
     text-transform: uppercase !important;
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif !important;
+    text-align: left !important;
   }
 
   /* Thick gold underline pill */
@@ -14499,7 +14503,7 @@ body.category-page .products-main {
     height: 4px !important;
     background: #c59b27 !important;
     border-radius: 2px !important;
-    margin: 0 0 22px 0 !important;
+    margin: 0 0 20px 0 !important;
     display: block !important;
   }
 
@@ -14510,24 +14514,30 @@ body.category-page .products-main {
     margin: 0 !important;
     display: flex !important;
     flex-direction: column !important;
-    gap: 16px !important;
+    gap: 15px !important;
+    align-items: flex-start !important;
+    width: 100% !important;
   }
 
   .footer-col-shop .footer-links-list li,
   .footer-col-about .footer-links-list li {
     margin: 0 !important;
     padding: 0 !important;
+    width: 100% !important;
+    text-align: left !important;
   }
 
   .footer-col-shop .footer-links-list a,
   .footer-col-about .footer-links-list a {
-    font-size: 1.0rem !important;
+    font-size: 0.96rem !important;
     color: #f8fafc !important;
     text-decoration: none !important;
     font-weight: 400 !important;
     line-height: 1.35 !important;
     display: inline-block !important;
+    white-space: nowrap !important;
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif !important;
+    letter-spacing: 0.2px !important;
     transition: color 0.2s ease !important;
   }
 
@@ -14540,9 +14550,10 @@ body.category-page .products-main {
   .footer-bottom-row {
     display: block !important;
     width: 100% !important;
+    max-width: 420px !important;
     border-top: 1px solid rgba(197, 155, 39, 0.45) !important;
-    margin: 32px 0 0 0 !important;
-    padding: 22px 0 6px 0 !important;
+    margin: 32px auto 0 auto !important;
+    padding: 20px 0 6px 0 !important;
     text-align: center !important;
     box-sizing: border-box !important;
   }
@@ -14557,6 +14568,42 @@ body.category-page .products-main {
     letter-spacing: 0.3px !important;
     font-weight: 400 !important;
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .footer-section-container {
+    padding: 0 10px !important;
+  }
+  .footer-top-grid {
+    max-width: 100% !important;
+  }
+  .footer-col-shop {
+    padding: 0 10px 0 6px !important;
+  }
+  .footer-col-about {
+    padding: 0 4px 0 16px !important;
+  }
+  .footer-col-shop .footer-heading,
+  .footer-col-about .footer-heading {
+    font-size: 1.05rem !important;
+  }
+  .footer-col-shop .footer-gold-line,
+  .footer-col-about .footer-gold-line {
+    width: 40px !important;
+    margin-bottom: 16px !important;
+  }
+  .footer-col-shop .footer-links-list,
+  .footer-col-about .footer-links-list {
+    gap: 13px !important;
+  }
+  .footer-col-shop .footer-links-list a,
+  .footer-col-about .footer-links-list a {
+    font-size: 0.86rem !important;
+  }
+  .footer-brand-tagline {
+    font-size: 0.92rem !important;
+    gap: 8px !important;
   }
 }
 
