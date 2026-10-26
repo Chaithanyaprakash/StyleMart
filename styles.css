@@ -14626,3 +14626,625 @@ body.category-page .products-main {
   background: #c59b27;
   vertical-align: middle;
 }
+
+/* ==========================================================================
+   ENHANCEMENT SUITE 2026: LASSE PEDERSEN, SULTANKHANCQ, THEMOZZARELLA,
+   FOREST GREEN BUTTONS, RESPONSIVE ADDRESS FORM & PRODUCT CARD CLARITY
+   ========================================================================== */
+
+/* 1. LASSE PEDERSEN HORIZONTAL SCROLL IMAGE GALLERY (AWWWARDS EDITORIAL STYLE) */
+.lasse-gallery-section {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 8px 0 16px;
+}
+
+.lasse-gallery-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.lasse-gallery-track {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  gap: 18px !important;
+  overflow-x: auto !important;
+  scroll-snap-type: x mandatory !important;
+  scrollbar-width: none !important;
+  -webkit-overflow-scrolling: touch !important;
+  cursor: grab;
+  padding: 4px 0 8px !important;
+}
+
+.lasse-gallery-track::-webkit-scrollbar {
+  display: none !important;
+}
+
+.lasse-gallery-track.grabbing {
+  cursor: grabbing !important;
+  user-select: none !important;
+  scroll-snap-type: none !important;
+}
+
+.lasse-gallery-slide {
+  flex: 0 0 100% !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  scroll-snap-align: center !important;
+  position: relative !important;
+  border-radius: 18px !important;
+  overflow: hidden !important;
+  background: #07261e !important;
+  box-shadow: 0 12px 30px -8px rgba(7, 38, 30, 0.25) !important;
+}
+
+.lasse-gallery-img {
+  width: 100% !important;
+  height: auto !important;
+  max-height: 480px !important;
+  object-fit: cover !important;
+  display: block !important;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.lasse-gallery-slide:hover .lasse-gallery-img {
+  transform: scale(1.025) !important;
+}
+
+.lasse-card-overlay {
+  position: absolute !important;
+  bottom: 24px !important;
+  left: 24px !important;
+  padding: 20px 24px !important;
+  background: rgba(7, 38, 30, 0.88) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(212, 175, 55, 0.35) !important;
+  border-radius: 14px !important;
+  color: #ffffff !important;
+  max-width: 460px !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35) !important;
+  pointer-events: auto !important;
+  z-index: 5 !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.lasse-card-overlay:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 20px 42px rgba(0, 0, 0, 0.45) !important;
+}
+
+.lasse-badge {
+  display: inline-block !important;
+  font-size: 0.72rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: #d4af37 !important;
+  background: rgba(212, 175, 55, 0.15) !important;
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
+  padding: 4px 10px !important;
+  border-radius: 9999px !important;
+  margin-bottom: 8px !important;
+}
+
+.lasse-heading {
+  font-family: 'Cinzel', 'Playfair Display', Georgia, serif !important;
+  font-size: 1.55rem !important;
+  font-weight: 700 !important;
+  margin: 0 0 8px 0 !important;
+  color: #ffffff !important;
+  letter-spacing: 0.02em !important;
+  line-height: 1.25 !important;
+}
+
+.lasse-cta {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-size: 0.88rem !important;
+  font-weight: 700 !important;
+  color: #d4af37 !important;
+  text-decoration: none !important;
+  transition: transform 0.2s ease, color 0.2s ease !important;
+}
+
+.lasse-cta:hover {
+  color: #fce79a !important;
+  transform: translateX(4px) !important;
+}
+
+.lasse-editorial-nav-bar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 16px !important;
+  margin-top: 14px !important;
+  padding: 6px 14px !important;
+  background: rgba(248, 250, 252, 0.8) !important;
+  border-radius: 9999px !important;
+  border: 1px solid rgba(7, 38, 30, 0.08) !important;
+}
+
+.lasse-slide-counter {
+  font-family: 'Cinzel', monospace, serif !important;
+  font-size: 0.95rem !important;
+  font-weight: 800 !important;
+  color: #07261e !important;
+  letter-spacing: 0.1em !important;
+  min-width: 62px !important;
+}
+
+.lasse-progress-track {
+  flex: 1 !important;
+  height: 3.5px !important;
+  background: rgba(7, 38, 30, 0.12) !important;
+  border-radius: 9999px !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+.lasse-progress-fill {
+  height: 100% !important;
+  width: 33.33% !important;
+  background: linear-gradient(90deg, #07261e, #d4af37) !important;
+  transition: width 0.35s ease !important;
+  border-radius: 9999px !important;
+}
+
+.lasse-nav-btn {
+  background: rgba(7, 38, 30, 0.85) !important;
+  color: #d4af37 !important;
+  border: 1px solid rgba(212, 175, 55, 0.4) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+}
+.lasse-nav-btn:hover {
+  background: #07261e !important;
+  color: #ffffff !important;
+}
+
+@media (max-width: 768px) {
+  .lasse-card-overlay {
+    bottom: 12px !important;
+    left: 12px !important;
+    right: 12px !important;
+    padding: 12px 14px !important;
+    max-width: calc(100% - 24px) !important;
+    border-radius: 10px !important;
+  }
+  .lasse-heading {
+    font-size: 1.05rem !important;
+    margin-bottom: 4px !important;
+  }
+  .lasse-gallery-img {
+    max-height: 280px !important;
+    min-height: 195px !important;
+  }
+}
+
+/* 2. SULTANKHANCQ 3D PRODUCT CARD DEPTH, ELEVATION & SHIMMER EFFECT (PEN qEEZRmN) */
+.product-card {
+  position: relative !important;
+  border-radius: 16px !important;
+  background: #ffffff !important;
+  border: 1px solid rgba(226, 232, 240, 0.95) !important;
+  box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.06), 0 0 0 1px rgba(7, 38, 30, 0.04) !important;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.product-card:hover {
+  transform: translateY(-7px) scale(1.018) !important;
+  box-shadow: 0 20px 42px -12px rgba(7, 38, 30, 0.18), 0 0 0 1.5px rgba(212, 175, 55, 0.35) !important;
+  border-color: rgba(212, 175, 55, 0.4) !important;
+}
+
+.product-card::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 50% !important;
+  width: 0% !important;
+  height: 3px !important;
+  background: linear-gradient(90deg, transparent, #d4af37, #07261e, #d4af37, transparent) !important;
+  transition: width 0.45s cubic-bezier(0.16, 1, 0.3, 1), left 0.45s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  border-radius: 9999px !important;
+  pointer-events: none !important;
+  z-index: 5 !important;
+}
+
+.product-card:hover::after {
+  width: 86% !important;
+  left: 7% !important;
+}
+
+.product-card .product-card-img-wrap img {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.product-card:hover .product-card-img-wrap img {
+  transform: scale(1.05) !important;
+}
+
+/* 3. THEMOZZARELLA 3D PARALLAX COVERFLOW CAROUSEL (PEN OJqrvNo) FOR FLASH DEALS */
+.mozzarella-3d-viewport {
+  perspective: 1200px !important;
+  -webkit-perspective: 1200px !important;
+  perspective-origin: 50% 50% !important;
+  overflow: hidden !important;
+  position: relative !important;
+  width: 100% !important;
+  min-height: 450px !important;
+  padding: 24px 10px 30px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  touch-action: pan-y !important;
+}
+
+.mozzarella-3d-track {
+  position: relative !important;
+  width: 100% !important;
+  height: 400px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  transform-style: preserve-3d !important;
+  -webkit-transform-style: preserve-3d !important;
+}
+
+.mozzarella-3d-track .product-card {
+  position: absolute !important;
+  width: 236px !important;
+  max-width: 236px !important;
+  height: auto !important;
+  margin: 0 !important;
+  top: 50% !important;
+  left: 50% !important;
+  margin-left: -118px !important;
+  margin-top: -200px !important;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.5s ease, filter 0.5s ease, box-shadow 0.5s ease !important;
+  cursor: pointer !important;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+  will-change: transform, opacity !important;
+}
+
+.flash-header-strip {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 12px 20px !important;
+  background: #07261e !important;
+  color: #ffffff !important;
+  border-radius: 14px 14px 0 0 !important;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3) !important;
+}
+
+.flash-controls-wrap {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.flash-nav-btn {
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+  border: 1px solid rgba(212, 175, 55, 0.45) !important;
+  color: #d4af37 !important;
+  font-size: 1.25rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  line-height: 1 !important;
+}
+
+.flash-nav-btn:hover {
+  background: #d4af37 !important;
+  color: #07261e !important;
+}
+
+.flash-3d-counter {
+  font-family: monospace, serif !important;
+  font-size: 0.9rem !important;
+  font-weight: 700 !important;
+  color: #d4af37 !important;
+  letter-spacing: 0.08em !important;
+}
+
+.flash-3d-pagination {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 10px 0 16px !important;
+}
+
+.flash-3d-dot {
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 50% !important;
+  background: #cbd5e1 !important;
+  cursor: pointer !important;
+  transition: all 0.25s ease !important;
+  border: none !important;
+}
+
+.flash-3d-dot.active {
+  width: 24px !important;
+  border-radius: 9999px !important;
+  background: #07261e !important;
+  box-shadow: 0 0 8px rgba(7, 38, 30, 0.4) !important;
+}
+
+@media (max-width: 768px) {
+  .mozzarella-3d-viewport {
+    min-height: 390px !important;
+    padding: 16px 4px 20px !important;
+  }
+  .mozzarella-3d-track {
+    height: 350px !important;
+  }
+  .mozzarella-3d-track .product-card {
+    width: 200px !important;
+    max-width: 200px !important;
+    margin-left: -100px !important;
+    margin-top: -175px !important;
+  }
+}
+
+/* 4. FOREST GREEN ADD-TO-CART BUTTONS (MATCHING MAIN HEADER COLOR #07261e) */
+.card-add-to-cart-btn,
+.product-card .card-add-to-cart-btn,
+.btn-add-to-cart,
+#editorialAddToCartBtn,
+#quickAddToCartBtn,
+.cart-added-modal .btn-primary,
+.order-success-box .btn-primary {
+  background: #07261e !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(212, 175, 55, 0.45) !important;
+  box-shadow: 0 4px 14px rgba(7, 38, 30, 0.3) !important;
+  border-radius: 9999px !important;
+  transition: all 0.25s ease !important;
+}
+
+.card-add-to-cart-btn:hover,
+.product-card .card-add-to-cart-btn:hover,
+.btn-add-to-cart:hover,
+#editorialAddToCartBtn:hover,
+#quickAddToCartBtn:hover,
+.cart-added-modal .btn-primary:hover,
+.order-success-box .btn-primary:hover {
+  background: #0b3d30 !important;
+  border-color: #d4af37 !important;
+  box-shadow: 0 6px 20px rgba(7, 38, 30, 0.45) !important;
+  transform: translateY(-2px) !important;
+  color: #ffffff !important;
+}
+
+/* 5. RESPONSIVE MOBILE PRODUCT CARD IMAGES: CLEAR VISIBILITY ADJUSTED TO DEVICE WIDTH */
+@media (max-width: 768px) {
+  .product-card .product-card-img-wrap,
+  .products-grid > .product-card .product-card-img-wrap,
+  .category-products-grid > .product-card .product-card-img-wrap,
+  .fashion-products-grid > .product-card .product-card-img-wrap,
+  .catalog-grid > .product-card .product-card-img-wrap,
+  #categoryProductsGrid .product-card .product-card-img-wrap,
+  #fashionProductsGrid .product-card .product-card-img-wrap {
+    height: auto !important;
+    aspect-ratio: 3 / 4 !important;
+    min-height: 190px !important;
+    max-height: 250px !important;
+    width: 100% !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    position: relative !important;
+    margin-bottom: 6px !important;
+  }
+
+  .product-card .product-card-img-wrap img,
+  #categoryProductsGrid .product-card .product-card-img-wrap img,
+  #fashionProductsGrid .product-card .product-card-img-wrap img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+  }
+
+  .product-card {
+    border-radius: 14px !important;
+    padding: 8px !important;
+    box-sizing: border-box !important;
+  }
+
+  .product-card .card-add-to-cart-btn {
+    padding: 9px 12px !important;
+    font-size: 0.86rem !important;
+    min-height: 38px !important;
+  }
+}
+
+/* 6. PROPER MOBILE ALIGNMENT & RESPONSIVENESS FOR ADD ADDRESS FORM */
+@media (max-width: 600px) {
+  #authModal .modal-container.auth-modal {
+    width: calc(100% - 24px) !important;
+    max-width: 420px !important;
+    margin: 14px auto !important;
+    padding: 22px 16px !important;
+    border-radius: 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  #authModal .auth-header {
+    margin-bottom: 14px !important;
+    text-align: center !important;
+  }
+
+  #authModal .auth-header h3 {
+    font-size: 1.15rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 4px !important;
+  }
+
+  #authModal .auth-header p {
+    font-size: 0.82rem !important;
+    color: #64748b !important;
+  }
+
+  #authModal .form-group {
+    margin-bottom: 12px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  #authModal .form-group label {
+    font-size: 0.82rem !important;
+    font-weight: 600 !important;
+    color: #334155 !important;
+    margin-bottom: 5px !important;
+    display: block !important;
+  }
+
+  #authModal .studio-text-input,
+  #authModal .input-prefix-wrap {
+    width: 100% !important;
+    height: 44px !important;
+    min-height: 44px !important;
+    border-radius: 8px !important;
+    border: 1.5px solid #cbd5e1 !important;
+    background: #f8fafc !important;
+    box-sizing: border-box !important;
+  }
+
+  #authModal .form-row-2col {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  #authModal #profileFormSubmit {
+    width: 100% !important;
+    height: 46px !important;
+    min-height: 46px !important;
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+    border-radius: 10px !important;
+    background: #07261e !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(212, 175, 55, 0.45) !important;
+    margin-top: 12px !important;
+    cursor: pointer !important;
+  }
+}
+
+/* 7. CART ADDED CONFIRMATION POPUP MODAL */
+.cart-added-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  background: rgba(15, 23, 42, 0.6) !important;
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
+  z-index: 3000 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: all 0.25s ease !important;
+}
+
+.cart-added-overlay.active {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.cart-added-modal {
+  background: #ffffff !important;
+  border-radius: 20px !important;
+  padding: 24px 22px !important;
+  width: 92% !important;
+  max-width: 440px !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+  text-align: center !important;
+  position: relative !important;
+  border: 1px solid rgba(7, 38, 30, 0.1) !important;
+  transform: scale(0.92) !important;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-sizing: border-box !important;
+}
+
+.cart-added-overlay.active .cart-added-modal {
+  transform: scale(1) !important;
+}
+
+.cart-added-check {
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 50% !important;
+  background: #07261e !important;
+  color: #d4af37 !important;
+  font-size: 1.5rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 auto 12px !important;
+  box-shadow: 0 4px 14px rgba(7, 38, 30, 0.3) !important;
+}
+
+.cart-added-product {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 12px !important;
+  padding: 12px !important;
+  margin: 14px 0 18px !important;
+  text-align: left !important;
+}
+
+.cart-added-product img {
+  width: 56px !important;
+  height: 68px !important;
+  object-fit: cover !important;
+  border-radius: 6px !important;
+}
+
+.cart-added-product strong {
+  display: block !important;
+  font-size: 0.95rem !important;
+  color: #1e293b !important;
+}
+
+.cart-added-product span {
+  display: block !important;
+  font-size: 0.82rem !important;
+  color: #64748b !important;
+  margin-top: 2px !important;
+}
+
+.cart-added-actions {
+  display: flex !important;
+  gap: 10px !important;
+}
+
+.cart-added-actions .btn {
+  flex: 1 !important;
+  height: 44px !important;
+  border-radius: 9999px !important;
+  font-size: 0.9rem !important;
+  font-weight: 700 !important;
+}
+

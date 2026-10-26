@@ -1346,6 +1346,10 @@
     }
 
     function ensureUserProfileInitialized() {
+      if (localStorage.getItem('stylemart_logged_out') === 'true') {
+        window.location.href = 'index.html';
+        return;
+      }
       let user = null;
       try {
         user = JSON.parse(localStorage.getItem('stylemart_user'));
