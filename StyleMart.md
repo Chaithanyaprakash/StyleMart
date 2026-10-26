@@ -572,6 +572,20 @@ Mobile UI element checks: {
   - `node scripts/test-enhancements.js`: All 9 core features pass 100%.
   - `node scripts/validate-html.js`: All 5 HTML files pass validation.
 
+### Bug 21: Restoration of Hero Banner Pagination Dots & Flash Sale Navigation Counter Matching Reference Mockup
+- **Reported Symptom & User Request:**
+  - User provided reference mockup screenshot (`media_1793017287840.png`) requesting: *"make banner and flash sale as previous one"*.
+  - Reference screenshot exhibited:
+    1. The Hero Banner with dark forest green rounded frame, bottom-left editorial overlay card ("MODERN LUXE", "Men's Tailored Style", "Shop Men's Collection →"), and centered floating white pagination dots (`. . ━`) at the bottom of the banner frame.
+    2. The Flash Sale section header displaying the vibrant purple/indigo `⚡ FLASH SALE` pill badge on the left, and `< 10 / 13 >` circular chevrons with gold deal counter on the right.
+- **Root Cause:**
+  - When suppressing the lower editorial index bar in earlier revisions, `#sliderDots` was nested inside `.lasse-editorial-nav-bar`, unintentionally hiding the banner's floating indicator dots.
+  - `#flash3dCounter` was previously hidden with `display: none !important;` and stripped from [index.html](index.html).
+- **Resolution Implemented:**
+  1. *Banner Floating Pagination Dots:* Positioned `#sliderDots` directly inside `.slider-container` as an in-banner absolute overlay (`bottom: 18px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 8px; z-index: 10;`), rendering two 9px circles and one 28px active pill dot matching the user screenshot. Maintained clean suppression on `.lasse-editorial-nav-bar`.
+  2. *Flash Sale Navigation Counter Restored:* Restored `<div class="flash-3d-counter" id="flash3dCounter">` in [index.html](index.html) between `flashPrevBtn` and `flashNextBtn`, styled with gold typography (`#fbbf24`, `font-family: 'Cinzel', monospace, serif; font-size: 0.95rem; font-weight: 800; min-width: 60px; text-align: center;`), and re-enabled dynamic counter indexing in `updateMozzarella3DPositions()` in [app.js](app.js).
+  3. *Testing & Quality Validation:* Validated using Puppeteer headless browser in [scripts/test_user_requirements.js](scripts/test_user_requirements.js) and [scripts/test-enhancements.js](scripts/test-enhancements.js), achieving 100% test pass rates across all 9 enhancements, DOM structure, and mobile responsiveness.
+
 ### GitHub Actions Workflow Configuration ([StyleMart.yml](StyleMart.yml))
 
 ```yaml

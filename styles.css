@@ -14740,15 +14740,7 @@ body.category-page .products-main {
 }
 
 .lasse-editorial-nav-bar {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  gap: 16px !important;
-  margin-top: 14px !important;
-  padding: 6px 14px !important;
-  background: rgba(248, 250, 252, 0.8) !important;
-  border-radius: 9999px !important;
-  border: 1px solid rgba(7, 38, 30, 0.08) !important;
+  display: none !important;
 }
 
 .lasse-slide-counter {
@@ -14979,9 +14971,21 @@ body.category-page .products-main {
   color: #07261e !important;
 }
 
-/* Remove total products numbers and dots as requested */
+/* Flash 3D counter restored matching user mockup (10 / 13) */
 .flash-3d-counter,
-#flash3dCounter,
+#flash3dCounter {
+  display: inline-block !important;
+  font-family: 'Cinzel', monospace, serif !important;
+  font-size: 0.95rem !important;
+  font-weight: 800 !important;
+  color: #fbbf24 !important;
+  letter-spacing: 0.08em !important;
+  min-width: 60px !important;
+  text-align: center !important;
+  user-select: none !important;
+  margin: 0 4px !important;
+}
+
 .flash-3d-pagination,
 .flash-3d-dot {
   display: none !important;

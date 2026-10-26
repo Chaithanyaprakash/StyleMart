@@ -63,12 +63,12 @@ const path = require('path');
         cardsCount: cards.length,
         hasCenterCard: !!centerCard,
         centerTransform,
-        counterHidden: !counter || window.getComputedStyle(counter).display === 'none',
+        hasCounter: !!counter && window.getComputedStyle(counter).display !== 'none',
         dotsCount: dots.length
       };
     });
     report('2. TheMOZZARELLA 3D Viewport & Track', flash3dInfo.viewportExists && flash3dInfo.trackExists, `Cards: ${flash3dInfo.cardsCount}`);
-    report('2. Flash Deals Zero Product Numbers & Zero Dots', flash3dInfo.dotsCount === 0 && flash3dInfo.counterHidden, `Dots: ${flash3dInfo.dotsCount}, CounterHidden: ${flash3dInfo.counterHidden}`);
+    report('2. Flash Deals Counter & Zero Flash Dots', flash3dInfo.dotsCount === 0 && flash3dInfo.hasCounter, `Dots: ${flash3dInfo.dotsCount}, HasCounter: ${flash3dInfo.hasCounter}`);
 
     // 3. Forest Green Add to Cart Button Color (matching header #07261e)
     const buttonColors = await page.evaluate(() => {

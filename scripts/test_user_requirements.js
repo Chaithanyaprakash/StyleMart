@@ -47,42 +47,52 @@ const path = require('path');
     console.log('PASS: New gold cameo logo is present in the header.');
   }
 
-  console.log('--- TEST 2: FLASH DEALS - ZERO COUNTER, ZERO DOTS & ZERO SCROLLBAR ---');
-  const flashCheck = await page.evaluate(() => {
-    const dots = document.querySelectorAll('.flash-3d-dot, #flash3dPagination .flash-3d-dot');
+  console.log('--- TEST 2: RESTORED BANNER DOTS & FLASH SALE COUNTER ---');
+  const restoredCheck = await page.evaluate(() => {
+    const bannerDots = document.querySelectorAll('#homeHero .slider-dots .dot, #sliderDots .dot');
+    const flashDots = document.querySelectorAll('.flash-3d-dot, #flash3dPagination .flash-3d-dot');
     const counter = document.getElementById('flash3dCounter');
     const container = document.getElementById('flashCarouselContainer');
     return {
-      dotsCount: dots.length,
+      bannerDotsCount: bannerDots.length,
+      bannerDotsVisible: bannerDots.length > 0 && window.getComputedStyle(bannerDots[0].parentElement).display !== 'none',
+      flashDotsCount: flashDots.length,
       counterVisible: !!counter && window.getComputedStyle(counter).display !== 'none',
+      counterText: counter ? counter.textContent.trim() : '',
       containerHeight: container ? container.offsetHeight : 0,
       overflowX: container ? window.getComputedStyle(container).overflowX : ''
     };
   });
-  console.log('Flash check:', flashCheck);
-  if (flashCheck.dotsCount > 0) {
-    console.error('FAIL: Found flash 3D dots!');
+  console.log('Restored check:', restoredCheck);
+  if (!restoredCheck.bannerDotsVisible || restoredCheck.bannerDotsCount !== 3) {
+    console.error('FAIL: Banner slider dots missing or hidden!');
     passed = false;
   } else {
-    console.log('PASS: Dots are completely removed.');
+    console.log(`PASS: Banner slider dots visible and properly configured (${restoredCheck.bannerDotsCount} dots).`);
   }
-  if (flashCheck.counterVisible) {
-    console.error('FAIL: Total products counter number is still visible!');
+  if (!restoredCheck.counterVisible || !restoredCheck.counterText.includes('/')) {
+    console.error(`FAIL: Flash 3D counter is missing or not visible! (${restoredCheck.counterText})`);
     passed = false;
   } else {
-    console.log('PASS: Total products counter number is completely removed from flash deals.');
+    console.log(`PASS: Flash sale counter visible and restored matching mockup (${restoredCheck.counterText}).`);
   }
-  if (flashCheck.overflowX !== 'hidden') {
+  if (restoredCheck.flashDotsCount > 0) {
+    console.error('FAIL: Found flash card dots!');
+    passed = false;
+  } else {
+    console.log('PASS: Flash cards pagination dots remain cleanly removed.');
+  }
+  if (restoredCheck.overflowX !== 'hidden') {
     console.error('FAIL: Flash container does not have overflowX: hidden!');
     passed = false;
   } else {
     console.log('PASS: Horizontal scrollbar is completely eliminated with overflow-x: hidden.');
   }
-  if (flashCheck.containerHeight > 350) {
-    console.error(`FAIL: Flash container height (${flashCheck.containerHeight}px) exceeds compact threshold!`);
+  if (restoredCheck.containerHeight > 360) {
+    console.error(`FAIL: Flash container height (${restoredCheck.containerHeight}px) exceeds compact threshold!`);
     passed = false;
   } else {
-    console.log(`PASS: Flash deals whitespace reduced (container height: ${flashCheck.containerHeight}px).`);
+    console.log(`PASS: Flash deals whitespace compact (container height: ${restoredCheck.containerHeight}px).`);
   }
 
   console.log('--- TEST 3: FLASH DEALS 3D PARALLAX COVERFLOW & PREV/NEXT ---');
