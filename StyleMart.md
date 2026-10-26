@@ -137,6 +137,7 @@ StyleMart was engineered iteratively between **October 8, 2026** and **October 2
 ### Chronological Git Commit Log
 
 ```
+* 2f2d8b8 - 2026-10-26 12:31:13 +0530 : style: calibrate responsive mobile footer alignment across viewports (320px-768px) (Chaithanyaprakash)
 * 8e50569 - 2026-10-26 12:12:15 +0530 : feat: pixel-perfect mobile footer matching mockup with 2-column layout and central gold divider (Chaithanyaprakash)
 * b3e0678 - 2026-10-26 11:57:24 +0530 : docs: document Bug 16 environment protection rules and sync commit log (Chaithanyaprakash)
 * 8b29643 - 2026-10-26 11:27:14 +0530 : docs: align deploy-pages job definition in StyleMart.md with configure-pages@v5 and environment (Chaithanyaprakash)
@@ -337,9 +338,10 @@ Throughout the 17-day development cycle, several critical bugs were encountered,
 - **Resolution Implemented:**
   1. Refactored `.main-footer` mobile CSS with a deep emerald background (`#06241c`), centered 52px logo crest, and elegant Playfair Display italic tagline (`Fashion For Everyone`) flanked by horizontal gold rules.
   2. Hid all extraneous clutter on mobile (corner leaves, newsletter signup, social media row, trust badges, payment pills, and legal links).
-  3. Aligned the SHOP and ABOUT columns in a side-by-side 2-column layout with a crisp 1.5px gold vertical dividing line (`border-right: 1.5px solid rgba(197, 155, 39, 0.55);`).
-  4. Placed 48px thick gold underline pills under `SHOP` and `ABOUT` headings and calibrated vertical link spacing (16px gap).
+  3. Aligned the ABOUT column at the left side corner and the SHOP column at the right side corner in a side-by-side 2-column layout with a crisp 1.5px gold vertical dividing line between them.
+  4. Placed 48px thick gold underline pills under `ABOUT` and `SHOP` headings and calibrated vertical link spacing (15px gap with `white-space: nowrap`).
   5. Placed a full-width subtle gold dividing line above the centered copyright text (`© 2026 StyleMart. All Rights Reserved.`).
+  6. Calibrated product card dimensions across desktop (image height reduced to 245px, border-radius 16px, sleek padding) and mobile (image height reduced to 124px, 8px radius, flash cards reduced to 165px) for a responsive, high-end luxury browsing aesthetic.
 
 ---
 

@@ -10547,8 +10547,8 @@ body.category-page .section-container {
 .flash-product-card {
   position: relative !important;
   background: #ffffff !important;
-  border-radius: 24px !important;
-  padding: 14px !important;
+  border-radius: 16px !important;
+  padding: 10px 10px 12px !important;
   box-sizing: border-box !important;
   border: 1px solid rgba(226, 232, 240, 0.8) !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
@@ -10561,9 +10561,9 @@ body.category-page .section-container {
 }
 
 #flashProductsGrid .product-card {
-  flex: 0 0 clamp(220px, 18vw, 250px) !important;
-  width: clamp(220px, 18vw, 250px) !important;
-  min-width: 220px !important;
+  flex: 0 0 clamp(200px, 16vw, 230px) !important;
+  width: clamp(200px, 16vw, 230px) !important;
+  min-width: 200px !important;
   scroll-snap-align: start !important;
 }
 
@@ -10592,14 +10592,14 @@ body.category-page .section-container {
 .flash-card-img-wrap {
   position: relative !important;
   width: 100% !important;
-  height: 290px !important;
-  min-height: 290px !important;
-  max-height: 290px !important;
+  height: 245px !important;
+  min-height: 245px !important;
+  max-height: 245px !important;
   aspect-ratio: 2 / 3 !important;
-  border-radius: 14px !important;
+  border-radius: 12px !important;
   overflow: hidden !important;
   background: #f8fafc !important;
-  margin: 0 0 12px 0 !important;
+  margin: 0 0 10px 0 !important;
   padding: 0 !important;
   display: flex !important;
   align-items: center !important;
@@ -10621,7 +10621,7 @@ body.category-page .section-container {
   object-fit: cover !important;
   object-position: top center !important;
   display: block !important;
-  border-radius: 14px !important;
+  border-radius: 12px !important;
   padding: 0 !important;
   box-sizing: border-box !important;
   transition: transform 0.35s ease !important;
@@ -13754,8 +13754,8 @@ body.category-page .products-main {
   .catalog-grid > .product-card,
   #categoryProductsGrid .product-card,
   #fashionProductsGrid .product-card {
-    padding: 6px !important;
-    border-radius: 10px !important;
+    padding: 4px 4px 6px !important;
+    border-radius: 8px !important;
     position: relative !important;
     background: #ffffff !important;
   }
@@ -13767,10 +13767,10 @@ body.category-page .products-main {
   .catalog-grid > .product-card .product-card-img-wrap,
   #categoryProductsGrid .product-card .product-card-img-wrap,
   #fashionProductsGrid .product-card .product-card-img-wrap {
-    height: 145px !important;
-    min-height: 145px !important;
-    max-height: 145px !important;
-    border-radius: 7px !important;
+    height: 124px !important;
+    min-height: 124px !important;
+    max-height: 124px !important;
+    border-radius: 6px !important;
     overflow: hidden !important;
     position: relative !important;
     margin-bottom: 4px !important;
@@ -13938,17 +13938,17 @@ body.category-page .products-main {
     scroll-snap-align: center !important;
     box-sizing: border-box !important;
     margin: 0 auto !important;
-    padding: 10px 14px !important;
+    padding: 8px 10px !important;
     background: #ffffff !important;
-    border-radius: 16px !important;
+    border-radius: 12px !important;
   }
 
   .flash-products-grid > .product-card .product-card-img-wrap,
   #flashProductsGrid .product-card .product-card-img-wrap {
     width: 100% !important;
-    height: 240px !important;
-    max-height: 240px !important;
-    border-radius: 12px !important;
+    height: 165px !important;
+    max-height: 165px !important;
+    border-radius: 10px !important;
   }
 }
 
@@ -14443,24 +14443,26 @@ body.category-page .products-main {
     border-radius: 1px !important;
   }
 
-  /* Grid of 2 columns: SHOP (left) and ABOUT (right) calibrated for mobile */
+  /* Flex Container for 2 Columns: ABOUT (left corner) and SHOP (right corner) */
   .footer-top-grid {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    column-gap: 0 !important;
-    row-gap: 0 !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    gap: 0 !important;
     padding: 0 !important;
     margin: 0 auto !important;
     width: 100% !important;
-    max-width: 380px !important;
-    align-items: stretch !important;
+    max-width: 400px !important;
     box-sizing: border-box !important;
   }
 
-  /* SHOP on Left with vertical divider line on right side */
-  .footer-col-shop {
-    grid-column: 1 / 2 !important;
-    width: 100% !important;
+  /* ABOUT on Left Side Corner (order: 2) */
+  .footer-col-about {
+    order: 2 !important;
+    width: 50% !important;
+    flex: 0 0 50% !important;
+    max-width: 50% !important;
     padding: 0 16px 0 10px !important;
     border-right: 1.5px solid rgba(197, 155, 39, 0.55) !important;
     margin: 0 !important;
@@ -14471,11 +14473,14 @@ body.category-page .products-main {
     box-sizing: border-box !important;
   }
 
-  /* ABOUT on Right */
-  .footer-col-about {
-    grid-column: 2 / 3 !important;
-    width: 100% !important;
+  /* SHOP on Right Side Corner beside ABOUT (order: 3) */
+  .footer-col-shop {
+    order: 3 !important;
+    width: 50% !important;
+    flex: 0 0 50% !important;
+    max-width: 50% !important;
     padding: 0 10px 0 24px !important;
+    border-right: none !important;
     margin: 0 !important;
     text-align: left !important;
     display: flex !important;
@@ -14484,8 +14489,8 @@ body.category-page .products-main {
     box-sizing: border-box !important;
   }
 
-  .footer-col-shop .footer-heading,
-  .footer-col-about .footer-heading {
+  .footer-col-about .footer-heading,
+  .footer-col-shop .footer-heading {
     font-size: 1.2rem !important;
     font-weight: 800 !important;
     letter-spacing: 1.5px !important;
@@ -14497,8 +14502,8 @@ body.category-page .products-main {
   }
 
   /* Thick gold underline pill */
-  .footer-col-shop .footer-gold-line,
-  .footer-col-about .footer-gold-line {
+  .footer-col-about .footer-gold-line,
+  .footer-col-shop .footer-gold-line {
     width: 48px !important;
     height: 4px !important;
     background: #c59b27 !important;
@@ -14507,8 +14512,8 @@ body.category-page .products-main {
     display: block !important;
   }
 
-  .footer-col-shop .footer-links-list,
-  .footer-col-about .footer-links-list {
+  .footer-col-about .footer-links-list,
+  .footer-col-shop .footer-links-list {
     list-style: none !important;
     padding: 0 !important;
     margin: 0 !important;
@@ -14519,16 +14524,16 @@ body.category-page .products-main {
     width: 100% !important;
   }
 
-  .footer-col-shop .footer-links-list li,
-  .footer-col-about .footer-links-list li {
+  .footer-col-about .footer-links-list li,
+  .footer-col-shop .footer-links-list li {
     margin: 0 !important;
     padding: 0 !important;
     width: 100% !important;
     text-align: left !important;
   }
 
-  .footer-col-shop .footer-links-list a,
-  .footer-col-about .footer-links-list a {
+  .footer-col-about .footer-links-list a,
+  .footer-col-shop .footer-links-list a {
     font-size: 0.96rem !important;
     color: #f8fafc !important;
     text-decoration: none !important;
@@ -14541,8 +14546,8 @@ body.category-page .products-main {
     transition: color 0.2s ease !important;
   }
 
-  .footer-col-shop .footer-links-list a:hover,
-  .footer-col-about .footer-links-list a:hover {
+  .footer-col-about .footer-links-list a:hover,
+  .footer-col-shop .footer-links-list a:hover {
     color: #e2c589 !important;
   }
 
@@ -14578,27 +14583,27 @@ body.category-page .products-main {
   .footer-top-grid {
     max-width: 100% !important;
   }
-  .footer-col-shop {
-    padding: 0 10px 0 6px !important;
-  }
   .footer-col-about {
-    padding: 0 4px 0 16px !important;
+    padding: 0 10px 0 4px !important;
   }
-  .footer-col-shop .footer-heading,
-  .footer-col-about .footer-heading {
+  .footer-col-shop {
+    padding: 0 4px 0 14px !important;
+  }
+  .footer-col-about .footer-heading,
+  .footer-col-shop .footer-heading {
     font-size: 1.05rem !important;
   }
-  .footer-col-shop .footer-gold-line,
-  .footer-col-about .footer-gold-line {
+  .footer-col-about .footer-gold-line,
+  .footer-col-shop .footer-gold-line {
     width: 40px !important;
     margin-bottom: 16px !important;
   }
-  .footer-col-shop .footer-links-list,
-  .footer-col-about .footer-links-list {
+  .footer-col-about .footer-links-list,
+  .footer-col-shop .footer-links-list {
     gap: 13px !important;
   }
-  .footer-col-shop .footer-links-list a,
-  .footer-col-about .footer-links-list a {
+  .footer-col-about .footer-links-list a,
+  .footer-col-shop .footer-links-list a {
     font-size: 0.86rem !important;
   }
   .footer-brand-tagline {
