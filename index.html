@@ -197,16 +197,18 @@
         <button type="button" class="slider-btn prev-btn lasse-nav-btn" id="prevSlideBtn" aria-label="Previous Slide">‹</button>
         <button type="button" class="slider-btn next-btn lasse-nav-btn" id="nextSlideBtn" aria-label="Next Slide">›</button>
 
-        <!-- Lasse Pedersen Editorial Progress & Index Strip -->
-        <div class="lasse-editorial-nav-bar">
+        <!-- Slider Indicators (centered at bottom of banner matching screenshot) -->
+        <div class="slider-dots" id="sliderDots">
+          <span class="dot active" onclick="goToSlide(0)"></span>
+          <span class="dot" onclick="goToSlide(1)"></span>
+          <span class="dot" onclick="goToSlide(2)"></span>
+        </div>
+
+        <!-- Hidden editorial strip elements for script references -->
+        <div class="lasse-editorial-nav-bar" style="display:none !important;" aria-hidden="true">
           <div class="lasse-slide-counter" id="lasseSlideCounter">01 / 03</div>
           <div class="lasse-progress-track">
             <div class="lasse-progress-fill" id="lasseProgressFill"></div>
-          </div>
-          <div class="slider-dots lasse-dots" id="sliderDots">
-            <span class="dot active" onclick="goToSlide(0)"></span>
-            <span class="dot" onclick="goToSlide(1)"></span>
-            <span class="dot" onclick="goToSlide(2)"></span>
           </div>
         </div>
       </div>
@@ -224,6 +226,7 @@
         </div>
         <div class="flash-controls-wrap">
           <button type="button" class="flash-nav-btn" id="flashPrevBtn" onclick="navigateFlashCards(-1)" aria-label="Previous Deal">&#x2039;</button>
+          <div class="flash-3d-counter" id="flash3dCounter">01 / 13</div>
           <button type="button" class="flash-nav-btn" id="flashNextBtn" onclick="navigateFlashCards(1)" aria-label="Next Deal">&#x203A;</button>
         </div>
       </div>

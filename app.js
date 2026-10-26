@@ -6168,6 +6168,12 @@ function updateMozzarella3DPositions() {
       card.classList.remove('flash-3d-center');
     }
   });
+
+  // Update Counter (matching mockup XX / 13)
+  const counter = document.getElementById('flash3dCounter');
+  if (counter) {
+    counter.textContent = `${String(activeFlashIndex + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
+  }
 }
 
 function initTheMozzarella3DControls() {
