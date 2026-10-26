@@ -137,6 +137,7 @@ StyleMart was engineered iteratively between **October 8, 2026** and **October 2
 ### Chronological Git Commit Log
 
 ```
+* 18b7bac - 2026-10-26 10:14:38 +0530 : docs: update git commit history in StyleMart.md (Chaithanyaprakash)
 * 209973c - 2026-10-26 09:46:38 +0530 : fix(ci): upgrade configure-pages to v5, declare github-pages environment, and document Pages setting (Chaithanyaprakash)
 * 4553a2c - 2026-10-24 13:47:39 +0530 : docs: sync commit history in StyleMart.md (Chaithanyaprakash)
 * 44420c4 - 2026-10-24 13:47:13 +0530 : fix(ci): follow redirects in smoke-test curl and configure serve.json to prevent cleanUrls 301 (Chaithanyaprakash)
@@ -649,12 +650,15 @@ jobs:
     runs-on: ubuntu-latest
     needs: [lint-and-validate, smoke-test, browser-dom-test]
     if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/StyleMart'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout Source Code
         uses: actions/checkout@v4
 
       - name: Setup GitHub Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
 
       - name: Upload Static Website Artifact
         uses: actions/upload-pages-artifact@v3
