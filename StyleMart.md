@@ -137,6 +137,7 @@ StyleMart was engineered iteratively between **October 8, 2026** and **October 2
 ### Chronological Git Commit Log
 
 ```
+* b3e0678 - 2026-10-26 11:57:24 +0530 : docs: document Bug 16 environment protection rules and sync commit log (Chaithanyaprakash)
 * 8b29643 - 2026-10-26 11:27:14 +0530 : docs: align deploy-pages job definition in StyleMart.md with configure-pages@v5 and environment (Chaithanyaprakash)
 * 18b7bac - 2026-10-26 10:14:38 +0530 : docs: update git commit history in StyleMart.md (Chaithanyaprakash)
 * 209973c - 2026-10-26 09:46:38 +0530 : fix(ci): upgrade configure-pages to v5, declare github-pages environment, and document Pages setting (Chaithanyaprakash)
@@ -169,7 +170,7 @@ StyleMart was engineered iteratively between **October 8, 2026** and **October 2
 | **Phase 7: Catalog Expansion & Grid Perfection** | Oct 23 – Oct 24, 2026 | Ingestion of 15 premium Flipkart catalog items across Women's Dresses, Lehengas, and Jeans. Calibrated All Fashions to exactly 24 items. |
 | **Phase 8: Order Self-Healing & Documentation** | Oct 24, 2026 | Diagnosed corrupted order metadata (`undefined`, `₹NaN`), created self-healing order migration, authored `StyleMart.md` and `StyleMart.yml`. |
 | **Phase 9: Mobile Profile UX & 2-Column Minimalist Footer Overhaul** | Oct 24, 2026 | Redesigned mobile profile (compact horizontal hero banner, swipeable navigation tab bar) and streamlined mobile footer into an uncluttered 2-column layout (SHOP left, ABOUT right). |
-| **Phase 10: Mobile Category Filter Restoration & Botanical Footer Alignment** | Oct 24, 2026 | Restored mobile category filter via sticky action bar and slide-out drawer, eliminating the 165px whitespace void; overhauled mobile footer with botanical gold corner leaves, central vertical dividing line, and tight gap-free spacing. |
+| **Phase 10: Mobile Category Filter Restoration & Minimalist 2-Column Footer** | Oct 24, 2026 | Restored mobile category filter via sticky action bar and slide-out drawer, eliminating the 165px whitespace void; overhauled mobile footer with centered brand crest, Playfair Display tagline, side-by-side SHOP & ABOUT columns with central gold divider, and gap-free spacing. |
 
 ---
 
@@ -329,15 +330,15 @@ Throughout the 17-day development cycle, several critical bugs were encountered,
 ---
 
 ### Bug 12: Mobile Footer Layout Discrepancies & Excess Whitespace
-- **Reported Symptom:** The mobile footer displayed leftover gaps and lacked the gold vertical dividing line, gold underline pills, flanking tagline rules, and botanical corner artwork shown in design mockups.
-- **Root Cause:** Incomplete CSS grid definitions on small viewports left residual margins and gaps after hiding desktop-only elements, and corner leaf SVGs were not calibrated for mobile viewports.
-- **Consequences Faced:** Visual inconsistency and unpolished presentation at the bottom of mobile pages.
+- **Reported Symptom:** The mobile footer displayed leftover gaps and lacked the clean gold vertical dividing line, gold underline pills, flanking tagline rules, and uncluttered presentation shown in design mockup `media_1792996385751.png`.
+- **Root Cause:** Incomplete CSS grid definitions on small viewports left residual margins and gaps after hiding desktop-only elements, and corner leaf SVGs caused visual clutter on narrow screens.
+- **Consequences Faced:** Visual inconsistency, excessive scroll overhead, and unpolished presentation at the bottom of mobile pages.
 - **Resolution Implemented:**
-  1. Refactored `.main-footer` mobile CSS with a deep emerald background (`#06241c`) and tight, balanced padding (`padding: 24px 0 16px 0;`).
-  2. Anchored prominent botanical gold leaf illustrations (`.footer-leaf-tl` and `.footer-leaf-br`, 150x150px, opacity 0.85) in the top-left and bottom-right corners.
-  3. Aligned the SHOP and ABOUT columns in a 2-column layout with a crisp 1px gold vertical dividing line (`border-right: 1px solid rgba(197, 155, 39, 0.45);`).
-  4. Added 44px thick gold underline pills under `SHOP` and `ABOUT` headings and horizontal gold flank lines around the tagline.
-  5. Placed a full-width 1px gold dividing line above the centered copyright text (`© 2026 StyleMart. All Rights Reserved.`).
+  1. Refactored `.main-footer` mobile CSS with a deep emerald background (`#06241c`), centered 52px logo crest, and elegant Playfair Display italic tagline (`Fashion For Everyone`) flanked by horizontal gold rules.
+  2. Hid all extraneous clutter on mobile (corner leaves, newsletter signup, social media row, trust badges, payment pills, and legal links).
+  3. Aligned the SHOP and ABOUT columns in a side-by-side 2-column layout with a crisp 1.5px gold vertical dividing line (`border-right: 1.5px solid rgba(197, 155, 39, 0.55);`).
+  4. Placed 48px thick gold underline pills under `SHOP` and `ABOUT` headings and calibrated vertical link spacing (16px gap).
+  5. Placed a full-width subtle gold dividing line above the centered copyright text (`© 2026 StyleMart. All Rights Reserved.`).
 
 ---
 
