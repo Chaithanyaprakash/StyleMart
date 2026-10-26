@@ -137,6 +137,7 @@ StyleMart was engineered iteratively between **October 8, 2026** and **October 2
 ### Chronological Git Commit Log
 
 ```
+* 8b29643 - 2026-10-26 11:27:14 +0530 : docs: align deploy-pages job definition in StyleMart.md with configure-pages@v5 and environment (Chaithanyaprakash)
 * 18b7bac - 2026-10-26 10:14:38 +0530 : docs: update git commit history in StyleMart.md (Chaithanyaprakash)
 * 209973c - 2026-10-26 09:46:38 +0530 : fix(ci): upgrade configure-pages to v5, declare github-pages environment, and document Pages setting (Chaithanyaprakash)
 * 4553a2c - 2026-10-24 13:47:39 +0530 : docs: sync commit history in StyleMart.md (Chaithanyaprakash)
@@ -367,6 +368,18 @@ Throughout the 17-day development cycle, several critical bugs were encountered,
 - **Resolution Implemented:**
   1. Configured repository Pages source on GitHub: **Settings** ➔ **Pages** ➔ **Build and deployment** ➔ **Source**: Selected **`GitHub Actions`**.
   2. Upgraded `actions/configure-pages` from `v4` to `v5` and explicitly declared the `environment: name: github-pages` block in [StyleMart.yml](StyleMart.yml) and [.github/workflows/StyleMart.yml](.github/workflows/StyleMart.yml), eliminating Node.js punycode and url.parse deprecation warnings.
+
+---
+
+### Bug 16: GitHub Pages Environment Protection Rejection on Branch `StyleMart`
+- **Reported Symptom:** Job 4 (`Deploy to GitHub Pages`) failed with annotations:
+  - `Branch "StyleMart" is not allowed to deploy to github-pages due to environment protection rules.`
+  - `The deployment was rejected or didn't satisfy other protection rules.`
+- **Root Cause:** When GitHub Pages is configured to use GitHub Actions, GitHub automatically creates a deployment environment named `github-pages`. By default, GitHub configures this environment to restrict deployments exclusively to the repository's default branch (`main`). Because code was being pushed directly to the active feature branch `StyleMart`, GitHub Pages rejected the deployment.
+- **Consequences Faced:** The deployment was rejected by GitHub's environment protection gatekeeper even though all upstream test suites succeeded.
+- **Resolution Implemented:**
+  1. Synchronized and fast-forward merged all tested commits from branch `StyleMart` into `main` and pushed to `origin/main`, triggering an authorized deployment run.
+  2. Configured the `github-pages` environment rule on GitHub (**Settings** ➔ **Environments** ➔ **`github-pages`** ➔ **Deployment branches**) to allow `StyleMart` alongside `main`.
 
 ---
 
