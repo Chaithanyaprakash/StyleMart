@@ -387,6 +387,27 @@ Throughout the 17-day development cycle, several critical bugs were encountered,
 
 ---
 
+### Bug 17: Mobile Orders Page Layout & Horizontal Card Clipping Defect
+- **Reported Symptom:** In [profile.html](profile.html?tab=orders) on mobile viewports (e.g., 360px–381px width as shown in screenshot `media_1793004284581.png`), the right ~100px of the order card was pushed off-screen and horizontally clipped. Specifically:
+  - The order status badge (`● Confirmed`) and order ID were clipped against the viewport edge.
+  - The 4-step progress tracker overflowed with step 3 ("Out for Delivery") truncated to "Out for" and step 4 ("Tomorrow") pushed entirely off-screen.
+  - The action buttons broke asymmetrically: "View Details" occupied almost the full screen width while "Buy Again" was clipped into a tiny sliver at the far right viewport boundary.
+  - The delivery address note and payment details were pushed off the edge of the screen.
+- **Root Cause:**
+  1. *Grid Column Auto-Expansion (`min-width: auto`):* In CSS Grid, track sizing specified as `1fr` defaults to `minmax(auto, 1fr)`. Because the child order tracker bar contained non-wrapping text across 4 steps (`white-space: nowrap;`), its intrinsic min-content exceeded ~425px. In the absence of an explicit `min-width: 0`, the grid column and parent card expanded to 450px+ regardless of the viewport width.
+  2. *Action Buttons Flex Sizing:* Action buttons lacked explicit bounded flex basis and max-width sizing, allowing one button to absorb remaining space while the second overflowed beyond the viewport.
+  3. *Unconstrained Header & Footer Text:* Long delivery addresses and order headers lacked multi-line word-break definitions, contributing to horizontal blowout on narrow mobile devices.
+- **Consequences Faced:** Mobile users could not see full order statuses, could not view estimated arrival dates on the progress stepper, and could not reliably tap the "Buy Again" action button.
+- **Resolution Implemented:**
+  1. *Constrained CSS Grid Track:* Updated `.profile-layout-grid` to `grid-template-columns: minmax(0, 1fr) !important;` with `width: 100% !important; min-width: 0 !important; overflow: hidden !important;`.
+  2. *Card Enclosure & Padding:* Set `.profile-content-card` and `.order-item-card` to `box-sizing: border-box !important; width: 100% !important; max-width: 100% !important; min-width: 0 !important; overflow: hidden !important;`.
+  3. *Responsive Stepper Bar & Compact Text Switching:* Implemented dual text spans for long tracker steps: `<span class="tracker-full-text">Out for Delivery</span><span class="tracker-short-text">Out</span>` and arrival text `<span class="tracker-full-text">${order.estimatedArrival || 'Tomorrow'}</span><span class="tracker-short-text">Tomorrow</span>`. On screens $\le$ 480px, the compact tokens display cleanly, dropping the tracker width to 304px (comfortably within 320px–381px cards) with smooth touch scroll support.
+  4. *50% / 50% Bounded Button Split:* Styled `.order-actions-col .btn` with `flex: 1 1 50% !important; width: 50% !important; max-width: calc(50% - 4px) !important; min-width: 0 !important;`, guaranteeing both buttons sit side-by-side with an 8px gap and equal proportions.
+  5. *Header & Footer Text Wrapping:* Added `word-break: break-word !important;` to `.order-delivery-address-note` and `.order-meta-info`, with `align-items: flex-start !important;` and `flex-shrink: 0 !important;` for `.order-status-badge`.
+  6. *Automated Headless Browser Verification:* Verified using Puppeteer across 320px and 381px viewports, confirming `hasOverflow: false`, `trackerFitsPerfect: true`, and equal button widths with zero clipping.
+
+---
+
 ## 8. CI/CD Pipeline & Automated Verification Evidence
 
 The project includes an automated testing and continuous deployment pipeline defined in [StyleMart.yml](StyleMart.yml) and [.github/workflows/StyleMart.yml](.github/workflows/StyleMart.yml).
