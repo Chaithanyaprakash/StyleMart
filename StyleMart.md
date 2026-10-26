@@ -357,6 +357,16 @@ Throughout the 17-day development cycle, several critical bugs were encountered,
 
 ---
 
+### Bug 15: GitHub Pages API 404 & Actions Source Configuration Requirement
+- **Reported Symptom:** The final pipeline job `deploy-pages` failed at step `Setup GitHub Pages` with error: `Error: Get Pages site failed. Please verify that the repository has Pages enabled and configured to build using GitHub Actions... Error: HttpError: Not Found`.
+- **Root Cause:** By default on newly created repositories, GitHub Pages build source defaults to "Deploy from a branch" or remains unconfigured ("None"). Because the modern `actions/deploy-pages@v4` action interacts with GitHub's Pages workflow artifact deployment API, the repository settings must explicitly designate `GitHub Actions` as the Pages deployment source. Without this setting enabled in the repository UI, GitHub's API returns `404 Not Found`.
+- **Consequences Faced:** The automated continuous deployment step failed even though all prior quality checks, syntax tests, smoke tests, and headless browser tests passed with 100% success.
+- **Resolution Implemented:**
+  1. Configured repository Pages source on GitHub: **Settings** ➔ **Pages** ➔ **Build and deployment** ➔ **Source**: Selected **`GitHub Actions`**.
+  2. Upgraded `actions/configure-pages` from `v4` to `v5` and explicitly declared the `environment: name: github-pages` block in [StyleMart.yml](StyleMart.yml) and [.github/workflows/StyleMart.yml](.github/workflows/StyleMart.yml), eliminating Node.js punycode and url.parse deprecation warnings.
+
+---
+
 ## 8. CI/CD Pipeline & Automated Verification Evidence
 
 The project includes an automated testing and continuous deployment pipeline defined in [StyleMart.yml](StyleMart.yml) and [.github/workflows/StyleMart.yml](.github/workflows/StyleMart.yml).
