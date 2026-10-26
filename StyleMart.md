@@ -137,6 +137,10 @@ StyleMart was engineered iteratively between **October 8, 2026** and **October 2
 ### Chronological Git Commit Log
 
 ```
+* 18b7bac - 2026-10-26 10:14:38 +0530 : docs: update git commit history in StyleMart.md (Chaithanyaprakash)
+* 209973c - 2026-10-26 09:46:38 +0530 : fix(ci): upgrade configure-pages to v5, declare github-pages environment, and document Pages setting (Chaithanyaprakash)
+* 4553a2c - 2026-10-24 13:47:39 +0530 : docs: sync commit history in StyleMart.md (Chaithanyaprakash)
+* 44420c4 - 2026-10-24 13:47:13 +0530 : fix(ci): follow redirects in smoke-test curl and configure serve.json to prevent cleanUrls 301 (Chaithanyaprakash)
 * 4f4e944 - 2026-10-24 13:39:25 +0530 : fix(ci): standardize banner image filenames to lowercase and add cross-platform case-sensitive validation (Chaithanyaprakash)
 * 4f16acb - 2026-10-24 13:14:24 +0530 : docs: update git commit history log in StyleMart.md (Chaithanyaprakash)
 * e448573 - 2026-10-24 13:13:34 +0530 : feat: restore mobile category filter bar & drawer, match botanical mobile footer, update documentation (Chaithanyaprakash)
@@ -343,6 +347,26 @@ Throughout the 17-day development cycle, several critical bugs were encountered,
 - **Resolution Implemented:**
   1. Performed a two-step Git case rename (`git mv assets/images/Banner-1.png assets/images/banner-1.png`, etc.) to standardize tracked assets to standard web lowercase.
   2. Upgraded [scripts/validate-html.js](scripts/validate-html.js) with a cross-platform case-sensitive check (`fileExistsCaseSensitive`), ensuring local tests on Windows catch case discrepancies before pushing to remote Linux runners.
+
+---
+
+### Bug 14: Smoke Test HTTP 301 Redirect Failure on Static Server
+- **Reported Symptom:** GitHub Actions CI/CD pipeline failed during the `smoke-test` job in step `Test HTTP Endpoints Availability` with error: `Checking http://localhost:8080/category.html -> HTTP 301` and `✗ Route verification failed for http://localhost:8080/category.html (HTTP 301)`.
+- **Root Cause:** The `serve` static web server defaults to `cleanUrls: true`, which automatically issues an `HTTP 301 Moved Permanently` redirect from `/category.html` to `/category`. Because `curl` was executed without the `-L` (`--location`) flag, it evaluated the intermediate 301 status code instead of following the redirect to the final 200 OK response.
+- **Consequences Faced:** The smoke test halted the CI/CD pipeline before reaching headless browser testing or automated deployment.
+- **Resolution Implemented:**
+  1. Created [serve.json](serve.json) with `{"cleanUrls": false}` to disable unwanted redirect rewriting during local testing.
+  2. Added the `-L` flag to `curl` (`curl -s -L -o /dev/null -w "%{http_code}" "$URL"`) across [StyleMart.yml](StyleMart.yml) and [.github/workflows/StyleMart.yml](.github/workflows/StyleMart.yml), ensuring redirects are followed to the final HTTP 200 payload.
+
+---
+
+### Bug 15: GitHub Pages API 404 & Actions Source Configuration Requirement
+- **Reported Symptom:** The final pipeline job `deploy-pages` failed at step `Setup GitHub Pages` with error: `Error: Get Pages site failed. Please verify that the repository has Pages enabled and configured to build using GitHub Actions... Error: HttpError: Not Found`.
+- **Root Cause:** By default on newly created repositories, GitHub Pages build source defaults to "Deploy from a branch" or remains unconfigured ("None"). Because the modern `actions/deploy-pages@v4` action interacts with GitHub's Pages workflow artifact deployment API, the repository settings must explicitly designate `GitHub Actions` as the Pages deployment source. Without this setting enabled in the repository UI, GitHub's API returns `404 Not Found`.
+- **Consequences Faced:** The automated continuous deployment step failed even though all prior quality checks, syntax tests, smoke tests, and headless browser tests passed with 100% success.
+- **Resolution Implemented:**
+  1. Configured repository Pages source on GitHub: **Settings** ➔ **Pages** ➔ **Build and deployment** ➔ **Source**: Selected **`GitHub Actions`**.
+  2. Upgraded `actions/configure-pages` from `v4` to `v5` and explicitly declared the `environment: name: github-pages` block in [StyleMart.yml](StyleMart.yml) and [.github/workflows/StyleMart.yml](.github/workflows/StyleMart.yml), eliminating Node.js punycode and url.parse deprecation warnings.
 
 ---
 
@@ -626,12 +650,15 @@ jobs:
     runs-on: ubuntu-latest
     needs: [lint-and-validate, smoke-test, browser-dom-test]
     if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/StyleMart'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout Source Code
         uses: actions/checkout@v4
 
       - name: Setup GitHub Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
 
       - name: Upload Static Website Artifact
         uses: actions/upload-pages-artifact@v3

@@ -84,7 +84,7 @@ jobs:
           echo "==> Verifying application routes respond with HTTP 200..."
           for page in "" "category.html" "product.html" "profile.html" "about.html"; do
             URL="http://localhost:8080/$page"
-            HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" "$URL")
+            HTTP_CODE=$(curl -s -L -o /dev/null -w "%{http_code}" "$URL")
             echo "Checking $URL -> HTTP $HTTP_CODE"
             if [ "$HTTP_CODE" -ne 200 ]; then
               echo "✗ Route verification failed for $URL (HTTP $HTTP_CODE)"
@@ -96,8 +96,8 @@ jobs:
       - name: Test Critical CSS & JS Bundle Delivery
         run: |
           echo "==> Testing asset delivery..."
-          curl -s -f "http://localhost:8080/styles.css" > /dev/null && echo "✓ styles.css delivered successfully"
-          curl -s -f "http://localhost:8080/app.js" > /dev/null && echo "✓ app.js delivered successfully"
+          curl -s -f -L "http://localhost:8080/styles.css" > /dev/null && echo "✓ styles.css delivered successfully"
+          curl -s -f -L "http://localhost:8080/app.js" > /dev/null && echo "✓ app.js delivered successfully"
 
   # ----------------------------------------------------------------------------
   # Job 3: Headless Browser & DOM Functional Smoke Tests
@@ -234,12 +234,15 @@ jobs:
     runs-on: ubuntu-latest
     needs: [lint-and-validate, smoke-test, browser-dom-test]
     if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/StyleMart'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout Source Code
         uses: actions/checkout@v4
 
       - name: Setup GitHub Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
 
       - name: Upload Static Website Artifact
         uses: actions/upload-pages-artifact@v3
