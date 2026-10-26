@@ -68,8 +68,7 @@ const path = require('path');
       };
     });
     report('2. TheMOZZARELLA 3D Viewport & Track', flash3dInfo.viewportExists && flash3dInfo.trackExists, `Cards: ${flash3dInfo.cardsCount}`);
-    report('2. TheMOZZARELLA 3D Center Card Transform', flash3dInfo.hasCenterCard && flash3dInfo.centerTransform.includes('translateZ(60px)'), flash3dInfo.centerTransform);
-    report('2. TheMOZZARELLA 3D Counter & Pagination', flash3dInfo.dotsCount > 0 && flash3dInfo.counterText.includes('01 /'), `Counter: ${flash3dInfo.counterText}`);
+    report('2. TheMOZZARELLA 3D Counter & Zero Dots', flash3dInfo.dotsCount === 0 && flash3dInfo.counterText.includes('01 /'), `Counter: ${flash3dInfo.counterText}, Dots: ${flash3dInfo.dotsCount}`);
 
     // 3. Forest Green Add to Cart Button Color (matching header #07261e)
     const buttonColors = await page.evaluate(() => {
@@ -196,18 +195,21 @@ const path = require('path');
     });
     report('8. Mobile Address Form Responsiveness & Alignment', mobileAddressForm.fitsInViewport && mobileAddressForm.allInputsAtLeast40px, `ModalWidth: ${mobileAddressForm.modalWidth}px, FitsInViewport: ${mobileAddressForm.fitsInViewport}, BtnHeight: ${mobileAddressForm.btnHeight}px`);
 
-    // 9. SultanKhanCQ 3D Depth & Hover Shimmer Accent Check
-    const sultanCardCheck = await page.evaluate(() => {
-      const card = document.querySelector('.product-card');
+    // 9. Avoloch 3D Holographic Card & Dynamic Layers Check
+    const avolochCardCheck = await page.evaluate(() => {
+      const card = document.querySelector('.product-card:not(.flash-product-card)');
       if (!card) return { found: false };
-      const comp = window.getComputedStyle(card);
+      const glow = card.querySelector('.avoloch-glow');
+      const sheen = card.querySelector('.avoloch-hologram-sheen');
+      const scanline = card.querySelector('.avoloch-scanline');
       return {
         found: true,
-        borderRadius: comp.borderRadius,
-        transition: comp.transition
+        hasGlow: !!glow,
+        hasSheen: !!sheen,
+        hasScanline: !!scanline
       };
     });
-    report('9. SultanKhanCQ 3D Card Depth & Transition', sultanCardCheck.found && sultanCardCheck.transition.includes('cubic-bezier(0.16, 1, 0.3, 1)'), `Transition: ${sultanCardCheck.transition}`);
+    report('9. Avoloch 3D Holographic Card & Dynamic Layers', avolochCardCheck.found && avolochCardCheck.hasGlow && avolochCardCheck.hasSheen && avolochCardCheck.hasScanline, `Glow: ${avolochCardCheck.hasGlow}, Sheen: ${avolochCardCheck.hasSheen}, Scanline: ${avolochCardCheck.hasScanline}`);
 
     await page.close();
   } catch (err) {

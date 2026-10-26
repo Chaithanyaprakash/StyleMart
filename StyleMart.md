@@ -515,6 +515,36 @@ Mobile UI element checks: {
 ✓ All Headless DOM tests passed.
 ```
 
+### Bug 19: Flash Deals Coverflow Geometry Realignment, Elimination of Dots & Scrollbar, Official Cameo Brand Logo, and Avoloch 3D Holographic Product Card Effect
+- **Reported Symptom & User Requests:**
+  1. *Eliminate Dots in Flash Deals:* Completely remove `#flash3dPagination` and dot indicators below the flash deals carousel.
+  2. *Remove Horizontal Scroll Bar in Flash Deals:* Eliminate the horizontal scroll bar visible on the flash sale section.
+  3. *Remove White Space & Eliminate Card Bottom Cutoff:* Eliminate the ~200px empty vertical gap above cards and prevent clipping of the bottom of the flash deal cards (Add to Cart button and pricing row).
+  4. *Add Scrolling Effect for Flash Deals:* Perfectly center and execute TheMOZZARELLA 3D coverflow carousel with smooth rotation, z-depth perspective, auto-play, mousewheel, touch swipe, and click-to-center.
+  5. *Brand Logo:* Incorporate the user's official cameo logo depicting a woman in an Indian saree inside an ornamental gold frame with the brand text `STYLEMART - FASHION FOR EVERYONE` across all headers.
+  6. *Avoloch 3D Holographic Card Effect:* Implement interactive 3D perspective tilt (`perspective(1000px) rotateX(...) rotateY(...) translateY(-8px) translateZ(12px)`), dynamic specular cursor-tracking glow (`.avoloch-glow`), luminous holographic sheen gradient reflection (`.avoloch-hologram-sheen`), and golden scanline light sweep beam (`.avoloch-scanline`) inspired by CodePen [Avoloch/pen/KwwXrvb](https://codepen.io/Avoloch/full/KwwXrvb) on all product cards storewide.
+- **Root Cause Analysis:**
+  - *ID Specificity Lock:* Legacy CSS rules using ID selectors (`#flashCarouselContainer`, `#flashProductsGrid .product-card`) had higher specificity than class rules, forcing `overflow-x: auto !important` (creating horizontal scrollbars), `position: relative !important`, and `height: 245px !important` on image wrappers.
+  - *Coverflow Vertical Offset:* In `app.js`, `updateMozzarella3DPositions()` applied `translateX(...)` without `translate(-50%, -50%)`. Because cards had `top: 50%; left: 50%`, the card top was pushed 180px down from the top, creating ~180px of dead white space and pushing the bottom ~60px of the card outside the container bounds.
+- **Consequences Faced:** Flash deals appeared misaligned with excessive empty space, clipped Add to Cart buttons, and unwanted horizontal scrollbars. Brand identity lacked the official gold cameo logo. Product cards lacked the interactive 3D holographic tilt requested by the user.
+- **Resolution Implemented:**
+  1. *Flash Deals 3D Coverflow Geometry & Height Calibration:*
+     - In `app.js`, refactored `updateMozzarella3DPositions()` to center all cards vertically and horizontally using `translate(-50%, -50%) translateZ(...) rotateY(...) scale(...)` for center cards and `translate(calc(-50% + ${transX}px), -50%)` for adjacent cards.
+     - In `styles.css`, raised `.flash-carousel-container, .mozzarella-3d-viewport` height to 385px and calibrated card height to 330px with 180px image wrappers.
+     - Forced `overflow: hidden !important; overflow-x: hidden !important; scrollbar-width: none !important;` on `#flashCarouselContainer` and `.flash-carousel-container`.
+     - Removed `#flash3dPagination` and all dot rendering.
+  2. *Official Cameo Brand Logo Integration:*
+     - Cleaned and processed `media_1793010706249.png` using Puppeteer HTML5 Canvas to produce high-resolution transparent and champagne gold cameo assets: `assets/images/stylemart-logo-header.png` and `assets/images/stylemart-logo.png`.
+     - Updated all headers across [index.html](index.html), [category.html](category.html), [product.html](product.html), [profile.html](profile.html), and [about.html](about.html).
+  3. *Avoloch 3D Holographic Card Effect:*
+     - In `styles.css`, added `.avoloch-glow` (specular cursor light), `.avoloch-hologram-sheen` (holographic rainbow/gold sheen), and `.avoloch-scanline` with `@keyframes avolochScanline` (light sweep beam).
+     - In `app.js`, created `initAvolochProductCardsEffect()` with dynamic `mousemove` tracking calculating `deltaX` and `deltaY` to apply `perspective(1000px) rotateX(...) rotateY(...) translateY(-8px) translateZ(12px)` and dynamic inset specular shadow.
+     - Integrated `initAvolochProductCardsEffect()` into `renderProductsCatalog()`, `renderFashionProducts()`, related products, and `initApp()`.
+- **Automated Verification:**
+  - Ran `node scripts/test-enhancements.js`: 100% of 9 test suites passed.
+  - Ran `node scripts/test_user_requirements.js`: Logo, flash coverflow, zero dots, zero scrollbar, Avoloch 3D tilt, and mobile responsiveness verified with 100% success.
+  - Ran `node scripts/validate-html.js`: All 5 HTML files passed structure, DOCTYPE, and local asset validation.
+
 ### GitHub Actions Workflow Configuration ([StyleMart.yml](StyleMart.yml))
 
 ```yaml
