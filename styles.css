@@ -1090,8 +1090,9 @@ img {
 
 #flashCarouselContainer {
     width: 100%;
-    overflow-x: auto;
-    overflow-y: visible;
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 #flashProductsGrid {
@@ -8073,13 +8074,13 @@ body:not(.category-page) #catalogSection:not(.category-catalog-section) .product
 
 #flashCarouselContainer {
   width: 100% !important;
-  overflow-x: auto !important;
+  overflow: hidden !important;
+  overflow-x: hidden !important;
   overflow-y: hidden !important;
   scrollbar-width: none !important;
   -ms-overflow-style: none !important;
   padding: 0 !important;
   margin: 0 !important;
-  -webkit-overflow-scrolling: touch !important;
 }
 
 #flashCarouselContainer::-webkit-scrollbar {
@@ -8937,18 +8938,15 @@ body:not(.category-page) #catalogSection:not(.category-catalog-section) .product
 .flash-carousel-container {
   width: 100% !important;
   max-width: 100% !important;
-  overflow-x: auto !important;
-  overflow-y: visible !important;
-  padding: 16px 4px 22px !important;
+  overflow: hidden !important;
+  overflow-x: hidden !important;
+  overflow-y: hidden !important;
+  padding: 0 !important;
   box-sizing: border-box !important;
   scrollbar-width: none !important;
   -ms-overflow-style: none !important;
-  scroll-behavior: smooth !important;
   position: relative !important;
   z-index: 2 !important;
-  cursor: grab;
-  scroll-snap-type: x proximity;
-  -webkit-overflow-scrolling: touch;
 }
 
 .flash-carousel-container.grabbing {
@@ -10541,10 +10539,7 @@ body.category-page .section-container {
 .products-grid > .product-card,
 .category-products-grid > .product-card,
 .fashion-products-grid > .product-card,
-.related-products-section .product-card,
-.flash-products-grid > .product-card,
-#flashProductsGrid .product-card,
-.flash-product-card {
+.related-products-section .product-card {
   position: relative !important;
   background: #ffffff !important;
   border-radius: 16px !important;
@@ -10560,22 +10555,12 @@ body.category-page .section-container {
   height: 100% !important;
 }
 
-#flashProductsGrid .product-card {
-  flex: 0 0 clamp(200px, 16vw, 230px) !important;
-  width: clamp(200px, 16vw, 230px) !important;
-  min-width: 200px !important;
-  scroll-snap-align: start !important;
-}
-
 /* Golden Hover Border Effect */
 .product-card:hover,
 .products-grid > .product-card:hover,
 .category-products-grid > .product-card:hover,
 .fashion-products-grid > .product-card:hover,
-.related-products-section .product-card:hover,
-.flash-products-grid > .product-card:hover,
-#flashProductsGrid .product-card:hover,
-.flash-product-card:hover {
+.related-products-section .product-card:hover {
   transform: translateY(-5px) !important;
   box-shadow: 0 0 0 1.5px #d4af37, 0 14px 32px rgba(212, 175, 55, 0.28), 0 6px 16px rgba(15, 23, 42, 0.08) !important;
   border-color: #d4af37 !important;
@@ -10586,10 +10571,7 @@ body.category-page .section-container {
 .products-grid > .product-card .product-card-img-wrap,
 .category-products-grid > .product-card .product-card-img-wrap,
 .fashion-products-grid > .product-card .product-card-img-wrap,
-.related-products-section .product-card .product-card-img-wrap,
-.flash-products-grid > .product-card .product-card-img-wrap,
-#flashProductsGrid .product-card .product-card-img-wrap,
-.flash-card-img-wrap {
+.related-products-section .product-card .product-card-img-wrap {
   position: relative !important;
   width: 100% !important;
   height: 245px !important;
@@ -13910,14 +13892,14 @@ body.category-page .products-main {
     padding: 12px 6px !important;
   }
 
-  .flash-carousel-container {
+  .flash-carousel-container,
+  #flashCarouselContainer {
     width: 100% !important;
     max-width: 100% !important;
-    overflow-x: auto !important;
-    scroll-snap-type: x mandatory !important;
-    scroll-behavior: smooth !important;
-    padding: 8px 0 12px !important;
-    -webkit-overflow-scrolling: touch !important;
+    overflow: hidden !important;
+    overflow-x: hidden !important;
+    overflow-y: hidden !important;
+    padding: 0 !important;
   }
 
   .flash-products-grid {
@@ -14825,23 +14807,83 @@ body.category-page .products-main {
   }
 }
 
-/* 2. SULTANKHANCQ 3D PRODUCT CARD DEPTH, ELEVATION & SHIMMER EFFECT (PEN qEEZRmN) */
+/* 2. AVOLOCH 3D HOLOGRAPHIC PRODUCT CARD EFFECT (PEN KwwXrvb) & LUXURY ELEVATION */
 .product-card {
   position: relative !important;
   border-radius: 16px !important;
   background: #ffffff !important;
   border: 1px solid rgba(226, 232, 240, 0.95) !important;
   box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.06), 0 0 0 1px rgba(7, 38, 30, 0.04) !important;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease !important;
+  transform-style: preserve-3d !important;
+  -webkit-transform-style: preserve-3d !important;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.4s ease !important;
   overflow: hidden !important;
   display: flex !important;
   flex-direction: column !important;
+  will-change: transform, box-shadow !important;
+}
+
+/* Dynamic Avoloch specular glow overlay */
+.avoloch-glow {
+  position: absolute !important;
+  inset: 0 !important;
+  border-radius: inherit !important;
+  box-shadow: inset 0 0 15px rgba(212, 175, 55, 0.12) !important;
+  pointer-events: none !important;
+  z-index: 6 !important;
+  transition: box-shadow 0.18s ease !important;
+}
+
+/* Luminous Avoloch hologram sheen reflection */
+.avoloch-hologram-sheen {
+  position: absolute !important;
+  inset: 0 !important;
+  border-radius: inherit !important;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(7, 38, 30, 0.03) 45%, rgba(212, 175, 55, 0.22) 100%) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  z-index: 7 !important;
+  transition: opacity 0.35s ease !important;
+}
+
+.product-card:hover .avoloch-hologram-sheen {
+  opacity: 1 !important;
+}
+
+/* Holographic scanning light beam sweep */
+.avoloch-scanline {
+  position: absolute !important;
+  inset: 0 !important;
+  overflow: hidden !important;
+  border-radius: inherit !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  z-index: 8 !important;
+  transition: opacity 0.35s ease !important;
+}
+
+.product-card:hover .avoloch-scanline {
+  opacity: 0.28 !important;
+}
+
+.avoloch-scanline::before {
+  content: '' !important;
+  position: absolute !important;
+  width: 100% !important;
+  height: 3px !important;
+  background: linear-gradient(90deg, transparent, #d4af37, #ffffff, #d4af37, transparent) !important;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.9) !important;
+  animation: avolochScanline 3.2s linear infinite !important;
+}
+
+@keyframes avolochScanline {
+  0% { top: -5%; }
+  100% { top: 105%; }
 }
 
 .product-card:hover {
-  transform: translateY(-7px) scale(1.018) !important;
-  box-shadow: 0 20px 42px -12px rgba(7, 38, 30, 0.18), 0 0 0 1.5px rgba(212, 175, 55, 0.35) !important;
-  border-color: rgba(212, 175, 55, 0.4) !important;
+  box-shadow: 0 20px 42px -10px rgba(7, 38, 30, 0.22), 0 0 0 1.5px rgba(212, 175, 55, 0.45) !important;
+  border-color: rgba(212, 175, 55, 0.5) !important;
 }
 
 .product-card::after {
@@ -14855,7 +14897,7 @@ body.category-page .products-main {
   transition: width 0.45s cubic-bezier(0.16, 1, 0.3, 1), left 0.45s cubic-bezier(0.16, 1, 0.3, 1) !important;
   border-radius: 9999px !important;
   pointer-events: none !important;
-  z-index: 5 !important;
+  z-index: 9 !important;
 }
 
 .product-card:hover::after {
@@ -14872,58 +14914,40 @@ body.category-page .products-main {
 }
 
 /* 3. THEMOZZARELLA 3D PARALLAX COVERFLOW CAROUSEL (PEN OJqrvNo) FOR FLASH DEALS */
-.mozzarella-3d-viewport {
-  perspective: 1200px !important;
-  -webkit-perspective: 1200px !important;
-  perspective-origin: 50% 50% !important;
+.flash-sale-section {
+  position: relative !important;
+  width: 100% !important;
+  margin: 10px 0 18px !important;
+  padding: 0 !important;
   overflow: hidden !important;
-  position: relative !important;
-  width: 100% !important;
-  min-height: 450px !important;
-  padding: 24px 10px 30px !important;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  touch-action: pan-y !important;
 }
 
-.mozzarella-3d-track {
+.flash-sale-banner-frame {
   position: relative !important;
   width: 100% !important;
-  height: 400px !important;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  transform-style: preserve-3d !important;
-  -webkit-transform-style: preserve-3d !important;
-}
-
-.mozzarella-3d-track .product-card {
-  position: absolute !important;
-  width: 236px !important;
-  max-width: 236px !important;
-  height: auto !important;
+  max-width: 100% !important;
+  background: transparent !important;
+  padding: 0 !important;
   margin: 0 !important;
-  top: 50% !important;
-  left: 50% !important;
-  margin-left: -118px !important;
-  margin-top: -200px !important;
-  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.5s ease, filter 0.5s ease, box-shadow 0.5s ease !important;
-  cursor: pointer !important;
-  backface-visibility: hidden !important;
-  -webkit-backface-visibility: hidden !important;
-  will-change: transform, opacity !important;
+  border: none !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+}
+
+.flash-sale-banner-frame::after {
+  display: none !important;
 }
 
 .flash-header-strip {
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
-  padding: 12px 20px !important;
+  padding: 10px 20px !important;
   background: #07261e !important;
   color: #ffffff !important;
   border-radius: 14px 14px 0 0 !important;
   border-bottom: 1px solid rgba(212, 175, 55, 0.3) !important;
+  margin: 0 !important;
 }
 
 .flash-controls-wrap {
@@ -14933,19 +14957,21 @@ body.category-page .products-main {
 }
 
 .flash-nav-btn {
-  width: 32px !important;
-  height: 32px !important;
+  width: 34px !important;
+  height: 34px !important;
   border-radius: 50% !important;
   background: rgba(255, 255, 255, 0.12) !important;
-  border: 1px solid rgba(212, 175, 55, 0.45) !important;
+  border: 1.5px solid rgba(212, 175, 55, 0.6) !important;
   color: #d4af37 !important;
-  font-size: 1.25rem !important;
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   cursor: pointer !important;
   transition: all 0.2s ease !important;
   line-height: 1 !important;
+  user-select: none !important;
 }
 
 .flash-nav-btn:hover {
@@ -14954,51 +14980,183 @@ body.category-page .products-main {
 }
 
 .flash-3d-counter {
-  font-family: monospace, serif !important;
-  font-size: 0.9rem !important;
-  font-weight: 700 !important;
+  font-family: 'Cinzel', monospace, serif !important;
+  font-size: 0.95rem !important;
+  font-weight: 800 !important;
   color: #d4af37 !important;
   letter-spacing: 0.08em !important;
+  min-width: 60px !important;
+  text-align: center !important;
 }
 
-.flash-3d-pagination {
+/* Remove dots completely as requested */
+.flash-3d-pagination,
+.flash-3d-dot {
+  display: none !important;
+}
+
+/* Viewport & 3D Stage - Zero white space, zero horizontal scrollbar */
+#flashCarouselContainer,
+.flash-carousel-container,
+.mozzarella-3d-viewport {
+  perspective: 1200px !important;
+  -webkit-perspective: 1200px !important;
+  perspective-origin: 50% 50% !important;
+  overflow: hidden !important;
+  overflow-x: hidden !important;
+  overflow-y: hidden !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+  position: relative !important;
+  width: 100% !important;
+  height: 385px !important;
+  min-height: 385px !important;
+  max-height: 385px !important;
+  padding: 0 !important;
+  margin: 0 !important;
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-  gap: 8px !important;
-  padding: 10px 0 16px !important;
+  background: #faf8f5 !important;
+  border-radius: 0 0 14px 14px !important;
+  border: 1px solid rgba(7, 38, 30, 0.08) !important;
+  border-top: none !important;
+  touch-action: pan-y !important;
 }
 
-.flash-3d-dot {
-  width: 8px !important;
-  height: 8px !important;
-  border-radius: 50% !important;
-  background: #cbd5e1 !important;
+.flash-carousel-container::-webkit-scrollbar,
+.mozzarella-3d-viewport::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.flash-products-grid,
+.mozzarella-3d-track {
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  display: block !important;
+  transform-style: preserve-3d !important;
+  -webkit-transform-style: preserve-3d !important;
+}
+
+.flash-products-grid::-webkit-scrollbar,
+.mozzarella-3d-track::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Centered 3D Card with translate(-50%, -50%) */
+#flashProductsGrid.mozzarella-3d-track .product-card,
+#flashProductsGrid .flash-product-card,
+.mozzarella-3d-track .product-card,
+.mozzarella-3d-track .flash-product-card {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  margin: 0 !important;
+  width: 216px !important;
+  max-width: 216px !important;
+  height: 330px !important;
+  max-height: 330px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  box-sizing: border-box !important;
+  border-radius: 14px !important;
+  background: #ffffff !important;
+  border: 1px solid rgba(226, 232, 240, 0.95) !important;
+  overflow: hidden !important;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.5s ease, filter 0.5s ease, box-shadow 0.5s ease !important;
   cursor: pointer !important;
-  transition: all 0.25s ease !important;
-  border: none !important;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+  will-change: transform, opacity !important;
+  box-shadow: 0 8px 20px -4px rgba(7, 38, 30, 0.12) !important;
 }
 
-.flash-3d-dot.active {
-  width: 24px !important;
-  border-radius: 9999px !important;
-  background: #07261e !important;
-  box-shadow: 0 0 8px rgba(7, 38, 30, 0.4) !important;
+#flashProductsGrid .product-card .product-card-img-wrap,
+#flashProductsGrid .flash-product-card .product-card-img-wrap,
+.mozzarella-3d-track .product-card .product-card-img-wrap {
+  height: 180px !important;
+  min-height: 180px !important;
+  max-height: 180px !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  position: relative !important;
+  margin: 0 0 4px 0 !important;
+  aspect-ratio: auto !important;
+}
+
+#flashProductsGrid .product-card .product-card-img-wrap img,
+.mozzarella-3d-track .product-card .product-card-img-wrap img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+#flashProductsGrid .product-card .product-card-info,
+.mozzarella-3d-track .product-card .product-card-info {
+  padding: 6px 10px 10px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 !important;
+}
+
+#flashProductsGrid .product-card .card-add-to-cart-btn,
+.mozzarella-3d-track .product-card .card-add-to-cart-btn {
+  padding: 7px 12px !important;
+  font-size: 0.82rem !important;
+  min-height: 34px !important;
+  margin-top: 6px !important;
 }
 
 @media (max-width: 768px) {
+  .flash-carousel-container,
   .mozzarella-3d-viewport {
-    min-height: 390px !important;
-    padding: 16px 4px 20px !important;
+    height: 335px !important;
+    min-height: 335px !important;
+    max-height: 335px !important;
   }
-  .mozzarella-3d-track {
-    height: 350px !important;
+  .mozzarella-3d-track .product-card,
+  .mozzarella-3d-track .flash-product-card {
+    width: 185px !important;
+    max-width: 185px !important;
+    height: 295px !important;
+    max-height: 295px !important;
   }
-  .mozzarella-3d-track .product-card {
-    width: 200px !important;
-    max-width: 200px !important;
-    margin-left: -100px !important;
-    margin-top: -175px !important;
+  .mozzarella-3d-track .product-card .product-card-img-wrap {
+    height: 160px !important;
+    min-height: 160px !important;
+    max-height: 160px !important;
+  }
+}
+
+/* Header brand logo with gold cameo asset */
+.brand-logo-image.header-logo-full {
+  display: block !important;
+  width: auto !important;
+  height: 52px !important;
+  max-width: 60px !important;
+  object-fit: contain !important;
+  border-radius: 6px !important;
+  transition: transform 0.25s ease, opacity 0.2s ease !important;
+}
+
+.brand-logo:hover .brand-logo-image.header-logo-full {
+  transform: scale(1.04) !important;
+  opacity: 0.98 !important;
+}
+
+@media (max-width: 768px) {
+  .brand-logo-image.header-logo-full {
+    height: 42px !important;
+    max-width: 50px !important;
   }
 }
 

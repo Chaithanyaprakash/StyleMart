@@ -5848,6 +5848,7 @@ function syncLocalStorage() {
   }
   updateBadgesUI();
   updateUserProfileUI();
+  try { initAvolochProductCardsEffect(); } catch (e) { console.error('Avoloch effect init error:', e); }
 }
 
 function updateUserProfileUI() {
@@ -6085,13 +6086,9 @@ function renderFlashSaleProducts() {
     });
   });
 
-  // Render 3D Pagination Dots
+  // Remove dots reference
   const pagination = document.getElementById('flash3dPagination');
-  if (pagination) {
-    pagination.innerHTML = flashDealsCache.map((_, idx) => `
-      <button type="button" class="flash-3d-dot ${idx === activeFlashIndex ? 'active' : ''}" onclick="setFlashActiveCard(${idx})" aria-label="Go to deal ${idx + 1}"></button>
-    `).join('');
-  }
+  if (pagination) pagination.innerHTML = '';
 
   // Initialize TheMOZZARELLA 3D Carousel controls & auto-play
   initTheMozzarella3DControls();
@@ -6118,12 +6115,11 @@ function navigateFlashCarousel(direction) {
 function updateMozzarella3DPositions() {
   const cards = document.querySelectorAll('.mozzarella-3d-track .flash-product-card');
   const counter = document.getElementById('flash3dCounter');
-  const dots = document.querySelectorAll('.flash-3d-pagination .flash-3d-dot');
   if (!cards.length) return;
 
   const total = cards.length;
   const isMobile = window.innerWidth <= 768;
-  const stepX = isMobile ? 120 : 215;
+  const stepX = isMobile ? 125 : 220;
 
   cards.forEach((card, idx) => {
     let diff = idx - activeFlashIndex;
@@ -6134,37 +6130,37 @@ function updateMozzarella3DPositions() {
     const absDiff = Math.abs(diff);
 
     if (diff === 0) {
-      card.style.transform = 'translateX(0px) translateZ(60px) rotateY(0deg) scale(1.05)';
+      card.style.transform = 'translate(-50%, -50%) translateZ(60px) rotateY(0deg) scale(1.03)';
       card.style.zIndex = '12';
       card.style.opacity = '1';
       card.style.filter = 'none';
       card.style.pointerEvents = 'auto';
-      card.style.boxShadow = '0 24px 48px -10px rgba(7, 38, 30, 0.32), 0 0 0 1.5px rgba(212, 175, 55, 0.45)';
+      card.style.boxShadow = '0 20px 42px -8px rgba(7, 38, 30, 0.35), 0 0 0 1.5px rgba(212, 175, 55, 0.45)';
       card.classList.add('flash-3d-center');
     } else if (absDiff === 1) {
       const transX = diff * stepX;
-      const rotY = diff > 0 ? -26 : 26;
-      card.style.transform = `translateX(${transX}px) translateZ(-60px) rotateY(${rotY}deg) scale(0.88)`;
+      const rotY = diff > 0 ? -24 : 24;
+      card.style.transform = `translate(calc(-50% + ${transX}px), -50%) translateZ(-50px) rotateY(${rotY}deg) scale(0.86)`;
       card.style.zIndex = '8';
-      card.style.opacity = '0.85';
-      card.style.filter = 'brightness(0.9)';
+      card.style.opacity = '0.88';
+      card.style.filter = 'brightness(0.92)';
       card.style.pointerEvents = 'auto';
       card.style.boxShadow = '0 12px 24px -6px rgba(0, 0, 0, 0.2)';
       card.classList.remove('flash-3d-center');
     } else if (absDiff === 2) {
       const transX = diff * (stepX * 1.6);
-      const rotY = diff > 0 ? -38 : 38;
-      card.style.transform = `translateX(${transX}px) translateZ(-160px) rotateY(${rotY}deg) scale(0.74)`;
+      const rotY = diff > 0 ? -36 : 36;
+      card.style.transform = `translate(calc(-50% + ${transX}px), -50%) translateZ(-130px) rotateY(${rotY}deg) scale(0.72)`;
       card.style.zIndex = '5';
-      card.style.opacity = '0.55';
-      card.style.filter = 'brightness(0.78)';
+      card.style.opacity = '0.6';
+      card.style.filter = 'brightness(0.8)';
       card.style.pointerEvents = 'auto';
       card.style.boxShadow = 'none';
       card.classList.remove('flash-3d-center');
     } else {
-      const transX = diff > 0 ? (stepX * 2.3) : (-stepX * 2.3);
-      const rotY = diff > 0 ? -48 : 48;
-      card.style.transform = `translateX(${transX}px) translateZ(-260px) rotateY(${rotY}deg) scale(0.6)`;
+      const transX = diff > 0 ? (stepX * 2.2) : (-stepX * 2.2);
+      const rotY = diff > 0 ? -45 : 45;
+      card.style.transform = `translate(calc(-50% + ${transX}px), -50%) translateZ(-220px) rotateY(${rotY}deg) scale(0.6)`;
       card.style.zIndex = '2';
       card.style.opacity = '0';
       card.style.filter = 'brightness(0.6)';
@@ -6178,11 +6174,6 @@ function updateMozzarella3DPositions() {
   if (counter) {
     counter.textContent = `${String(activeFlashIndex + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
   }
-
-  // Update Dots
-  dots.forEach((dot, idx) => {
-    dot.classList.toggle('active', idx === activeFlashIndex);
-  });
 }
 
 function initTheMozzarella3DControls() {
@@ -6256,6 +6247,9 @@ function renderFashionProducts(category = 'all') {
   }
 
   container.innerHTML = fashionItems.map(p => createProductCardHTML(p, false)).join('');
+  if (typeof initAvolochProductCardsEffect === 'function') {
+    initAvolochProductCardsEffect();
+  }
 
   document.querySelectorAll('.fashion-tab-btn').forEach(btn => {
     const cat = btn.getAttribute('data-category');
@@ -7272,6 +7266,9 @@ function initProductDetailPage() {
     } else {
       if (relatedSection) relatedSection.style.display = '';
       relatedContainer.innerHTML = listToDisplay.map(p => createProductCardHTML(p, false)).join('');
+      if (typeof initAvolochProductCardsEffect === 'function') {
+        initAvolochProductCardsEffect();
+      }
     }
   }
 }
@@ -7858,6 +7855,9 @@ function renderProductsCatalog() {
   } else {
     if (emptyState) emptyState.style.display = 'none';
     container.innerHTML = filteredList.map(p => createProductCardHTML(p, false)).join('');
+    if (typeof initAvolochProductCardsEffect === 'function') {
+      initAvolochProductCardsEffect();
+    }
   }
 
   updateActiveFilterChips();
@@ -7878,6 +7878,9 @@ function createProductCardHTML(product, isFlash = false, isFeatured = false) {
   // Single unified card template matching user reference (media_1792680531212_fe4fa35c.png)
   return `
     <div class="product-card" data-id="${product.id}">
+      <div class="avoloch-glow" aria-hidden="true"></div>
+      <div class="avoloch-hologram-sheen" aria-hidden="true"></div>
+      <div class="avoloch-scanline" aria-hidden="true"></div>
       <div class="product-card-img-wrap${product.category === 'footwear' || product.id === 'sm-106' ? ' footwear-card-img' : ''}" onclick="openProductWindow('${product.id}', event)">
         <img id="card-img-${product.id}" src="${initialImg}" alt="${product.title}" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&w=800&q=80';">
         
@@ -7934,6 +7937,73 @@ function setCardImage(productId, index) {
     });
   }
 }
+
+// --------------------------------------------------------------------------
+// AVOLOCH 3D HOLOGRAPHIC PRODUCT CARD EFFECT (PEN KwwXrvb)
+// --------------------------------------------------------------------------
+function initAvolochProductCardsEffect() {
+  const cards = document.querySelectorAll('.product-card:not(.flash-product-card)');
+  cards.forEach(card => {
+    if (card.dataset.avolochBound) return;
+    card.dataset.avolochBound = 'true';
+
+    // Ensure Avoloch overlay layers exist
+    if (!card.querySelector('.avoloch-glow')) {
+      const glow = document.createElement('div');
+      glow.className = 'avoloch-glow';
+      glow.setAttribute('aria-hidden', 'true');
+      card.prepend(glow);
+    }
+    if (!card.querySelector('.avoloch-hologram-sheen')) {
+      const sheen = document.createElement('div');
+      sheen.className = 'avoloch-hologram-sheen';
+      sheen.setAttribute('aria-hidden', 'true');
+      card.prepend(sheen);
+    }
+    if (!card.querySelector('.avoloch-scanline')) {
+      const scanline = document.createElement('div');
+      scanline.className = 'avoloch-scanline';
+      scanline.setAttribute('aria-hidden', 'true');
+      card.prepend(scanline);
+    }
+
+    const glowEl = card.querySelector('.avoloch-glow');
+    let rafId = null;
+
+    card.addEventListener('mousemove', (e) => {
+      if (window.innerWidth <= 768) return;
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const deltaX = (x - centerX) / centerX;
+      const deltaY = (y - centerY) / centerY;
+
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        const rotY = (deltaX * 12).toFixed(2);
+        const rotX = (-deltaY * 12).toFixed(2);
+        card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-8px) translateZ(12px)`;
+
+        if (glowEl) {
+          const shadowX = (-deltaX * 14).toFixed(1);
+          const shadowY = (-deltaY * 14).toFixed(1);
+          glowEl.style.boxShadow = `inset ${shadowX}px ${shadowY}px 26px rgba(255, 255, 255, 0.25), inset 0 0 16px rgba(212, 175, 55, 0.3)`;
+        }
+      });
+    });
+
+    card.addEventListener('mouseleave', () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      card.style.transform = '';
+      if (glowEl) {
+        glowEl.style.boxShadow = '';
+      }
+    });
+  });
+}
+window.initAvolochProductCardsEffect = initAvolochProductCardsEffect;
 
 // --------------------------------------------------------------------------
 // 7. FILTER HANDLERS
