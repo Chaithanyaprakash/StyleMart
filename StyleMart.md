@@ -406,6 +406,51 @@ Throughout the 17-day development cycle, several critical bugs were encountered,
   5. *Header & Footer Text Wrapping:* Added `word-break: break-word !important;` to `.order-delivery-address-note` and `.order-meta-info`, with `align-items: flex-start !important;` and `flex-shrink: 0 !important;` for `.order-status-badge`.
   6. *Automated Headless Browser Verification:* Verified using Puppeteer across 320px and 381px viewports, confirming `hasOverflow: false`, `trackerFitsPerfect: true`, and equal button widths with zero clipping.
 
+### Bug 18: Visual & Functional Enhancement Suite: Lasse Pedersen Banner, TheMOZZARELLA 3D Flash Deals, SultanKhanCQ Card Depth, Forest Green CTAs, Address-First Checkout Flow & Mobile Card Clarity
+- **Reported Symptom & User Requests:**
+  1. *Banner Effect:* Implement horizontal scroll image gallery inspired by Awwwards [Lasse Pedersen](https://www.awwwards.com/inspiration/image-gallery-with-horizontal-scroll-lasse-pedersen) (horizontal track, slide counter `01 / 03`, real-time progress bar, editorial overlay badges, and smooth mousewheel / drag interaction).
+  2. *Flash Deals 3D Carousel:* Implement 3D coverflow parallax carousel inspired by CodePen [TheMOZZARELLA/pen/OJqrvNo](https://codepen.io/TheMOZZARELLA/pen/OJqrvNo) with `perspective: 1200px`, `rotateY`, `translateZ`, next/prev navigation, touch swipe, and click-on-card to center.
+  3. *All Product Cards 3D Effect:* Implement 3D multi-layered elevation, spring curve `cubic-bezier(0.16, 1, 0.3, 1)`, and gold/emerald gradient bottom accent line inspired by CodePen [SultanKhanCQ/pen/qEEZRmN](https://codepen.io/SultanKhanCQ/pen/qEEZRmN).
+  4. *Add to Cart Button Color:* Change Add to Cart button background color from hot pink (`#ff2d87`) to deep forest green (`#07261e`), harmonizing with the main site header.
+  5. *Add to Cart Popup Modal:* When user clicks "Add to Cart", display an immediate confirmation modal popup (`#cartAddedModal`) showing product image, title, selected size, "Continue Shopping", and "View Cart / Checkout".
+  6. *Checkout Address Workflow:* When clicking "Proceed to Checkout" in the cart drawer/page: if the user does not have a delivery address saved, open an address input popup; if the user already has an address saved, redirect directly to the UPI / COD payment method step (`checkoutStep = 2`).
+  7. *Mobile Add Address Form Alignment:* Center and responsively format `#authModal` in mobile viewports with full-width touch targets (44px min height), clean 2-column city/pincode grid, and zero horizontal overflow.
+  8. *Mobile Product Card Responsiveness & Image Visibility:* The previous 124px clamp on mobile card images made fashion apparel tiny and illegible. Replace with responsive 3:4 aspect-ratio (`min-height: 190px`, `max-height: 250px`, `object-fit: cover`) so fabrics and prints adjust fluidly to device width.
+  9. *User Logout Button:* When clicking logout, properly log out the user account (remove `stylemart_user`, set `stylemart_logged_out`, reset UI badges, show toast "You have been logged out successfully.", and redirect from `profile.html` to `index.html`).
+- **Root Cause Analysis:**
+  - Banner previously used a standard single-slide fade carousel without scroll scrubbing, counter, or progress bar.
+  - Flash deals used standard flex scrolling without perspective depth, coverflow rotation, or centered focal active cards.
+  - Mobile product cards were constrained by an overly aggressive `height: 124px !important;` media rule that truncated vertical fashion garments.
+  - Checkout had an unnecessary intermediate address preview step for users who already had verified addresses, while users without addresses were not routed directly to address entry.
+  - Previous `ensureUserProfileInitialized()` automatically re-seeded the demo user upon page refresh even after clicking logout.
+- **Resolution Implemented:**
+  1. *Lasse Pedersen Editorial Filmstrip:* Refactored `#homeHero` into `.lasse-gallery-container` and `.lasse-gallery-track` with `scroll-snap-type: x mandatory`, editorial overlays (`.lasse-card-overlay`, `.lasse-badge`), `#lasseSlideCounter`, `#lasseProgressFill`, and mousewheel/drag listeners in [app.js](app.js).
+  2. *TheMOZZARELLA 3D Coverflow Carousel:* Re-architected `#flashSaleSection` into `.mozzarella-3d-viewport` and `.mozzarella-3d-track` with mathematical circular distance calculations applying `translateZ(60px)` for active cards and negative offsets/rotations for flanking deals, touch swipe, and `#flash3dCounter` / `#flash3dPagination`.
+  3. *SultanKhanCQ 3D Depth & Bottom Shimmer:* Added `cubic-bezier(0.16, 1, 0.3, 1)` hover lift and `::after` expanding gradient line (`linear-gradient(90deg, transparent, #d4af37, #07261e, #d4af37, transparent)`) to `.product-card`.
+  4. *Forest Green CTA Theming:* Updated `.card-add-to-cart-btn`, `.btn-add-to-cart`, `#editorialAddToCartBtn`, `#quickAddToCartBtn`, and `.cart-added-modal .btn-primary` to `background: #07261e !important; color: #ffffff !important; border: 1px solid rgba(212, 175, 55, 0.45) !important;`.
+  5. *Instant Cart Popup Confirmation:* Integrated `#cartAddedModal` inside `quickAddToCart()` to dynamically display added product details with direct navigation to the cart drawer.
+  6. *Smart Address Redirection Checkout:* Updated `openCheckoutModal()` to inspect `state.userProfile.address`. Missing address triggers `#authModal` with `state.pendingCheckout = true`; existing address triggers `checkoutStep = 2` (UPI/COD payment options) immediately.
+  7. *Responsive Mobile Address Form:* Applied responsive styling to `#authModal .modal-container.auth-modal` on `@media (max-width: 600px)` with `width: calc(100% - 24px)`, 44px min input heights, and zero horizontal overflow.
+  8. *Responsive 3:4 Aspect-Ratio Images:* Replaced 124px height with `aspect-ratio: 3 / 4 !important; min-height: 190px !important; max-height: 250px !important;` in `@media (max-width: 768px)`, yielding 212px+ crystal-clear images on 375px screens.
+  9. *Persistent Logout & Redirection:* Updated `logoutAccount()` to set `localStorage.setItem('stylemart_logged_out', 'true')` and redirect to `index.html` from `profile.html`. Updated `ensureUserProfileInitialized()` in both `app.js` and [profile.html](profile.html) to respect the logged out state.
+- **Verification Evidence:**
+  Automated test suite [scripts/test-enhancements.js](scripts/test-enhancements.js) executed via Puppeteer headless browser:
+  - `[PASS] 1. Lasse Pedersen Gallery Track & Slides (Count: 3)`
+  - `[PASS] 1. Lasse Pedersen Counter & Progress (Counter: 01 / 03, Progress: 33.3333%)`
+  - `[PASS] 1. Lasse Pedersen Editorial Card Overlay`
+  - `[PASS] 2. TheMOZZARELLA 3D Viewport & Track (Cards: 13)`
+  - `[PASS] 2. TheMOZZARELLA 3D Center Card Transform (translateX(0px) translateZ(60px) rotateY(0deg) scale(1.05))`
+  - `[PASS] 2. TheMOZZARELLA 3D Counter & Pagination (Counter: 01 / 13)`
+  - `[PASS] 3. Add to Cart Button Forest Green Color (Header: rgb(7, 38, 30), Button: rgb(7, 38, 30))`
+  - `[PASS] 4. Add to Cart Popup Confirmation Modal (Added: "Biba Women Indigo Blue Pure Cotton Printed Anarkali Kurta Set with Dupatta")`
+  - `[PASS] 5A. Checkout without address opens Address Popup (AuthActive: true, Pending: true)`
+  - `[PASS] 5B. Checkout with address redirects directly to UPI/COD page (Step: 2, AddressBanner: true)`
+  - `[PASS] 6. User Logout removes user profile and sets stylemart_logged_out`
+  - `[PASS] 7. Mobile Product Card Image Height & Visibility (>180px) (Height: 212.65625px, Width: 169.5px, ObjectFit: cover)`
+  - `[PASS] 8. Mobile Address Form Responsiveness & Alignment (ModalWidth: 327px, FitsInViewport: true, BtnHeight: 46px)`
+  - `[PASS] 9. SultanKhanCQ 3D Card Depth & Transition (Transition: 0.28s cubic-bezier(0.16, 1, 0.3, 1))`
+  - `ALL 9 USER ENHANCEMENT TESTS PASSED PERFECTLY (100%)!`
+
 ---
 
 ## 8. CI/CD Pipeline & Automated Verification Evidence

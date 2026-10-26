@@ -5866,12 +5866,36 @@ function updateUserProfileUI() {
 let sliderInterval = null;
 
 function goToSlide(index) {
+  const track = document.getElementById('heroSliderTrack');
   const slides = document.querySelectorAll('#heroSliderTrack .slide');
   const dots = document.querySelectorAll('#sliderDots .dot');
+  const counter = document.getElementById('lasseSlideCounter');
+  const progressFill = document.getElementById('lasseProgressFill');
   if (!slides.length) return;
+
   const targetIndex = ((index % slides.length) + slides.length) % slides.length;
   state.activeSlide = targetIndex;
+
   slides.forEach((s, i) => s.classList.toggle('active', i === targetIndex));
+
+  // Lasse Pedersen smooth horizontal scroll to target slide
+  if (track) {
+    const slideTarget = slides[targetIndex];
+    if (slideTarget) {
+      const scrollPos = slideTarget.offsetLeft - track.offsetLeft;
+      track.scrollTo({ left: scrollPos, behavior: 'smooth' });
+    }
+  }
+
+  // Update Lasse Pedersen editorial progress bar & counter
+  if (counter) {
+    counter.textContent = `${String(targetIndex + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
+  }
+  if (progressFill) {
+    const pct = ((targetIndex + 1) / slides.length) * 100;
+    progressFill.style.width = `${pct}%`;
+  }
+
   dots.forEach((d, i) => {
     d.classList.toggle('active', i === targetIndex);
     if (i === targetIndex) d.setAttribute('aria-current', 'true');
@@ -5888,6 +5912,7 @@ function goToSlide(index) {
 window.goToSlide = goToSlide;
 
 function initHeroSlider() {
+  const track = document.getElementById('heroSliderTrack');
   const slides = document.querySelectorAll('#heroSliderTrack .slide');
   if (!slides.length) return;
 
@@ -5898,6 +5923,64 @@ function initHeroSlider() {
   document.getElementById('prevSlideBtn')?.addEventListener('click', () => {
     goToSlide(state.activeSlide - 1);
   });
+
+  // Lasse Pedersen Mousewheel Horizontal Scroll Support
+  if (track && !track.dataset.wheelBound) {
+    track.dataset.wheelBound = 'true';
+    track.addEventListener('wheel', (e) => {
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        e.preventDefault();
+        track.scrollLeft += e.deltaY;
+      }
+    }, { passive: false });
+
+    // Lasse Pedersen Click-and-Drag Horizontal Scrubbing
+    let isDown = false;
+    let startX = 0;
+    let scrollLeft = 0;
+
+    track.addEventListener('mousedown', (e) => {
+      if (e.target.closest('a, button')) return;
+      isDown = true;
+      track.classList.add('grabbing');
+      startX = e.pageX - track.offsetLeft;
+      scrollLeft = track.scrollLeft;
+    });
+
+    window.addEventListener('mouseup', () => {
+      if (isDown) {
+        isDown = false;
+        track.classList.remove('grabbing');
+        const slideWidth = slides[0]?.offsetWidth || track.clientWidth;
+        const nearestIndex = Math.round(track.scrollLeft / slideWidth);
+        goToSlide(nearestIndex);
+      }
+    });
+
+    track.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - track.offsetLeft;
+      const walk = (x - startX) * 1.4;
+      track.scrollLeft = scrollLeft - walk;
+    });
+
+    // Real-time progress bar update during manual track scrolling
+    track.addEventListener('scroll', () => {
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      if (maxScroll > 0) {
+        const progressFill = document.getElementById('lasseProgressFill');
+        if (progressFill) {
+          const ratio = (track.scrollLeft / maxScroll);
+          const pct = Math.min(100, Math.max(15, (ratio * 100)));
+          progressFill.style.width = `${pct}%`;
+        }
+      }
+    });
+  }
+
+  // Initial position
+  goToSlide(0);
 
   if (sliderInterval) clearInterval(sliderInterval);
   sliderInterval = setInterval(() => {
@@ -5936,11 +6019,11 @@ function initCountdownTimers() {
 }
 
 // --------------------------------------------------------------------------
-// 6. FLASH SALE, FASHION & CATALOG RENDER
+// 6. FLASH SALE LOGIC (TheMOZZARELLA 3D PARALLAX COVERFLOW CAROUSEL)
 // --------------------------------------------------------------------------
 let activeFlashIndex = 0;
-let isFlashTransitioning = false;
-let flashAutoScrollTimer = null;
+let flashDealsCache = [];
+let flash3dAutoTimer = null;
 
 function getFlashDealsProducts() {
   const FLASH_DEALS_ORDER = [
@@ -5973,118 +6056,182 @@ function getFlashDealsProducts() {
   });
 }
 
-let flashAutoScrollInterval = null;
-
 function renderFlashSaleProducts() {
   const container = document.getElementById('flashProductsGrid');
   if (!container) return;
 
-  const deals = getFlashDealsProducts();
-  if (!deals || deals.length === 0) {
+  flashDealsCache = getFlashDealsProducts();
+  if (!flashDealsCache || flashDealsCache.length === 0) {
     container.innerHTML = '<div style="padding: 24px; text-align: center; width: 100%; color: #64748b; font-size: 0.95rem;">No flash sale products currently available.</div>';
-    if (flashAutoScrollInterval) clearInterval(flashAutoScrollInterval);
+    if (flash3dAutoTimer) clearInterval(flash3dAutoTimer);
     return;
   }
 
-  // Render clean flash cards with dynamic JS pricing without special highlighting
-  container.innerHTML = deals.map(p => createProductCardHTML(p, true, false)).join('');
+  // Render clean flash cards
+  container.innerHTML = flashDealsCache.map(p => createProductCardHTML(p, true, false)).join('');
 
-  const wrapper = document.getElementById('flashCarouselContainer');
-  if (wrapper) wrapper.scrollLeft = 0;
+  // Add 3D card attributes & click-to-center listeners
+  const cards = container.querySelectorAll('.product-card');
+  cards.forEach((card, idx) => {
+    card.classList.add('flash-product-card');
+    card.setAttribute('data-flash-index', idx);
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('button, a')) return;
+      if (idx !== activeFlashIndex) {
+        e.preventDefault();
+        e.stopPropagation();
+        setFlashActiveCard(idx);
+      }
+    });
+  });
 
-  initFlashCardsScroll();
+  // Render 3D Pagination Dots
+  const pagination = document.getElementById('flash3dPagination');
+  if (pagination) {
+    pagination.innerHTML = flashDealsCache.map((_, idx) => `
+      <button type="button" class="flash-3d-dot ${idx === activeFlashIndex ? 'active' : ''}" onclick="setFlashActiveCard(${idx})" aria-label="Go to deal ${idx + 1}"></button>
+    `).join('');
+  }
+
+  // Initialize TheMOZZARELLA 3D Carousel controls & auto-play
+  initTheMozzarella3DControls();
+
+  // Apply initial 3D transforms
+  updateMozzarella3DPositions();
+}
+
+function setFlashActiveCard(index) {
+  if (!flashDealsCache.length) return;
+  activeFlashIndex = ((index % flashDealsCache.length) + flashDealsCache.length) % flashDealsCache.length;
+  updateMozzarella3DPositions();
 }
 
 function navigateFlashCards(direction) {
-  const wrapper = document.getElementById('flashCarouselContainer');
-  if (!wrapper) return;
-  const firstCard = wrapper.querySelector('.flash-product-card, .product-card');
-  const scrollAmount = firstCard ? (firstCard.offsetWidth + 14) * 2 : Math.max(220, Math.floor(wrapper.clientWidth * 0.75));
-  wrapper.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
-}
-
-function initFlashCardsScroll() {
-  const wrapper = document.getElementById('flashCarouselContainer');
-  if (!wrapper) return;
-
-  if (flashAutoScrollInterval) clearInterval(flashAutoScrollInterval);
-
-  flashAutoScrollInterval = setInterval(() => {
-    if (!wrapper) return;
-    const maxScroll = wrapper.scrollWidth - wrapper.clientWidth;
-    if (maxScroll <= 0) return;
-
-    const firstCard = wrapper.querySelector('.flash-product-card, .product-card');
-    const isMobile = window.innerWidth <= 768;
-    const step = isMobile ? wrapper.clientWidth : (firstCard ? (firstCard.offsetWidth + 14) : 210);
-
-    if (wrapper.scrollLeft + step >= maxScroll - 10) {
-      wrapper.scrollTo({ left: 0, behavior: 'smooth' });
-    } else {
-      wrapper.scrollBy({ left: step, behavior: 'smooth' });
-    }
-  }, 5000);
-
-  wrapper.onmouseenter = () => {
-    if (flashAutoScrollInterval) {
-      clearInterval(flashAutoScrollInterval);
-      flashAutoScrollInterval = null;
-    }
-  };
-  wrapper.onmouseleave = () => {
-    initFlashCardsScroll();
-  };
-  wrapper.ontouchstart = () => {
-    if (flashAutoScrollInterval) {
-      clearInterval(flashAutoScrollInterval);
-      flashAutoScrollInterval = null;
-    }
-  };
-
-  // Smooth desktop mouse drag-to-scroll
-  if (!wrapper.dataset.dragBound) {
-    wrapper.dataset.dragBound = 'true';
-    let isDown = false;
-    let startX = 0;
-    let scrollStart = 0;
-    let hasDragged = false;
-
-    wrapper.addEventListener('mousedown', (e) => {
-      if (e.target.closest('button')) return;
-      isDown = true;
-      hasDragged = false;
-      wrapper.classList.add('grabbing');
-      startX = e.pageX - wrapper.offsetLeft;
-      scrollStart = wrapper.scrollLeft;
-    });
-
-    window.addEventListener('mouseup', () => {
-      if (isDown) {
-        isDown = false;
-        wrapper.classList.remove('grabbing');
-      }
-    });
-
-    wrapper.addEventListener('mousemove', (e) => {
-      if (!isDown) return;
-      const x = e.pageX - wrapper.offsetLeft;
-      const walk = (x - startX) * 1.25;
-      if (Math.abs(walk) > 5) hasDragged = true;
-      wrapper.scrollLeft = scrollStart - walk;
-    });
-
-    wrapper.addEventListener('click', (e) => {
-      if (hasDragged) {
-        e.preventDefault();
-        e.stopPropagation();
-        hasDragged = false;
-      }
-    }, true);
-  }
+  if (!flashDealsCache.length) return;
+  setFlashActiveCard(activeFlashIndex + direction);
 }
 
 function navigateFlashCarousel(direction) {
   navigateFlashCards(direction);
+}
+
+function updateMozzarella3DPositions() {
+  const cards = document.querySelectorAll('.mozzarella-3d-track .flash-product-card');
+  const counter = document.getElementById('flash3dCounter');
+  const dots = document.querySelectorAll('.flash-3d-pagination .flash-3d-dot');
+  if (!cards.length) return;
+
+  const total = cards.length;
+  const isMobile = window.innerWidth <= 768;
+  const stepX = isMobile ? 120 : 215;
+
+  cards.forEach((card, idx) => {
+    let diff = idx - activeFlashIndex;
+    // Circular shortest path
+    if (diff > total / 2) diff -= total;
+    if (diff < -total / 2) diff += total;
+
+    const absDiff = Math.abs(diff);
+
+    if (diff === 0) {
+      card.style.transform = 'translateX(0px) translateZ(60px) rotateY(0deg) scale(1.05)';
+      card.style.zIndex = '12';
+      card.style.opacity = '1';
+      card.style.filter = 'none';
+      card.style.pointerEvents = 'auto';
+      card.style.boxShadow = '0 24px 48px -10px rgba(7, 38, 30, 0.32), 0 0 0 1.5px rgba(212, 175, 55, 0.45)';
+      card.classList.add('flash-3d-center');
+    } else if (absDiff === 1) {
+      const transX = diff * stepX;
+      const rotY = diff > 0 ? -26 : 26;
+      card.style.transform = `translateX(${transX}px) translateZ(-60px) rotateY(${rotY}deg) scale(0.88)`;
+      card.style.zIndex = '8';
+      card.style.opacity = '0.85';
+      card.style.filter = 'brightness(0.9)';
+      card.style.pointerEvents = 'auto';
+      card.style.boxShadow = '0 12px 24px -6px rgba(0, 0, 0, 0.2)';
+      card.classList.remove('flash-3d-center');
+    } else if (absDiff === 2) {
+      const transX = diff * (stepX * 1.6);
+      const rotY = diff > 0 ? -38 : 38;
+      card.style.transform = `translateX(${transX}px) translateZ(-160px) rotateY(${rotY}deg) scale(0.74)`;
+      card.style.zIndex = '5';
+      card.style.opacity = '0.55';
+      card.style.filter = 'brightness(0.78)';
+      card.style.pointerEvents = 'auto';
+      card.style.boxShadow = 'none';
+      card.classList.remove('flash-3d-center');
+    } else {
+      const transX = diff > 0 ? (stepX * 2.3) : (-stepX * 2.3);
+      const rotY = diff > 0 ? -48 : 48;
+      card.style.transform = `translateX(${transX}px) translateZ(-260px) rotateY(${rotY}deg) scale(0.6)`;
+      card.style.zIndex = '2';
+      card.style.opacity = '0';
+      card.style.filter = 'brightness(0.6)';
+      card.style.pointerEvents = 'none';
+      card.style.boxShadow = 'none';
+      card.classList.remove('flash-3d-center');
+    }
+  });
+
+  // Update Counter
+  if (counter) {
+    counter.textContent = `${String(activeFlashIndex + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
+  }
+
+  // Update Dots
+  dots.forEach((dot, idx) => {
+    dot.classList.toggle('active', idx === activeFlashIndex);
+  });
+}
+
+function initTheMozzarella3DControls() {
+  const viewport = document.getElementById('flashCarouselContainer');
+  if (!viewport || viewport.dataset.controlsBound) return;
+  viewport.dataset.controlsBound = 'true';
+
+  // Touch Swipe for mobile
+  let touchStartX = 0;
+  viewport.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+    if (flash3dAutoTimer) clearInterval(flash3dAutoTimer);
+  }, { passive: true });
+
+  viewport.addEventListener('touchend', (e) => {
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) navigateFlashCards(1);
+      else navigateFlashCards(-1);
+    }
+    startFlash3dAutoplay();
+  }, { passive: true });
+
+  // Mouse wheel scroll for desktop coverflow
+  viewport.addEventListener('wheel', (e) => {
+    if (Math.abs(e.deltaX) > 20 || Math.abs(e.deltaY) > 20) {
+      e.preventDefault();
+      if (e.deltaX > 20 || e.deltaY > 20) navigateFlashCards(1);
+      else navigateFlashCards(-1);
+    }
+  }, { passive: false });
+
+  viewport.addEventListener('mouseenter', () => {
+    if (flash3dAutoTimer) clearInterval(flash3dAutoTimer);
+  });
+
+  viewport.addEventListener('mouseleave', () => {
+    startFlash3dAutoplay();
+  });
+
+  startFlash3dAutoplay();
+}
+
+function startFlash3dAutoplay() {
+  if (flash3dAutoTimer) clearInterval(flash3dAutoTimer);
+  flash3dAutoTimer = setInterval(() => {
+    navigateFlashCards(1);
+  }, 4800);
 }
 
 function renderFashionProducts(category = 'all') {
@@ -8604,10 +8751,12 @@ function quickAddToCart(productId, sizeOverride = null) {
   }
 
   syncLocalStorage();
-  updateCartBadges();
+  updateBadgesUI();
   showToast(`Added "${product.title}" (${formatProductSize(product, targetSize)}) to Cart! 🛍️`, 'success');
   showCartAddedPopup(product, targetSize);
 }
+
+window.updateCartBadges = updateBadgesUI;
 
 function showCartAddedPopup(product, size) {
   let modal = document.getElementById('cartAddedModal');
@@ -9447,10 +9596,15 @@ function logoutAccount() {
   if (!window.confirm('Are you sure you want to log out of your StyleMart account?')) return;
   state.userProfile = null;
   localStorage.removeItem('stylemart_user');
+  localStorage.setItem('stylemart_logged_out', 'true');
   closeProfileModal();
   updateUserProfileUI();
-  showToast('You have been logged out.', 'success');
+  showToast('You have been logged out successfully.', 'success');
+  if (window.location.pathname.includes('profile.html')) {
+    window.location.href = 'index.html';
+  }
 }
+
 
 function configureProfileForm(mode, addressIndex = -1) {
   profileFormMode = mode;
@@ -9575,6 +9729,7 @@ function handleAuthSubmit(e) {
     }
     state.userProfile = normalizeUserProfile({ ...state.userProfile, addresses });
   }
+  localStorage.removeItem('stylemart_logged_out');
   syncLocalStorage();
   closeAuthModal();
   if (profileFormMode === 'login') {
@@ -9601,10 +9756,25 @@ function openCheckoutModal() {
     return;
   }
 
-  if (!state.userProfile) {
-    showToast('Please login and enter your delivery address first.', 'warning');
+  const hasAddress = Boolean(
+    state.userProfile &&
+    state.userProfile.address &&
+    state.userProfile.address.trim().length > 0
+  );
+
+  if (!hasAddress) {
+    const cartDrawer = document.getElementById('cartDrawer');
+    if (cartDrawer && cartDrawer.classList.contains('active')) {
+      toggleCartDrawer();
+    }
+    showToast('Please add your delivery address to proceed to checkout.', 'info');
     state.pendingCheckout = true;
-    openAuthModal();
+    if (state.userProfile) {
+      configureProfileForm('addAddress', -1);
+      document.getElementById('authModal')?.classList.add('active');
+    } else {
+      openAuthModal();
+    }
     return;
   }
 
@@ -9613,7 +9783,8 @@ function openCheckoutModal() {
     toggleCartDrawer();
   }
 
-  checkoutStep = 1;
+  // User has address: jump straight to payment method (UPI / COD)!
+  checkoutStep = 2;
   renderCheckoutStep();
   document.getElementById('checkoutModal').classList.add('active');
 }
@@ -9655,16 +9826,30 @@ function renderCheckoutStep() {
       </button>
     `;
   } else if (checkoutStep === 2) {
+    const addr = state.userProfile || { name: 'Customer', phone: '', address: 'Delivery Address', city: '', pincode: '' };
     container.innerHTML = `
-      <h3 style="margin-bottom:14px; font-size:1.2rem;">Payment Method</h3>
+      <div style="background:#f8fafc; border:1.5px solid #e2e8f0; border-radius:12px; padding:12px 14px; margin-bottom:14px; display:flex; justify-content:space-between; align-items:center;">
+        <div>
+          <div style="font-weight:750; font-size:0.92rem; color:#07261e;">📍 Delivering to: ${addr.name}</div>
+          <div style="font-size:0.84rem; color:#475569; margin-top:2px;">${addr.address}, ${addr.city} - <strong>${addr.pincode}</strong></div>
+        </div>
+        <button type="button" class="btn btn-sm btn-outline" style="font-size:0.78rem; padding:4px 10px;" onclick="closeCheckoutModal(); configureProfileForm('editAddress', 0); document.getElementById('authModal')?.classList.add('active');">Change</button>
+      </div>
+      <h3 style="margin-bottom:12px; font-size:1.15rem; color:#07261e;">Choose Payment Method</h3>
       <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:18px;">
-        <label class="quiz-option-card" style="display:flex; align-items:center; gap:10px; padding:12px; text-align:left;">
-          <input type="radio" name="payOpt" checked>
-          <div><strong>UPI / GPay / PhonePe</strong></div>
+        <label class="quiz-option-card selected" style="display:flex; align-items:center; gap:12px; padding:12px; text-align:left; border-color:#07261e; background:#f0fdf4;">
+          <input type="radio" name="payOpt" checked style="accent-color:#07261e;">
+          <div>
+            <strong style="color:#07261e;">UPI / Instant Pay (GPay / PhonePe / Paytm / QR)</strong>
+            <div style="font-size:0.8rem; color:#16a34a; font-weight:600;">⚡ Instant 1-click verification & zero delivery fee</div>
+          </div>
         </label>
-        <label class="quiz-option-card" style="display:flex; align-items:center; gap:10px; padding:12px; text-align:left;">
-          <input type="radio" name="payOpt">
-          <div><strong>Cash on Delivery (COD)</strong></div>
+        <label class="quiz-option-card" style="display:flex; align-items:center; gap:12px; padding:12px; text-align:left;">
+          <input type="radio" name="payOpt" style="accent-color:#07261e;">
+          <div>
+            <strong style="color:#1e293b;">Cash on Delivery (COD)</strong>
+            <div style="font-size:0.8rem; color:#64748b;">Pay via cash or UPI to delivery executive at doorstep</div>
+          </div>
         </label>
       </div>
       <button class="btn btn-primary btn-block btn-lg" onclick="placeOrderFinal()">Pay ₹${bill.finalPayable.toLocaleString('en-IN')} & Place Order</button>
@@ -9720,7 +9905,7 @@ function renderCheckoutStep() {
         <p style="color:var(--budget-green); font-weight:700; margin-top:6px;">Delivering to ${state.userProfile ? state.userProfile.name : 'Customer'} (${state.userProfile ? state.userProfile.city + ' - ' + state.userProfile.pincode : ''})</p>
         <p style="color:var(--text-muted); font-size:0.85rem; margin-top:2px;">Estimated Arrival: Tomorrow by 5:00 PM</p>
         <div style="display:flex; flex-direction:column; gap:10px; margin-top:20px;">
-          <a href="profile.html?tab=orders" class="btn btn-primary btn-block btn-lg" style="text-decoration:none; display:flex; align-items:center; justify-content:center; background:#ff2d87; border-color:#ff2d87;">View My Orders in Profile &rarr;</a>
+          <a href="profile.html?tab=orders" class="btn btn-primary btn-block btn-lg" style="text-decoration:none; display:flex; align-items:center; justify-content:center; background:#07261e; border-color:#07261e;">View My Orders in Profile &rarr;</a>
           <button class="btn btn-outline btn-block btn-lg" onclick="closeCheckoutModal(); scrollToCatalog();">Continue Shopping &rarr;</button>
         </div>
       </div>
