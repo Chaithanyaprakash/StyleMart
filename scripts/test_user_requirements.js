@@ -1,4 +1,5 @@
 const puppeteer = require('puppeteer');
+const fs = require('fs');
 const path = require('path');
 
 (async () => {
@@ -9,6 +10,29 @@ const path = require('path');
 
   await page.goto('file:///' + path.resolve(__dirname, '../index.html').replace(/\\/g, '/'), { waitUntil: 'domcontentloaded' });
   await new Promise(r => setTimeout(r, 1500));
+
+  console.log('--- TEST 0: FAVICON VERIFICATION ---');
+  const faviconCheck = await page.evaluate(() => {
+    const icon32 = document.querySelector('link[rel="icon"][sizes="32x32"]');
+    const icon16 = document.querySelector('link[rel="icon"][sizes="16x16"]');
+    const appleIcon = document.querySelector('link[rel="apple-touch-icon"]');
+    const shortcutIcon = document.querySelector('link[rel="shortcut icon"]');
+    return {
+      icon32: icon32 ? icon32.getAttribute('href') : null,
+      icon16: icon16 ? icon16.getAttribute('href') : null,
+      appleIcon: appleIcon ? appleIcon.getAttribute('href') : null,
+      shortcutIcon: shortcutIcon ? shortcutIcon.getAttribute('href') : null
+    };
+  });
+  console.log('Favicon tags:', faviconCheck);
+  const icoExists = fs.existsSync(path.resolve(__dirname, '../favicon.ico'));
+  const png32Exists = fs.existsSync(path.resolve(__dirname, '../assets/images/favicon-32x32.png'));
+  if (!faviconCheck.icon32 || !faviconCheck.shortcutIcon || !icoExists || !png32Exists) {
+    console.error('FAIL: Favicon tags or files missing!');
+    passed = false;
+  } else {
+    console.log('PASS: Official cameo logo favicon files and link tags verified successfully.');
+  }
 
   console.log('--- TEST 1: LOGO VERIFICATION ---');
   const logoSrc = await page.evaluate(() => {
@@ -23,15 +47,15 @@ const path = require('path');
     console.log('PASS: New gold cameo logo is present in the header.');
   }
 
-  console.log('--- TEST 2: FLASH DEALS DOTS & HORIZONTAL SCROLLBAR ---');
+  console.log('--- TEST 2: FLASH DEALS - ZERO COUNTER, ZERO DOTS & ZERO SCROLLBAR ---');
   const flashCheck = await page.evaluate(() => {
     const dots = document.querySelectorAll('.flash-3d-dot, #flash3dPagination .flash-3d-dot');
+    const counter = document.getElementById('flash3dCounter');
     const container = document.getElementById('flashCarouselContainer');
-    const grid = document.getElementById('flashProductsGrid');
     return {
       dotsCount: dots.length,
-      containerScrollWidth: container ? container.scrollWidth : 0,
-      containerClientWidth: container ? container.clientWidth : 0,
+      counterVisible: !!counter && window.getComputedStyle(counter).display !== 'none',
+      containerHeight: container ? container.offsetHeight : 0,
       overflowX: container ? window.getComputedStyle(container).overflowX : ''
     };
   });
@@ -42,11 +66,23 @@ const path = require('path');
   } else {
     console.log('PASS: Dots are completely removed.');
   }
+  if (flashCheck.counterVisible) {
+    console.error('FAIL: Total products counter number is still visible!');
+    passed = false;
+  } else {
+    console.log('PASS: Total products counter number is completely removed from flash deals.');
+  }
   if (flashCheck.overflowX !== 'hidden') {
     console.error('FAIL: Flash container does not have overflowX: hidden!');
     passed = false;
   } else {
     console.log('PASS: Horizontal scrollbar is completely eliminated with overflow-x: hidden.');
+  }
+  if (flashCheck.containerHeight > 350) {
+    console.error(`FAIL: Flash container height (${flashCheck.containerHeight}px) exceeds compact threshold!`);
+    passed = false;
+  } else {
+    console.log(`PASS: Flash deals whitespace reduced (container height: ${flashCheck.containerHeight}px).`);
   }
 
   console.log('--- TEST 3: FLASH DEALS 3D PARALLAX COVERFLOW & PREV/NEXT ---');
@@ -117,7 +153,6 @@ const path = require('path');
 
   const mobileCheck = await page.evaluate(() => {
     const container = document.getElementById('flashCarouselContainer');
-    const footer = document.querySelector('.main-footer');
     const bodyScrollWidth = document.body.scrollWidth;
     const bodyClientWidth = document.documentElement.clientWidth;
 
@@ -132,12 +167,12 @@ const path = require('path');
   if (mobileCheck.hasHorizontalPageScroll) {
     console.error('FAIL: Page has horizontal overflow scroll on mobile!');
     passed = false;
+  } else if (mobileCheck.containerHeight > 310) {
+    console.error(`FAIL: Mobile flash container height (${mobileCheck.containerHeight}px) exceeds 310px!`);
+    passed = false;
   } else {
-    console.log('PASS: Zero horizontal page overflow on mobile view.');
+    console.log(`PASS: Zero horizontal page overflow on mobile view, mobile flash container height: ${mobileCheck.containerHeight}px.`);
   }
-
-  await page.screenshot({ path: path.resolve(__dirname, '../screenshot_mobile.png') });
-  console.log('Saved screenshot_mobile.png');
 
   await browser.close();
 

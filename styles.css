@@ -14917,7 +14917,7 @@ body.category-page .products-main {
 .flash-sale-section {
   position: relative !important;
   width: 100% !important;
-  margin: 10px 0 18px !important;
+  margin: 6px 0 12px !important;
   padding: 0 !important;
   overflow: hidden !important;
 }
@@ -14942,7 +14942,7 @@ body.category-page .products-main {
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
-  padding: 10px 20px !important;
+  padding: 8px 16px !important;
   background: #07261e !important;
   color: #ffffff !important;
   border-radius: 14px 14px 0 0 !important;
@@ -14953,17 +14953,17 @@ body.category-page .products-main {
 .flash-controls-wrap {
   display: flex !important;
   align-items: center !important;
-  gap: 12px !important;
+  gap: 8px !important;
 }
 
 .flash-nav-btn {
-  width: 34px !important;
-  height: 34px !important;
+  width: 32px !important;
+  height: 32px !important;
   border-radius: 50% !important;
   background: rgba(255, 255, 255, 0.12) !important;
   border: 1.5px solid rgba(212, 175, 55, 0.6) !important;
   color: #d4af37 !important;
-  font-size: 1.5rem !important;
+  font-size: 1.4rem !important;
   font-weight: 700 !important;
   display: flex !important;
   align-items: center !important;
@@ -14979,17 +14979,9 @@ body.category-page .products-main {
   color: #07261e !important;
 }
 
-.flash-3d-counter {
-  font-family: 'Cinzel', monospace, serif !important;
-  font-size: 0.95rem !important;
-  font-weight: 800 !important;
-  color: #d4af37 !important;
-  letter-spacing: 0.08em !important;
-  min-width: 60px !important;
-  text-align: center !important;
-}
-
-/* Remove dots completely as requested */
+/* Remove total products numbers and dots as requested */
+.flash-3d-counter,
+#flash3dCounter,
 .flash-3d-pagination,
 .flash-3d-dot {
   display: none !important;
@@ -15009,9 +15001,9 @@ body.category-page .products-main {
   -ms-overflow-style: none !important;
   position: relative !important;
   width: 100% !important;
-  height: 385px !important;
-  min-height: 385px !important;
-  max-height: 385px !important;
+  height: 345px !important;
+  min-height: 345px !important;
+  max-height: 345px !important;
   padding: 0 !important;
   margin: 0 !important;
   display: flex !important;
@@ -15051,7 +15043,7 @@ body.category-page .products-main {
   height: 0 !important;
 }
 
-/* Centered 3D Card with translate(-50%, -50%) */
+/* Centered 3D Card with translate(-50%, -50%) - Compact with reduced whitespace */
 #flashProductsGrid.mozzarella-3d-track .product-card,
 #flashProductsGrid .flash-product-card,
 .mozzarella-3d-track .product-card,
@@ -15060,10 +15052,10 @@ body.category-page .products-main {
   top: 50% !important;
   left: 50% !important;
   margin: 0 !important;
-  width: 216px !important;
-  max-width: 216px !important;
-  height: 330px !important;
-  max-height: 330px !important;
+  width: 206px !important;
+  max-width: 206px !important;
+  height: 308px !important;
+  max-height: 308px !important;
   display: flex !important;
   flex-direction: column !important;
   justify-content: space-between !important;
@@ -15083,13 +15075,13 @@ body.category-page .products-main {
 #flashProductsGrid .product-card .product-card-img-wrap,
 #flashProductsGrid .flash-product-card .product-card-img-wrap,
 .mozzarella-3d-track .product-card .product-card-img-wrap {
-  height: 180px !important;
-  min-height: 180px !important;
-  max-height: 180px !important;
+  height: 165px !important;
+  min-height: 165px !important;
+  max-height: 165px !important;
   border-radius: 10px !important;
   overflow: hidden !important;
   position: relative !important;
-  margin: 0 0 4px 0 !important;
+  margin: 0 0 3px 0 !important;
   aspect-ratio: auto !important;
 }
 
@@ -15102,7 +15094,7 @@ body.category-page .products-main {
 
 #flashProductsGrid .product-card .product-card-info,
 .mozzarella-3d-track .product-card .product-card-info {
-  padding: 6px 10px 10px !important;
+  padding: 5px 8px 8px !important;
   display: flex !important;
   flex-direction: column !important;
   flex: 1 !important;
@@ -15110,30 +15102,44 @@ body.category-page .products-main {
 
 #flashProductsGrid .product-card .card-add-to-cart-btn,
 .mozzarella-3d-track .product-card .card-add-to-cart-btn {
-  padding: 7px 12px !important;
-  font-size: 0.82rem !important;
-  min-height: 34px !important;
-  margin-top: 6px !important;
+  padding: 6px 10px !important;
+  font-size: 0.8rem !important;
+  min-height: 32px !important;
+  margin-top: 4px !important;
 }
 
 @media (max-width: 768px) {
+  #flashCarouselContainer,
   .flash-carousel-container,
   .mozzarella-3d-viewport {
-    height: 335px !important;
-    min-height: 335px !important;
-    max-height: 335px !important;
-  }
-  .mozzarella-3d-track .product-card,
-  .mozzarella-3d-track .flash-product-card {
-    width: 185px !important;
-    max-width: 185px !important;
     height: 295px !important;
+    min-height: 295px !important;
     max-height: 295px !important;
   }
+  #flashProductsGrid.mozzarella-3d-track .product-card,
+  #flashProductsGrid .flash-product-card,
+  .mozzarella-3d-track .product-card,
+  .mozzarella-3d-track .flash-product-card {
+    width: 172px !important;
+    max-width: 172px !important;
+    height: 265px !important;
+    max-height: 265px !important;
+  }
+  #flashProductsGrid .product-card .product-card-img-wrap,
+  #flashProductsGrid .flash-product-card .product-card-img-wrap,
   .mozzarella-3d-track .product-card .product-card-img-wrap {
-    height: 160px !important;
-    min-height: 160px !important;
-    max-height: 160px !important;
+    height: 140px !important;
+    min-height: 140px !important;
+    max-height: 140px !important;
+  }
+  #flashProductsGrid .product-card .card-add-to-cart-btn,
+  .mozzarella-3d-track .product-card .card-add-to-cart-btn {
+    min-height: 28px !important;
+    padding: 4px 8px !important;
+    font-size: 0.76rem !important;
+  }
+  .flash-header-strip {
+    padding: 6px 12px !important;
   }
 }
 

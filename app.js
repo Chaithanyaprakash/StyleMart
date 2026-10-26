@@ -6114,12 +6114,11 @@ function navigateFlashCarousel(direction) {
 
 function updateMozzarella3DPositions() {
   const cards = document.querySelectorAll('.mozzarella-3d-track .flash-product-card');
-  const counter = document.getElementById('flash3dCounter');
   if (!cards.length) return;
 
   const total = cards.length;
   const isMobile = window.innerWidth <= 768;
-  const stepX = isMobile ? 125 : 220;
+  const stepX = isMobile ? 100 : 185;
 
   cards.forEach((card, idx) => {
     let diff = idx - activeFlashIndex;
@@ -6148,7 +6147,7 @@ function updateMozzarella3DPositions() {
       card.style.boxShadow = '0 12px 24px -6px rgba(0, 0, 0, 0.2)';
       card.classList.remove('flash-3d-center');
     } else if (absDiff === 2) {
-      const transX = diff * (stepX * 1.6);
+      const transX = diff * (stepX * 1.55);
       const rotY = diff > 0 ? -36 : 36;
       card.style.transform = `translate(calc(-50% + ${transX}px), -50%) translateZ(-130px) rotateY(${rotY}deg) scale(0.72)`;
       card.style.zIndex = '5';
@@ -6158,7 +6157,7 @@ function updateMozzarella3DPositions() {
       card.style.boxShadow = 'none';
       card.classList.remove('flash-3d-center');
     } else {
-      const transX = diff > 0 ? (stepX * 2.2) : (-stepX * 2.2);
+      const transX = diff > 0 ? (stepX * 2.1) : (-stepX * 2.1);
       const rotY = diff > 0 ? -45 : 45;
       card.style.transform = `translate(calc(-50% + ${transX}px), -50%) translateZ(-220px) rotateY(${rotY}deg) scale(0.6)`;
       card.style.zIndex = '2';
@@ -6169,11 +6168,6 @@ function updateMozzarella3DPositions() {
       card.classList.remove('flash-3d-center');
     }
   });
-
-  // Update Counter
-  if (counter) {
-    counter.textContent = `${String(activeFlashIndex + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
-  }
 }
 
 function initTheMozzarella3DControls() {

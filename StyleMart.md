@@ -545,6 +545,33 @@ Mobile UI element checks: {
   - Ran `node scripts/test_user_requirements.js`: Logo, flash coverflow, zero dots, zero scrollbar, Avoloch 3D tilt, and mobile responsiveness verified with 100% success.
   - Ran `node scripts/validate-html.js`: All 5 HTML files passed structure, DOCTYPE, and local asset validation.
 
+### Bug 20: Official Cameo Brand Favicon Suite, Flash Deals Whitespace Reduction & Total Product Numbers Removal
+- **Reported Symptom & User Requests:**
+  1. *Logo as Favicon:* Render and install the official gold cameo woman logo as favicon across all store pages and root paths.
+  2. *Reduce Whitespaces for Flash Deals:* Tighten vertical and horizontal whitespaces around the flash deals section and inside the 3D coverflow carousel stage on both desktop and mobile viewports.
+  3. *Remove Total Products Numbers at Flash Deals:* Remove the counter (`01 / 13`) displaying current and total product numbers from the flash deals header strip, keeping only clean gold navigation controls.
+- **Root Cause Analysis:**
+  - *Favicon Disconnect:* Existing favicon files were from legacy placeholder assets, and [profile.html](profile.html) lacked `<link rel="icon">` tags entirely.
+  - *Excessive Carousel Canvas:* Viewport was fixed at 385px with 220px horizontal step displacement, leaving loose margins above and below cards and large gaps between adjacent coverflow items.
+  - *Counter Redundancy:* The `#flash3dCounter` element added unnecessary visual noise to the minimalist luxury aesthetic requested by the user.
+- **Resolution Implemented:**
+  1. *Official Cameo Favicon Suite:*
+     - Generated multi-resolution, high-definition cameo favicons using Puppeteer HTML5 Canvas: [favicon.ico](favicon.ico), [assets/images/favicon-32x32.png](assets/images/favicon-32x32.png), [assets/images/favicon-16x16.png](assets/images/favicon-16x16.png), [assets/images/favicon-48x48.png](assets/images/favicon-48x48.png), and [assets/images/apple-touch-icon.png](assets/images/apple-touch-icon.png).
+     - Linked updated favicon tags across all 5 HTML files ([index.html](index.html), [category.html](category.html), [product.html](product.html), [profile.html](profile.html), and [about.html](about.html)) with cache-busting version strings.
+  2. *Flash Deals Whitespace Reduction:*
+     - On desktop, reduced `.mozzarella-3d-viewport` height from 385px to 345px, calibrated card height to 308px (width 206px, image wrap 165px).
+     - On mobile (`max-width: 768px`), reduced `.mozzarella-3d-viewport` height to 295px and card height to 265px (width 172px, image wrap 140px).
+     - Tightened `stepX` coverflow spacing in [app.js](app.js) to 185px (desktop) and 100px (mobile) for a dense, high-end Apple coverflow perspective.
+     - Reduced `.flash-sale-section` margins to `6px 0 12px` and `.flash-header-strip` padding to `8px 16px`.
+  3. *Removal of Total Product Numbers Counter:*
+     - Removed `<div class="flash-3d-counter" id="flash3dCounter">` from [index.html](index.html).
+     - Added `.flash-3d-counter, #flash3dCounter { display: none !important; }` in [styles.css](styles.css).
+     - Removed counter text assignment from `updateMozzarella3DPositions()` in [app.js](app.js).
+- **Automated Verification:**
+  - `node scripts/test_user_requirements.js`: Favicon presence, 0 counter, 0 dots, 0 scrollbar, 345px desktop height, 295px mobile height, Avoloch 3D card tilt verified with 100% success.
+  - `node scripts/test-enhancements.js`: All 9 core features pass 100%.
+  - `node scripts/validate-html.js`: All 5 HTML files pass validation.
+
 ### GitHub Actions Workflow Configuration ([StyleMart.yml](StyleMart.yml))
 
 ```yaml
