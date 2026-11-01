@@ -5862,40 +5862,19 @@ function updateUserProfileUI() {
 }
 
 // --------------------------------------------------------------------------
-// 4. HERO SLIDER LOGIC
+// 4. HERO SLIDER LOGIC (RESPONSIVE PREVIOUS VERSION)
 // --------------------------------------------------------------------------
 let sliderInterval = null;
 
 function goToSlide(index) {
-  const track = document.getElementById('heroSliderTrack');
   const slides = document.querySelectorAll('#heroSliderTrack .slide');
   const dots = document.querySelectorAll('#sliderDots .dot');
-  const counter = document.getElementById('lasseSlideCounter');
-  const progressFill = document.getElementById('lasseProgressFill');
   if (!slides.length) return;
 
   const targetIndex = ((index % slides.length) + slides.length) % slides.length;
   state.activeSlide = targetIndex;
 
   slides.forEach((s, i) => s.classList.toggle('active', i === targetIndex));
-
-  // Lasse Pedersen smooth horizontal scroll to target slide
-  if (track) {
-    const slideTarget = slides[targetIndex];
-    if (slideTarget) {
-      const scrollPos = slideTarget.offsetLeft - track.offsetLeft;
-      track.scrollTo({ left: scrollPos, behavior: 'smooth' });
-    }
-  }
-
-  // Update Lasse Pedersen editorial progress bar & counter
-  if (counter) {
-    counter.textContent = `${String(targetIndex + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
-  }
-  if (progressFill) {
-    const pct = ((targetIndex + 1) / slides.length) * 100;
-    progressFill.style.width = `${pct}%`;
-  }
 
   dots.forEach((d, i) => {
     d.classList.toggle('active', i === targetIndex);
@@ -5913,7 +5892,6 @@ function goToSlide(index) {
 window.goToSlide = goToSlide;
 
 function initHeroSlider() {
-  const track = document.getElementById('heroSliderTrack');
   const slides = document.querySelectorAll('#heroSliderTrack .slide');
   if (!slides.length) return;
 
@@ -5925,63 +5903,23 @@ function initHeroSlider() {
     goToSlide(state.activeSlide - 1);
   });
 
-  // Lasse Pedersen Mousewheel Horizontal Scroll Support
-  if (track && !track.dataset.wheelBound) {
-    track.dataset.wheelBound = 'true';
-    track.addEventListener('wheel', (e) => {
-      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-        e.preventDefault();
-        track.scrollLeft += e.deltaY;
+  // Touch Swipe for mobile view responsiveness
+  const slider = document.querySelector('#homeHero .slider-container');
+  if (slider && !slider.dataset.touchBound) {
+    slider.dataset.touchBound = 'true';
+    let touchStartX = 0;
+    slider.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+    slider.addEventListener('touchend', (e) => {
+      const touchEndX = e.changedTouches[0].clientX;
+      const diffX = touchStartX - touchEndX;
+      if (Math.abs(diffX) > 40) {
+        if (diffX > 0) goToSlide(state.activeSlide + 1);
+        else goToSlide(state.activeSlide - 1);
       }
-    }, { passive: false });
-
-    // Lasse Pedersen Click-and-Drag Horizontal Scrubbing
-    let isDown = false;
-    let startX = 0;
-    let scrollLeft = 0;
-
-    track.addEventListener('mousedown', (e) => {
-      if (e.target.closest('a, button')) return;
-      isDown = true;
-      track.classList.add('grabbing');
-      startX = e.pageX - track.offsetLeft;
-      scrollLeft = track.scrollLeft;
-    });
-
-    window.addEventListener('mouseup', () => {
-      if (isDown) {
-        isDown = false;
-        track.classList.remove('grabbing');
-        const slideWidth = slides[0]?.offsetWidth || track.clientWidth;
-        const nearestIndex = Math.round(track.scrollLeft / slideWidth);
-        goToSlide(nearestIndex);
-      }
-    });
-
-    track.addEventListener('mousemove', (e) => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - track.offsetLeft;
-      const walk = (x - startX) * 1.4;
-      track.scrollLeft = scrollLeft - walk;
-    });
-
-    // Real-time progress bar update during manual track scrolling
-    track.addEventListener('scroll', () => {
-      const maxScroll = track.scrollWidth - track.clientWidth;
-      if (maxScroll > 0) {
-        const progressFill = document.getElementById('lasseProgressFill');
-        if (progressFill) {
-          const ratio = (track.scrollLeft / maxScroll);
-          const pct = Math.min(100, Math.max(15, (ratio * 100)));
-          progressFill.style.width = `${pct}%`;
-        }
-      }
-    });
+    }, { passive: true });
   }
-
-  // Initial position
-  goToSlide(0);
 
   if (sliderInterval) clearInterval(sliderInterval);
   sliderInterval = setInterval(() => {
@@ -6020,11 +5958,9 @@ function initCountdownTimers() {
 }
 
 // --------------------------------------------------------------------------
-// 6. FLASH SALE LOGIC (TheMOZZARELLA 3D PARALLAX COVERFLOW CAROUSEL)
+// 6. FLASH SALE LOGIC (PREVIOUS CLEAN RESPONSIVE CAROUSEL)
 // --------------------------------------------------------------------------
-let activeFlashIndex = 0;
-let flashDealsCache = [];
-let flash3dAutoTimer = null;
+let flashAutoScrollInterval = null;
 
 function getFlashDealsProducts() {
   const FLASH_DEALS_ORDER = [
@@ -6061,170 +5997,75 @@ function renderFlashSaleProducts() {
   const container = document.getElementById('flashProductsGrid');
   if (!container) return;
 
-  flashDealsCache = getFlashDealsProducts();
-  if (!flashDealsCache || flashDealsCache.length === 0) {
+  const deals = getFlashDealsProducts();
+  if (!deals || deals.length === 0) {
     container.innerHTML = '<div style="padding: 24px; text-align: center; width: 100%; color: #64748b; font-size: 0.95rem;">No flash sale products currently available.</div>';
-    if (flash3dAutoTimer) clearInterval(flash3dAutoTimer);
+    if (flashAutoScrollInterval) clearInterval(flashAutoScrollInterval);
     return;
   }
 
   // Render clean flash cards
-  container.innerHTML = flashDealsCache.map(p => createProductCardHTML(p, true, false)).join('');
+  container.innerHTML = deals.map(p => createProductCardHTML(p, true, false)).join('');
 
-  // Add 3D card attributes & click-to-center listeners
-  const cards = container.querySelectorAll('.product-card');
-  cards.forEach((card, idx) => {
-    card.classList.add('flash-product-card');
-    card.setAttribute('data-flash-index', idx);
-    card.addEventListener('click', (e) => {
-      if (e.target.closest('button, a')) return;
-      if (idx !== activeFlashIndex) {
-        e.preventDefault();
-        e.stopPropagation();
-        setFlashActiveCard(idx);
-      }
-    });
-  });
+  const wrapper = document.getElementById('flashCarouselContainer');
+  if (wrapper) wrapper.scrollLeft = 0;
 
-  // Remove dots reference
-  const pagination = document.getElementById('flash3dPagination');
-  if (pagination) pagination.innerHTML = '';
-
-  // Initialize TheMOZZARELLA 3D Carousel controls & auto-play
-  initTheMozzarella3DControls();
-
-  // Apply initial 3D transforms
-  updateMozzarella3DPositions();
-}
-
-function setFlashActiveCard(index) {
-  if (!flashDealsCache.length) return;
-  activeFlashIndex = ((index % flashDealsCache.length) + flashDealsCache.length) % flashDealsCache.length;
-  updateMozzarella3DPositions();
+  initFlashCardsScroll();
 }
 
 function navigateFlashCards(direction) {
-  if (!flashDealsCache.length) return;
-  setFlashActiveCard(activeFlashIndex + direction);
+  const wrapper = document.getElementById('flashCarouselContainer');
+  if (!wrapper) return;
+  const firstCard = wrapper.querySelector('.flash-product-card, .product-card');
+  const scrollAmount = firstCard ? (firstCard.offsetWidth + 14) * 2 : Math.max(220, Math.floor(wrapper.clientWidth * 0.75));
+  wrapper.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
 }
 
 function navigateFlashCarousel(direction) {
   navigateFlashCards(direction);
 }
 
-function updateMozzarella3DPositions() {
-  const cards = document.querySelectorAll('.mozzarella-3d-track .flash-product-card');
-  if (!cards.length) return;
+function initFlashCardsScroll() {
+  const wrapper = document.getElementById('flashCarouselContainer');
+  if (!wrapper) return;
 
-  const total = cards.length;
-  const isMobile = window.innerWidth <= 768;
-  const stepX = isMobile ? 100 : 185;
+  if (flashAutoScrollInterval) clearInterval(flashAutoScrollInterval);
 
-  cards.forEach((card, idx) => {
-    let diff = idx - activeFlashIndex;
-    // Circular shortest path
-    if (diff > total / 2) diff -= total;
-    if (diff < -total / 2) diff += total;
+  flashAutoScrollInterval = setInterval(() => {
+    if (!wrapper) return;
+    const maxScroll = wrapper.scrollWidth - wrapper.clientWidth;
+    if (maxScroll <= 0) return;
 
-    const absDiff = Math.abs(diff);
+    const firstCard = wrapper.querySelector('.flash-product-card, .product-card');
+    const isMobile = window.innerWidth <= 768;
+    const step = isMobile ? wrapper.clientWidth : (firstCard ? (firstCard.offsetWidth + 14) : 210);
 
-    if (diff === 0) {
-      card.style.transform = 'translate(-50%, -50%) translateZ(60px) rotateY(0deg) scale(1.03)';
-      card.style.zIndex = '12';
-      card.style.opacity = '1';
-      card.style.filter = 'none';
-      card.style.pointerEvents = 'auto';
-      card.style.boxShadow = '0 20px 42px -8px rgba(7, 38, 30, 0.35), 0 0 0 1.5px rgba(212, 175, 55, 0.45)';
-      card.classList.add('flash-3d-center');
-    } else if (absDiff === 1) {
-      const transX = diff * stepX;
-      const rotY = diff > 0 ? -24 : 24;
-      card.style.transform = `translate(calc(-50% + ${transX}px), -50%) translateZ(-50px) rotateY(${rotY}deg) scale(0.86)`;
-      card.style.zIndex = '8';
-      card.style.opacity = '0.88';
-      card.style.filter = 'brightness(0.92)';
-      card.style.pointerEvents = 'auto';
-      card.style.boxShadow = '0 12px 24px -6px rgba(0, 0, 0, 0.2)';
-      card.classList.remove('flash-3d-center');
-    } else if (absDiff === 2) {
-      const transX = diff * (stepX * 1.55);
-      const rotY = diff > 0 ? -36 : 36;
-      card.style.transform = `translate(calc(-50% + ${transX}px), -50%) translateZ(-130px) rotateY(${rotY}deg) scale(0.72)`;
-      card.style.zIndex = '5';
-      card.style.opacity = '0.6';
-      card.style.filter = 'brightness(0.8)';
-      card.style.pointerEvents = 'auto';
-      card.style.boxShadow = 'none';
-      card.classList.remove('flash-3d-center');
+    if (wrapper.scrollLeft + step >= maxScroll - 10) {
+      wrapper.scrollTo({ left: 0, behavior: 'smooth' });
     } else {
-      const transX = diff > 0 ? (stepX * 2.1) : (-stepX * 2.1);
-      const rotY = diff > 0 ? -45 : 45;
-      card.style.transform = `translate(calc(-50% + ${transX}px), -50%) translateZ(-220px) rotateY(${rotY}deg) scale(0.6)`;
-      card.style.zIndex = '2';
-      card.style.opacity = '0';
-      card.style.filter = 'brightness(0.6)';
-      card.style.pointerEvents = 'none';
-      card.style.boxShadow = 'none';
-      card.classList.remove('flash-3d-center');
+      wrapper.scrollBy({ left: step, behavior: 'smooth' });
     }
-  });
+  }, 3800);
 
-  // Update Counter (matching mockup XX / 13)
-  const counter = document.getElementById('flash3dCounter');
-  if (counter) {
-    counter.textContent = `${String(activeFlashIndex + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
+  // Pause on hover / touch
+  if (!wrapper.dataset.scrollListenersBound) {
+    wrapper.dataset.scrollListenersBound = 'true';
+    wrapper.addEventListener('mouseenter', () => {
+      if (flashAutoScrollInterval) clearInterval(flashAutoScrollInterval);
+    });
+    wrapper.addEventListener('mouseleave', () => {
+      initFlashCardsScroll();
+    });
+    wrapper.addEventListener('touchstart', () => {
+      if (flashAutoScrollInterval) clearInterval(flashAutoScrollInterval);
+    }, { passive: true });
+    wrapper.addEventListener('touchend', () => {
+      setTimeout(initFlashCardsScroll, 2000);
+    }, { passive: true });
   }
 }
 
-function initTheMozzarella3DControls() {
-  const viewport = document.getElementById('flashCarouselContainer');
-  if (!viewport || viewport.dataset.controlsBound) return;
-  viewport.dataset.controlsBound = 'true';
-
-  // Touch Swipe for mobile
-  let touchStartX = 0;
-  viewport.addEventListener('touchstart', (e) => {
-    touchStartX = e.touches[0].clientX;
-    if (flash3dAutoTimer) clearInterval(flash3dAutoTimer);
-  }, { passive: true });
-
-  viewport.addEventListener('touchend', (e) => {
-    const touchEndX = e.changedTouches[0].clientX;
-    const diff = touchStartX - touchEndX;
-    if (Math.abs(diff) > 40) {
-      if (diff > 0) navigateFlashCards(1);
-      else navigateFlashCards(-1);
-    }
-    startFlash3dAutoplay();
-  }, { passive: true });
-
-  // Mouse wheel scroll for desktop coverflow
-  viewport.addEventListener('wheel', (e) => {
-    if (Math.abs(e.deltaX) > 20 || Math.abs(e.deltaY) > 20) {
-      e.preventDefault();
-      if (e.deltaX > 20 || e.deltaY > 20) navigateFlashCards(1);
-      else navigateFlashCards(-1);
-    }
-  }, { passive: false });
-
-  viewport.addEventListener('mouseenter', () => {
-    if (flash3dAutoTimer) clearInterval(flash3dAutoTimer);
-  });
-
-  viewport.addEventListener('mouseleave', () => {
-    startFlash3dAutoplay();
-  });
-
-  startFlash3dAutoplay();
-}
-
-function startFlash3dAutoplay() {
-  if (flash3dAutoTimer) clearInterval(flash3dAutoTimer);
-  flash3dAutoTimer = setInterval(() => {
-    navigateFlashCards(1);
-  }, 4800);
-}
-
+// --------------------------------------------------------------------------
 function renderFashionProducts(category = 'all') {
   const container = document.getElementById('fashionProductsGrid');
   if (!container) return;

@@ -14610,192 +14610,186 @@ body.category-page .products-main {
 }
 
 /* ==========================================================================
-   ENHANCEMENT SUITE 2026: LASSE PEDERSEN, SULTANKHANCQ, THEMOZZARELLA,
-   FOREST GREEN BUTTONS, RESPONSIVE ADDRESS FORM & PRODUCT CARD CLARITY
+   STYLEMART LUXURY SUITE: LOGO ANIMATION, AVOLOCH PRODUCT CARDS & ESSENTIAL STYLES
    ========================================================================== */
 
-/* 1. LASSE PEDERSEN HORIZONTAL SCROLL IMAGE GALLERY (AWWWARDS EDITORIAL STYLE) */
-.lasse-gallery-section {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  padding: 8px 0 16px;
-}
-
-.lasse-gallery-container {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-}
-
-.lasse-gallery-track {
-  display: flex !important;
-  flex-direction: row !important;
-  flex-wrap: nowrap !important;
-  gap: 18px !important;
-  overflow-x: auto !important;
-  scroll-snap-type: x mandatory !important;
-  scrollbar-width: none !important;
-  -webkit-overflow-scrolling: touch !important;
-  cursor: grab;
-  padding: 4px 0 8px !important;
-}
-
-.lasse-gallery-track::-webkit-scrollbar {
-  display: none !important;
-}
-
-.lasse-gallery-track.grabbing {
-  cursor: grabbing !important;
-  user-select: none !important;
-  scroll-snap-type: none !important;
-}
-
-.lasse-gallery-slide {
-  flex: 0 0 100% !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  scroll-snap-align: center !important;
+/* --------------------------------------------------------------------------
+   1. ROYAL GOLD LOGO ANIMATION (FLUID, RESPONSIVE & HARDWARE-ACCELERATED)
+   -------------------------------------------------------------------------- */
+.brand-logo,
+.footer-brand-logo {
   position: relative !important;
-  border-radius: 18px !important;
-  overflow: hidden !important;
-  background: #07261e !important;
-  box-shadow: 0 12px 30px -8px rgba(7, 38, 30, 0.25) !important;
-}
-
-.lasse-gallery-img {
-  width: 100% !important;
-  height: auto !important;
-  max-height: 480px !important;
-  object-fit: cover !important;
-  display: block !important;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
-}
-
-.lasse-gallery-slide:hover .lasse-gallery-img {
-  transform: scale(1.025) !important;
-}
-
-.lasse-card-overlay {
-  position: absolute !important;
-  bottom: 24px !important;
-  left: 24px !important;
-  padding: 20px 24px !important;
-  background: rgba(7, 38, 30, 0.88) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  border: 1px solid rgba(212, 175, 55, 0.35) !important;
-  border-radius: 14px !important;
-  color: #ffffff !important;
-  max-width: 460px !important;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35) !important;
-  pointer-events: auto !important;
-  z-index: 5 !important;
-  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
-}
-
-.lasse-card-overlay:hover {
-  transform: translateY(-3px) !important;
-  box-shadow: 0 20px 42px rgba(0, 0, 0, 0.45) !important;
-}
-
-.lasse-badge {
-  display: inline-block !important;
-  font-size: 0.72rem !important;
-  font-weight: 800 !important;
-  letter-spacing: 0.14em !important;
-  text-transform: uppercase !important;
-  color: #d4af37 !important;
-  background: rgba(212, 175, 55, 0.15) !important;
-  border: 1px solid rgba(212, 175, 55, 0.3) !important;
-  padding: 4px 10px !important;
-  border-radius: 9999px !important;
-  margin-bottom: 8px !important;
-}
-
-.lasse-heading {
-  font-family: 'Cinzel', 'Playfair Display', Georgia, serif !important;
-  font-size: 1.55rem !important;
-  font-weight: 700 !important;
-  margin: 0 0 8px 0 !important;
-  color: #ffffff !important;
-  letter-spacing: 0.02em !important;
-  line-height: 1.25 !important;
-}
-
-.lasse-cta {
   display: inline-flex !important;
   align-items: center !important;
-  gap: 6px !important;
-  font-size: 0.88rem !important;
-  font-weight: 700 !important;
-  color: #d4af37 !important;
+  justify-content: center !important;
   text-decoration: none !important;
-  transition: transform 0.2s ease, color 0.2s ease !important;
-}
-
-.lasse-cta:hover {
-  color: #fce79a !important;
-  transform: translateX(4px) !important;
-}
-
-.lasse-editorial-nav-bar {
-  display: none !important;
-}
-
-.lasse-slide-counter {
-  font-family: 'Cinzel', monospace, serif !important;
-  font-size: 0.95rem !important;
-  font-weight: 800 !important;
-  color: #07261e !important;
-  letter-spacing: 0.1em !important;
-  min-width: 62px !important;
-}
-
-.lasse-progress-track {
-  flex: 1 !important;
-  height: 3.5px !important;
-  background: rgba(7, 38, 30, 0.12) !important;
-  border-radius: 9999px !important;
   overflow: hidden !important;
-  position: relative !important;
+  border-radius: 8px !important;
+  padding: 2px 4px !important;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-.lasse-progress-fill {
-  height: 100% !important;
-  width: 33.33% !important;
-  background: linear-gradient(90deg, #07261e, #d4af37) !important;
-  transition: width 0.35s ease !important;
-  border-radius: 9999px !important;
+/* Luminous gold light sheen sweep across logo */
+.brand-logo::after,
+.footer-brand-logo::after {
+  content: '' !important;
+  position: absolute !important;
+  top: -60% !important;
+  left: -140% !important;
+  width: 65% !important;
+  height: 220% !important;
+  background: linear-gradient(
+    115deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(212, 175, 55, 0.15) 25%,
+    rgba(255, 255, 255, 0.8) 50%,
+    rgba(212, 175, 55, 0.25) 75%,
+    rgba(255, 255, 255, 0) 100%
+  ) !important;
+  transform: rotate(25deg) !important;
+  pointer-events: none !important;
+  animation: stylemartLogoSheen 4.2s cubic-bezier(0.25, 1, 0.5, 1) infinite !important;
+  z-index: 2 !important;
 }
 
-.lasse-nav-btn {
-  background: rgba(7, 38, 30, 0.85) !important;
-  color: #d4af37 !important;
-  border: 1px solid rgba(212, 175, 55, 0.4) !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+/* Delicate royal sparkle star at the corner of the gold cameo */
+.brand-logo::before {
+  content: '✦' !important;
+  position: absolute !important;
+  top: 3px !important;
+  right: 5px !important;
+  font-size: 11px !important;
+  color: #fef08a !important;
+  line-height: 1 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  z-index: 3 !important;
+  text-shadow: 0 0 6px rgba(254, 240, 138, 0.95), 0 0 14px rgba(212, 175, 55, 0.85) !important;
+  animation: stylemartStarTwinkle 4.2s ease-in-out infinite !important;
 }
-.lasse-nav-btn:hover {
-  background: #07261e !important;
-  color: #ffffff !important;
+
+/* Brand logo image with ambient breathing halo and entrance animation */
+.brand-logo-image.header-logo-full {
+  display: block !important;
+  width: auto !important;
+  height: 52px !important;
+  max-width: 60px !important;
+  object-fit: contain !important;
+  border-radius: 6px !important;
+  will-change: transform, filter !important;
+  animation: stylemartLogoEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) backwards, stylemartLogoGlow 3.8s ease-in-out infinite 0.8s alternate !important;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease !important;
+}
+
+/* Hover & focus elevation */
+.brand-logo:hover,
+.brand-logo:focus-visible {
+  transform: scale(1.05) translateY(-1px) !important;
+}
+
+.brand-logo:hover .brand-logo-image.header-logo-full,
+.brand-logo:focus-visible .brand-logo-image.header-logo-full {
+  transform: scale(1.06) !important;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 16px rgba(212, 175, 55, 0.95)) drop-shadow(0 0 24px rgba(254, 240, 138, 0.5)) !important;
+}
+
+.brand-logo:hover::after {
+  animation-duration: 2s !important;
+}
+
+/* Keyframes for Logo Sheen Sweep */
+@keyframes stylemartLogoSheen {
+  0%, 35% {
+    left: -140%;
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  70% {
+    left: 170%;
+    opacity: 1;
+  }
+  75%, 100% {
+    left: 170%;
+    opacity: 0;
+  }
+}
+
+/* Keyframes for Ambient Breathing Aura */
+@keyframes stylemartLogoGlow {
+  0% {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4)) drop-shadow(0 0 6px rgba(212, 175, 55, 0.35));
+    transform: translateY(0);
+  }
+  50% {
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 14px rgba(212, 175, 55, 0.75)) drop-shadow(0 0 20px rgba(245, 218, 122, 0.35));
+    transform: translateY(-2px);
+  }
+  100% {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4)) drop-shadow(0 0 6px rgba(212, 175, 55, 0.35));
+    transform: translateY(0);
+  }
+}
+
+/* Keyframes for Corner Star Sparkle */
+@keyframes stylemartStarTwinkle {
+  0%, 50% {
+    opacity: 0;
+    transform: scale(0.2) rotate(0deg);
+  }
+  56% {
+    opacity: 1;
+    transform: scale(1.25) rotate(45deg);
+  }
+  62% {
+    opacity: 0.9;
+    transform: scale(1) rotate(90deg);
+  }
+  68%, 100% {
+    opacity: 0;
+    transform: scale(0.3) rotate(135deg);
+  }
+}
+
+/* Keyframes for Page-Load Entrance */
+@keyframes stylemartLogoEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.88) translateY(4px);
+    filter: drop-shadow(0 0 0 transparent);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4)) drop-shadow(0 0 6px rgba(212, 175, 55, 0.35));
+  }
+}
+
+/* Responsive Logo Scaling */
+@media (max-width: 1024px) {
+  .brand-logo-image.header-logo-full {
+    height: 46px !important;
+    max-width: 54px !important;
+  }
 }
 
 @media (max-width: 768px) {
-  .lasse-card-overlay {
-    bottom: 12px !important;
-    left: 12px !important;
-    right: 12px !important;
-    padding: 12px 14px !important;
-    max-width: calc(100% - 24px) !important;
-    border-radius: 10px !important;
+  .brand-logo-image.header-logo-full {
+    height: 42px !important;
+    max-width: 50px !important;
   }
-  .lasse-heading {
-    font-size: 1.05rem !important;
-    margin-bottom: 4px !important;
+  .brand-logo::before {
+    font-size: 9px !important;
+    top: 2px !important;
+    right: 3px !important;
   }
-  .lasse-gallery-img {
-    max-height: 280px !important;
-    min-height: 195px !important;
+}
+
+@media (max-width: 480px) {
+  .brand-logo-image.header-logo-full {
+    height: 38px !important;
+    max-width: 44px !important;
   }
 }
 
@@ -14903,271 +14897,6 @@ body.category-page .products-main {
 
 .product-card:hover .product-card-img-wrap img {
   transform: scale(1.05) !important;
-}
-
-/* 3. THEMOZZARELLA 3D PARALLAX COVERFLOW CAROUSEL (PEN OJqrvNo) FOR FLASH DEALS */
-.flash-sale-section {
-  position: relative !important;
-  width: 100% !important;
-  margin: 6px 0 12px !important;
-  padding: 0 !important;
-  overflow: hidden !important;
-}
-
-.flash-sale-banner-frame {
-  position: relative !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  background: transparent !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  border: none !important;
-  box-shadow: none !important;
-  overflow: hidden !important;
-}
-
-.flash-sale-banner-frame::after {
-  display: none !important;
-}
-
-.flash-header-strip {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  padding: 8px 16px !important;
-  background: #07261e !important;
-  color: #ffffff !important;
-  border-radius: 14px 14px 0 0 !important;
-  border-bottom: 1px solid rgba(212, 175, 55, 0.3) !important;
-  margin: 0 !important;
-}
-
-.flash-controls-wrap {
-  display: flex !important;
-  align-items: center !important;
-  gap: 8px !important;
-}
-
-.flash-nav-btn {
-  width: 32px !important;
-  height: 32px !important;
-  border-radius: 50% !important;
-  background: rgba(255, 255, 255, 0.12) !important;
-  border: 1.5px solid rgba(212, 175, 55, 0.6) !important;
-  color: #d4af37 !important;
-  font-size: 1.4rem !important;
-  font-weight: 700 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  cursor: pointer !important;
-  transition: all 0.2s ease !important;
-  line-height: 1 !important;
-  user-select: none !important;
-}
-
-.flash-nav-btn:hover {
-  background: #d4af37 !important;
-  color: #07261e !important;
-}
-
-/* Flash 3D counter restored matching user mockup (10 / 13) */
-.flash-3d-counter,
-#flash3dCounter {
-  display: inline-block !important;
-  font-family: 'Cinzel', monospace, serif !important;
-  font-size: 0.95rem !important;
-  font-weight: 800 !important;
-  color: #fbbf24 !important;
-  letter-spacing: 0.08em !important;
-  min-width: 60px !important;
-  text-align: center !important;
-  user-select: none !important;
-  margin: 0 4px !important;
-}
-
-.flash-3d-pagination,
-.flash-3d-dot {
-  display: none !important;
-}
-
-/* Viewport & 3D Stage - Zero white space, zero horizontal scrollbar */
-#flashCarouselContainer,
-.flash-carousel-container,
-.mozzarella-3d-viewport {
-  perspective: 1200px !important;
-  -webkit-perspective: 1200px !important;
-  perspective-origin: 50% 50% !important;
-  overflow: hidden !important;
-  overflow-x: hidden !important;
-  overflow-y: hidden !important;
-  scrollbar-width: none !important;
-  -ms-overflow-style: none !important;
-  position: relative !important;
-  width: 100% !important;
-  height: 345px !important;
-  min-height: 345px !important;
-  max-height: 345px !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  background: #faf8f5 !important;
-  border-radius: 0 0 14px 14px !important;
-  border: 1px solid rgba(7, 38, 30, 0.08) !important;
-  border-top: none !important;
-  touch-action: pan-y !important;
-}
-
-.flash-carousel-container::-webkit-scrollbar,
-.mozzarella-3d-viewport::-webkit-scrollbar {
-  display: none !important;
-  width: 0 !important;
-  height: 0 !important;
-}
-
-.flash-products-grid,
-.mozzarella-3d-track {
-  position: relative !important;
-  width: 100% !important;
-  height: 100% !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow: visible !important;
-  display: block !important;
-  transform-style: preserve-3d !important;
-  -webkit-transform-style: preserve-3d !important;
-}
-
-.flash-products-grid::-webkit-scrollbar,
-.mozzarella-3d-track::-webkit-scrollbar {
-  display: none !important;
-  width: 0 !important;
-  height: 0 !important;
-}
-
-/* Centered 3D Card with translate(-50%, -50%) - Compact with reduced whitespace */
-#flashProductsGrid.mozzarella-3d-track .product-card,
-#flashProductsGrid .flash-product-card,
-.mozzarella-3d-track .product-card,
-.mozzarella-3d-track .flash-product-card {
-  position: absolute !important;
-  top: 50% !important;
-  left: 50% !important;
-  margin: 0 !important;
-  width: 206px !important;
-  max-width: 206px !important;
-  height: 308px !important;
-  max-height: 308px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: space-between !important;
-  box-sizing: border-box !important;
-  border-radius: 14px !important;
-  background: #ffffff !important;
-  border: 1px solid rgba(226, 232, 240, 0.95) !important;
-  overflow: hidden !important;
-  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.5s ease, filter 0.5s ease, box-shadow 0.5s ease !important;
-  cursor: pointer !important;
-  backface-visibility: hidden !important;
-  -webkit-backface-visibility: hidden !important;
-  will-change: transform, opacity !important;
-  box-shadow: 0 8px 20px -4px rgba(7, 38, 30, 0.12) !important;
-}
-
-#flashProductsGrid .product-card .product-card-img-wrap,
-#flashProductsGrid .flash-product-card .product-card-img-wrap,
-.mozzarella-3d-track .product-card .product-card-img-wrap {
-  height: 165px !important;
-  min-height: 165px !important;
-  max-height: 165px !important;
-  border-radius: 10px !important;
-  overflow: hidden !important;
-  position: relative !important;
-  margin: 0 0 3px 0 !important;
-  aspect-ratio: auto !important;
-}
-
-#flashProductsGrid .product-card .product-card-img-wrap img,
-.mozzarella-3d-track .product-card .product-card-img-wrap img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-}
-
-#flashProductsGrid .product-card .product-card-info,
-.mozzarella-3d-track .product-card .product-card-info {
-  padding: 5px 8px 8px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  flex: 1 !important;
-}
-
-#flashProductsGrid .product-card .card-add-to-cart-btn,
-.mozzarella-3d-track .product-card .card-add-to-cart-btn {
-  padding: 6px 10px !important;
-  font-size: 0.8rem !important;
-  min-height: 32px !important;
-  margin-top: 4px !important;
-}
-
-@media (max-width: 768px) {
-  #flashCarouselContainer,
-  .flash-carousel-container,
-  .mozzarella-3d-viewport {
-    height: 295px !important;
-    min-height: 295px !important;
-    max-height: 295px !important;
-  }
-  #flashProductsGrid.mozzarella-3d-track .product-card,
-  #flashProductsGrid .flash-product-card,
-  .mozzarella-3d-track .product-card,
-  .mozzarella-3d-track .flash-product-card {
-    width: 172px !important;
-    max-width: 172px !important;
-    height: 265px !important;
-    max-height: 265px !important;
-  }
-  #flashProductsGrid .product-card .product-card-img-wrap,
-  #flashProductsGrid .flash-product-card .product-card-img-wrap,
-  .mozzarella-3d-track .product-card .product-card-img-wrap {
-    height: 140px !important;
-    min-height: 140px !important;
-    max-height: 140px !important;
-  }
-  #flashProductsGrid .product-card .card-add-to-cart-btn,
-  .mozzarella-3d-track .product-card .card-add-to-cart-btn {
-    min-height: 28px !important;
-    padding: 4px 8px !important;
-    font-size: 0.76rem !important;
-  }
-  .flash-header-strip {
-    padding: 6px 12px !important;
-  }
-}
-
-/* Header brand logo with gold cameo asset */
-.brand-logo-image.header-logo-full {
-  display: block !important;
-  width: auto !important;
-  height: 52px !important;
-  max-width: 60px !important;
-  object-fit: contain !important;
-  border-radius: 6px !important;
-  transition: transform 0.25s ease, opacity 0.2s ease !important;
-}
-
-.brand-logo:hover .brand-logo-image.header-logo-full {
-  transform: scale(1.04) !important;
-  opacity: 0.98 !important;
-}
-
-@media (max-width: 768px) {
-  .brand-logo-image.header-logo-full {
-    height: 42px !important;
-    max-width: 50px !important;
-  }
 }
 
 /* 4. FOREST GREEN ADD-TO-CART BUTTONS (MATCHING MAIN HEADER COLOR #07261e) */

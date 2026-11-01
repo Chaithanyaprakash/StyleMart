@@ -586,6 +586,37 @@ Mobile UI element checks: {
   2. *Flash Sale Navigation Counter Restored:* Restored `<div class="flash-3d-counter" id="flash3dCounter">` in [index.html](index.html) between `flashPrevBtn` and `flashNextBtn`, styled with gold typography (`#fbbf24`, `font-family: 'Cinzel', monospace, serif; font-size: 0.95rem; font-weight: 800; min-width: 60px; text-align: center;`), and re-enabled dynamic counter indexing in `updateMozzarella3DPositions()` in [app.js](app.js).
   3. *Testing & Quality Validation:* Validated using Puppeteer headless browser in [scripts/test_user_requirements.js](scripts/test_user_requirements.js) and [scripts/test-enhancements.js](scripts/test-enhancements.js), achieving 100% test pass rates across all 9 enhancements, DOM structure, and mobile responsiveness.
 
+
+### Bug 22: Responsive Royal Gold Logo Animation & Clean Restoration of Hero Banner & Flash Deals to Previous Version
+- **Reported Symptom & User Request:**
+  - User requested: *"give me a logo animation for my stylemart , make responsive , make my stylemart without the flashdeals and banner effects , make those as previous version."*
+  - Complete removal of experimental Lasse Pedersen image gallery horizontal-scroll effects on the Hero Banner and TheMOZZARELLA 3D parallax coverflow effects on Flash Deals.
+  - Restoration of both components to their earlier responsive, high-performance implementations from commit `0d6efda`.
+  - Design and addition of a bespoke, luxurious brand logo animation for StyleMart that is responsive across all devices (Desktop, Tablet, Mobile).
+- **Root Cause & Technical Remediation:**
+  1. *Complete Elimination of Banner & Flash 3D Overlays:*
+     - In [index.html](index.html), removed all Lasse Pedersen wrapper classes (`.lasse-gallery-container`, `.lasse-gallery-track`, `.lasse-card-overlay`, `.lasse-editorial-nav-bar`) and restored the clean `#heroSliderTrack` with 3 active slides, indicators `#sliderDots`, and navigation arrows.
+     - Removed all Mozzarella 3D coverflow wrappers (`.mozzarella-3d-viewport`, `.mozzarella-3d-track`, `#flash3dCounter`) and restored `.flash-sale-banner-frame`, `.flash-header-strip`, `#flashCarouselContainer`, and `#flashProductsGrid`.
+  2. *JavaScript Logic Restoration & Touch Swiping:*
+     - In [app.js](app.js), replaced mousewheel and drag-scrubbing with clean slide transitions `goToSlide()` and added mobile touch swipe listeners (`touchstart`/`touchend` with horizontal delta detection).
+     - Restored `renderFlashSaleProducts()` with horizontal scroll carousel navigation (`scrollBy({ left: +/- 280, behavior: 'smooth' })`).
+  3. *Royal Gold Brand Logo Animation Suite:*
+     - In [styles.css](styles.css), implemented multi-layered CSS keyframe animations:
+       - `@keyframes stylemartLogoEntrance`: Elegant cubic-bezier scale and opacity entrance on page load.
+       - `@keyframes stylemartLogoGlow`: Ambient breathing gold halo using layered drop shadows (`rgba(212, 175, 55, 0.75)` and `rgba(245, 218, 122, 0.35)`).
+       - `@keyframes stylemartLogoSheen`: Luminous angled gold light sweep traversing across `.brand-logo::after` every 4.2 seconds.
+       - `@keyframes stylemartStarTwinkle`: Subtle 4-point diamond star sparkle (`✦`) at the upper corner.
+       - Responsive scaling: 52px height on desktop (>1024px), 42px on tablet (768px - 1024px), and 38px on mobile (<=480px).
+  4. *Automated Headless Browser Verification:*
+     - [scripts/test_user_requirements.js](scripts/test_user_requirements.js) and [scripts/test-enhancements.js](scripts/test-enhancements.js) executed in Puppeteer verifying:
+       - Favicon files & link tags active.
+       - Logo animation running (`stylemartLogoEntrance`, `stylemartLogoGlow`, and `stylemartLogoSheen`).
+       - Hero banner cleanly restored (3 slides, 3 dots, 0 Lasse overlays, smooth dot navigation).
+       - Flash deals cleanly restored (13 products rendered, 0 Mozzarella 3D transforms).
+       - Avoloch 3D holographic tilt and specular glow active.
+       - Zero mobile horizontal overflow with responsive 38px logo scaling.
+       - 100% test pass rate across all suites.
+
 ### GitHub Actions Workflow Configuration ([StyleMart.yml](StyleMart.yml))
 
 ```yaml
