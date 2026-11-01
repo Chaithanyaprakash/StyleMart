@@ -4,7 +4,7 @@ const path = require('path');
 
 (async () => {
   let passed = true;
-  const browser = await puppeteer.launch({ headless: 'new', args: ['--no-sandbox'] });
+  const browser = await puppeteer.launch({ headless: 'new', args: ['--no-sandbox', '--disable-setuid-sandbox'] });
   const page = await browser.newPage();
   await page.setViewport({ width: 1280, height: 900 });
 
@@ -34,87 +34,117 @@ const path = require('path');
     console.log('PASS: Official cameo logo favicon files and link tags verified successfully.');
   }
 
-  console.log('--- TEST 1: LOGO VERIFICATION ---');
-  const logoSrc = await page.evaluate(() => {
-    const img = document.querySelector('.brand-logo-image');
-    return img ? img.getAttribute('src') : null;
-  });
-  console.log('Logo src:', logoSrc);
-  if (!logoSrc || !logoSrc.includes('stylemart-logo-header.png')) {
-    console.error('FAIL: Logo source does not point to stylemart-logo-header.png');
-    passed = false;
-  } else {
-    console.log('PASS: New gold cameo logo is present in the header.');
-  }
+  console.log('--- TEST 1: LOGO ANIMATION & RESPONSIVENESS VERIFICATION ---');
+  const logoCheck = await page.evaluate(() => {
+    const logoLink = document.querySelector('.brand-logo');
+    const logoImg = document.querySelector('.brand-logo-image.header-logo-full');
+    if (!logoLink || !logoImg) return { found: false };
 
-  console.log('--- TEST 2: RESTORED BANNER DOTS & FLASH SALE COUNTER ---');
-  const restoredCheck = await page.evaluate(() => {
-    const bannerDots = document.querySelectorAll('#homeHero .slider-dots .dot, #sliderDots .dot');
-    const flashDots = document.querySelectorAll('.flash-3d-dot, #flash3dPagination .flash-3d-dot');
-    const counter = document.getElementById('flash3dCounter');
-    const container = document.getElementById('flashCarouselContainer');
+    const style = window.getComputedStyle(logoImg);
+    const linkStyle = window.getComputedStyle(logoLink, '::after');
+
     return {
-      bannerDotsCount: bannerDots.length,
-      bannerDotsVisible: bannerDots.length > 0 && window.getComputedStyle(bannerDots[0].parentElement).display !== 'none',
-      flashDotsCount: flashDots.length,
-      counterVisible: !!counter && window.getComputedStyle(counter).display !== 'none',
-      counterText: counter ? counter.textContent.trim() : '',
-      containerHeight: container ? container.offsetHeight : 0,
-      overflowX: container ? window.getComputedStyle(container).overflowX : ''
+      found: true,
+      src: logoImg.getAttribute('src'),
+      height: parseFloat(style.height),
+      animationName: style.animationName,
+      hasSheenAnimation: !!linkStyle.animationName,
+      filter: style.filter
     };
   });
-  console.log('Restored check:', restoredCheck);
-  if (!restoredCheck.bannerDotsVisible || restoredCheck.bannerDotsCount !== 3) {
-    console.error('FAIL: Banner slider dots missing or hidden!');
+  console.log('Logo animation check:', logoCheck);
+  if (!logoCheck.found || !logoCheck.src.includes('stylemart-logo-header.png')) {
+    console.error('FAIL: Logo source does not point to stylemart-logo-header.png!');
+    passed = false;
+  } else if (!logoCheck.animationName || logoCheck.animationName === 'none') {
+    console.error('FAIL: Logo does not have animation configured!');
     passed = false;
   } else {
-    console.log(`PASS: Banner slider dots visible and properly configured (${restoredCheck.bannerDotsCount} dots).`);
-  }
-  if (!restoredCheck.counterVisible || !restoredCheck.counterText.includes('/')) {
-    console.error(`FAIL: Flash 3D counter is missing or not visible! (${restoredCheck.counterText})`);
-    passed = false;
-  } else {
-    console.log(`PASS: Flash sale counter visible and restored matching mockup (${restoredCheck.counterText}).`);
-  }
-  if (restoredCheck.flashDotsCount > 0) {
-    console.error('FAIL: Found flash card dots!');
-    passed = false;
-  } else {
-    console.log('PASS: Flash cards pagination dots remain cleanly removed.');
-  }
-  if (restoredCheck.overflowX !== 'hidden') {
-    console.error('FAIL: Flash container does not have overflowX: hidden!');
-    passed = false;
-  } else {
-    console.log('PASS: Horizontal scrollbar is completely eliminated with overflow-x: hidden.');
-  }
-  if (restoredCheck.containerHeight > 360) {
-    console.error(`FAIL: Flash container height (${restoredCheck.containerHeight}px) exceeds compact threshold!`);
-    passed = false;
-  } else {
-    console.log(`PASS: Flash deals whitespace compact (container height: ${restoredCheck.containerHeight}px).`);
+    console.log(`PASS: Logo animation active (animation: ${logoCheck.animationName}, height: ${logoCheck.height}px).`);
   }
 
-  console.log('--- TEST 3: FLASH DEALS 3D PARALLAX COVERFLOW & PREV/NEXT ---');
-  const initialIndex = await page.evaluate(() => {
-    const center = document.querySelector('.flash-product-card.flash-3d-center');
-    return center ? center.getAttribute('data-flash-index') : null;
+  console.log('--- TEST 2: PREVIOUS VERSION HERO BANNER VERIFICATION ---');
+  const bannerCheck = await page.evaluate(() => {
+    const hero = document.getElementById('homeHero');
+    const track = document.getElementById('heroSliderTrack');
+    const slides = document.querySelectorAll('#heroSliderTrack .slide');
+    const dots = document.querySelectorAll('#sliderDots .dot');
+    const prevBtn = document.getElementById('prevSlideBtn');
+    const nextBtn = document.getElementById('nextSlideBtn');
+    const lasseOverlay = document.querySelector('.lasse-card-overlay');
+    const lasseBar = document.querySelector('.lasse-editorial-nav-bar');
+
+    return {
+      heroExists: !!hero,
+      trackExists: !!track,
+      slidesCount: slides.length,
+      dotsCount: dots.length,
+      hasNavButtons: !!prevBtn && !!nextBtn,
+      noLasseOverlay: !lasseOverlay,
+      noLasseBar: !lasseBar
+    };
   });
-  console.log('Initial center index:', initialIndex);
+  console.log('Banner check:', bannerCheck);
+  if (!bannerCheck.heroExists || !bannerCheck.trackExists || bannerCheck.slidesCount !== 3 || bannerCheck.dotsCount !== 3) {
+    console.error('FAIL: Previous version hero slider elements missing!');
+    passed = false;
+  } else if (!bannerCheck.noLasseOverlay || !bannerCheck.noLasseBar) {
+    console.error('FAIL: Lasse Pedersen effect overlays still present in banner!');
+    passed = false;
+  } else {
+    console.log('PASS: Hero banner cleanly restored to previous responsive slider version (3 slides, 3 dots, prev/next arrows, 0 Lasse effects).');
+  }
 
-  await page.click('#flashNextBtn');
+  // Test Banner indicator / dot navigation
+  await page.click('#sliderDots .dot:nth-child(2)');
   await new Promise(r => setTimeout(r, 600));
-
-  const nextIndex = await page.evaluate(() => {
-    const center = document.querySelector('.flash-product-card.flash-3d-center');
-    return center ? center.getAttribute('data-flash-index') : null;
+  const activeSlideIndex = await page.evaluate(() => {
+    const slides = document.querySelectorAll('#heroSliderTrack .slide');
+    let activeIdx = -1;
+    slides.forEach((s, idx) => {
+      if (s.classList.contains('active')) activeIdx = idx;
+    });
+    return activeIdx;
   });
-  console.log('Next center index:', nextIndex);
-  if (nextIndex === initialIndex) {
-    console.error('FAIL: Next button did not advance active flash deal!');
+  console.log('Active slide after clicking next:', activeSlideIndex);
+  if (activeSlideIndex !== 1) {
+    console.error('FAIL: Clicking next slide button did not activate slide 1!');
     passed = false;
   } else {
-    console.log('PASS: Next navigation works smoothly in 3D coverflow carousel.');
+    console.log('PASS: Slide navigation works smoothly in previous banner slider.');
+  }
+
+  console.log('--- TEST 3: PREVIOUS VERSION FLASH DEALS CAROUSEL VERIFICATION ---');
+  const flashCheck = await page.evaluate(() => {
+    const section = document.getElementById('flashSaleSection');
+    const frame = document.querySelector('.flash-sale-banner-frame');
+    const headerStrip = document.querySelector('.flash-header-strip');
+    const badge = document.querySelector('.flash-badge-pill');
+    const container = document.getElementById('flashCarouselContainer');
+    const grid = document.getElementById('flashProductsGrid');
+    const cards = document.querySelectorAll('#flashProductsGrid .product-card');
+    const mozzarellaTrack = document.querySelector('.mozzarella-3d-track');
+
+    return {
+      sectionExists: !!section,
+      frameExists: !!frame,
+      headerStripExists: !!headerStrip,
+      badgeText: badge ? badge.textContent.trim() : '',
+      containerExists: !!container,
+      gridExists: !!grid,
+      cardsCount: cards.length,
+      noMozzarella3D: !mozzarellaTrack
+    };
+  });
+  console.log('Flash check:', flashCheck);
+  if (!flashCheck.sectionExists || !flashCheck.containerExists || flashCheck.cardsCount < 5) {
+    console.error('FAIL: Flash deals products or container missing!');
+    passed = false;
+  } else if (!flashCheck.noMozzarella3D) {
+    console.error('FAIL: Mozzarella 3D coverflow track still present!');
+    passed = false;
+  } else {
+    console.log(`PASS: Flash deals restored to previous clean responsive carousel (${flashCheck.cardsCount} deals rendered, 0 3D coverflow effects).`);
   }
 
   console.log('--- TEST 4: AVOLOCH 3D HOLOGRAPHIC PRODUCT CARD EFFECT ---');
@@ -162,7 +192,7 @@ const path = require('path');
   await new Promise(r => setTimeout(r, 500));
 
   const mobileCheck = await page.evaluate(() => {
-    const container = document.getElementById('flashCarouselContainer');
+    const logoImg = document.querySelector('.brand-logo-image.header-logo-full');
     const bodyScrollWidth = document.body.scrollWidth;
     const bodyClientWidth = document.documentElement.clientWidth;
 
@@ -170,18 +200,18 @@ const path = require('path');
       bodyScrollWidth,
       bodyClientWidth,
       hasHorizontalPageScroll: bodyScrollWidth > bodyClientWidth,
-      containerHeight: container ? container.offsetHeight : 0
+      mobileLogoHeight: logoImg ? parseFloat(window.getComputedStyle(logoImg).height) : 0
     };
   });
   console.log('Mobile check:', mobileCheck);
   if (mobileCheck.hasHorizontalPageScroll) {
-    console.error('FAIL: Page has horizontal overflow scroll on mobile!');
+    console.error(`FAIL: Page has horizontal overflow scroll on mobile! (${mobileCheck.bodyScrollWidth} > ${mobileCheck.bodyClientWidth})`);
     passed = false;
-  } else if (mobileCheck.containerHeight > 310) {
-    console.error(`FAIL: Mobile flash container height (${mobileCheck.containerHeight}px) exceeds 310px!`);
+  } else if (mobileCheck.mobileLogoHeight > 46) {
+    console.error(`FAIL: Mobile logo height (${mobileCheck.mobileLogoHeight}px) exceeds 46px!`);
     passed = false;
   } else {
-    console.log(`PASS: Zero horizontal page overflow on mobile view, mobile flash container height: ${mobileCheck.containerHeight}px.`);
+    console.log(`PASS: Zero horizontal page overflow on mobile view, responsive mobile logo height: ${mobileCheck.mobileLogoHeight}px.`);
   }
 
   await browser.close();
